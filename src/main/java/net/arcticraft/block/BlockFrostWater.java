@@ -36,10 +36,10 @@ public class BlockFrostWater extends BlockFluidClassic{
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void registerBlockIcons(IIconRegister register)
+	public void registerBlockIcons(IIconRegister iconRegister)
 	{
-		stillIcon = register.registerIcon(Arcticraft.MOD_ID + ":" + "frost_water_still");
-		flowingIcon = register.registerIcon(Arcticraft.MOD_ID + ":" + "frost_water_flowing");
+		stillIcon = iconRegister.registerIcon(Arcticraft.MOD_ID + ":" + "frost_water_still");
+		flowingIcon = iconRegister.registerIcon(Arcticraft.MOD_ID + ":" + "frost_water_flowing");
 	}
 
 	@Override

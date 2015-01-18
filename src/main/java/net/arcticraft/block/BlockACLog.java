@@ -3,6 +3,7 @@ package net.arcticraft.block;
 import java.util.List;
 
 import net.arcticraft.main.Arcticraft;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -18,7 +19,7 @@ public class BlockACLog extends BlockLog{
 	public static final String[] logs = new String[] {"frost", "glacier"};
 
 	protected BlockACLog(Material material){
-		this.setBlockName("log");
+		this.setBlockName(Arcticraft.MOD_ID + "_" + "log");
 		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
 

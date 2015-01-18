@@ -1,0 +1,9 @@
+!!!!!!The Core features which Arcticraft needs before release!!!!!!
+
+The actual dimension with all the biomes from the last version
+The old teleportation system
+The old temperature bar system
+Pirate ship, captain and old icebergs. 
+All the old ores, armours and weapons.
+All the old NON buggy mobs.
+Custom boss health bar

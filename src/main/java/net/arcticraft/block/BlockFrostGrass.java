@@ -49,21 +49,21 @@ public class BlockFrostGrass extends Block implements IGrowable
     /**
      * Ticks the block if it's been scheduled
      */
-    public void updateTick(World world, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
+    public void updateTick(World world, int x, int y, int z, Random rand)
     {
         if (!world.isRemote)
         {
-            if (world.getBlockLightValue(p_149674_2_, p_149674_3_ + 1, p_149674_4_) < 4 && world.getBlockLightOpacity(p_149674_2_, p_149674_3_ + 1, p_149674_4_) > 2)
+            if (world.getBlockLightValue(x, y + 1, z) < 4 && world.getBlockLightOpacity(x, y + 1, z) > 2)
             {
-                world.setBlock(p_149674_2_, p_149674_3_, p_149674_4_, ACBlocks.frostDirt);
+                world.setBlock(x, y, z, ACBlocks.frostDirt);
             }
-            else if (world.getBlockLightValue(p_149674_2_, p_149674_3_ + 1, p_149674_4_) >= 9)
+            else if (world.getBlockLightValue(x, y + 1, z) >= 9)
             {
                 for (int l = 0; l < 4; ++l)
                 {
-                    int i1 = p_149674_2_ + p_149674_5_.nextInt(3) - 1;
-                    int j1 = p_149674_3_ + p_149674_5_.nextInt(5) - 3;
-                    int k1 = p_149674_4_ + p_149674_5_.nextInt(3) - 1;
+                    int i1 = x + rand.nextInt(3) - 1;
+                    int j1 = y + rand.nextInt(5) - 3;
+                    int k1 = z + rand.nextInt(3) - 1;
                     Block block = world.getBlock(i1, j1 + 1, k1);
 
                     if (world.getBlock(i1, j1, k1) == ACBlocks.frostDirt && world.getBlockMetadata(i1, j1, k1) == 0 && world.getBlockLightValue(i1, j1 + 1, k1) >= 4 && world.getBlockLightOpacity(i1, j1 + 1, k1) <= 2)
@@ -83,83 +83,83 @@ public class BlockFrostGrass extends Block implements IGrowable
     }
 
     @Override
-    public boolean func_149851_a(World p_149851_1_, int p_149851_2_, int p_149851_3_, int p_149851_4_, boolean p_149851_5_)
+    public boolean func_149851_a(World world, int p_149851_2_, int p_149851_3_, int p_149851_4_, boolean p_149851_5_)
     {
         return true;
     }
 
     @Override
-    public boolean func_149852_a(World p_149852_1_, Random p_149852_2_, int p_149852_3_, int p_149852_4_, int p_149852_5_)
+    public boolean func_149852_a(World world, Random rand, int p_149852_3_, int p_149852_4_, int p_149852_5_)
     {
         return true;
     }
 
     @SideOnly(Side.CLIENT)
-    public IIcon getIcon(IBlockAccess p_149673_1_, int p_149673_2_, int p_149673_3_, int p_149673_4_, int p_149673_5_)
+    public IIcon getIcon(IBlockAccess blockAccess, int x, int y, int z, int side)
     {
-        if (p_149673_5_ == 1)
+        if (side == 1)
         {
             return this.texture_top;
         }
-        else if (p_149673_5_ == 0)
+        else if (side == 0)
         {
             return this.texture_bottom;
         }
         else
         {
-            Material material = p_149673_1_.getBlock(p_149673_2_, p_149673_3_ + 1, p_149673_4_).getMaterial();
+            Material material = blockAccess.getBlock(x, y + 1, z).getMaterial();
             return material != Material.snow && material != Material.craftedSnow ? this.blockIcon : this.texture_side_snowed;
         }
     }
 
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister texture)
+    public void registerBlockIcons(IIconRegister iconRegister)
     {
-        this.blockIcon = texture.registerIcon(this.getTextureName() + "_side");
-        this.texture_top = texture.registerIcon(this.getTextureName() + "_top");
-        this.texture_side_snowed = texture.registerIcon(this.getTextureName() + "_side_snow");
-        this.texture_bottom = texture.registerIcon(Arcticraft.MOD_ID + ":" +  "frost_dirt");
+        this.blockIcon = iconRegister.registerIcon(this.getTextureName() + "_side");
+        this.texture_top = iconRegister.registerIcon(this.getTextureName() + "_top");
+        this.texture_side_snowed = iconRegister.registerIcon(this.getTextureName() + "_side_snow");
+        this.texture_bottom = iconRegister.registerIcon(Arcticraft.MOD_ID + ":" +  "frost_dirt");
     }
 
 
     @Override
-    public void func_149853_b(World p_149853_1_, Random p_149853_2_, int p_149853_3_, int p_149853_4_, int p_149853_5_)
+    public void func_149853_b(World world, Random rand, int x, int y, int z)
     {
         int l = 0;
 
         while (l < 128)
         {
-            int i1 = p_149853_3_;
-            int j1 = p_149853_4_ + 1;
-            int k1 = p_149853_5_;
+            int i1 = x;
+            int j1 = y + 1;
+            int k1 = z;
             int l1 = 0;
 
             while (true)
             {
                 if (l1 < l / 16)
                 {
-                    i1 += p_149853_2_.nextInt(3) - 1;
-                    j1 += (p_149853_2_.nextInt(3) - 1) * p_149853_2_.nextInt(3) / 2;
-                    k1 += p_149853_2_.nextInt(3) - 1;
+                    i1 += rand.nextInt(3) - 1;
+                    j1 += (rand.nextInt(3) - 1) * rand.nextInt(3) / 2;
+                    k1 += rand.nextInt(3) - 1;
 
-                    if (p_149853_1_.getBlock(i1, j1 - 1, k1) == Blocks.grass && !p_149853_1_.getBlock(i1, j1, k1).isNormalCube())
+                    if (world.getBlock(i1, j1 - 1, k1) == Blocks.grass && !world.getBlock(i1, j1, k1).isNormalCube())
                     {
                         ++l1;
                         continue;
                     }
                 }
-                else if (p_149853_1_.getBlock(i1, j1, k1).getMaterial() == Material.air)
+                else if (world.getBlock(i1, j1, k1).getMaterial() == Material.air)
                 {
-                    if (p_149853_2_.nextInt(8) != 0)
+                    if (rand.nextInt(8) != 0)
                     {
-                        if (Blocks.tallgrass.canBlockStay(p_149853_1_, i1, j1, k1))
+                        if (Blocks.tallgrass.canBlockStay(world, i1, j1, k1))
                         {
-                            p_149853_1_.setBlock(i1, j1, k1, Blocks.tallgrass, 1, 3);
+                            world.setBlock(i1, j1, k1, Blocks.tallgrass, 1, 3);
                         }
                     }
                     else
                     {
-                        p_149853_1_.getBiomeGenForCoords(i1, k1).plantFlower(p_149853_1_, p_149853_2_, i1, j1, k1);
+                        world.getBiomeGenForCoords(i1, k1).plantFlower(world, rand, i1, j1, k1);
                     }
                 }
 
