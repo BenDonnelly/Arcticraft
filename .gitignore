@@ -1,0 +1,20 @@
+#GITIGNORE for Ore Spiders
+
+.gradle/
+.metadata/
+.settings/
+bin/
+build/
+eclipse/
+gradle/
+.classpath
+.project
+build.gradle
+gradlew
+
+
+
+*.bat
+*.sh
+*.zip
+*.cfg
