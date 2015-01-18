@@ -1,13 +1,12 @@
 package net.arcticraft.block;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import net.arcticraft.main.Arcticraft;
+import net.arcticraft.items.ItemLeafBlocks;
+import net.arcticraft.items.ItemLogBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ACBlocks{
 
@@ -27,6 +26,13 @@ public class ACBlocks{
 	public static Block thickSnow;//Need to create the dimension first. Might not add it since snow can stack on top of each other now anyway.
 	public static Block arcaneStone;
 
+	/* Land Generation Blocks */
+	public static Block acLogs;
+	public static Block acLeaves;
+	public static Block frostSapling;
+	public static Block glacierSapling;
+	public static Block frostWaterIce;
+
 	
 	public static void initBlocks()
 	{
@@ -39,6 +45,10 @@ public class ACBlocks{
 		FluidRegistry.registerFluid(frostWater);
 		frostWaterBlock = new BlockFrostWater(frostWater);
 		arcaneStone = new BlockArcaneStone();
+		
+		acLogs = new BlockACLog(Material.wood);
+		acLeaves = new BlockACLeaves(Material.leaves);
+		
 	}
 	
 	public static void registerBlocks()
@@ -49,6 +59,9 @@ public class ACBlocks{
 		GameRegistry.registerBlock(frostCobble, "frostCobble");
 		GameRegistry.registerBlock(frostWaterBlock, "frostWaterBlock");
 		GameRegistry.registerBlock(arcaneStone, "arcaneStone");
+		
+		GameRegistry.registerBlock(acLogs, ItemLogBlocks.class, acLogs.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(acLeaves, ItemLeafBlocks.class, acLeaves.getUnlocalizedName().substring(5));
 		
 	}
 }

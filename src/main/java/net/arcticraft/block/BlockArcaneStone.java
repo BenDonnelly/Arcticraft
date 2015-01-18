@@ -21,9 +21,9 @@ public class BlockArcaneStone extends Block{
 		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
 
-	public int quantityDropped(Random par1Random)
+	public int quantityDropped(Random random)
 	{
-		return 2 + par1Random.nextInt(3);
+		return 2 + random.nextInt(3);
 	}
 
 	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
