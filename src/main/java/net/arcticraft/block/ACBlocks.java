@@ -33,9 +33,12 @@ public class ACBlocks{
 	public static Block glacierSapling;
 	public static Block frostWaterIce;
 
+
+	
 	
 	public static void initBlocks()
 	{
+		/* Core Dimension Blocks */
 		frostGrass = new BlockFrostGrass();
 		frostDirt = new BlockFrostDirt();
 		frostStone = new BlockFrostStone();
@@ -46,13 +49,15 @@ public class ACBlocks{
 		frostWaterBlock = new BlockFrostWater(frostWater);
 		arcaneStone = new BlockArcaneStone();
 		
+		/* Land Generation Blocks */
 		acLogs = new BlockACLog(Material.wood);
 		acLeaves = new BlockACLeaves(Material.leaves);
-		
+		frostWaterIce = new BlockFrostWaterIce();
 	}
 	
 	public static void registerBlocks()
 	{
+		/* Core Dimension Blocks */
 		GameRegistry.registerBlock(frostGrass, "frostGrass");
 		GameRegistry.registerBlock(frostDirt, "frostDirt");
 		GameRegistry.registerBlock(frostStone, "frostStone");
@@ -60,8 +65,11 @@ public class ACBlocks{
 		GameRegistry.registerBlock(frostWaterBlock, "frostWaterBlock");
 		GameRegistry.registerBlock(arcaneStone, "arcaneStone");
 		
+		/* Land Generation Blocks */
 		GameRegistry.registerBlock(acLogs, ItemLogBlocks.class, acLogs.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(acLeaves, ItemLeafBlocks.class, acLeaves.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(frostWaterIce, "frostWaterIce");
+		
 		
 	}
 }
