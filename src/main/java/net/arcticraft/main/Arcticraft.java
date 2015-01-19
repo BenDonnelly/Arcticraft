@@ -1,11 +1,16 @@
 package net.arcticraft.main;
 
+import java.util.Random;
+
 import net.arcticraft.block.ACBlocks;
+import net.arcticraft.util.VectorUtils;
+import net.arcticraft.world.gen.WorldGenACTrees;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = Arcticraft.MOD_ID, version = Arcticraft.VERSION, name = Arcticraft.NAME)
 public class Arcticraft{
@@ -23,6 +28,7 @@ public class Arcticraft{
 	@EventHandler
 	public static void PreLoad(FMLPreInitializationEvent PreEvent)
 	{
+		VectorUtils.init();
 		ACBlocks.loadBlocks();
 	}
 
@@ -30,5 +36,7 @@ public class Arcticraft{
 	public void Init(FMLInitializationEvent event)
 	{
 		proxy.registerRenderThings();
+		
+    	GameRegistry.registerWorldGenerator(new WorldGenACTrees(), 0);
 	}
 }
