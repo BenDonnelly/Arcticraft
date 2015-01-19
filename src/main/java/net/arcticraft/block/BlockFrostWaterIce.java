@@ -23,8 +23,8 @@ public class BlockFrostWaterIce extends BlockIce{
 	{
 		this.setBlockName("frostWaterIce");
 		this.setHardness(0.5F);
-		this.setLightOpacity(3);
 		this.setStepSound(soundTypeGlass);
+		this.setLightOpacity(3);
 		this.slipperiness = 1.20F;
 		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
