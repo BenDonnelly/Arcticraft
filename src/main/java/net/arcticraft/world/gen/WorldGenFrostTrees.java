@@ -3,14 +3,13 @@ package net.arcticraft.world.gen;
 import java.util.Random;
 
 import net.arcticraft.block.ACBlocks;
+import net.arcticraft.block.BlockFrostWater;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
-import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.util.ForgeDirection;
 
-public class WorldGenFrostTree extends WorldGenAbstractTree{
+public class WorldGenFrostTrees extends WorldGenAbstractTree{
 
 	/**
 	 * The minimum height of a generated tree.
@@ -30,11 +29,11 @@ public class WorldGenFrostTree extends WorldGenAbstractTree{
 	private final int metaLeaves;
 	private static final String __OBFID = "CL_00000438";
 
-	public WorldGenFrostTree(boolean par1){
+	public WorldGenFrostTrees(boolean par1){
 		this(par1, 4, 0, 0, false);
 	}
 
-	public WorldGenFrostTree(boolean par1, int par2, int par3, int par4, boolean par5){
+	public WorldGenFrostTrees(boolean par1, int par2, int par3, int par4, boolean par5){
 		super(par1);
 		this.minTreeHeight = par2;
 		this.metaWood = par3;
@@ -88,7 +87,10 @@ public class WorldGenFrostTree extends WorldGenAbstractTree{
 			else
 			{
 				Block block2 = world.getBlock(x, y - 1, z);
-				boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (IPlantable) Blocks.sapling);
+				Block block22 = world.getBlock(x, y - 2, z);
+				
+				boolean isSoil = !(block2 instanceof BlockFrostWater) && ((block2 == ACBlocks.frostGrass) || (block2 == ACBlocks.frostDirt) || ((block22 == ACBlocks.frostGrass && block2 == Blocks.snow_layer) || (block22 == ACBlocks.frostDirt && block2 == Blocks.snow_layer)) || ((block22 == ACBlocks.frostGrass && block2 == Blocks.snow) || (block22 == ACBlocks.frostDirt && block2 == Blocks.snow)));
+				
 				if(isSoil && y < 256 - l - 1)
 				{
 					block2.onPlantGrow(world, x, y - 1, z, x, y, z);

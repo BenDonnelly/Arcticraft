@@ -23,8 +23,8 @@ public class BlockFrostWaterIce extends BlockIce{
 	{
 		this.setBlockName("frostWaterIce");
 		this.setHardness(0.5F);
-		this.setStepSound(soundTypeGlass);
 		this.setLightOpacity(3);
+		this.setStepSound(soundTypeGlass);
 		this.slipperiness = 1.20F;
 		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
@@ -74,7 +74,7 @@ public class BlockFrostWaterIce extends BlockIce{
     @Override
     public void updateTick(World world, int x, int y, int z, Random rand)
     {
-        if (world.getSavedLightValue(EnumSkyBlock.Block, x, y, z) > 11 - this.getLightOpacity())
+        /*if (world.getSavedLightValue(EnumSkyBlock.Block, x, y, z) > 11 - this.getLightOpacity())
         {
             if (world.provider.isHellWorld)
             {
@@ -84,7 +84,6 @@ public class BlockFrostWaterIce extends BlockIce{
 
             this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
             world.setBlock(x, y, z, ACBlocks.frostWaterBlock);
-        }
+        }*/
     }
-	
 }
