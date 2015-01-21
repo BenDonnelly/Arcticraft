@@ -2,6 +2,7 @@ package net.arcticraft.block;
 
 import java.util.Random;
 
+import net.arcticraft.block.creativetabs.ACCreativeTabs;
 import net.arcticraft.main.Arcticraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
@@ -33,8 +34,7 @@ public class BlockFrostGrass extends Block implements IGrowable
         this.setHardness(0.5F);
         this.setStepSound(Block.soundTypeGrass);
         this.setTickRandomly(true);
-        this.setCreativeTab(CreativeTabs.tabBlock);
-       
+        this.setCreativeTab(ACCreativeTabs.acTabBlock);
     }
 
     /**

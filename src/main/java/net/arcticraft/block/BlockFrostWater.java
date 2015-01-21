@@ -1,5 +1,6 @@
 package net.arcticraft.block;
 
+import net.arcticraft.block.creativetabs.ACCreativeTabs;
 import net.arcticraft.main.Arcticraft;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -25,7 +26,7 @@ public class BlockFrostWater extends BlockFluidClassic{
 		this.blockHardness = 100F;
 		this.setLightOpacity(4);
 		this.setLightLevel(0.5F);
-		this.setCreativeTab(CreativeTabs.tabBlock);
+		this.setCreativeTab(ACCreativeTabs.acTabBlock);
 	}
 
 	@Override

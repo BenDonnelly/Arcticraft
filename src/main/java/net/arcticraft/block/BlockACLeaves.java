@@ -3,6 +3,7 @@ package net.arcticraft.block;
 import java.util.List;
 import java.util.Random;
 
+import net.arcticraft.block.creativetabs.ACCreativeTabs;
 import net.arcticraft.entities.EntityGreenSparkle;
 import net.arcticraft.main.Arcticraft;
 import net.minecraft.block.BlockLeaves;
@@ -24,9 +25,9 @@ public class BlockACLeaves extends BlockLeaves{
 	public static final String[][] leaftypes = new String[][] { {"leaf_frost", "leaf_glacier"}, {"leaf_frost_opaque", "leaf_glacier_opaque"}};
 	public static final String[] leaves = new String[] {"frost", "glacier"};
 
-	protected BlockACLeaves(Material material){
+	protected BlockACLeaves(){
 		this.setBlockName(Arcticraft.MOD_ID + "_" + "acLeaves");
-		this.setCreativeTab(CreativeTabs.tabBlock);
+		this.setCreativeTab(ACCreativeTabs.acTabBlock);
 	}
 
 	@Override

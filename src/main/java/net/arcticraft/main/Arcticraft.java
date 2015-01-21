@@ -28,17 +28,17 @@ public class Arcticraft{
 
 	@SidedProxy(clientSide = "net.arcticraft.main.ClientProxy", serverSide = "net.arcticraft.main.CommonProxy")
 	public static CommonProxy proxy;
-
-	@Mod.Instance(Arcticraft.MOD_ID)
+	
+	@Mod.Instance(MOD_ID)
 	public static Arcticraft arcticraftInstance;
-
+	
 	@EventHandler
 	public static void preLoad(FMLPreInitializationEvent PreEvent)
 	{
 		VectorUtils.init();
 		ACBlocks.loadBlocks();
 	}
-
+	
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{

@@ -3,4 +3,20 @@ tile.ac_frostDirt.name=Frost Dirt
 tile.ac_frostStone.name=Frost Stone
 tile.ac_frostCobble.name=Frost Cobblestone
 tile.ac_frostWater.name=Frost Water
-tile.ac_arcaneStone.name=Arcane 
+tile.ac_arcaneStone.name=Arcane Stone
+tile.ac_frostWaterIce.name=Frosted Ice
+tile.ac_frostSnow.name=Snow
+
+tile.ac_log.frost.name=Frost Wood
+tile.ac_log.glacier.name=Glacier Wood
+tile.ac_acLeaves.frost.name=Frost Leaves
+tile.ac_acLeaves.glacier.name=Glacier Leaves
+tile.ac_planks.frost.name=Frost Wood Planks
+tile.ac_planks.glacier.name=Glacier Wood Planks
+
+itemGroup.ac_tabBlock=Arcticraft Blocks
+itemGroup.ac_tabDecoration=Arcticraft Decoration
+itemGroup.ac_tabMaterials=Arcticraft Materials
+itemGroup.ac_tabFood=Arcticraft Food
+itemGroup.ac_tabTools=Arcticraft Tools
+itemGroup.ac_tabCombat=Arcticraft Combat

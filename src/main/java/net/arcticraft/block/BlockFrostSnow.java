@@ -1,5 +1,7 @@
 package net.arcticraft.block;
 
+import static net.arcticraft.main.Arcticraft.MOD_ID;
+
 import java.util.Random;
 
 import net.minecraft.block.Block;
@@ -29,7 +31,7 @@ public class BlockFrostSnow extends Block
         this.setCreativeTab(CreativeTabs.tabDecorations);
         this.setHardness(0.1F);
         this.setStepSound(soundTypeSnow);
-        this.setBlockName("frostSnow");
+        this.setBlockName(MOD_ID + "_frostSnow");
         this.setLightOpacity(0);
         this.setBlockTextureName("snow");
         this.func_150154_b(0);

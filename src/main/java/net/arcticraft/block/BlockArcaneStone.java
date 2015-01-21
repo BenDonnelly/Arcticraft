@@ -2,6 +2,7 @@ package net.arcticraft.block;
 
 import java.util.Random;
 
+import net.arcticraft.block.creativetabs.ACCreativeTabs;
 import net.arcticraft.main.Arcticraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -18,7 +19,7 @@ public class BlockArcaneStone extends Block{
 		this.setHardness(1.5F);
 		this.setStepSound(soundTypeGlass);
 		this.setLightLevel(1.0F);
-		this.setCreativeTab(CreativeTabs.tabBlock);
+		this.setCreativeTab(ACCreativeTabs.acTabBlock);
 	}
 
 	public int quantityDropped(Random random)

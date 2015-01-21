@@ -1,8 +1,11 @@
 package net.arcticraft.block;
 
+import static net.arcticraft.main.Arcticraft.MOD_ID;
+
 import java.util.ArrayList;
 import java.util.Random;
 
+import net.arcticraft.block.creativetabs.ACCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockIce;
 import net.minecraft.block.material.Material;
@@ -21,12 +24,12 @@ public class BlockFrostWaterIce extends BlockIce{
 
 	public BlockFrostWaterIce()
 	{
-		this.setBlockName("frostWaterIce");
+		this.setBlockName(MOD_ID + "_frostWaterIce");
 		this.setHardness(0.5F);
 		this.setLightOpacity(3);
 		this.setStepSound(soundTypeGlass);
 		this.slipperiness = 1.20F;
-		this.setCreativeTab(CreativeTabs.tabBlock);
+		this.setCreativeTab(ACCreativeTabs.acTabBlock);
 	}
 	
 	@Override
