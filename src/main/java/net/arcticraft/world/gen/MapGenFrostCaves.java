@@ -275,14 +275,21 @@ public class MapGenFrostCaves extends MapGenBase
         Block filler = biome.fillerBlock;
         Block block  = data[index];
 
-        if (block == Blocks.stone|| block == Blocks.gravel || block == ACBlocks.frostStone || block == filler || block == top)
+        if (block == Blocks.stone || block == Blocks.gravel || block == ACBlocks.frostStone || block == filler || block == top)
         {
         	data[index] = null;
 
+        	int r = rand.nextInt(100 - 0) ;
+        	
             if (foundTop && data[index - 1] == filler)
             {
                 data[index - 1] = top;
             }
+            
+        	if(index - 2 > 0 && index - 3 > 0 && r == 50 && data[index - 2] != Blocks.air && data[index - 3] != Blocks.air)
+        	{
+        		data[index - 1] = ACBlocks.arcaneStone;
+        	}
         }
     }
 }

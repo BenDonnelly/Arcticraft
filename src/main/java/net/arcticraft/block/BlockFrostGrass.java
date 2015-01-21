@@ -35,6 +35,7 @@ public class BlockFrostGrass extends Block implements IGrowable
         this.setStepSound(Block.soundTypeGrass);
         this.setTickRandomly(true);
         this.setCreativeTab(ACCreativeTabs.acTabBlock);
+       
     }
 
     /**

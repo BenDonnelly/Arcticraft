@@ -3,7 +3,7 @@ package net.arcticraft.main;
 import net.arcticraft.block.ACBlocks;
 import net.arcticraft.util.VectorUtils;
 import net.arcticraft.world.gen.WorldGenACTrees;
-import net.arcticraft.world.gen.WorldGenFrostTrees;
+import net.arcticraft.world.gen.WorldGenIceberg;
 import net.arcticraft.world.gen.dimension.TeleporterDim;
 import net.minecraft.entity.player.EntityPlayerMP;
 
@@ -28,17 +28,17 @@ public class Arcticraft{
 
 	@SidedProxy(clientSide = "net.arcticraft.main.ClientProxy", serverSide = "net.arcticraft.main.CommonProxy")
 	public static CommonProxy proxy;
-	
+
 	@Mod.Instance(MOD_ID)
 	public static Arcticraft arcticraftInstance;
-	
+
 	@EventHandler
 	public static void preLoad(FMLPreInitializationEvent PreEvent)
 	{
 		VectorUtils.init();
 		ACBlocks.loadBlocks();
 	}
-	
+
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
@@ -48,6 +48,7 @@ public class Arcticraft{
 		proxy.registerGeneral();
 		
     	GameRegistry.registerWorldGenerator(new WorldGenACTrees(), 0);
+    	GameRegistry.registerWorldGenerator(new WorldGenIceberg(), 0);
 	}
 	
 	@SubscribeEvent

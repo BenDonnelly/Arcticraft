@@ -1,7 +1,5 @@
 package net.arcticraft.block;
 
-import static net.arcticraft.main.Arcticraft.MOD_ID;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -24,7 +22,7 @@ public class BlockFrostWaterIce extends BlockIce{
 
 	public BlockFrostWaterIce()
 	{
-		this.setBlockName(MOD_ID + "_frostWaterIce");
+		this.setBlockName("frostWaterIce");
 		this.setHardness(0.5F);
 		this.setLightOpacity(3);
 		this.setStepSound(soundTypeGlass);

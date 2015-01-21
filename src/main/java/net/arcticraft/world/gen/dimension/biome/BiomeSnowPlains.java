@@ -18,7 +18,6 @@ public class BiomeSnowPlains extends ACBiomeGenBase {
 		this.temperature = 0.1F;
 		
 		this.setColor(16777215);
-		this.setEnableSnow();
 		this.setHeight(new BiomeGenBase.Height(0.1F, 0.1F));
 		this.setTemperatureRainfall(0.0F, 0.5F);
 	}

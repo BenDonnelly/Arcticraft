@@ -13,6 +13,7 @@ import java.util.Random;
 import net.arcticraft.block.ACBlocks;
 import net.arcticraft.world.gen.MapGenFrostCaves;
 import net.arcticraft.world.gen.WorldGenACTrees;
+import net.arcticraft.world.gen.WorldGenIceberg;
 import net.arcticraft.world.gen.dimension.biome.ACBiomeGenBase;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
@@ -132,8 +133,6 @@ public class ChunkProviderDim implements IChunkProvider
         this.biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, p_147424_1_ * 4 - 2, p_147424_2_ * 4 - 2, 10, 10);
         this.func_147423_a(p_147424_1_ * 4, 0, p_147424_2_ * 4);
 
-        ACBiomeGenBase biomegenbase = (ACBiomeGenBase) this.worldObj.getBiomeGenForCoords(p_147424_1_ * 16, p_147424_2_ * 16);
-        
         for (int k = 0; k < 4; ++k)
         {
             int l = k * 5;
@@ -183,14 +182,16 @@ public class ChunkProviderDim implements IChunkProvider
                                 }
                                 else if (k2 * 8 + l2 < b0)
                                 {
-                                    if(biomegenbase == ACBiomeGenBase.frostOcean)
-                                    {
+                                    ACBiomeGenBase biomegenbase = (ACBiomeGenBase) this.worldObj.getBiomeGenForCoords(p_147424_1_ * 16, p_147424_2_ * 16);
+                                    
+                                    //if(biomegenbase == ACBiomeGenBase.frostOcean)
+                                    //{
                                     	p_147424_3_[j3 += short1] = ACBlocks.frostWaterIce;
-                                    }
-                                    else
-                                    {
-                                    	p_147424_3_[j3 += short1] = ACBlocks.frostWaterBlock;
-                                    }
+                                   // }
+                                    //else
+                                    //{
+                                    	//p_147424_3_[j3 += short1] = ACBlocks.frostWaterBlock;
+                                    //}
                                 }
                                 else
                                 {
@@ -541,25 +542,39 @@ public class ChunkProviderDim implements IChunkProvider
 		}
 		
 		// Generates an Arcanestone vein in caves, Checks if the top block is frostStone or frostWaterIce, and the bottom block is air.
-		for (int i = 0; i < 10; i++)
+		/*for (int i = 0; i < 10; i++)
 		{
 			int x = p_73153_2_ * 16 + rand.nextInt(16);
-			int y = 100;
+			int y = 256;
 			int z = p_73153_3_ * 16 + rand.nextInt(16);
 			
-			int r = rand.nextInt(10 - 0) + 0;
+			while(y > 0 && this.worldObj.getBlock(x, y + 1, z) != ACBlocks.frostStone && this.worldObj.getBlock(x, y + 1, z) != ACBlocks.frostWaterIce&& this.worldObj.getBlock(x, y, z) != ACBlocks.frostStone && this.worldObj.getBlock(x, y, z) != ACBlocks.frostWaterIce) y -= 1;
 			
-			if(r == 5)
+			if(this.worldObj.getBlock(x, y + 1, z) == ACBlocks.frostStone || this.worldObj.getBlock(x, y + 1, z) == ACBlocks.frostWaterIce)
 			{
-				while(y > 0 && this.worldObj.getBlock(x, y + 2, z) != ACBlocks.frostStone && this.worldObj.getBlock(x, y + 2, z) != ACBlocks.frostWaterIce) y -= 1;
-				
-				if((this.worldObj.getBlock(x, y + 2, z) == ACBlocks.frostStone || this.worldObj.getBlock(x, y + 2, z) == ACBlocks.frostWaterIce) && this.worldObj.getBlock(x, y - 1, z) == Blocks.air)
+				if(this.worldObj.getBlock(x, y - 1, z) == Blocks.air || this.worldObj.getBlock(x, y, z) == Blocks.air)
 				{
-					generateArcanestone(this.worldObj, rand, x, y, z, 1F);
+					System.out.println(x + ", " + y + ", " + z);
+					
+					generateArcanestone(this.worldObj, rand, x, y, z, 1.0F);
 				}
 			}
-		}
+		}*/
         
+		for (int i = 0; i < 2; i++)
+		{
+			int x = p_73153_2_ * 16 + rand.nextInt(16);
+			int y = 256;
+			int z = p_73153_3_ * 16 + rand.nextInt(16);
+
+			while(y > 0 && this.worldObj.getBlock(x, y - 1, z) != ACBlocks.frostWaterIce) y -= 1;
+			
+			if(this.worldObj.getBlock(x, y - 1, z) == ACBlocks.frostWaterIce && this.worldObj.getBlock(x, y + 1, z) == Blocks.air)
+			{
+				(new WorldGenIceberg()).generate(worldObj, rand, x, y, z);
+			}
+		}
+		
         if (this.mapFeaturesEnabled)
         {
             //this.mineshaftGenerator.generateStructuresInChunk(this.worldObj, this.rand, p_73153_2_, p_73153_3_);

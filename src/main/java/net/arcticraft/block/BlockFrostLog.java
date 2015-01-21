@@ -2,6 +2,7 @@ package net.arcticraft.block;
 
 import java.util.Random;
 
+import net.arcticraft.block.creativetabs.ACCreativeTabs;
 import net.arcticraft.main.Arcticraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -23,7 +24,7 @@ public class BlockFrostLog extends Block{
 		this.setBlockName(Arcticraft.MOD_ID + "_" + "frostLog");
         this.setHardness(2.0F);
         this.setStepSound(Block.soundTypeWood);
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setCreativeTab(ACCreativeTabs.acTabBlock);
 	}
 
 	@SideOnly(Side.CLIENT)

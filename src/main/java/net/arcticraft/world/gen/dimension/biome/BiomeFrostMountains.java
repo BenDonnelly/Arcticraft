@@ -25,7 +25,6 @@ public class BiomeFrostMountains extends ACBiomeGenBase
 		this.spawnableWaterCreatureList.clear();
 		this.spawnableCaveCreatureList.clear();
 		
-		this.setEnableSnow();
 		this.setHeight(new BiomeGenBase.Height(0.2F, 2.3F));
 		this.setTemperatureRainfall(0.0F, 1.0F);
 	}

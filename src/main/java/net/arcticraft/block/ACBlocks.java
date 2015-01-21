@@ -1,21 +1,18 @@
 package net.arcticraft.block;
 
+import static net.arcticraft.main.Arcticraft.MOD_ID;
+
 import java.util.Random;
 
 import net.arcticraft.items.ItemLeafBlocks;
 import net.arcticraft.items.ItemLogBlocks;
 import net.arcticraft.items.ItemPlankBlocks;
-import net.arcticraft.main.Arcticraft;
-import static net.arcticraft.main.Arcticraft.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ACBlocks{
 

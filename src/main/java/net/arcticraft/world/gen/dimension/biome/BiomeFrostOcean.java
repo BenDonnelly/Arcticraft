@@ -21,7 +21,6 @@ public class BiomeFrostOcean extends ACBiomeGenBase {
 		
 		this.setTemperatureRainfall(0.1F, 0.0F);
 		this.setDisableRain();
-		this.setEnableSnow();
 		this.setHeight(new BiomeGenBase.Height(-1.0F, 0.4F));
 		this.setColor(16777215);
 	}
