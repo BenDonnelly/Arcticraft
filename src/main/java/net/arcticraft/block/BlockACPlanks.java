@@ -1,6 +1,6 @@
 package net.arcticraft.block;
 
-import static net.arcticraft.main.Arcticraft.*;
+import static net.arcticraft.main.Arcticraft.MOD_ID;
 
 import java.util.List;
 

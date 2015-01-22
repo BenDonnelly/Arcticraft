@@ -13,8 +13,8 @@ import net.minecraftforge.fluids.Fluid;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFrostWater extends BlockFluidClassic{
-
+public class BlockFrostWater extends BlockFluidClassic
+{
 	@SideOnly(Side.CLIENT)
 	protected IIcon stillIcon;
 	@SideOnly(Side.CLIENT)

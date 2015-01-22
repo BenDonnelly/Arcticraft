@@ -1,6 +1,8 @@
 package net.arcticraft.main;
 
 import net.arcticraft.block.ACBlocks;
+import net.arcticraft.crafting.ACCraftingRecipes;
+import net.arcticraft.item.ACItems;
 import net.arcticraft.util.VectorUtils;
 import net.arcticraft.world.gen.WorldGenACTrees;
 import net.arcticraft.world.gen.WorldGenIceberg;
@@ -20,8 +22,8 @@ import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = Arcticraft.MOD_ID, version = Arcticraft.VERSION, name = Arcticraft.NAME)
-public class Arcticraft{
-
+public class Arcticraft
+{
 	public static final String MOD_ID = "ac";
 	public static final String VERSION = "0.1";
 	public static final String NAME = "Arcticraft";
@@ -37,6 +39,8 @@ public class Arcticraft{
 	{
 		VectorUtils.init();
 		ACBlocks.loadBlocks();
+		ACItems.loadItems();
+		ACCraftingRecipes.loadRecipes();
 	}
 
 	@EventHandler
@@ -68,7 +72,8 @@ public class Arcticraft{
     				thePlayer.timeUntilPortal = 10;
     				thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 3, new TeleporterDim(thePlayer.mcServer.worldServerForDimension(3)));
     			}
-    			else {
+    			else
+    			{
     				thePlayer.timeUntilPortal = 10;
     				thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 0, new TeleporterDim(thePlayer.mcServer.worldServerForDimension(3)));
     			}

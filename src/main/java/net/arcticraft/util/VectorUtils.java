@@ -1,6 +1,5 @@
 package net.arcticraft.util;
 
-import java.util.Random;
 import org.lwjgl.util.vector.Vector3f;
 
 public class VectorUtils

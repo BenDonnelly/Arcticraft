@@ -1,13 +1,14 @@
 package net.arcticraft.block.creativetabs;
 
+import net.arcticraft.block.ACBlocks;
+import net.arcticraft.item.ACItems;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import net.arcticraft.block.ACBlocks;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-
-public class ACCreativeTabs {
+public class ACCreativeTabs
+{
 	public static final CreativeTabs acTabBlock = new CreativeTabs("ac_tabBlock")
 	{
 		@Override
@@ -24,7 +25,7 @@ public class ACCreativeTabs {
 		@SideOnly(Side.CLIENT)
 		public Item getTabIconItem()
 		{
-			return Item.getItemFromBlock(ACBlocks.arcaneStone); // TODO Replace this with a decorative block
+			return Item.getItemFromBlock(ACBlocks.acLeaves);
 		}
 	};
 	
@@ -34,7 +35,7 @@ public class ACCreativeTabs {
 		@SideOnly(Side.CLIENT)
 		public Item getTabIconItem()
 		{
-			return Item.getItemFromBlock(ACBlocks.acLogs); // TODO Replace this with a crafting material
+			return ACItems.arcaneStoneDust;
 		}
 	};
 	
@@ -44,7 +45,7 @@ public class ACCreativeTabs {
 		@SideOnly(Side.CLIENT)
 		public Item getTabIconItem()
 		{
-			return Item.getItemFromBlock(ACBlocks.acLogs); // TODO Replace this with a crafting material
+			return Item.getItemFromBlock(ACBlocks.acLogs); // TODO Replace this with food
 		}
 	};
 	
@@ -64,7 +65,7 @@ public class ACCreativeTabs {
 		@SideOnly(Side.CLIENT)
 		public Item getTabIconItem()
 		{
-			return Item.getItemFromBlock(ACBlocks.acLogs); // TODO Replace this with a tool
+			return Item.getItemFromBlock(ACBlocks.acLogs); // TODO Replace this with a weapon
 		}
 	};
 }

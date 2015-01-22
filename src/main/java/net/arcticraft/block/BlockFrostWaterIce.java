@@ -3,6 +3,7 @@ package net.arcticraft.block;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static net.arcticraft.main.Arcticraft.MOD_ID;
 import net.arcticraft.block.creativetabs.ACCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockIce;
@@ -18,11 +19,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
 
 
-public class BlockFrostWaterIce extends BlockIce{
-
+public class BlockFrostWaterIce extends BlockIce
+{
 	public BlockFrostWaterIce()
 	{
-		this.setBlockName("frostWaterIce");
+		this.setBlockName(MOD_ID + "_frostWaterIce");
 		this.setHardness(0.5F);
 		this.setLightOpacity(3);
 		this.setStepSound(soundTypeGlass);

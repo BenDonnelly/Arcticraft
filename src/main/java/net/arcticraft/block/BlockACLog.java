@@ -2,6 +2,7 @@ package net.arcticraft.block;
 
 import java.util.List;
 
+import static net.arcticraft.main.Arcticraft.MOD_ID;
 import net.arcticraft.block.creativetabs.ACCreativeTabs;
 import net.arcticraft.main.Arcticraft;
 import net.minecraft.block.Block;
@@ -15,12 +16,12 @@ import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockACLog extends BlockLog {
-
+public class BlockACLog extends BlockLog
+{
 	public static final String[] logs = new String[] {"frost", "glacier"};
 
 	protected BlockACLog(){
-		this.setBlockName(Arcticraft.MOD_ID + "_log");
+		this.setBlockName(MOD_ID + "_log");
 		this.setCreativeTab(ACCreativeTabs.acTabBlock);
 	}
 	

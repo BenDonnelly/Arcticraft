@@ -1,14 +1,14 @@
-package net.arcticraft.items;
+package net.arcticraft.item;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
-public class ItemLogBlocks extends ItemBlock{
-
-	public static final String[] logs = new String[]{"frost", "glacier"};
+public class ItemPlankBlocks extends ItemBlock
+{
+	public static final String[] planks = new String[]{"frost", "glacier"};
 	
-	public ItemLogBlocks(Block block){
+	public ItemPlankBlocks(Block block){
 		super(block);
 		this.setHasSubtypes(true);
 	}
@@ -17,12 +17,12 @@ public class ItemLogBlocks extends ItemBlock{
 	public String getUnlocalizedName(ItemStack itemStack)
 	{
 		int i = itemStack.getItemDamage();
-		if(i < 0 || i >= logs.length)
+		if(i < 0 || i >= planks.length)
 		{
 			i = 0;
 		}
 		
-		return super.getUnlocalizedName() + "." + logs[i];
+		return super.getUnlocalizedName() + "." + planks[i];
 	}
 
 	@Override

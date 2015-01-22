@@ -4,9 +4,10 @@ import static net.arcticraft.main.Arcticraft.MOD_ID;
 
 import java.util.Random;
 
-import net.arcticraft.items.ItemLeafBlocks;
-import net.arcticraft.items.ItemLogBlocks;
-import net.arcticraft.items.ItemPlankBlocks;
+import net.arcticraft.item.ItemLeafBlocks;
+import net.arcticraft.item.ItemLogBlocks;
+import net.arcticraft.item.ItemPlankBlocks;
+import net.arcticraft.util.StringUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
@@ -14,8 +15,8 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class ACBlocks{
-
+public class ACBlocks
+{
 	public static void loadBlocks()
 	{
 		initBlocks();
@@ -60,9 +61,10 @@ public class ACBlocks{
 			.setHardness(2.0F).setResistance(10.0F)
 			.setStepSound(Block.soundTypePiston);
 		
-		frostWater = new Fluid("frostWater");
 		/* Need to register the fluid before initialising the block */
+		frostWater = new Fluid("frostWater");
 		FluidRegistry.registerFluid(frostWater);
+		
 		frostWaterBlock = new BlockFrostWater(frostWater);
 		arcaneStone = new BlockArcaneStone();
 		
@@ -85,23 +87,12 @@ public class ACBlocks{
 		/* Core Dimension Blocks */
 		for(Block block : blockList)
 		{
-			GameRegistry.registerBlock(block, generateName(block));
+			GameRegistry.registerBlock(block, StringUtils.generateName(block));
 		}
 		
 		/* Land Generation Blocks */
 		GameRegistry.registerBlock(acLogs, ItemLogBlocks.class, acLogs.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(acLeaves, ItemLeafBlocks.class, acLeaves.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(acPlanks, ItemPlankBlocks.class, acPlanks.getUnlocalizedName().substring(5));
-	}
-	
-	public static String generateName(Block block)
-	{
-		String s = block.getUnlocalizedName().replace("tile." + MOD_ID + "_", "");
-		String newString = "";
-		for(char c : s.toCharArray())
-		{
-			newString += (Character.isUpperCase(c) ? "_" : "") + c;
-		}
-		return newString.toLowerCase();
 	}
 }

@@ -9,10 +9,12 @@ tile.ac_frostSnow.name=Snow
 
 tile.ac_log.frost.name=Frost Wood
 tile.ac_log.glacier.name=Glacier Wood
-tile.ac_acLeaves.frost.name=Frost Leaves
-tile.ac_acLeaves.glacier.name=Glacier Leaves
+tile.ac_leaves.frost.name=Frost Leaves
+tile.ac_leaves.glacier.name=Glacier Leaves
 tile.ac_planks.frost.name=Frost Wood Planks
 tile.ac_planks.glacier.name=Glacier Wood Planks
+
+item.ac_arcaneStoneDust.name=Arcane Stone Dust
 
 itemGroup.ac_tabBlock=Arcticraft Blocks
 itemGroup.ac_tabDecoration=Arcticraft Decoration

@@ -5,9 +5,9 @@ import net.minecraft.init.Blocks;
 import net.minecraftforge.common.DimensionManager;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class CommonProxy{
-
-	public void registerRenderThings(){}
+public class CommonProxy
+{
+	public void registerRenderThings() {}
 	
 	public void registerGeneral()
 	{

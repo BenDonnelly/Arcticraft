@@ -3,14 +3,17 @@ package net.arcticraft.main;
 import net.arcticraft.world.gen.dimension.WorldProviderDim;
 import net.minecraftforge.common.DimensionManager;
 
-public class ClientProxy extends CommonProxy {
+public class ClientProxy extends CommonProxy
+{
 	@Override
-	public void registerRenderThings() {
+	public void registerRenderThings()
+	{
 
 	}
 
 	@Override
-	public void registerGeneral() {
+	public void registerGeneral()
+	{
 		/** Adds generators to Dimension **/
 
 		/** Register WorldProvider for Dimension **/
