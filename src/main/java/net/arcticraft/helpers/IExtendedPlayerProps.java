@@ -71,8 +71,7 @@ public class IExtendedPlayerProps implements IExtendedEntityProperties{
 	}
 
 	@Override
-	public void init(Entity entity, World world)
-	{}
+	public void init(Entity entity, World world) {}
 
 	public int getCurrentTemp()
 	{
@@ -96,5 +95,4 @@ public class IExtendedPlayerProps implements IExtendedEntityProperties{
 	{ 
 		this.player.getDataWatcher().updateObject(CURRENT_TEMP_WATCHER, (newTemp < this.maxTemp ? newTemp : this.maxTemp));
 	}
-
 }

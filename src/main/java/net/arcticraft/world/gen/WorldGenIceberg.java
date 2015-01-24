@@ -2,14 +2,15 @@ package net.arcticraft.world.gen;
 
 import java.util.Random;
 
-import cpw.mods.fml.common.IWorldGenerator;
 import net.arcticraft.block.ACBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.ChestGenHooks;
+import cpw.mods.fml.common.IWorldGenerator;
 
 public class WorldGenIceberg implements IWorldGenerator {
 	protected Block[] GetValidSpawnBlocks() {
@@ -51,8 +52,6 @@ public class WorldGenIceberg implements IWorldGenerator {
 			return false;
 		
 		j -= 11;
-
-		System.out.println(i + ", " + j + ", " + k);
 		
 		world.setBlock(i + 0, j + 0, k + 17, ACBlocks.frostWaterIce);
 		world.setBlock(i + 0, j + 0, k + 18, ACBlocks.frostWaterIce);
@@ -2103,7 +2102,7 @@ public class WorldGenIceberg implements IWorldGenerator {
 		world.setBlock(i + 13, j + 12, k + 14, ACBlocks.frostWaterIce);
 		world.setBlock(i + 13, j + 12, k + 15, ACBlocks.frostWaterIce);
 		world.setBlock(i + 13, j + 12, k + 16, ACBlocks.frostWaterIce);
-		// world.setBlock(i + 13, j + 12, k + 17, ACBlocks.tresureChest);
+		world.setBlock(i + 13, j + 12, k + 17, Blocks.chest);
 		world.setBlock(i + 13, j + 12, k + 18, ACBlocks.frostWaterIce);
 		world.setBlock(i + 13, j + 12, k + 19, ACBlocks.frostWaterIce);
 		world.setBlock(i + 13, j + 12, k + 20, ACBlocks.frostWaterIce);
@@ -5634,11 +5633,11 @@ public class WorldGenIceberg implements IWorldGenerator {
 		world.setBlock(i + 26, j + 1, k + 16, ACBlocks.frostWaterIce);
 
 		if (world.getTileEntity(i + 13, j + 12, k + 17) != null) {
-			ChestGenHooks info = ChestGenHooks.getInfo("aciceberg");
-			// WeightedRandomChestContent.generateChestContents(rand,
-			// info.getItems(rand), (TileEntityTreasureChest)
-			// world.getTileEntity(i + 13, j + 12, k + 17),
-			// info.getCount(rand));
+			ChestGenHooks info = ChestGenHooks.getInfo("pyramidJungleChest");
+			WeightedRandomChestContent.generateChestContents(rand,
+					info.getItems(rand), (TileEntityChest) 
+					world.getTileEntity(i + 13, j + 12, k + 17),
+			info.getCount(rand));
 		}
 
 		return true;

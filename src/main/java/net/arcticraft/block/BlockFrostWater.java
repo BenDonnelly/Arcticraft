@@ -24,8 +24,6 @@ public class BlockFrostWater extends BlockFluidClassic
 		super(fluid, Material.water);
 		this.setBlockName(Arcticraft.MOD_ID + "_" +"frostWater");
 		this.blockHardness = 100F;
-		this.setLightOpacity(4);
-		this.setLightLevel(0.5F);
 		this.setCreativeTab(ACCreativeTabs.acTabBlock);
 	}
 

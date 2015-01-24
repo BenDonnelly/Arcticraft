@@ -60,13 +60,11 @@ public class WorldGenACTrees implements IWorldGenerator
 	{
 		if(world.provider.dimensionId == 3)
 		{
-			for (int i = 0; i < 2; i++)
+			for (int i = 0; i < 1; i++)
 			{
 				int x = chunkX * 16 + random.nextInt(16);
 				int y = 256;
 				int z = chunkZ * 16 + random.nextInt(16);
-				
-				while(y > 0 && world.getBlock(x, y - 1, z) != ACBlocks.frostWaterIce) y -= 1;
 				
 				if(world.getBlock(x, y - 1, z) == ACBlocks.frostGrass
 						&& world.getBlock(x + 1, y - 1, z) == ACBlocks.frostGrass

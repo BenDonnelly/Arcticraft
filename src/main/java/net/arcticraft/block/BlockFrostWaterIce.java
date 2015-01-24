@@ -25,9 +25,8 @@ public class BlockFrostWaterIce extends BlockIce
 	{
 		this.setBlockName(MOD_ID + "_frostWaterIce");
 		this.setHardness(0.5F);
-		this.setLightOpacity(3);
 		this.setStepSound(soundTypeGlass);
-		this.slipperiness = 1.20F;
+		this.slipperiness = 1.0F;
 		this.setCreativeTab(ACCreativeTabs.acTabBlock);
 	}
 	

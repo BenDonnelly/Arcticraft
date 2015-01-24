@@ -18,6 +18,13 @@ public class WorldProviderDim extends WorldProvider {
 		this.hasNoSky = false;
 	}
 
+	@SideOnly(Side.CLIENT)
+	@Override
+	public float getStarBrightness(float par1)
+	{
+		return 1.f;
+	}
+	
 	@Override
 	/** Dimension Name **/
 	public String getDimensionName() {

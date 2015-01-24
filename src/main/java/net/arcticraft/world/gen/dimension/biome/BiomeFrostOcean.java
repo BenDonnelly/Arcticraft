@@ -8,9 +8,9 @@ public class BiomeFrostOcean extends ACBiomeGenBase {
 	public BiomeFrostOcean(int par1) {
 		super(par1);
 		
-		this.theBiomeDecorator = new ACBiomeDecorator(this);	
-		this.topBlock = Blocks.snow;
-		this.fillerBlock = ACBlocks.frostWaterIce;	
+		this.theBiomeDecorator = new ACBiomeDecorator(this);
+		this.topBlock = ACBlocks.frostWaterIce;
+		this.fillerBlock = ACBlocks.frostWaterBlock;	
 		this.theBiomeDecorator.mushroomsPerChunk = 0;
 		this.theBiomeDecorator.bigMushroomsPerChunk = 0;
 		this.spawnableCreatureList.clear();

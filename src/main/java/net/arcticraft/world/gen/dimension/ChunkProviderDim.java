@@ -2,7 +2,6 @@ package net.arcticraft.world.gen.dimension;
 
 import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.CAVE;
 import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.RAVINE;
-import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.SCATTERED_FEATURE;
 import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.ANIMALS;
 import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.DUNGEON;
 import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.ICE;
@@ -11,6 +10,7 @@ import java.util.List;
 import java.util.Random;
 
 import net.arcticraft.block.ACBlocks;
+import net.arcticraft.temperature.ICoolComponent;
 import net.arcticraft.world.gen.MapGenFrostCaves;
 import net.arcticraft.world.gen.WorldGenACTrees;
 import net.arcticraft.world.gen.WorldGenIceberg;
@@ -35,14 +35,13 @@ import net.minecraft.world.gen.NoiseGenerator;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
 import net.minecraft.world.gen.NoiseGeneratorPerlin;
 import net.minecraft.world.gen.feature.WorldGenDungeons;
-import net.minecraft.world.gen.structure.MapGenScatteredFeature;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.ChunkProviderEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 
-public class ChunkProviderDim implements IChunkProvider
+public class ChunkProviderDim implements IChunkProvider, ICoolComponent
 {
     /** RNG. */
     private Random rand;
@@ -70,7 +69,7 @@ public class ChunkProviderDim implements IChunkProvider
     //private MapGenVillage villageGenerator = new MapGenVillage();
     /** Holds Mineshaft Generator */
     //private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
-    private MapGenScatteredFeature scatteredFeatureGenerator = new MapGenScatteredFeature();
+    //private MapGenScatteredFeature scatteredFeatureGenerator = new MapGenScatteredFeature();
     /** Holds ravine generator */
     private MapGenBase ravineGenerator = new MapGenRavine();
     /** The biomes that are used to generate the chunk */
@@ -87,7 +86,7 @@ public class ChunkProviderDim implements IChunkProvider
         //strongholdGenerator = (MapGenStronghold) TerrainGen.getModdedMapGen(strongholdGenerator, STRONGHOLD);
         //villageGenerator = (MapGenVillage) TerrainGen.getModdedMapGen(villageGenerator, VILLAGE);
         //mineshaftGenerator = (MapGenMineshaft) TerrainGen.getModdedMapGen(mineshaftGenerator, MINESHAFT);
-        scatteredFeatureGenerator = (MapGenScatteredFeature) TerrainGen.getModdedMapGen(scatteredFeatureGenerator, SCATTERED_FEATURE);
+        //scatteredFeatureGenerator = (MapGenScatteredFeature) TerrainGen.getModdedMapGen(scatteredFeatureGenerator, SCATTERED_FEATURE);
         ravineGenerator = TerrainGen.getModdedMapGen(ravineGenerator, RAVINE);
     }    
 
@@ -182,20 +181,11 @@ public class ChunkProviderDim implements IChunkProvider
                                 }
                                 else if (k2 * 8 + l2 < b0)
                                 {
-                                    ACBiomeGenBase biomegenbase = (ACBiomeGenBase) this.worldObj.getBiomeGenForCoords(p_147424_1_ * 16, p_147424_2_ * 16);
-                                    
-                                    //if(biomegenbase == ACBiomeGenBase.frostOcean)
-                                    //{
-                                    	p_147424_3_[j3 += short1] = ACBlocks.frostWaterIce;
-                                   // }
-                                    //else
-                                    //{
-                                    	//p_147424_3_[j3 += short1] = ACBlocks.frostWaterBlock;
-                                    //}
+                                    p_147424_3_[j3 += short1] = ACBlocks.frostWaterBlock;
                                 }
                                 else
                                 {
-                                    p_147424_3_[j3 += short1] = null;
+                                    p_147424_3_[j3 += short1] = Blocks.air;
                                 }
                             }
 
@@ -319,7 +309,7 @@ public class ChunkProviderDim implements IChunkProvider
             //this.mineshaftGenerator.func_151539_a(this, this.worldObj, p_73154_1_, p_73154_2_, ablock);
             //this.villageGenerator.func_151539_a(this, this.worldObj, p_73154_1_, p_73154_2_, ablock);
             //this.strongholdGenerator.func_151539_a(this, this.worldObj, p_73154_1_, p_73154_2_, ablock);
-            this.scatteredFeatureGenerator.func_151539_a(this, this.worldObj, p_73154_1_, p_73154_2_, ablock);
+            //this.scatteredFeatureGenerator.func_151539_a(this, this.worldObj, p_73154_1_, p_73154_2_, ablock);
         }
 
         Chunk chunk = new Chunk(this.worldObj, ablock, abyte, p_73154_1_, p_73154_2_);
@@ -483,7 +473,7 @@ public class ChunkProviderDim implements IChunkProvider
 
 		if(biomegenbase != ACBiomeGenBase.glacier && biomegenbase != ACBiomeGenBase.frostOcean && biomegenbase != ACBiomeGenBase.snowPlains)
 		{
-			new WorldGenACTrees().generate(rand, p_73153_2_, p_73153_3_, this.worldObj, p_73153_1_, p_73153_1_);
+			new WorldGenACTrees().generate(rand, p_73153_2_, p_73153_3_, this.worldObj, p_73153_1_, p_73153_1_);			
 		}
 		
 		if(biomegenbase == ACBiomeGenBase.glacier)
@@ -540,26 +530,6 @@ public class ChunkProviderDim implements IChunkProvider
 				generateArcanestone(this.worldObj, rand, x, y, z, 1.0F);
 			}
 		}
-		
-		// Generates an Arcanestone vein in caves, Checks if the top block is frostStone or frostWaterIce, and the bottom block is air.
-		/*for (int i = 0; i < 10; i++)
-		{
-			int x = p_73153_2_ * 16 + rand.nextInt(16);
-			int y = 256;
-			int z = p_73153_3_ * 16 + rand.nextInt(16);
-			
-			while(y > 0 && this.worldObj.getBlock(x, y + 1, z) != ACBlocks.frostStone && this.worldObj.getBlock(x, y + 1, z) != ACBlocks.frostWaterIce&& this.worldObj.getBlock(x, y, z) != ACBlocks.frostStone && this.worldObj.getBlock(x, y, z) != ACBlocks.frostWaterIce) y -= 1;
-			
-			if(this.worldObj.getBlock(x, y + 1, z) == ACBlocks.frostStone || this.worldObj.getBlock(x, y + 1, z) == ACBlocks.frostWaterIce)
-			{
-				if(this.worldObj.getBlock(x, y - 1, z) == Blocks.air || this.worldObj.getBlock(x, y, z) == Blocks.air)
-				{
-					System.out.println(x + ", " + y + ", " + z);
-					
-					generateArcanestone(this.worldObj, rand, x, y, z, 1.0F);
-				}
-			}
-		}*/
         
 		for (int i = 0; i < 2; i++)
 		{
@@ -580,7 +550,7 @@ public class ChunkProviderDim implements IChunkProvider
             //this.mineshaftGenerator.generateStructuresInChunk(this.worldObj, this.rand, p_73153_2_, p_73153_3_);
             //flag = this.villageGenerator.generateStructuresInChunk(this.worldObj, this.rand, p_73153_2_, p_73153_3_);
             //this.strongholdGenerator.generateStructuresInChunk(this.worldObj, this.rand, p_73153_2_, p_73153_3_);
-            this.scatteredFeatureGenerator.generateStructuresInChunk(this.worldObj, this.rand, p_73153_2_, p_73153_3_);
+            //this.scatteredFeatureGenerator.generateStructuresInChunk(this.worldObj, this.rand, p_73153_2_, p_73153_3_);
         }
 
         int k1;
@@ -599,7 +569,7 @@ public class ChunkProviderDim implements IChunkProvider
         biomegenbase.decorate(this.worldObj, this.rand, k, l);
         if (TerrainGen.populate(p_73153_1_, worldObj, rand, p_73153_2_, p_73153_3_, flag, ANIMALS))
         {
-        SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, k + 8, l + 8, 16, 16, this.rand);
+        	SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, k + 8, l + 8, 16, 16, this.rand);
         }
         k += 8;
         l += 8;
@@ -677,7 +647,7 @@ public class ChunkProviderDim implements IChunkProvider
     public List getPossibleCreatures(EnumCreatureType p_73155_1_, int p_73155_2_, int p_73155_3_, int p_73155_4_)
     {
         BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(p_73155_2_, p_73155_4_);
-        return p_73155_1_ == EnumCreatureType.monster && this.scatteredFeatureGenerator.func_143030_a(p_73155_2_, p_73155_3_, p_73155_4_) ? this.scatteredFeatureGenerator.getScatteredFeatureSpawnList() : biomegenbase.getSpawnableList(p_73155_1_);
+        return biomegenbase.getSpawnableList(p_73155_1_);
     }
 
     public ChunkPosition func_147416_a(World p_147416_1_, String p_147416_2_, int p_147416_3_, int p_147416_4_, int p_147416_5_)
@@ -697,7 +667,12 @@ public class ChunkProviderDim implements IChunkProvider
             //this.mineshaftGenerator.func_151539_a(this, this.worldObj, p_82695_1_, p_82695_2_, (Block[])null);
             //this.villageGenerator.func_151539_a(this, this.worldObj, p_82695_1_, p_82695_2_, (Block[])null);
             //this.strongholdGenerator.func_151539_a(this, this.worldObj, p_82695_1_, p_82695_2_, (Block[])null);
-            this.scatteredFeatureGenerator.func_151539_a(this, this.worldObj, p_82695_1_, p_82695_2_, (Block[])null);
+            //this.scatteredFeatureGenerator.func_151539_a(this, this.worldObj, p_82695_1_, p_82695_2_, (Block[])null);
         }
     }
+
+	@Override
+	public float changeTemperature() {
+		return 0;
+	}
 }

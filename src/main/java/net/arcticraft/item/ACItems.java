@@ -6,17 +6,16 @@ import net.arcticraft.enums.EnumACToolMaterial;
 import net.arcticraft.util.StringUtils;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
-import net.minecraft.item.ItemAxe;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class ACItems{
-
-	public static void loadItems()
-	{
+public class ACItems {
+	public static void loadItems() {
 		initItems();
 		registerItems();
 	}
 
+	public static Item itemSled;
+	
 	/* Block drops */
 	public static Item arcaneStoneDust;
 	public static Item tekkiteGem;
@@ -110,20 +109,21 @@ public class ACItems{
 		rigentemHoe = new ItemACHoe(EnumACToolMaterial.RigentemTool).setUnlocalizedName("rigentemHoe").setTextureName(MOD_ID + ":hoe_rigentem");
 		frostStoneHoe = new ItemACHoe(ToolMaterial.STONE).setUnlocalizedName("frostStoneHoe").setTextureName(MOD_ID + ":hoe_frost_stone");
 		frostWoodHoe = new ItemACHoe(ToolMaterial.WOOD).setUnlocalizedName("frostWoodHoe").setTextureName(MOD_ID + ":hoe_frost_wood");
+
+		itemSled = new ItemSled().setUnlocalizedName(MOD_ID + "_sled")
+				.setTextureName(MOD_ID + ":sled")
+				.setCreativeTab(ACCreativeTabs.acTabBlock);
 	}
 
-	public static void registerItems()
-	{
-		Item[] itemList = {arcaneStoneDust, tekkiteGem, escariaGem, frigus,
+	public static void registerItems() {
+		Item[] itemList = { arcaneStoneDust, tekkiteGem, escariaGem, frigus,
 				tekkitePickaxe, escariaPickaxe, rigentemPickaxe, glacianPickaxe, frostStonePickaxe, frostWoodPickaxe,
 				tekkiteAxe, escariaAxe, rigentemAxe, glacianAxe, frostStoneAxe, frostWoodAxe,
 				tekkiteSword, escariaSword, rigentemSword, glacianSword, frostStoneSword, frostWoodSword,
 				tekkiteSpade, escariaSpade, rigentemSpade, glacianSpade, frostStoneSpade, frostWoodSpade,
-				tekkiteHoe, escariaHoe, rigentemHoe, glacianHoe, frostStoneHoe, frostWoodHoe};
+				tekkiteHoe, escariaHoe, rigentemHoe, glacianHoe, frostStoneHoe, frostWoodHoe, itemSled };
 
-		/* Core Dimension Blocks */
-		for(Item item : itemList)
-		{
+		for (Item item : itemList) {
 			GameRegistry.registerItem(item, StringUtils.generateName(item));
 		}
 	}

@@ -11,14 +11,11 @@ import net.arcticraft.util.StringUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ACBlocks{
-
 	public static void loadBlocks()
 	{
 		initBlocks();
@@ -54,7 +51,6 @@ public class ACBlocks{
 		frostDirt = new BlockAC(Material.ground).setBlockName(MOD_ID + "_frostDirt").setBlockTextureName(MOD_ID + ":dirt_frost").setHardness(0.5F).setStepSound(Block.soundTypeGravel);
 
 		frostStone = new BlockAC(Material.rock){
-
 			@Override
 			public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
 			{

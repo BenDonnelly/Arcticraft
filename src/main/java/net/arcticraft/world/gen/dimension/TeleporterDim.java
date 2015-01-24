@@ -1,103 +1,204 @@
 package net.arcticraft.world.gen.dimension;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Random;
 
+import net.arcticraft.block.ACBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.Direction;
-import net.minecraft.util.LongHashMap;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.MathHelper;
-import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.Teleporter;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
 public class TeleporterDim extends Teleporter
 {
-	private final WorldServer worldServerInstance;
+	public static double portalX = 0.0D;
+	public static double portalY = 0.0D;
+	public static double portalZ = 0.0D;
 	
-	/** A private Random() function in Teleporter */
-	private final Random random;
-	
-	/** Stores successful portal placement locations for rapid lookup. */
-	private final LongHashMap destinationCoordinateCache = new LongHashMap();
-	
-	/**
-	 * A list of valid keys for the destinationCoordainteCache. These are based on the X & Z of the players initial
-	 * location.
-	 */
-	private final List destinationCoordinateKeys = new ArrayList();
-	public TeleporterDim(WorldServer par1WorldServer)
-	{
-		super(par1WorldServer);
-		this.worldServerInstance = par1WorldServer;
-		this.random = new Random(par1WorldServer.getSeed());
+	public TeleporterDim(WorldServer p_i1963_1_) {
+		super(p_i1963_1_);
 	}
-	
-	/**
-	 * Place an entity in a nearby portal, creating one if necessary.
-	 */
-	public void placeInPortal(Entity par1Entity, double par2, double par4, double par6, float par8)
-	{
-		if (this.worldServerInstance.provider.dimensionId != 1)
-		{
-			/*if (!this.placeInExistingPortal(par1Entity, par2, par4, par6, par8))
-			{
-				this.makePortal(par1Entity);
-				this.placeInExistingPortal(par1Entity, par2, par4, par6, par8);
-			}*/
-		}
-		else
-		{
-			int i = MathHelper.floor_double(par1Entity.posX);
-			int j = MathHelper.floor_double(par1Entity.posY) - 1;
-			int k = MathHelper.floor_double(par1Entity.posZ);
-			byte b0 = 1;
-			byte b1 = 0;
-			for (int l = -2; l <= 2; ++l)
-			{
-				for (int i1 = -2; i1 <= 2; ++i1)
-				{
-					for (int j1 = -1; j1 < 3; ++j1)
-					{
-						int k1 = i + i1 * b0 + l * b1;
-						int l1 = j + j1;
-						int i2 = k + i1 * b1 - l * b0;
-						boolean flag = j1 < 0;
 
-						/** change this block **/
-						this.worldServerInstance.setBlock(k1, l1, i2, (Block) (flag ? Blocks.air : 0));
-					}
-				}
+	public static int DIMENSION_ID = 3;
+
+	public static void teleportEntity(Entity entity, int dimensionId)
+	{
+		if(entity.worldObj.isRemote)
+			return;
+
+		if(entity instanceof EntityPlayerMP)
+		{
+			EntityPlayerMP player = (EntityPlayerMP) entity;
+			
+			if (player.timeUntilPortal > 0)
+			{
+				player.timeUntilPortal = 10;
 			}
-			par1Entity.setLocationAndAngles((double)i, (double)j + 100, (double)k, par1Entity.rotationYaw, 0.0F);
-			par1Entity.motionX = par1Entity.motionY = par1Entity.motionZ = 0.0D;
+			else if (player.dimension != 3)
+			{
+				player.timeUntilPortal = 10;
+				player.mcServer.getConfigurationManager().transferPlayerToDimension(player, 3, new TeleporterDim(player.mcServer.worldServerForDimension(3)));
+			}
+			else {
+				player.timeUntilPortal = 10;
+				player.mcServer.getConfigurationManager().transferPlayerToDimension(player, 0, new TeleporterDim(player.mcServer.worldServerForDimension(3)));
+			}
+			
+			generateStructureIfRequired(player);
 		}
 	}
-	
-	/**
-	 * called periodically to remove out-of-date portal locations from the cache list. Argument par1 is a
-	 * WorldServer.getTotalWorldTime() value.
-	 */
-	public void removeStalePortalLocations(long par1)
+
+	private static void syncPlayer(EntityPlayerMP player, World world)
 	{
-		if (par1 % 100L == 0L)
+		player.theItemInWorldManager.setWorld((WorldServer) world);
+		player.mcServer.getConfigurationManager().updateTimeAndWeatherForPlayer(player, (WorldServer) world);
+		player.mcServer.getConfigurationManager().syncPlayerInventory(player);
+
+		Iterator iter = player.getActivePotionEffects().iterator();
+
+		while(iter.hasNext())
 		{
-			Iterator iterator = this.destinationCoordinateKeys.iterator();
-			long j = par1 - 600L;
-			while (iterator.hasNext())
+			PotionEffect effect = (PotionEffect) iter.next();
+		}
+	}
+
+	private static void generateStructureIfRequired(Entity entity)
+	{
+		int x = MathHelper.floor_double(entity.posX), y = MathHelper.floor_double(entity.posY), z = MathHelper.floor_double(entity.posZ);
+
+		if(entity.worldObj.getBlock(x, y - 2, z) == Blocks.bedrock)
+			return;
+
+		generateStructure(entity.worldObj, MathHelper.floor_double(entity.posX), MathHelper.floor_double(entity.posY), MathHelper.floor_double(entity.posZ));
+	}
+
+	private static void generateStructure(World world, int x, int y, int z)
+	{
+		if(world.provider.dimensionId != DIMENSION_ID)
+			return;
+
+		int oldX = x;
+		int oldY = y;
+		int oldZ = z;
+		
+		y += 3;
+		x -= 3;
+		z -= 3;
+
+		String[][] data = new String[][] { {"XXXXXXXXX" , "XXXXXXXXX" , "XXXXXXXXX" , "TTTTTTXXX" , "XXXXXXXXX" , "XXXXXXXXX" , "XXXXXXXXX"} , {"XXXXXXXXX" , "XXXXXXXXX" , "TTTTTTXXX" , "TXXXXFXXX" , "TTTTTTXXX" , "XXXXXXXXX" , "XXXXXXXXX"} ,
+				{"XXXXXXXXX" , "TTTTTTXXX" , "TXXXXXXXX" , "TXXXXFXXX" , "TXXXXXXXX" , "TTTTTTXXX" , "XXXXXXXXX"} , {"TTTTTTXXX" , "TXXXXXXXX" , "TXXXXXXXX" , "TCXXXFXXX" , "TXXXXXXXX" , "TXXXXXXXX" , "TTTTTTXXX"} ,
+				{"GGGGGGGGG" , "GGGGGGGGG" , "GGGGGGGGG" , "GGGBGGGGG" , "GGGGGGGGG" , "GGGGGGGGG" , "GGGGGGGGG"} , {"RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR"} ,
+				{"RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR"} , {"RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR"} ,
+				{"RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR"}};
+
+		for(String[] row : data)
+		{
+			for(String col : row)
 			{
-				Long olong = (Long)iterator.next();
-				PortalPosition portalposition = (PortalPosition)this.destinationCoordinateCache.getValueByKey(olong.longValue());
-				if (portalposition == null || portalposition.lastUpdateTime < j)
+				for(Character c : col.toCharArray())
 				{
-					iterator.remove();
-					this.destinationCoordinateCache.remove(olong.longValue());
+					Block id = null;
+					Block id2 = null;
+					int damage = 0;
+
+					switch(c)
+					{
+					case 'X':
+						id = Blocks.air;
+						damage = 0;
+						break;
+					case 'T':
+						id = Blocks.wool;
+						damage = 13;
+						break;
+					case 'F':
+						id = Blocks.fence;
+						damage = 0;
+						break;
+					case 'G':
+						if(world.getBlock(x, y - 1, z) == ACBlocks.frostSnow || world.getBlock(x, y - 1, z) == ACBlocks.frostWaterBlock)
+						{
+							id = ACBlocks.frostGrass;
+						}
+						else
+						{
+							id = world.getBlock(x, y - 1, z);
+						}
+						
+						id2 = ACBlocks.frostSnow;
+						damage = 0;
+						break;
+					case 'R':
+						id = Blocks.dirt;
+						damage = 0;
+						break;
+					case 'C':
+						id = Blocks.chest;
+						damage = 0;
+						break;
+					case 'B':
+						id = Blocks.bedrock;
+						damage = 0;
+						
+						portalX = x;
+						portalY = y;
+						portalZ = z;
+						
+						break;
+					}
+
+					if(world.getBlock(x, y, z) != id)
+					{
+						if(id == Blocks.dirt && world.getBlock(x, y, z) != null && world.getBlock(x, y, z) != Blocks.snow /* && world.getBlockId(x, y, z) != MainRegistry.thickSnow.blockID */)
+						{
+							x++;
+							continue;
+						}
+
+						world.setBlock(x, y, z, id, damage, 2);
+						
+						if(id2 != null)
+						{
+							if(world.getBlock(x, y + 1, z) == Blocks.air)
+							{
+								int low = 0;
+			                	int high = 3;
+			                	int r = new Random().nextInt(high - low) + low;
+			                	
+								world.setBlock(x, y + 1, z, id2, r, 2);
+							}
+						}
+
+						if(id == Blocks.chest)
+						{
+							TileEntityChest chest = (TileEntityChest) world.getTileEntity(x, y, z);
+							chest.setInventorySlotContents(0, new ItemStack(Items.boat, 1));
+							//chest.setInventorySlotContents(0, new ItemStack(ACItems.GlacierFruit, 1));
+						}
+					}
+
+					x++;
 				}
+
+				x -= 9;
+				z++;
 			}
+
+			y -= 1;
+			z -= 7;
 		}
 	}
 }
