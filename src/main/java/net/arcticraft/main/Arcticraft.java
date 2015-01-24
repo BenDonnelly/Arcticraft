@@ -2,32 +2,35 @@ package net.arcticraft.main;
 
 import net.arcticraft.block.ACBlocks;
 import net.arcticraft.crafting.ACCraftingRecipes;
+import net.arcticraft.helpers.CommandChangeTemperature;
+import net.arcticraft.helpers.ForgeEvents;
+import net.arcticraft.helpers.TickPlayerEvent;
 import net.arcticraft.item.ACItems;
 import net.arcticraft.util.VectorUtils;
 import net.arcticraft.world.gen.WorldGenACTrees;
 import net.arcticraft.world.gen.WorldGenIceberg;
-import net.arcticraft.world.gen.dimension.TeleporterDim;
-import net.minecraft.entity.player.EntityPlayerMP;
-
-import org.lwjgl.input.Keyboard;
-
+import net.minecraft.command.ICommandManager;
+import net.minecraft.command.ServerCommandManager;
+import net.minecraft.server.MinecraftServer;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = Arcticraft.MOD_ID, version = Arcticraft.VERSION, name = Arcticraft.NAME)
-public class Arcticraft
-{
+public class Arcticraft{
+
 	public static final String MOD_ID = "ac";
 	public static final String VERSION = "0.1";
 	public static final String NAME = "Arcticraft";
-
+	
+	public static final boolean DEV_MODE = true;
+	
 	@SidedProxy(clientSide = "net.arcticraft.main.ClientProxy", serverSide = "net.arcticraft.main.CommonProxy")
 	public static CommonProxy proxy;
 
@@ -46,38 +49,23 @@ public class Arcticraft
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		FMLCommonHandler.instance().bus().register(this);
-		
+		FMLCommonHandler.instance().bus().register(new TickPlayerEvent());
+
 		proxy.registerRenderThings();
 		proxy.registerGeneral();
-		
-    	GameRegistry.registerWorldGenerator(new WorldGenACTrees(), 0);
-    	GameRegistry.registerWorldGenerator(new WorldGenIceberg(), 0);
+		MinecraftForge.EVENT_BUS.register(new ForgeEvents());
+
+		GameRegistry.registerWorldGenerator(new WorldGenACTrees(), 0);
+		GameRegistry.registerWorldGenerator(new WorldGenIceberg(), 0);
 	}
-	
-	@SubscribeEvent
-    public void tickPlayer(PlayerTickEvent event) 
-    {
-    	if(Keyboard.isKeyDown(Keyboard.KEY_L) && Keyboard.isKeyDown(Keyboard.KEY_K))
-    	{
-    		if ((event.player.ridingEntity == null) && (event.player.riddenByEntity == null) && ((event.player instanceof EntityPlayerMP)))
-    		{
-    			EntityPlayerMP thePlayer = (EntityPlayerMP)event.player;
-    			if (thePlayer.timeUntilPortal > 0)
-    			{
-    				thePlayer.timeUntilPortal = 10;
-    			}
-    			else if (thePlayer.dimension != 3)
-    			{
-    				thePlayer.timeUntilPortal = 10;
-    				thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 3, new TeleporterDim(thePlayer.mcServer.worldServerForDimension(3)));
-    			}
-    			else
-    			{
-    				thePlayer.timeUntilPortal = 10;
-    				thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 0, new TeleporterDim(thePlayer.mcServer.worldServerForDimension(3)));
-    			}
-    		}
-    	}
-    }
+
+	@EventHandler
+	public void serverStart(FMLServerStartingEvent event)
+	{
+		  MinecraftServer server = MinecraftServer.getServer();
+		  ICommandManager command = server.getCommandManager();
+		  ServerCommandManager manager = (ServerCommandManager) command;
+		  manager.registerCommand(new CommandChangeTemperature());
+	}
+
 }

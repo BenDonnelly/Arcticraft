@@ -119,7 +119,7 @@ public class BlockFrostGrass extends Block implements IGrowable
         this.blockIcon = iconRegister.registerIcon(this.getTextureName() + "_side");
         this.texture_top = iconRegister.registerIcon(this.getTextureName() + "_top");
         this.texture_side_snowed = iconRegister.registerIcon(this.getTextureName() + "_side_snow");
-        this.texture_bottom = iconRegister.registerIcon(Arcticraft.MOD_ID + ":" +  "frost_dirt");
+        this.texture_bottom = iconRegister.registerIcon(Arcticraft.MOD_ID + ":" +  "dirt_frost");
     }
 
 

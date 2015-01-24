@@ -55,7 +55,7 @@ public class ACCreativeTabs
 		@SideOnly(Side.CLIENT)
 		public Item getTabIconItem()
 		{
-			return Item.getItemFromBlock(ACBlocks.acLogs); // TODO Replace this with a tool
+			return ACItems.tekkitePickaxe; 
 		}
 	};
 	
