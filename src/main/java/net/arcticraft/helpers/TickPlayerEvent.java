@@ -1,6 +1,9 @@
 package net.arcticraft.helpers;
 
 import net.arcticraft.main.Arcticraft;
+import net.arcticraft.temperature.TemperatureHandler;
+import net.arcticraft.temperature.handlers.LightvalueHandler;
+import net.arcticraft.world.gen.dimension.ChunkProviderDim;
 import net.arcticraft.world.gen.dimension.TeleporterDim;
 import net.minecraft.entity.player.EntityPlayerMP;
 
@@ -14,7 +17,12 @@ public class TickPlayerEvent{
 	public void tickPlayer(PlayerTickEvent event)
 	{
 		if(!Arcticraft.arcticraftInstance.initialized)
-		{		
+		{	
+			Arcticraft.arcticraftInstance.lightvalueHandler = new LightvalueHandler();
+			Arcticraft.arcticraftInstance.tempHandler = new TemperatureHandler();			
+			Arcticraft.arcticraftInstance.tempHandler.addComponent(Arcticraft.arcticraftInstance.chunkProvider);
+			Arcticraft.arcticraftInstance.tempHandler.addComponent(Arcticraft.arcticraftInstance.lightvalueHandler);
+			
 			Arcticraft.arcticraftInstance.initialized = true;
 		}
 		
@@ -29,12 +37,14 @@ public class TickPlayerEvent{
     		}
     	}
 
-		if(event.player.isDead)
+    	if(event.player.dimension == 3)
 		{
-			if(event.player.dimension == 3)
-			{
-				event.player.setPosition(Arcticraft.arcticraftInstance.tper.portalX + 0.5D, Arcticraft.arcticraftInstance.tper.portalY + 3D, Arcticraft.arcticraftInstance.tper.portalZ + 0.5D);
-			}
+    		if(event.player.isDead)
+    		{
+    			event.player.setPosition(Arcticraft.arcticraftInstance.tper.portalX + 0.5D, Arcticraft.arcticraftInstance.tper.portalY + 3D, Arcticraft.arcticraftInstance.tper.portalZ + 0.5D);    			
+    		}
+    		
+    		Arcticraft.arcticraftInstance.tempHandler.tick(event.player, event.player.worldObj);
 		}
 	}
 }

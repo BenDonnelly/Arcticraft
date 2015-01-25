@@ -18,7 +18,6 @@ public class ACEntities
 	
 	public static void registerEntities()
 	{
-		ACEntityRegistry.createEntity(EntitySled.class, "EntitySled", false, 0x00, 0x00, Arcticraft.arcticraftInstance);			
-		
+		ACEntityRegistry.createEntity(EntitySled.class, "EntitySled", false, 0x00, 0x00, Arcticraft.arcticraftInstance);		
 	}
 }

@@ -12,7 +12,7 @@ public class CommonProxy
 {
 	public void registerRenderThings()
 	{
-		RenderingRegistry.registerEntityRenderingHandler(EntitySled.class, new RenderSled());
+		
 	}
 	
 	public void registerGeneral()

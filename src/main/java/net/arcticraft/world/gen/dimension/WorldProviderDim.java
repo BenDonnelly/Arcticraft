@@ -1,5 +1,6 @@
 package net.arcticraft.world.gen.dimension;
 
+import net.arcticraft.main.Arcticraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.MathHelper;
@@ -45,7 +46,9 @@ public class WorldProviderDim extends WorldProvider {
 	/** What chunk provider to use **/
 	@Override
 	public IChunkProvider createChunkGenerator() {
-		return new ChunkProviderDim(worldObj, worldObj.getSeed(), true);
+		Arcticraft.arcticraftInstance.chunkProvider = new ChunkProviderDim(worldObj, worldObj.getSeed(), true);
+		
+		return Arcticraft.arcticraftInstance.chunkProvider;
 	}
 
 	@Override

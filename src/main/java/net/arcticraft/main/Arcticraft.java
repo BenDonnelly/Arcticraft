@@ -7,9 +7,12 @@ import net.arcticraft.helpers.CommandChangeTemperature;
 import net.arcticraft.helpers.ForgeEvents;
 import net.arcticraft.helpers.TickPlayerEvent;
 import net.arcticraft.item.ACItems;
+import net.arcticraft.temperature.TemperatureHandler;
+import net.arcticraft.temperature.handlers.LightvalueHandler;
 import net.arcticraft.util.VectorUtils;
 import net.arcticraft.world.gen.WorldGenACTrees;
 import net.arcticraft.world.gen.WorldGenIceberg;
+import net.arcticraft.world.gen.dimension.ChunkProviderDim;
 import net.arcticraft.world.gen.dimension.TeleporterDim;
 import net.minecraft.command.ICommandManager;
 import net.minecraft.command.ServerCommandManager;
@@ -34,7 +37,10 @@ public class Arcticraft{
 	public static final String NAME = "Arcticraft";
 	public static final boolean DEV_MODE = true;
 
-	public TeleporterDim tper;
+	public TemperatureHandler tempHandler = null;
+	public LightvalueHandler lightvalueHandler = null;
+	public ChunkProviderDim chunkProvider = null;
+	public TeleporterDim tper = null;
 	public boolean initialized = false;
 	
 	@SidedProxy(clientSide = "net.arcticraft.main.ClientProxy", serverSide = "net.arcticraft.main.CommonProxy")

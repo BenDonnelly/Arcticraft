@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Random;
 
 import net.arcticraft.block.ACBlocks;
-import net.arcticraft.temperature.ICoolComponent;
+import net.arcticraft.temperature.ITempComponent;
 import net.arcticraft.world.gen.MapGenFrostCaves;
 import net.arcticraft.world.gen.WorldGenACTrees;
 import net.arcticraft.world.gen.WorldGenIceberg;
@@ -19,6 +19,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.IProgressUpdate;
 import net.minecraft.util.MathHelper;
@@ -41,7 +42,7 @@ import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 
-public class ChunkProviderDim implements IChunkProvider, ICoolComponent
+public class ChunkProviderDim implements ITempComponent, IChunkProvider
 {
     /** RNG. */
     private Random rand;
@@ -671,8 +672,8 @@ public class ChunkProviderDim implements IChunkProvider, ICoolComponent
         }
     }
 
-	@Override
-	public float changeTemperature() {
-		return 0;
+    @Override
+	public float changeTemperature(EntityPlayer player, World world) {
+		return -0.0005F;
 	}
 }

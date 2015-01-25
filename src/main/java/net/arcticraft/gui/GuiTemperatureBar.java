@@ -23,7 +23,7 @@ public class GuiTemperatureBar extends Gui{
 		this.mc = mc;
 	}
 
-	@SubscribeEvent(priority = EventPriority.NORMAL)
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void onRenderExperienceBar(RenderGameOverlayEvent event)
 	{
 		if(event.isCancelable() || event.type != ElementType.EXPERIENCE)
@@ -38,12 +38,12 @@ public class GuiTemperatureBar extends Gui{
 
 		GL11.glPushMatrix();
 		{
-			GL11.glScalef(1.5F, 1.5F, 1.5F);
+			GL11.glScalef(1.25F, 1.25F, 1.25F);
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			GL11.glDisable(GL11.GL_LIGHTING);
 			this.mc.getTextureManager().bindTexture(texturepath);
 			this.drawTexturedModalRect(xPos, yPos, 0, 6, 80, 6);
-			this.drawTexturedModalRect(xPos, yPos, 0, 0, props.getCurrentTemp() * 80 / props.getMaxTemp(), 6);
+			this.drawTexturedModalRect(xPos, yPos, 0, 0, (int)(props.getCurrentTemp() * 80 / props.getMaxTemp()), 6);
 		}
 		GL11.glPopMatrix();
 	}

@@ -8,7 +8,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 
 public class IExtendedPlayerProps implements IExtendedEntityProperties{
-
 	/*DONT uncomment out the commented old code; its the code without datawatchers which i might need to revert if i find a bug in datawatchers or something, not done testing yet ~ ben*/
 	
 	public final static String EXT_PROP_NAME = "ExtendedPlayerProps";
@@ -17,14 +16,14 @@ public class IExtendedPlayerProps implements IExtendedEntityProperties{
 
 	// private int currentTemp, maxTemp;
 
-	private int maxTemp;
+	private float maxTemp;
 	public static final int CURRENT_TEMP_WATCHER = 24;
 	
 	public IExtendedPlayerProps(EntityPlayer player){
 		this.player = player;
 		// starting temp for each player
 		// this.currentTemp = this.maxTemp = 100;
-		this.maxTemp = 100;
+		this.maxTemp = 100F;
 		this.player.getDataWatcher().addObject(CURRENT_TEMP_WATCHER, this.maxTemp);
 	}
 
@@ -49,13 +48,13 @@ public class IExtendedPlayerProps implements IExtendedEntityProperties{
 	{
 		NBTTagCompound properties = new NBTTagCompound();
 
-		properties.setInteger("CurrentTemp", this.player.getDataWatcher().getWatchableObjectInt(CURRENT_TEMP_WATCHER));
+		properties.setFloat("CurrentTemp", this.player.getDataWatcher().getWatchableObjectFloat(CURRENT_TEMP_WATCHER));
 		//properties.setInteger("CurrentTemp", this.currentTemp);
-		properties.setInteger("MaxTemp", this.maxTemp);
+		properties.setFloat("MaxTemp", this.maxTemp);
 
 		compound.setTag(EXT_PROP_NAME, properties);
 		//System.out.println("Saving Temp to NBT: " + this.currentTemp + "/" + this.maxTemp);
-		System.out.println("Saving Temp to NBT: " + this.player.getDataWatcher().getWatchableObjectInt(CURRENT_TEMP_WATCHER) + "/" + this.maxTemp);
+		System.out.println("Saving Temp to NBT: " + this.player.getDataWatcher().getWatchableObjectFloat(CURRENT_TEMP_WATCHER) + "/" + this.maxTemp);
 	}
 
 	@Override
@@ -63,24 +62,24 @@ public class IExtendedPlayerProps implements IExtendedEntityProperties{
 	{
 		NBTTagCompound properties = (NBTTagCompound) compound.getTag(EXT_PROP_NAME);
 		//this.currentTemp = properties.getInteger("CurrentTemp");
-		this.player.getDataWatcher().updateObject(CURRENT_TEMP_WATCHER, properties.getInteger("CurrentTemp"));
+		this.player.getDataWatcher().updateObject(CURRENT_TEMP_WATCHER, properties.getFloat("CurrentTemp"));
 		this.maxTemp = properties.getInteger("MaxTemp");
 		//System.out.println("Temp from NBT: " + this.currentTemp + "/" + this.maxTemp);
-		System.out.println("Temp from NBT: " + this.player.getDataWatcher().getWatchableObjectInt(CURRENT_TEMP_WATCHER) + "/" + this.maxTemp);
-
+		System.out.println("Temp from NBT: " + this.player.getDataWatcher().getWatchableObjectFloat(CURRENT_TEMP_WATCHER) + "/" + this.maxTemp);
 	}
 
 	@Override
 	public void init(Entity entity, World world) {}
 
-	public int getCurrentTemp()
+	public float getCurrentTemp()
 	{
-		int temp = this.player.getDataWatcher().getWatchableObjectInt(CURRENT_TEMP_WATCHER);
+		float temp = this.player.getDataWatcher().getWatchableObjectFloat(CURRENT_TEMP_WATCHER);
+		
 		return temp;
 		//return currentTemp;
 	}
 
-	public int getMaxTemp()
+	public float getMaxTemp()
 	{
 		return maxTemp;
 	}
@@ -88,11 +87,11 @@ public class IExtendedPlayerProps implements IExtendedEntityProperties{
 	public void printCurrentTemp()
 	{
 		//System.out.println(this.currentTemp + "/" + this.maxTemp);
-		System.out.println(this.player.getDataWatcher().getWatchableObjectInt(CURRENT_TEMP_WATCHER) + "/" + this.maxTemp);
+		System.out.println(this.player.getDataWatcher().getWatchableObjectFloat(CURRENT_TEMP_WATCHER) + "/" + this.maxTemp);
 	}
 
-	public void changeTemp(int newTemp)
-	{ 
+	public void changeTemp(float newTemp)
+	{
 		this.player.getDataWatcher().updateObject(CURRENT_TEMP_WATCHER, (newTemp < this.maxTemp ? newTemp : this.maxTemp));
 	}
 }

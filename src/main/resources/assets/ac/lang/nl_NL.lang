@@ -1,0 +1,24 @@
+tile.ac_frostGrass.name=Bevroren Gras
+tile.ac_frostDirt.name=Bevroren Grond
+tile.ac_frostStone.name=Bevroren Steen
+tile.ac_frostCobble.name=Bevroren Keisteen
+tile.ac_frostWater.name=Bevroren Water
+tile.ac_arcaneStone.name=Arcane Steen
+tile.ac_frostWaterIce.name=Vries IJS
+tile.ac_frostSnow.name=Sneew
+
+tile.ac_log.frost.name=Bevroren Hout
+tile.ac_log.glacier.name=Glacier Hout
+tile.ac_leaves.frost.name=Bevroren Bladeren
+tile.ac_leaves.glacier.name=Glacier Bladeren
+tile.ac_planks.frost.name=Bevroren Houten Planken
+tile.ac_planks.glacier.name=Glacier Houten Planken
+
+item.ac_arcaneStoneDust.name=Arcane Steen Stof
+
+itemGroup.ac_tabBlock=Arcticraft Blokken
+itemGroup.ac_tabDecoration=Arcticraft Decoraties
+itemGroup.ac_tabMaterials=Arcticraft Materialen
+itemGroup.ac_tabFood=Arcticraft Eten
+itemGroup.ac_tabTools=Arcticraft Gereedschappen
+itemGroup.ac_tabCombat=Arcticraft Gevechtsuitrusting
