@@ -23,7 +23,7 @@ public class BiomeFrostForest extends ACBiomeGenBase {
 		this.theBiomeDecorator.bigMushroomsPerChunk = 0;
 		this.temperature = 0.1F;
 		
-		this.setTemperatureRainfall(0.1F, 0.0F);
+		this.setTemperatureRainfall(0.1F, 0.9F);
 		this.setColor(16777215);
 	}
 

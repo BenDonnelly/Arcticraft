@@ -9,5 +9,6 @@ public interface ITempComponent {
 	 * Returning negative will decrease the temperature, returning positive will increase it.
 	 * Returning '0' keeps it the same.
 	 */
-	public float changeTemperature(EntityPlayer player, World world);
+	public float changeTemperature(EntityPlayer player, World world, TemperatureHandler handler);
+	public void handleTemperature(EntityPlayer player, World world, TemperatureHandler handler);
 }

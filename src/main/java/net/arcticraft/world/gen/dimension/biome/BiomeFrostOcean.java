@@ -19,7 +19,7 @@ public class BiomeFrostOcean extends ACBiomeGenBase {
 		this.spawnableCaveCreatureList.clear();
 		this.temperature = 0.1F;
 		
-		this.setTemperatureRainfall(0.1F, 0.0F);
+		this.setTemperatureRainfall(0.1F, 0.9F);
 		this.setDisableRain();
 		this.setHeight(new BiomeGenBase.Height(-1.0F, 0.4F));
 		this.setColor(16777215);

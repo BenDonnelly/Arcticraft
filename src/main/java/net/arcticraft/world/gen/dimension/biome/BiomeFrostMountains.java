@@ -26,7 +26,7 @@ public class BiomeFrostMountains extends ACBiomeGenBase
 		this.spawnableCaveCreatureList.clear();
 		
 		this.setHeight(new BiomeGenBase.Height(0.2F, 2.3F));
-		this.setTemperatureRainfall(0.0F, 1.0F);
+		this.setTemperatureRainfall(0.1F, 0.9F);
 	}
 
 	@Override

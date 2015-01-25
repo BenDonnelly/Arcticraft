@@ -11,6 +11,7 @@ import java.util.Random;
 
 import net.arcticraft.block.ACBlocks;
 import net.arcticraft.temperature.ITempComponent;
+import net.arcticraft.temperature.TemperatureHandler;
 import net.arcticraft.world.gen.MapGenFrostCaves;
 import net.arcticraft.world.gen.WorldGenACTrees;
 import net.arcticraft.world.gen.WorldGenIceberg;
@@ -673,7 +674,12 @@ public class ChunkProviderDim implements ITempComponent, IChunkProvider
     }
 
     @Override
-	public float changeTemperature(EntityPlayer player, World world) {
-		return -0.0005F;
+	public float changeTemperature(EntityPlayer player, World world, TemperatureHandler handler) {
+		return -0.0065F;
+	}
+
+	@Override
+	public void handleTemperature(EntityPlayer player, World world, TemperatureHandler handler) {
+		
 	}
 }

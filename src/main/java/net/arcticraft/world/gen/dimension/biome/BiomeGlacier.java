@@ -23,7 +23,7 @@ public class BiomeGlacier extends ACBiomeGenBase {
 		this.spawnableCaveCreatureList.clear();
 		this.temperature = 0.1F;
 		
-		this.setTemperatureRainfall(0.1F, 0.0F);
+		this.setTemperatureRainfall(0.1F, 0.9F);
 		this.setHeight(new BiomeGenBase.Height(0.2F, 2.1F));
 	}
 	

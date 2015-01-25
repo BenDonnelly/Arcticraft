@@ -9,6 +9,8 @@ import net.arcticraft.helpers.TickPlayerEvent;
 import net.arcticraft.item.ACItems;
 import net.arcticraft.temperature.TemperatureHandler;
 import net.arcticraft.temperature.handlers.LightvalueHandler;
+import net.arcticraft.temperature.handlers.LocationHandler;
+import net.arcticraft.temperature.handlers.MovementHandler;
 import net.arcticraft.util.VectorUtils;
 import net.arcticraft.world.gen.WorldGenACTrees;
 import net.arcticraft.world.gen.WorldGenIceberg;
@@ -39,6 +41,8 @@ public class Arcticraft{
 
 	public TemperatureHandler tempHandler = null;
 	public LightvalueHandler lightvalueHandler = null;
+	public LocationHandler locationHandler = null;
+	public MovementHandler movementHandler = null;
 	public ChunkProviderDim chunkProvider = null;
 	public TeleporterDim tper = null;
 	public boolean initialized = false;

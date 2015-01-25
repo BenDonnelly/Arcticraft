@@ -3,7 +3,8 @@ package net.arcticraft.helpers;
 import net.arcticraft.main.Arcticraft;
 import net.arcticraft.temperature.TemperatureHandler;
 import net.arcticraft.temperature.handlers.LightvalueHandler;
-import net.arcticraft.world.gen.dimension.ChunkProviderDim;
+import net.arcticraft.temperature.handlers.LocationHandler;
+import net.arcticraft.temperature.handlers.MovementHandler;
 import net.arcticraft.world.gen.dimension.TeleporterDim;
 import net.minecraft.entity.player.EntityPlayerMP;
 
@@ -18,9 +19,13 @@ public class TickPlayerEvent{
 	{
 		if(!Arcticraft.arcticraftInstance.initialized)
 		{	
+			Arcticraft.arcticraftInstance.tempHandler = new TemperatureHandler();
 			Arcticraft.arcticraftInstance.lightvalueHandler = new LightvalueHandler();
-			Arcticraft.arcticraftInstance.tempHandler = new TemperatureHandler();			
+			Arcticraft.arcticraftInstance.locationHandler = new LocationHandler();
+			Arcticraft.arcticraftInstance.movementHandler = new MovementHandler();	
 			Arcticraft.arcticraftInstance.tempHandler.addComponent(Arcticraft.arcticraftInstance.chunkProvider);
+			Arcticraft.arcticraftInstance.tempHandler.addComponent(Arcticraft.arcticraftInstance.locationHandler);
+			Arcticraft.arcticraftInstance.tempHandler.addComponent(Arcticraft.arcticraftInstance.movementHandler);
 			Arcticraft.arcticraftInstance.tempHandler.addComponent(Arcticraft.arcticraftInstance.lightvalueHandler);
 			
 			Arcticraft.arcticraftInstance.initialized = true;
@@ -44,7 +49,10 @@ public class TickPlayerEvent{
     			event.player.setPosition(Arcticraft.arcticraftInstance.tper.portalX + 0.5D, Arcticraft.arcticraftInstance.tper.portalY + 3D, Arcticraft.arcticraftInstance.tper.portalZ + 0.5D);    			
     		}
     		
-    		Arcticraft.arcticraftInstance.tempHandler.tick(event.player, event.player.worldObj);
+    		if(!event.player.capabilities.isCreativeMode)
+    		{
+    			Arcticraft.arcticraftInstance.tempHandler.tick(event.player, event.player.worldObj);
+    		}
 		}
 	}
 }

@@ -43,44 +43,47 @@ public class GuiFreezedScreen extends Gui {
 	
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onRenderExperienceBar(RenderGameOverlayEvent event) {
-		if (event.isCancelable() || event.type != ElementType.EXPERIENCE) {
-			return;
-		}
-
-		IExtendedPlayerProps props = IExtendedPlayerProps
-				.get(this.mc.thePlayer);
-
-		int xPos = 0;
-        int yPos = 0;
-
-		GL11.glPushMatrix();
+		if(this.mc.thePlayer.dimension == 3)
 		{
-			/*float difficultyValue = 0.20F;
-			
-			switch(this.mc.thePlayer.worldObj.difficultySetting.getDifficultyId())
+			if (event.isCancelable() || event.type != ElementType.EXPERIENCE) {
+				return;
+			}
+
+			IExtendedPlayerProps props = IExtendedPlayerProps
+					.get(this.mc.thePlayer);
+
+			int xPos = 0;
+	        int yPos = 0;
+
+			GL11.glPushMatrix();
 			{
-			case 0:
-				difficultyValue = 0.25F;
-				break;
-			case 1:
-				difficultyValue = 0.20F;
-				break;
-			case 2:
-				difficultyValue = 0.15F;
-				break;
-			case 3:
-				difficultyValue = 0.10F;
-				break;
-			}*/
-			
-			float temp = props.getCurrentTemp();
-			float alpha = (1.0F / temp);
-			//float alpha = ((1.0F * difficultyValue) / temp);
-			
-			GL11.glColor4f(1.0F, 1.0F, 1.0F, alpha);
-			GL11.glDisable(GL11.GL_LIGHTING);
-			drawTexturedRect(texturepath, xPos, yPos, 0, 0, mc.displayWidth, mc.displayHeight, mc.displayWidth, mc.displayHeight, 0.5F);
+				/*float difficultyValue = 0.20F;
+				
+				switch(this.mc.thePlayer.worldObj.difficultySetting.getDifficultyId())
+				{
+				case 0:
+					difficultyValue = 0.25F;
+					break;
+				case 1:
+					difficultyValue = 0.20F;
+					break;
+				case 2:
+					difficultyValue = 0.15F;
+					break;
+				case 3:
+					difficultyValue = 0.10F;
+					break;
+				}*/
+				
+				float temp = props.getCurrentTemp();
+				float alpha = (1.0F / temp);
+				//float alpha = ((1.0F * difficultyValue) / temp);
+				
+				GL11.glColor4f(1.0F, 1.0F, 1.0F, alpha);
+				GL11.glDisable(GL11.GL_LIGHTING);
+				drawTexturedRect(texturepath, xPos, yPos, 0, 0, mc.displayWidth, mc.displayHeight, mc.displayWidth, mc.displayHeight, 0.5F);
+			}
+			GL11.glPopMatrix();
 		}
-		GL11.glPopMatrix();
 	}
 }
