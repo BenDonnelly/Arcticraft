@@ -62,28 +62,37 @@ public class WorldGenACTrees implements IWorldGenerator
 		{
 			for (int i = 0; i < 1; i++)
 			{
-				int x = chunkX * 16 + random.nextInt(16);
-				int y = 256;
-				int z = chunkZ * 16 + random.nextInt(16);
+				int max = 10;
+				int min = 0;
+				int r = new Random().nextInt(max - min) + min;
 				
-				if(world.getBlock(x, y - 1, z) == ACBlocks.frostGrass
-						&& world.getBlock(x + 1, y - 1, z) == ACBlocks.frostGrass
-						&& world.getBlock(x + 1, y - 1, z + 1) == ACBlocks.frostGrass
-						&& world.getBlock(x, y - 1, z + 1) == ACBlocks.frostGrass)
+				if(r == 5)
 				{
-					if(world.getBlock(x, y + 1, z) == Blocks.air)
+					int x = chunkX * 16 + random.nextInt(16);
+					int y = 256;
+					int z = chunkZ * 16 + random.nextInt(16);
+					
+					while(y > 0 && world.getBlock(x, y - 1, z) != ACBlocks.frostGrass && world.getBlock(x, y - 1, z) != ACBlocks.frostDirt) y -= 1;
+					
+					if(world.getBlock(x, y - 1, z) == ACBlocks.frostGrass
+							&& world.getBlock(x + 1, y - 1, z) == ACBlocks.frostGrass
+							&& world.getBlock(x + 1, y - 1, z + 1) == ACBlocks.frostGrass
+							&& world.getBlock(x, y - 1, z + 1) == ACBlocks.frostGrass)
 					{
-						possibles[random.nextInt(possibles.length)].generateTree(world, random, x, y, z);
+						if(world.getBlock(x, y + 1, z) == Blocks.air)
+						{
+							possibles[random.nextInt(possibles.length)].generateTree(world, random, x, y, z);
+						}
 					}
-				}
-				else if(world.getBlock(x, y - 1, z) == ACBlocks.frostDirt
-						&& world.getBlock(x + 1, y - 1, z) == ACBlocks.frostDirt
-						&& world.getBlock(x + 1, y - 1, z + 1) == ACBlocks.frostDirt
-						&& world.getBlock(x, y - 1, z + 1) == ACBlocks.frostDirt)
-				{
-					if(world.getBlock(x, y + 1, z) == Blocks.air)
+					else if(world.getBlock(x, y - 1, z) == ACBlocks.frostDirt
+							&& world.getBlock(x + 1, y - 1, z) == ACBlocks.frostDirt
+							&& world.getBlock(x + 1, y - 1, z + 1) == ACBlocks.frostDirt
+							&& world.getBlock(x, y - 1, z + 1) == ACBlocks.frostDirt)
 					{
-						possibles[random.nextInt(possibles.length)].generateTree(world, random, x, y, z);
+						if(world.getBlock(x, y + 1, z) == Blocks.air)
+						{
+							possibles[random.nextInt(possibles.length)].generateTree(world, random, x, y, z);
+						}
 					}
 				}
 			}

@@ -181,9 +181,9 @@ public class ChunkProviderDim implements ITempComponent, IChunkProvider
                                 {
                                 	p_147424_3_[j3 += short1] = ACBlocks.frostStone;
                                 }
-                                else if (k2 * 8 + l2 < b0)
+                                else if (k2 * 8 + l2 < b0 - 3)
                                 {
-                                    p_147424_3_[j3 += short1] = ACBlocks.frostWaterBlock;
+                                    p_147424_3_[j3 += short1] = ACBlocks.frostWaterIce;
                                 }
                                 else
                                 {
@@ -529,7 +529,10 @@ public class ChunkProviderDim implements ITempComponent, IChunkProvider
 			
 			if(this.worldObj.getBlock(x, y, z) == ACBlocks.frostGrass || this.worldObj.getBlock(x, y, z) == ACBlocks.frostWaterIce)
 			{
-				generateArcanestone(this.worldObj, rand, x, y, z, 1.0F);
+				if(this.worldObj.getBlock(x, y - 1, z) != Blocks.air)
+				{
+					generateArcanestone(this.worldObj, rand, x, y, z, 1.0F);
+				}
 			}
 		}
         
