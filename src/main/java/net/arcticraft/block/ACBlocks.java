@@ -43,6 +43,9 @@ public class ACBlocks{
 	public static Block glacianOre;
 	public static Block rigentemOre;
 	public static Block frigusOre;
+
+	/* Miscellaneous */
+	public static Block mysticalSnow;
 	
 	public static void initBlocks()
 	{
@@ -81,11 +84,14 @@ public class ACBlocks{
 		rigentemOre = new BlockACOres().setBlockName(MOD_ID + "_rigentemOre").setBlockTextureName(MOD_ID + ":ore_rigentem");
 		frigusOre = new BlockACOres().setBlockName(MOD_ID + "_frigusOre").setBlockTextureName(MOD_ID + ":ore_frigus");
 		
+		/* Miscellaneous */
+		mysticalSnow = new BlockMysticalSnow(Material.snow).setBlockName(MOD_ID + "_mysticalSnow").setBlockTextureName(MOD_ID + ":mystical_snow");
 	}
 
 	public static void registerBlocks()
 	{
-		Block[] blockList = {frostGrass, frostDirt, frostStone, frostCobble, frostWaterBlock, arcaneStone, frostWaterIce, frostSnow, tekkiteOre, escariaOre, glacianOre, rigentemOre, frigusOre};
+		Block[] blockList = {frostGrass, frostDirt, frostStone, frostCobble, frostWaterBlock, arcaneStone, frostWaterIce, frostSnow, tekkiteOre, escariaOre, glacianOre, rigentemOre, frigusOre
+				,mysticalSnow};
 
 		for(Block block : blockList)
 		{

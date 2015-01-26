@@ -72,7 +72,6 @@ public class Arcticraft{
 		proxy.registerGeneral();
 		
 		ACEntities.loadEntities();
-		
     	GameRegistry.registerWorldGenerator(new WorldGenACTrees(), 0);
     	GameRegistry.registerWorldGenerator(new WorldGenIceberg(), 0);
 	}

@@ -3,6 +3,7 @@ package net.arcticraft.world.gen.dimension.biome;
 import java.util.Random;
 
 import net.arcticraft.block.ACBlocks;
+import net.arcticraft.entities.passive.EntityPenguin;
 import net.arcticraft.world.gen.WorldGenACTrees;
 import net.arcticraft.world.gen.WorldGenFrostTrees;
 import net.minecraft.block.Block;
@@ -34,7 +35,7 @@ public class ACBiomeGenBase extends BiomeGenBase
 		this.spawnableMonsterList.clear();
 		this.spawnableWaterCreatureList.clear();
 		this.spawnableCaveCreatureList.clear();
-		
+		this.spawnableCreatureList.add(new SpawnListEntry(EntityPenguin.class, 8, 2, 6));//it spawns, but the canSpawnhere method deosnt call.
 		this.genGlacierTrees = new WorldGenACTrees();
 		this.genFrostTrees = new WorldGenFrostTrees(true);
 	}

@@ -45,7 +45,7 @@ public class ACCreativeTabs
 		@SideOnly(Side.CLIENT)
 		public Item getTabIconItem()
 		{
-			return Item.getItemFromBlock(ACBlocks.acLogs); // TODO Replace this with food
+			return ACItems.penguinMeatCooked; // TODO Replace this with food
 		}
 	};
 	
@@ -65,7 +65,7 @@ public class ACCreativeTabs
 		@SideOnly(Side.CLIENT)
 		public Item getTabIconItem()
 		{
-			return Item.getItemFromBlock(ACBlocks.acLogs); // TODO Replace this with a weapon
+			return ACItems.tekkiteHelmet; // TODO Replace this with a weapon
 		}
 	};
 }

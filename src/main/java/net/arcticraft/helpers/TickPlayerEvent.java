@@ -27,7 +27,7 @@ public class TickPlayerEvent{
 			Arcticraft.arcticraftInstance.tempHandler.addComponent(Arcticraft.arcticraftInstance.locationHandler);
 			Arcticraft.arcticraftInstance.tempHandler.addComponent(Arcticraft.arcticraftInstance.movementHandler);
 			Arcticraft.arcticraftInstance.tempHandler.addComponent(Arcticraft.arcticraftInstance.lightvalueHandler);
-			
+			//Arcticraft.arcticraftInstance.tempHandler.addComponent(Arcticraft.arcticraftInstance.itemTempHandler);
 			Arcticraft.arcticraftInstance.initialized = true;
 		}
 		

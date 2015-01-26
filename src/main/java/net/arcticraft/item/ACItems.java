@@ -2,10 +2,14 @@ package net.arcticraft.item;
 
 import static net.arcticraft.main.Arcticraft.MOD_ID;
 import net.arcticraft.block.creativetabs.ACCreativeTabs;
+import net.arcticraft.enums.EnumACArmourMaterial;
 import net.arcticraft.enums.EnumACToolMaterial;
+import net.arcticraft.main.Arcticraft;
 import net.arcticraft.util.StringUtils;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemFood;
+import net.minecraft.potion.Potion;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ACItems {
@@ -14,14 +18,22 @@ public class ACItems {
 		registerItems();
 	}
 
-	public static Item itemSled;
-	
 	/* Block drops */
 	public static Item arcaneStoneDust;
 	public static Item tekkiteGem;
 	public static Item escariaGem;
 	public static Item frigus;
-
+	
+	/* Mob Drops */
+	public static Item penguinMeat;
+	public static Item penguinMeatCooked;
+	public static Item penguinFeather;
+	
+	/* Miscellaneous */
+	public static Item itemSled;
+	public static Item mystFruit;
+	public static Item glacierFruit;
+	
 	/* Pickaxes */
 	public static Item tekkitePickaxe;
 	public static Item escariaPickaxe;
@@ -62,6 +74,31 @@ public class ACItems {
 	public static Item frostStoneHoe;
 	public static Item frostWoodHoe;
 	
+	/* Helmets */
+	public static Item tekkiteHelmet;
+	public static Item escariaHelmet;
+	public static Item glacianHelmet;
+	public static Item rigentemHelmet;
+	
+	/* Chestplates */
+	public static Item tekkiteChest;
+	public static Item escariaChest;
+	public static Item glacianChest;
+	public static Item rigentemChest;
+	
+	/* Leggings */
+	public static Item tekkiteLegs;
+	public static Item escariaLegs;
+	public static Item glacianLegs;
+	public static Item rigentemLegs;
+	
+	/* Boots */
+	public static Item tekkiteBoots;
+	public static Item escariaBoots;
+	public static Item glacianBoots;
+	public static Item rigentemBoots;
+	
+	
 	public static void initItems()
 	{
 		/* Block drops */
@@ -70,49 +107,82 @@ public class ACItems {
 		escariaGem = new Item().setUnlocalizedName(MOD_ID + "_escariaGem").setTextureName(MOD_ID + ":gem_escaria").setCreativeTab(ACCreativeTabs.acTabMaterials);
 		frigus = new Item().setUnlocalizedName(MOD_ID + "_frigus").setTextureName(MOD_ID + ":frigus").setCreativeTab(ACCreativeTabs.acTabMaterials);
 
+		/* Mob Drops*/
+		penguinMeat = new ItemFood(4, true).setPotionEffect(Potion.hunger.id, 30, 0, 1.0F).setUnlocalizedName(MOD_ID + "_penguinMeat").setTextureName(MOD_ID + ":food/penguin/penguin_meat").setCreativeTab(ACCreativeTabs.acTabFood);
+		penguinMeatCooked = new ItemFood(8, true).setUnlocalizedName(MOD_ID + "_penguinMeatCooked").setTextureName(MOD_ID + ":food/penguin/penguin_meat_cooked").setCreativeTab(ACCreativeTabs.acTabFood);
+		penguinFeather = new Item().setUnlocalizedName(MOD_ID + "_penguinFeather").setTextureName(MOD_ID + ":penguin_feather").setCreativeTab(ACCreativeTabs.acTabMaterials);
+		
+		/* Miscellaneous */
+		itemSled = new ItemSled().setUnlocalizedName(MOD_ID + "_sled").setTextureName(MOD_ID + ":sled_icon").setCreativeTab(ACCreativeTabs.acTabBlock);
+		mystFruit = new ItemACFruits().setUnlocalizedName(MOD_ID + "_mystFruit").setTextureName(MOD_ID + ":food/fruits/myst_fruit").setCreativeTab(ACCreativeTabs.acTabFood);
+		glacierFruit = new ItemACFruits().setUnlocalizedName(MOD_ID + "_glacierFruit").setTextureName(MOD_ID + ":food/fruits/glacier_fruit").setCreativeTab(ACCreativeTabs.acTabFood);
+	
+		/**** START OF TOOLS + ARMOUR ****/
 		/* Pickxaes */
-		tekkitePickaxe = new ItemACPickaxe(EnumACToolMaterial.TekkiteTool).setUnlocalizedName("tekkitePickaxe").setTextureName(MOD_ID + ":pickaxe_tekkite");
-		escariaPickaxe = new ItemACPickaxe(EnumACToolMaterial.EscariaTool).setUnlocalizedName("escariaPickaxe").setTextureName(MOD_ID + ":pickaxe_escaria");
-		glacianPickaxe = new ItemACPickaxe(EnumACToolMaterial.GlacianTool).setUnlocalizedName("glacianPickaxe").setTextureName(MOD_ID + ":pickaxe_glacian");
-		rigentemPickaxe = new ItemACPickaxe(EnumACToolMaterial.RigentemTool).setUnlocalizedName("rigentemPickaxe").setTextureName(MOD_ID + ":pickaxe_rigentem");
-		frostStonePickaxe = new ItemACPickaxe(ToolMaterial.STONE).setUnlocalizedName("frostStonePickaxe").setTextureName(MOD_ID + ":pickaxe_frost_stone");
-		frostWoodPickaxe = new ItemACPickaxe(ToolMaterial.WOOD).setUnlocalizedName("frostWoodPickaxe").setTextureName(MOD_ID + ":pickaxe_frost_wood");
+		tekkitePickaxe = new ItemACPickaxe(EnumACToolMaterial.TekkiteTool).setUnlocalizedName("tekkitePickaxe").setTextureName(MOD_ID + ":tools/tekkite/pickaxe_tekkite");
+		escariaPickaxe = new ItemACPickaxe(EnumACToolMaterial.EscariaTool).setUnlocalizedName("escariaPickaxe").setTextureName(MOD_ID + ":tools/escaria/pickaxe_escaria");
+		glacianPickaxe = new ItemACPickaxe(EnumACToolMaterial.GlacianTool).setUnlocalizedName("glacianPickaxe").setTextureName(MOD_ID + ":tools/glacian/pickaxe_glacian");
+		rigentemPickaxe = new ItemACPickaxe(EnumACToolMaterial.RigentemTool).setUnlocalizedName("rigentemPickaxe").setTextureName(MOD_ID + ":tools/rigentem/pickaxe_rigentem");
+		frostStonePickaxe = new ItemACPickaxe(ToolMaterial.STONE).setUnlocalizedName("frostStonePickaxe").setTextureName(MOD_ID + ":tools/frost_stone/pickaxe_frost_stone");
+		frostWoodPickaxe = new ItemACPickaxe(ToolMaterial.WOOD).setUnlocalizedName("frostWoodPickaxe").setTextureName(MOD_ID + ":tools/frost_wood/pickaxe_frost_wood");
 
 		/* Axes */
-		tekkiteAxe = new ItemACAxe(EnumACToolMaterial.TekkiteTool).setUnlocalizedName("tekkiteAxe").setTextureName(MOD_ID + ":axe_tekkite");
-		escariaAxe = new ItemACAxe(EnumACToolMaterial.EscariaTool).setUnlocalizedName("escariaAxe").setTextureName(MOD_ID + ":axe_escaria");
-		glacianAxe = new ItemACAxe(EnumACToolMaterial.GlacianTool).setUnlocalizedName("glacianAxe").setTextureName(MOD_ID + ":axe_glacian");
-		rigentemAxe = new ItemACAxe(EnumACToolMaterial.RigentemTool).setUnlocalizedName("rigentemAxe").setTextureName(MOD_ID + ":axe_rigentem");
-		frostStoneAxe = new ItemACAxe(ToolMaterial.STONE).setUnlocalizedName("frostStoneAxe").setTextureName(MOD_ID + ":axe_frost_stone");
-		frostWoodAxe = new ItemACAxe(ToolMaterial.WOOD).setUnlocalizedName("frostWoodAxe").setTextureName(MOD_ID + ":axe_frost_wood");
+		tekkiteAxe = new ItemACAxe(EnumACToolMaterial.TekkiteTool).setUnlocalizedName("tekkiteAxe").setTextureName(MOD_ID + ":tools/tekkite/axe_tekkite");
+		escariaAxe = new ItemACAxe(EnumACToolMaterial.EscariaTool).setUnlocalizedName("escariaAxe").setTextureName(MOD_ID + ":tools/escaria/axe_escaria");
+		glacianAxe = new ItemACAxe(EnumACToolMaterial.GlacianTool).setUnlocalizedName("glacianAxe").setTextureName(MOD_ID + ":tools/glacian/axe_glacian");
+		rigentemAxe = new ItemACAxe(EnumACToolMaterial.RigentemTool).setUnlocalizedName("rigentemAxe").setTextureName(MOD_ID + ":tools/rigentem/axe_rigentem");
+		frostStoneAxe = new ItemACAxe(ToolMaterial.STONE).setUnlocalizedName("frostStoneAxe").setTextureName(MOD_ID + ":tools/frost_stone/axe_frost_stone");
+		frostWoodAxe = new ItemACAxe(ToolMaterial.WOOD).setUnlocalizedName("frostWoodAxe").setTextureName(MOD_ID + ":tools/frost_wood/axe_frost_wood");
 
 		/* Swords */
-		tekkiteSword = new ItemACSword(EnumACToolMaterial.TekkiteTool).setUnlocalizedName("tekkiteSword").setTextureName(MOD_ID + ":sword_tekkite");
-		escariaSword = new ItemACSword(EnumACToolMaterial.EscariaTool).setUnlocalizedName("escariaSword").setTextureName(MOD_ID + ":sword_escaria");
-		glacianSword = new ItemACSword(EnumACToolMaterial.GlacianTool).setUnlocalizedName("glacianSword").setTextureName(MOD_ID + ":sword_glacian");
-		rigentemSword = new ItemACSword(EnumACToolMaterial.RigentemTool).setUnlocalizedName("rigentemSword").setTextureName(MOD_ID + ":sword_rigentem");
-		frostStoneSword = new ItemACSword(ToolMaterial.STONE).setUnlocalizedName("frostStoneSword").setTextureName(MOD_ID + ":sword_frost_stone");
-		frostWoodSword = new ItemACSword(ToolMaterial.WOOD).setUnlocalizedName("frostWoodSword").setTextureName(MOD_ID + ":sword_frost_wood");
+		tekkiteSword = new ItemACSword(EnumACToolMaterial.TekkiteTool).setUnlocalizedName("tekkiteSword").setTextureName(MOD_ID + ":tools/tekkite/sword_tekkite");
+		escariaSword = new ItemACSword(EnumACToolMaterial.EscariaTool).setUnlocalizedName("escariaSword").setTextureName(MOD_ID + ":tools/escaria/sword_escaria");
+		glacianSword = new ItemACSword(EnumACToolMaterial.GlacianTool).setUnlocalizedName("glacianSword").setTextureName(MOD_ID + ":tools/glacian/sword_glacian");
+		rigentemSword = new ItemACSword(EnumACToolMaterial.RigentemTool).setUnlocalizedName("rigentemSword").setTextureName(MOD_ID + ":tools/rigentem/sword_rigentem");
+		frostStoneSword = new ItemACSword(ToolMaterial.STONE).setUnlocalizedName("frostStoneSword").setTextureName(MOD_ID + ":tools/frost_stone/sword_frost_stone");
+		frostWoodSword = new ItemACSword(ToolMaterial.WOOD).setUnlocalizedName("frostWoodSword").setTextureName(MOD_ID + ":tools/frost_wood/sword_frost_wood");
 		
 		/* Spades */
-		tekkiteSpade = new ItemACSpade(EnumACToolMaterial.TekkiteTool).setUnlocalizedName("tekkiteSpade").setTextureName(MOD_ID + ":spade_tekkite");
-		escariaSpade = new ItemACSpade(EnumACToolMaterial.EscariaTool).setUnlocalizedName("escariaSpade").setTextureName(MOD_ID + ":spade_escaria");
-		glacianSpade = new ItemACSpade(EnumACToolMaterial.GlacianTool).setUnlocalizedName("glacianSpade").setTextureName(MOD_ID + ":spade_glacian");
-		rigentemSpade = new ItemACSpade(EnumACToolMaterial.RigentemTool).setUnlocalizedName("rigentemSpade").setTextureName(MOD_ID + ":spade_rigentem");
-		frostStoneSpade = new ItemACSpade(ToolMaterial.STONE).setUnlocalizedName("frostStoneSpade").setTextureName(MOD_ID + ":spade_frost_stone");
-		frostWoodSpade = new ItemACSpade(ToolMaterial.WOOD).setUnlocalizedName("frostWoodSpade").setTextureName(MOD_ID + ":spade_frost_wood");
+		tekkiteSpade = new ItemACSpade(EnumACToolMaterial.TekkiteTool).setUnlocalizedName("tekkiteSpade").setTextureName(MOD_ID + ":tools/tekkite/spade_tekkite");
+		escariaSpade = new ItemACSpade(EnumACToolMaterial.EscariaTool).setUnlocalizedName("escariaSpade").setTextureName(MOD_ID + ":tools/escaria/spade_escaria");
+		glacianSpade = new ItemACSpade(EnumACToolMaterial.GlacianTool).setUnlocalizedName("glacianSpade").setTextureName(MOD_ID + ":tools/glacian/spade_glacian");
+		rigentemSpade = new ItemACSpade(EnumACToolMaterial.RigentemTool).setUnlocalizedName("rigentemSpade").setTextureName(MOD_ID + ":tools/rigentem/spade_rigentem");
+		frostStoneSpade = new ItemACSpade(ToolMaterial.STONE).setUnlocalizedName("frostStoneSpade").setTextureName(MOD_ID + ":tools/frost_stone/spade_frost_stone");
+		frostWoodSpade = new ItemACSpade(ToolMaterial.WOOD).setUnlocalizedName("frostWoodSpade").setTextureName(MOD_ID + ":tools/frost_wood/spade_frost_wood");
 		
 		/* Hoes */
-		tekkiteHoe = new ItemACHoe(EnumACToolMaterial.TekkiteTool).setUnlocalizedName("tekkiteHoe").setTextureName(MOD_ID + ":hoe_tekkite");
-		escariaHoe = new ItemACHoe(EnumACToolMaterial.EscariaTool).setUnlocalizedName("escariaHoe").setTextureName(MOD_ID + ":hoe_escaria");
-		glacianHoe = new ItemACHoe(EnumACToolMaterial.GlacianTool).setUnlocalizedName("glacianHoe").setTextureName(MOD_ID + ":hoe_glacian");
-		rigentemHoe = new ItemACHoe(EnumACToolMaterial.RigentemTool).setUnlocalizedName("rigentemHoe").setTextureName(MOD_ID + ":hoe_rigentem");
-		frostStoneHoe = new ItemACHoe(ToolMaterial.STONE).setUnlocalizedName("frostStoneHoe").setTextureName(MOD_ID + ":hoe_frost_stone");
-		frostWoodHoe = new ItemACHoe(ToolMaterial.WOOD).setUnlocalizedName("frostWoodHoe").setTextureName(MOD_ID + ":hoe_frost_wood");
+		tekkiteHoe = new ItemACHoe(EnumACToolMaterial.TekkiteTool).setUnlocalizedName("tekkiteHoe").setTextureName(MOD_ID + ":tools/tekkite/hoe_tekkite");
+		escariaHoe = new ItemACHoe(EnumACToolMaterial.EscariaTool).setUnlocalizedName("escariaHoe").setTextureName(MOD_ID + ":tools/escaria/hoe_escaria");
+		glacianHoe = new ItemACHoe(EnumACToolMaterial.GlacianTool).setUnlocalizedName("glacianHoe").setTextureName(MOD_ID + ":tools/glacian/hoe_glacian");
+		rigentemHoe = new ItemACHoe(EnumACToolMaterial.RigentemTool).setUnlocalizedName("rigentemHoe").setTextureName(MOD_ID + ":tools/rigentem/hoe_rigentem");
+		frostStoneHoe = new ItemACHoe(ToolMaterial.STONE).setUnlocalizedName("frostStoneHoe").setTextureName(MOD_ID + ":tools/frost_stone/hoe_frost_stone");
+		frostWoodHoe = new ItemACHoe(ToolMaterial.WOOD).setUnlocalizedName("frostWoodHoe").setTextureName(MOD_ID + ":tools/frost_wood/hoe_frost_wood");
 
-		itemSled = new ItemSled().setUnlocalizedName(MOD_ID + "_sled")
-				.setTextureName(MOD_ID + ":sled")
-				.setCreativeTab(ACCreativeTabs.acTabBlock);
+		/* Helmets */
+		tekkiteHelmet = new ItemACArmour(EnumACArmourMaterial.TekkiteArmour, Arcticraft.proxy.addArmor("Tekkite"), 0).setUnlocalizedName("tekkiteHelmet").setTextureName(MOD_ID + ":armour/tekkite/helm_tekkite");
+		escariaHelmet = new ItemACArmour(EnumACArmourMaterial.EscariaArmour, Arcticraft.proxy.addArmor("Escaria"), 0).setUnlocalizedName("escariaHelmet").setTextureName(MOD_ID + ":armour/escaria/helm_escaria");
+		glacianHelmet = new ItemACArmour(EnumACArmourMaterial.GlacianArmour, Arcticraft.proxy.addArmor("Glacian"), 0).setUnlocalizedName("glacianHelmet").setTextureName(MOD_ID + ":armour/glacian/helm_glacian");
+		rigentemHelmet = new ItemACArmour(EnumACArmourMaterial.RigentemArmour, Arcticraft.proxy.addArmor("Rigentem"), 0).setUnlocalizedName("rigentemHelmet").setTextureName(MOD_ID + ":armour/rigentem/helm_rigentem");
+		
+		/* Chestplates */
+		tekkiteChest = new ItemACArmour(EnumACArmourMaterial.TekkiteArmour, Arcticraft.proxy.addArmor("Tekkite"), 1).setUnlocalizedName("tekkiteChest").setTextureName(MOD_ID + ":armour/tekkite/plate_tekkite");
+		escariaChest = new ItemACArmour(EnumACArmourMaterial.EscariaArmour, Arcticraft.proxy.addArmor("Escaria"), 1).setUnlocalizedName("escariaChest").setTextureName(MOD_ID + ":armour/escaria/plate_escaria");
+		glacianChest = new ItemACArmour(EnumACArmourMaterial.GlacianArmour, Arcticraft.proxy.addArmor("Glacian"), 1).setUnlocalizedName("glacianChest").setTextureName(MOD_ID + ":armour/glacian/plate_glacian");
+		rigentemChest = new ItemACArmour(EnumACArmourMaterial.RigentemArmour, Arcticraft.proxy.addArmor("Rigentem"), 1).setUnlocalizedName("rigentemChest").setTextureName(MOD_ID + ":armour/rigentem/plate_rigentem");
+		
+		/* Legs */
+		tekkiteLegs = new ItemACArmour(EnumACArmourMaterial.TekkiteArmour, Arcticraft.proxy.addArmor("Tekkite"), 2).setUnlocalizedName("tekkiteLegs").setTextureName(MOD_ID + ":armour/tekkite/legs_tekkite");
+		escariaLegs = new ItemACArmour(EnumACArmourMaterial.EscariaArmour, Arcticraft.proxy.addArmor("Escaria"), 2).setUnlocalizedName("escariaLegs").setTextureName(MOD_ID + ":armour/escaria/legs_escaria");
+		glacianLegs = new ItemACArmour(EnumACArmourMaterial.GlacianArmour, Arcticraft.proxy.addArmor("Glacian"), 2).setUnlocalizedName("glacianLegs").setTextureName(MOD_ID + ":armour/glacian/legs_glacian");
+		rigentemLegs= new ItemACArmour(EnumACArmourMaterial.RigentemArmour, Arcticraft.proxy.addArmor("Rigentem"), 2).setUnlocalizedName("rigentemLegs").setTextureName(MOD_ID + ":armour/rigentem/legs_rigentem");
+		
+		/* Boots */
+		tekkiteBoots = new ItemACArmour(EnumACArmourMaterial.TekkiteArmour, Arcticraft.proxy.addArmor("Tekkite"), 3).setUnlocalizedName("tekkiteBoots").setTextureName(MOD_ID + ":armour/tekkite/boots_tekkite");
+		escariaBoots = new ItemACArmour(EnumACArmourMaterial.EscariaArmour, Arcticraft.proxy.addArmor("Escaria"), 3).setUnlocalizedName("escariaBoots").setTextureName(MOD_ID + ":armour/escaria/boots_escaria");
+		glacianBoots = new ItemACArmour(EnumACArmourMaterial.GlacianArmour, Arcticraft.proxy.addArmor("Glacian"), 3).setUnlocalizedName("glacianBoots").setTextureName(MOD_ID + ":armour/glacian/boots_glacian");
+		rigentemBoots = new ItemACArmour(EnumACArmourMaterial.RigentemArmour, Arcticraft.proxy.addArmor("Rigentem"), 3).setUnlocalizedName("rigentemBoots").setTextureName(MOD_ID + ":armour/rigentem/boots_rigentem");
+		
+
 	}
 
 	public static void registerItems() {
@@ -121,7 +191,12 @@ public class ACItems {
 				tekkiteAxe, escariaAxe, rigentemAxe, glacianAxe, frostStoneAxe, frostWoodAxe,
 				tekkiteSword, escariaSword, rigentemSword, glacianSword, frostStoneSword, frostWoodSword,
 				tekkiteSpade, escariaSpade, rigentemSpade, glacianSpade, frostStoneSpade, frostWoodSpade,
-				tekkiteHoe, escariaHoe, rigentemHoe, glacianHoe, frostStoneHoe, frostWoodHoe, itemSled };
+				tekkiteHoe, escariaHoe, rigentemHoe, glacianHoe, frostStoneHoe, frostWoodHoe, itemSled, 
+				tekkiteHelmet, escariaHelmet, glacianHelmet, rigentemHelmet,
+				tekkiteChest, escariaChest, glacianChest, rigentemChest,
+				tekkiteLegs, escariaLegs, glacianLegs, rigentemLegs,
+				tekkiteBoots, escariaBoots, glacianBoots, rigentemBoots, penguinMeat, penguinMeatCooked, penguinFeather,
+				mystFruit, glacierFruit,};
 
 		for (Item item : itemList) {
 			GameRegistry.registerItem(item, StringUtils.generateName(item));

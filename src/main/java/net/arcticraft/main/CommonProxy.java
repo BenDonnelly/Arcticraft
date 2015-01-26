@@ -24,4 +24,9 @@ public class CommonProxy
 		DimensionManager.registerProviderType(3, WorldProviderDim.class, true);
 		DimensionManager.registerDimension(3, 3);
 	}
+
+	public int addArmor(String armor)
+	{
+		return 0;
+	}
 }

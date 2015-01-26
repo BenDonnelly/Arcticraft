@@ -8,10 +8,10 @@ public class EnumACToolMaterial{
 
 	/*Sorted from best to worst*/
 	/**Params go as follows : name, harvest level(3 = DIAMOND, 2 = IRON, 1 = STONE, 0 = WOOD/GOLD), max uses, efficiency, damage, enchantability**/
-	public static ToolMaterial TekkiteTool = EnumHelper.addToolMaterial("Tekkite Tool", 3, 1750, 9.0F, 3.5F, 15); 
-	public static ToolMaterial EscariaTool = EnumHelper.addToolMaterial("EscariaTool", 3, 1400, 7.5F, 2.5F, 18);
-	public static ToolMaterial GlacianTool = EnumHelper.addToolMaterial("Glacian Tool", 2, 200, 6.5F, 2.0F, 20);
-	public static ToolMaterial RigentemTool = EnumHelper.addToolMaterial("Rigentem Tool", 1, 125, 4.5F, 1.0F, 22); 
+	public static ToolMaterial TekkiteTool = EnumHelper.addToolMaterial("Tekkite", 3, 1750, 9.0F, 3.5F, 14); 
+	public static ToolMaterial EscariaTool = EnumHelper.addToolMaterial("Escaria", 3, 1400, 7.5F, 2.5F, 16);
+	public static ToolMaterial GlacianTool = EnumHelper.addToolMaterial("Glacian", 2, 200, 6.5F, 2.0F, 18);
+	public static ToolMaterial RigentemTool = EnumHelper.addToolMaterial("Rigentem", 1, 125, 4.5F, 1.0F, 20); 
 	
 	/*Vinallas for reference
     WOOD(0, 59, 2.0F, 0.0F, 15),
