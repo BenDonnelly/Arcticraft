@@ -16,6 +16,7 @@ import net.arcticraft.world.gen.WorldGenACTrees;
 import net.arcticraft.world.gen.WorldGenIceberg;
 import net.arcticraft.world.gen.dimension.ChunkProviderDim;
 import net.arcticraft.world.gen.dimension.TeleporterDim;
+import net.minecraft.client.Minecraft;
 import net.minecraft.command.ICommandManager;
 import net.minecraft.command.ServerCommandManager;
 import net.minecraft.server.MinecraftServer;
@@ -89,5 +90,13 @@ public class Arcticraft{
 	public void tickWorld(WorldTickEvent event)
 	{
 		
+	}
+	
+	public static void notifyOfGenertion(Object type, String x, String z)
+	{
+		if(DEV_MODE)
+		{
+			Minecraft.getMinecraft().thePlayer.sendChatMessage(type + " has been generated at, X= " + x + ", " + "Z= " + z);
+		}
 	}
 }
