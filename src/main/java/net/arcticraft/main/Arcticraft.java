@@ -14,6 +14,7 @@ import net.arcticraft.temperature.handlers.MovementHandler;
 import net.arcticraft.util.VectorUtils;
 import net.arcticraft.world.gen.WorldGenACTrees;
 import net.arcticraft.world.gen.WorldGenIceberg;
+import net.arcticraft.world.gen.WorldGenMageTower;
 import net.arcticraft.world.gen.dimension.ChunkProviderDim;
 import net.arcticraft.world.gen.dimension.TeleporterDim;
 import net.minecraft.client.Minecraft;
@@ -75,6 +76,7 @@ public class Arcticraft{
 		ACEntities.loadEntities();
     	GameRegistry.registerWorldGenerator(new WorldGenACTrees(), 0);
     	GameRegistry.registerWorldGenerator(new WorldGenIceberg(), 0);
+    	GameRegistry.registerWorldGenerator(new WorldGenMageTower(), 0);
 	}
 	
 	@EventHandler
@@ -96,7 +98,10 @@ public class Arcticraft{
 	{
 		if(DEV_MODE)
 		{
-			Minecraft.getMinecraft().thePlayer.sendChatMessage(type + " has been generated at, X= " + x + ", " + "Z= " + z);
+			if(Minecraft.getMinecraft().thePlayer != null)
+			{
+				Minecraft.getMinecraft().thePlayer.sendChatMessage(type + " has been generated at, X= " + x + ", " + "Z= " + z);
+			}
 		}
 	}
 }

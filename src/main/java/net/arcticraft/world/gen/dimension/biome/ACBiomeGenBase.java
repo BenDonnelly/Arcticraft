@@ -35,7 +35,7 @@ public class ACBiomeGenBase extends BiomeGenBase
 		this.spawnableMonsterList.clear();
 		this.spawnableWaterCreatureList.clear();
 		this.spawnableCaveCreatureList.clear();
-		this.spawnableCreatureList.add(new SpawnListEntry(EntityPenguin.class, 8, 2, 6));//it spawns, but the canSpawnhere method deosnt call.
+		this.spawnableCreatureList.add(new SpawnListEntry(EntityPenguin.class, 8, 2, 6));
 		this.genGlacierTrees = new WorldGenACTrees();
 		this.genFrostTrees = new WorldGenFrostTrees(true);
 	}

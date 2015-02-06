@@ -3,9 +3,11 @@ package net.arcticraft.world.gen.dimension.biome;
 import java.util.Random;
 
 import net.arcticraft.block.ACBlocks;
+import net.arcticraft.entities.passive.EntityPenguin;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.BiomeGenBase.SpawnListEntry;
 
 public class BiomeSnowPlains extends ACBiomeGenBase {
 	public BiomeSnowPlains(int par1) {
@@ -15,6 +17,7 @@ public class BiomeSnowPlains extends ACBiomeGenBase {
 		this.theBiomeDecorator.treesPerChunk = -999;
 		this.theBiomeDecorator.mushroomsPerChunk = 0;
 		this.theBiomeDecorator.bigMushroomsPerChunk = 0;
+		this.spawnableCreatureList.add(new SpawnListEntry(EntityPenguin.class, 8, 2, 6));
 		this.temperature = 0.1F;
 		
 		this.setColor(16777215);

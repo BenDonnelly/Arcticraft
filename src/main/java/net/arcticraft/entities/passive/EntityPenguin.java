@@ -20,7 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityPenguin extends EntityAnimal{
+public class EntityPenguin extends EntityAnimal {
 
 	public EntityPenguin(World world){
 		super(world);
@@ -81,9 +81,10 @@ public class EntityPenguin extends EntityAnimal{
 		return null;
 	}
 
-	public boolean getCanSpawnHere()//doesnt even get called lol, this is how it spawns,
+	@Override
+	public boolean getCanSpawnHere()
 	{
-		/*int r = 8;
+		int r = 8;
 		System.out.println("callerino");
 		for(int x = (int) (this.posX - r); x < (this.posX + r); x++)
 		{
@@ -100,12 +101,12 @@ public class EntityPenguin extends EntityAnimal{
 			}
 		}
 
-		return false;*/
-		int i = MathHelper.floor_double(this.posX);
+		return false;
+		
+		/*int i = MathHelper.floor_double(this.posX);
 		int j = MathHelper.floor_double(this.boundingBox.minY);
 		int k = MathHelper.floor_double(this.posZ);
 		System.out.println("Penguin has spawned. Location: " + this.posX + ", " + this.posY + ", " + this.posZ);
-		return this.worldObj.getBlock(i, j - 1, k) == ACBlocks.frostWaterIce;
-		
+		return this.worldObj.getBlock(i, j - 1, k) == ACBlocks.frostWaterIce;*/	
 	}
 }

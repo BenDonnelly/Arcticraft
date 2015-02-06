@@ -12,11 +12,13 @@ import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenerator;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.DungeonHooks;
+import cpw.mods.fml.common.IWorldGenerator;
 
-public class WorldGenMageTower extends WorldGenerator{
+public class WorldGenMageTower implements IWorldGenerator {
 
 	private static final int SIZE_X = 16;
 	private static final int SIZE_Z = 16;
@@ -88,37 +90,37 @@ public class WorldGenMageTower extends WorldGenerator{
 		return(validPlatformBlocksPercentage > 80 && validVolumeBlocksPercentage > 95d);
 	}
 
+	@Override
+	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
+		int x = chunkX * 16 + random.nextInt(16);
+		int y = 256;
+		int z = chunkZ * 16 + random.nextInt(16);
+		
+		if(world.provider.dimensionId == 0 && (world.getBiomeGenForCoords(x, z) == BiomeGenBase.iceMountains || world.getBiomeGenForCoords(x, z) == BiomeGenBase.icePlains))
+		{
+			for (int i = 0; i < 1; i++)
+			{
+				int max = 1000;
+				int min = 0;
+				int r = new Random().nextInt(max - min) + min;
+				
+				if(r == 5)
+				{
+					while(y > 0 && world.getBlock(x, y - 1, z) != Blocks.grass) y--;
+
+					if(world.getBlock(x, y - 1, z) != Blocks.grass)
+					{
+						return;
+					}
+
+					this.generate(world, random, x, y, z);
+				}
+			}
+		}
+	}
+	
 	public boolean generate(World world, Random rand, int i, int j, int k)
 	{
-		if(world.getBlock(i, j, k) != Blocks.grass)
-		{
-			return false;
-		}
-		if(world.getBlock(i, j + 1, k + 1) != Blocks.snow)
-		{
-			return false;
-		}
-		if(world.getBlock(i, j + 1, k - 1) != Blocks.snow)
-		{
-			return false;
-		}
-		if(world.getBlock(i + 1, j + 1, k) != Blocks.snow)
-		{
-			return false;
-		}
-		if(world.getBlock(i - 1, j + 1, k) != Blocks.snow)
-		{
-			return false;
-		}
-		if(world.getBlock(i, j + 1, k) != Blocks.snow)
-		{
-			return false;
-		}
-		if(!checkSpawn(world, rand, i, j, k))
-		{
-			return false;
-		}
-
 		Arcticraft.notifyOfGenertion("Mage Tower", Integer.toString(i), Integer.toString(k));
 		clearArea(world, i, j + 3, k);
 		buildPlatform(world, i, j, k);
@@ -2496,10 +2498,10 @@ public class WorldGenMageTower extends WorldGenerator{
 		world.setBlock(i + 5, j + 7, k + 13, Blocks.vine, 4, 2);
 		world.setBlock(i + 5, j + 8, k + 13, Blocks.vine, 4, 2);
 		world.setBlock(i + 5, j + 12, k + 3, Blocks.vine, 1, 2);
-		world.setBlock(i + 5, j + 12, k + 6, Blocks.snow, 0, 2);
-		world.setBlock(i + 5, j + 12, k + 7, Blocks.snow, 1, 2);
-		world.setBlock(i + 5, j + 12, k + 8, Blocks.snow, 1, 2);
-		world.setBlock(i + 5, j + 12, k + 9, Blocks.snow, 0, 2);
+		world.setBlock(i + 5, j + 12, k + 6, Blocks.snow_layer, 0, 2);
+		world.setBlock(i + 5, j + 12, k + 7, Blocks.snow_layer, 1, 2);
+		world.setBlock(i + 5, j + 12, k + 8, Blocks.snow_layer, 1, 2);
+		world.setBlock(i + 5, j + 12, k + 9, Blocks.snow_layer, 0, 2);
 		world.setBlock(i + 5, j + 12, k + 12, Blocks.vine, 4, 2);
 		world.setBlock(i + 5, j + 13, k + 3, Blocks.vine, 1, 2);
 		world.setBlock(i + 5, j + 13, k + 12, Blocks.vine, 4, 2);
@@ -2548,7 +2550,7 @@ public class WorldGenMageTower extends WorldGenerator{
 		world.setBlock(i + 7, j + 10, k + 1, Blocks.vine, 1, 2);
 		world.setBlock(i + 7, j + 10, k + 10, Blocks.ladder, 2, 2);
 		world.setBlock(i + 7, j + 11, k + 10, Blocks.trapdoor, 1, 2);
-		world.setBlock(i + 7, j + 12, k + 4, Blocks.snow, 1, 2);
+		world.setBlock(i + 7, j + 12, k + 4, Blocks.snow_layer, 1, 2);
 		world.setBlock(i + 8, j + 4, k + 6, Blocks.ladder, 5, 2);
 		world.setBlock(i + 8, j + 4, k + 9, Blocks.ladder, 5, 2);
 		world.setBlock(i + 8, j + 5, k + 6, Blocks.ladder, 5, 2);
@@ -2562,9 +2564,9 @@ public class WorldGenMageTower extends WorldGenerator{
 		world.setBlock(i + 8, j + 9, k + 1, Blocks.vine, 1, 2);
 		world.setBlock(i + 8, j + 10, k + 1, Blocks.vine, 1, 2);
 		world.setBlock(i + 8, j + 11, k + 1, Blocks.vine, 1, 2);
-		world.setBlock(i + 8, j + 12, k + 4, Blocks.snow, 2, 2);
-		world.setBlock(i + 8, j + 12, k + 7, Blocks.snow, 0, 2);
-		world.setBlock(i + 8, j + 12, k + 8, Blocks.snow, 0, 2);
+		world.setBlock(i + 8, j + 12, k + 4, Blocks.snow_layer, 2, 2);
+		world.setBlock(i + 8, j + 12, k + 7, Blocks.snow_layer, 0, 2);
+		world.setBlock(i + 8, j + 12, k + 8, Blocks.snow_layer, 0, 2);
 		world.setBlock(i + 8, j + 14, k + 13, Blocks.vine, 4, 2);
 		world.setBlock(i + 9, j + 4, k + 6, Blocks.ladder, 4, 2);
 		world.setBlock(i + 9, j + 4, k + 9, Blocks.ladder, 4, 2);
@@ -2579,9 +2581,9 @@ public class WorldGenMageTower extends WorldGenerator{
 		world.setBlock(i + 9, j + 9, k + 1, Blocks.vine, 1, 2);
 		world.setBlock(i + 9, j + 10, k + 1, Blocks.vine, 1, 2);
 		world.setBlock(i + 9, j + 12, k + 2, Blocks.vine, 1, 2);
-		world.setBlock(i + 9, j + 12, k + 4, Blocks.snow, 2, 2);
-		world.setBlock(i + 9, j + 12, k + 7, Blocks.snow, 0, 2);
-		world.setBlock(i + 9, j + 12, k + 8, Blocks.snow, 0, 2);
+		world.setBlock(i + 9, j + 12, k + 4, Blocks.snow_layer, 2, 2);
+		world.setBlock(i + 9, j + 12, k + 7, Blocks.snow_layer, 0, 2);
+		world.setBlock(i + 9, j + 12, k + 8, Blocks.snow_layer, 0, 2);
 		world.setBlock(i + 9, j + 15, k + 13, Blocks.vine, 4, 2);
 		world.setBlock(i + 10, j + 0, k + 0, Blocks.vine, 1, 2);
 		world.setBlock(i + 10, j + 1, k + 0, Blocks.vine, 1, 2);
@@ -2602,7 +2604,7 @@ public class WorldGenMageTower extends WorldGenerator{
 		world.setBlock(i + 10, j + 10, k + 10, Blocks.ladder, 2, 2);
 		world.setBlock(i + 10, j + 11, k + 10, Blocks.trapdoor, 5, 2);
 		world.setBlock(i + 10, j + 12, k + 2, Blocks.vine, 1, 2);
-		world.setBlock(i + 10, j + 12, k + 4, Blocks.snow, 1, 2);
+		world.setBlock(i + 10, j + 12, k + 4, Blocks.snow_layer, 1, 2);
 		world.setBlock(i + 10, j + 13, k + 2, Blocks.vine, 1, 2);
 		world.setBlock(i + 10, j + 14, k + 2, Blocks.vine, 1, 2);
 		world.setBlock(i + 10, j + 14, k + 13, Blocks.vine, 4, 2);
@@ -2628,10 +2630,10 @@ public class WorldGenMageTower extends WorldGenerator{
 		world.setBlock(i + 12, j + 4, k + 14, Blocks.vine, 4, 2);
 		world.setBlock(i + 12, j + 11, k + 2, Blocks.vine, 1, 2);
 		world.setBlock(i + 12, j + 12, k + 3, Blocks.vine, 1, 2);
-		world.setBlock(i + 12, j + 12, k + 6, Blocks.snow, 0, 2);
-		world.setBlock(i + 12, j + 12, k + 7, Blocks.snow, 1, 2);
-		world.setBlock(i + 12, j + 12, k + 8, Blocks.snow, 1, 2);
-		world.setBlock(i + 12, j + 12, k + 9, Blocks.snow, 0, 2);
+		world.setBlock(i + 12, j + 12, k + 6, Blocks.snow_layer, 0, 2);
+		world.setBlock(i + 12, j + 12, k + 7, Blocks.snow_layer, 1, 2);
+		world.setBlock(i + 12, j + 12, k + 8, Blocks.snow_layer, 1, 2);
+		world.setBlock(i + 12, j + 12, k + 9, Blocks.snow_layer, 0, 2);
 		world.setBlock(i + 12, j + 12, k + 12, Blocks.vine, 4, 2);
 		world.setBlock(i + 12, j + 13, k + 3, Blocks.vine, 1, 2);
 		world.setBlock(i + 12, j + 14, k + 3, Blocks.vine, 1, 2);

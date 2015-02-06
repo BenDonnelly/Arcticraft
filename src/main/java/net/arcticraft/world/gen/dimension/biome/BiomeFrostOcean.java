@@ -1,8 +1,10 @@
 package net.arcticraft.world.gen.dimension.biome;
 
 import net.arcticraft.block.ACBlocks;
+import net.arcticraft.entities.passive.EntityPenguin;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.BiomeGenBase.SpawnListEntry;
 
 public class BiomeFrostOcean extends ACBiomeGenBase {
 	public BiomeFrostOcean(int par1) {
@@ -17,6 +19,7 @@ public class BiomeFrostOcean extends ACBiomeGenBase {
 		this.spawnableMonsterList.clear();
 		this.spawnableWaterCreatureList.clear();
 		this.spawnableCaveCreatureList.clear();
+		this.spawnableCreatureList.add(new SpawnListEntry(EntityPenguin.class, 8, 2, 6));
 		this.temperature = 0.1F;
 		
 		this.setTemperatureRainfall(0.1F, 0.9F);
