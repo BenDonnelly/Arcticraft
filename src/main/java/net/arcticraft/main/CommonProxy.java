@@ -1,7 +1,7 @@
 package net.arcticraft.main;
 
 import net.arcticraft.entities.EntitySled;
-import net.arcticraft.entities.renderer.RenderSled;
+import net.arcticraft.entities.render.RenderSled;
 import net.arcticraft.world.gen.dimension.WorldProviderDim;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.common.DimensionManager;

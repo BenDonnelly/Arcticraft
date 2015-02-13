@@ -1,0 +1,4 @@
+{
+"block.fuse": {"category": "block","sounds": ["misc/fuse"]},
+"block.cannon": {"category": "block","sounds": ["misc/cannon"]}
+}

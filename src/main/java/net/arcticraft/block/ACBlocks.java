@@ -7,6 +7,8 @@ import java.util.Random;
 import net.arcticraft.item.ItemLeafBlocks;
 import net.arcticraft.item.ItemLogBlocks;
 import net.arcticraft.item.ItemPlankBlocks;
+import net.arcticraft.tileentity.TileEntityCampfire;
+import net.arcticraft.tileentity.TileEntityCannon;
 import net.arcticraft.util.StringUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -44,6 +46,10 @@ public class ACBlocks{
 	public static Block rigentemOre;
 	public static Block frigusOre;
 
+	/* Tile Entity Blocks */
+	public static Block campfire;
+	public static Block cannon;
+	
 	/* Miscellaneous */
 	public static Block mysticalSnow;
 	
@@ -85,22 +91,27 @@ public class ACBlocks{
 		frigusOre = new BlockACOres().setBlockName(MOD_ID + "_frigusOre").setBlockTextureName(MOD_ID + ":ore_frigus");
 		
 		/* Miscellaneous */
-		mysticalSnow = new BlockMysticalSnow(Material.snow).setBlockName(MOD_ID + "_mysticalSnow").setBlockTextureName(MOD_ID + ":mystical_snow");
+		mysticalSnow = new BlockMysticalSnow(Material.snow);
+		campfire = new BlockCampfire(Material.wood);
+		cannon = new BlockCannon(Material.iron);
 	}
 
 	public static void registerBlocks()
 	{
 		Block[] blockList = {frostGrass, frostDirt, frostStone, frostCobble, frostWaterBlock, arcaneStone, frostWaterIce, frostSnow, tekkiteOre, escariaOre, glacianOre, rigentemOre, frigusOre
-				,mysticalSnow};
+				,mysticalSnow, campfire, cannon};
 
 		for(Block block : blockList)
 		{
 			GameRegistry.registerBlock(block, StringUtils.generateName(block));
 		}
-
+		
 		/*Multi blocks*/
 		GameRegistry.registerBlock(acLogs, ItemLogBlocks.class, acLogs.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(acLeaves, ItemLeafBlocks.class, acLeaves.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(acPlanks, ItemPlankBlocks.class, acPlanks.getUnlocalizedName().substring(5));
+	
+		GameRegistry.registerTileEntity(TileEntityCampfire.class, "tileEntityCampfire");
+		GameRegistry.registerTileEntity(TileEntityCannon.class, "tileEntityCannon");
 	}
 }

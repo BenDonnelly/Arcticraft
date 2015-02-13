@@ -1,6 +1,8 @@
 package net.arcticraft.block;
 
+import static net.arcticraft.main.Arcticraft.MOD_ID;
 import net.arcticraft.block.creativetabs.ACCreativeTabs;
+import net.arcticraft.main.Arcticraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.IBlockAccess;
@@ -11,6 +13,8 @@ public class BlockMysticalSnow extends Block{
 
 	protected BlockMysticalSnow(Material material){
 		super(material);
+		this.setBlockName(MOD_ID + "_mysticalSnow");
+		this.setBlockTextureName(MOD_ID + ":mystical_snow");
 		this.setCreativeTab(ACCreativeTabs.acTabBlock);
 	}
 

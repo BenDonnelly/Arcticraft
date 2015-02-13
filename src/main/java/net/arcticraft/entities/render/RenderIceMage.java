@@ -1,4 +1,4 @@
-package net.arcticraft.entities.renderer;
+package net.arcticraft.entities.render;
 
 import net.arcticraft.main.Arcticraft;
 import net.minecraft.client.model.ModelBase;

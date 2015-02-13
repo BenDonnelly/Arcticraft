@@ -1,4 +1,4 @@
-package net.arcticraft.entities.renderer;
+package net.arcticraft.entities.render;
 
 import net.arcticraft.entities.EntitySled;
 import net.arcticraft.entities.model.ModelSled;

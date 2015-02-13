@@ -1,15 +1,25 @@
 package net.arcticraft.main;
 
+import net.arcticraft.block.ACBlocks;
 import net.arcticraft.entities.*;
 import net.arcticraft.entities.passive.*;
-import net.arcticraft.entities.renderer.*;
+import net.arcticraft.entities.render.*;
 import net.arcticraft.entities.model.*;
+import net.arcticraft.tileentity.*;
+import net.arcticraft.tileentity.renderers.*;
+import net.arcticraft.item.ACItems;
+import net.arcticraft.item.render.*;
 import net.arcticraft.gui.GuiFreezedScreen;
 import net.arcticraft.gui.GuiTemperatureBar;
 import net.arcticraft.world.gen.dimension.WorldProviderDim;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.item.Item;
+import net.minecraftforge.client.IItemRenderer;
+import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy{
@@ -24,6 +34,16 @@ public class ClientProxy extends CommonProxy{
 		RenderingRegistry.registerEntityRenderingHandler(EntityBoar.class, new RenderBoar(new ModelBoar(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityPenguin.class, new RenderPenguin(new ModelPenguin(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityIceMage.class, new RenderIceMage(new ModelIceMage(), 0.6F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityCannonball.class, new RenderCannonball(ACItems.cannonball));
+
+		TileEntitySpecialRenderer render = new TileEntityCampfireRender();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCampfire.class, new TileEntityCampfireRender());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ACBlocks.campfire), new ItemCampfireRender(render));
+		
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCannon.class, new TileEntityCannonRender());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ACBlocks.cannon), new ItemCannonRender());
+	
+		MinecraftForgeClient.registerItemRenderer(ACItems.cannonball, (IItemRenderer) new ItemCannonballRender());
 	}
 
 	@Override

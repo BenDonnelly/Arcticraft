@@ -1,4 +1,4 @@
-package net.arcticraft.entities.renderer;
+package net.arcticraft.entities.render;
 
 import net.arcticraft.entities.passive.EntityBoar;
 import net.arcticraft.main.Arcticraft;
@@ -8,18 +8,18 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderBoar extends RenderLiving{
+public class RenderPenguin extends RenderLiving{
 
-	private static final ResourceLocation boarTexture = new ResourceLocation(Arcticraft.MOD_ID + ":textures/entities/mobs/boar/boar.png");
+	private static final ResourceLocation penguinTexture = new ResourceLocation(Arcticraft.MOD_ID + ":textures/entities/mobs/penguin/penguin.png");
 
-	public RenderBoar(ModelBase model, float shadowSize){
+	public RenderPenguin(ModelBase model, float shadowSize){
 		super(model, shadowSize);
 	}
 	
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return boarTexture;
+		return penguinTexture;
 	}
 
 }

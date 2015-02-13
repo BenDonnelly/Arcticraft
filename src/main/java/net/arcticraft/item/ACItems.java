@@ -33,6 +33,7 @@ public class ACItems {
 	public static Item itemSled;
 	public static Item mystFruit;
 	public static Item glacierFruit;
+	public static Item cannonball;
 	
 	/* Pickaxes */
 	public static Item tekkitePickaxe;
@@ -116,7 +117,9 @@ public class ACItems {
 		itemSled = new ItemSled().setUnlocalizedName(MOD_ID + "_sled").setTextureName(MOD_ID + ":sled_icon").setCreativeTab(ACCreativeTabs.acTabBlock);
 		mystFruit = new ItemACFruits().setUnlocalizedName(MOD_ID + "_mystFruit").setTextureName(MOD_ID + ":food/fruits/myst_fruit").setCreativeTab(ACCreativeTabs.acTabFood);
 		glacierFruit = new ItemACFruits().setUnlocalizedName(MOD_ID + "_glacierFruit").setTextureName(MOD_ID + ":food/fruits/glacier_fruit").setCreativeTab(ACCreativeTabs.acTabFood);
-	
+		cannonball = new Item().setFull3D().setUnlocalizedName(MOD_ID + "_cannonball").setTextureName(MOD_ID + ":cannonball").setCreativeTab(ACCreativeTabs.acTabCombat);
+		
+		
 		/**** START OF TOOLS + ARMOUR ****/
 		/* Pickxaes */
 		tekkitePickaxe = new ItemACPickaxe(EnumACToolMaterial.TekkiteTool).setUnlocalizedName("tekkitePickaxe").setTextureName(MOD_ID + ":tools/tekkite/pickaxe_tekkite");
@@ -196,7 +199,7 @@ public class ACItems {
 				tekkiteChest, escariaChest, glacianChest, rigentemChest,
 				tekkiteLegs, escariaLegs, glacianLegs, rigentemLegs,
 				tekkiteBoots, escariaBoots, glacianBoots, rigentemBoots, penguinMeat, penguinMeatCooked, penguinFeather,
-				mystFruit, glacierFruit,};
+				mystFruit, glacierFruit, cannonball};
 
 		for (Item item : itemList) {
 			GameRegistry.registerItem(item, StringUtils.generateName(item));
