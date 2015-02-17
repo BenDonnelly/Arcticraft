@@ -7,6 +7,7 @@ import java.util.Random;
 import net.arcticraft.item.ItemLeafBlocks;
 import net.arcticraft.item.ItemLogBlocks;
 import net.arcticraft.item.ItemPlankBlocks;
+import net.arcticraft.item.ItemSlabBlocks;
 import net.arcticraft.tileentity.TileEntityCampfire;
 import net.arcticraft.tileentity.TileEntityCannon;
 import net.arcticraft.util.StringUtils;
@@ -39,6 +40,12 @@ public class ACBlocks{
 	public static Block frostSapling, glacierSapling;
 	public static Block frostWaterIce;
 
+	/* Decorative Blocks */
+	public static Block  acSlab, acDoubleSlab;
+	public static Block frostStairs, glacierStairs;
+	public static Block frostDoor;
+	public static Block frostLadder;
+	
 	/* Ores - Ordered in rarity*/
 	public static Block tekkiteOre;
 	public static Block escariaOre;
@@ -77,10 +84,10 @@ public class ACBlocks{
 		arcaneStone = new BlockArcaneStone();
 
 		/* Land Generation Blocks */
-		acLogs = new BlockACLog();
-		acLeaves = new BlockACLeaves();
-		acPlanks = new BlockACPlanks();
-		frostWaterIce = new BlockFrostWaterIce();
+		acLogs = new BlockACLog(Material.wood);
+		acLeaves = new BlockACLeaves(Material.leaves);
+		acPlanks = new BlockACPlanks(Material.wood);
+		frostWaterIce = new BlockFrostWaterIce(Material.ice);
 		frostSnow = new BlockFrostSnow();
 		
 		/* Ores */
@@ -89,6 +96,14 @@ public class ACBlocks{
 		glacianOre = new BlockACOres().setBlockName(MOD_ID + "_glacianOre").setBlockTextureName(MOD_ID + ":ore_glacian");
 		rigentemOre = new BlockACOres().setBlockName(MOD_ID + "_rigentemOre").setBlockTextureName(MOD_ID + ":ore_rigentem");
 		frigusOre = new BlockACOres().setBlockName(MOD_ID + "_frigusOre").setBlockTextureName(MOD_ID + ":ore_frigus");
+		
+		/* Decorative Blocks */
+		acSlab = new BlockACSlab(false);
+		acDoubleSlab = new BlockACSlab(true);
+		frostStairs = new BlockACStairs(ACBlocks.acPlanks, 0, Material.wood);
+		glacierStairs = new BlockACStairs(ACBlocks.acPlanks, 1, Material.wood);
+		frostLadder = new BlockFrostLadder(Material.circuits);
+		frostDoor = new BlockFrostDoor(Material.wood);
 		
 		/* Miscellaneous */
 		mysticalSnow = new BlockMysticalSnow(Material.snow);
@@ -99,7 +114,7 @@ public class ACBlocks{
 	public static void registerBlocks()
 	{
 		Block[] blockList = {frostGrass, frostDirt, frostStone, frostCobble, frostWaterBlock, arcaneStone, frostWaterIce, frostSnow, tekkiteOre, escariaOre, glacianOre, rigentemOre, frigusOre
-				,mysticalSnow, campfire, cannon};
+				,mysticalSnow, campfire, cannon, frostLadder, frostDoor};
 
 		for(Block block : blockList)
 		{
@@ -110,6 +125,11 @@ public class ACBlocks{
 		GameRegistry.registerBlock(acLogs, ItemLogBlocks.class, acLogs.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(acLeaves, ItemLeafBlocks.class, acLeaves.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(acPlanks, ItemPlankBlocks.class, acPlanks.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(acSlab, ItemSlabBlocks.class, acSlab.getUnlocalizedName().substring(5), acSlab, acDoubleSlab, false);
+		GameRegistry.registerBlock(acDoubleSlab, ItemSlabBlocks.class, acDoubleSlab.getUnlocalizedName().substring(5) + "_double", acSlab, acDoubleSlab, true);
+		GameRegistry.registerBlock(frostStairs, acPlanks.getUnlocalizedName().substring(5) + "_frost");
+		GameRegistry.registerBlock(glacierStairs, acPlanks.getUnlocalizedName().substring(5) + "_glacier");
+		
 	
 		GameRegistry.registerTileEntity(TileEntityCampfire.class, "tileEntityCampfire");
 		GameRegistry.registerTileEntity(TileEntityCannon.class, "tileEntityCannon");

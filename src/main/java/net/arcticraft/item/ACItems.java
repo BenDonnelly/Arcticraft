@@ -6,6 +6,7 @@ import net.arcticraft.enums.EnumACArmourMaterial;
 import net.arcticraft.enums.EnumACToolMaterial;
 import net.arcticraft.main.Arcticraft;
 import net.arcticraft.util.StringUtils;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemFood;
@@ -34,6 +35,7 @@ public class ACItems {
 	public static Item mystFruit;
 	public static Item glacierFruit;
 	public static Item cannonball;
+	public static Item frostDoor;
 	
 	/* Pickaxes */
 	public static Item tekkitePickaxe;
@@ -118,6 +120,7 @@ public class ACItems {
 		mystFruit = new ItemACFruits().setUnlocalizedName(MOD_ID + "_mystFruit").setTextureName(MOD_ID + ":food/fruits/myst_fruit").setCreativeTab(ACCreativeTabs.acTabFood);
 		glacierFruit = new ItemACFruits().setUnlocalizedName(MOD_ID + "_glacierFruit").setTextureName(MOD_ID + ":food/fruits/glacier_fruit").setCreativeTab(ACCreativeTabs.acTabFood);
 		cannonball = new Item().setFull3D().setUnlocalizedName(MOD_ID + "_cannonball").setTextureName(MOD_ID + ":cannonball").setCreativeTab(ACCreativeTabs.acTabCombat);
+		frostDoor = new ItemFrostDoor(Material.wood).setUnlocalizedName(MOD_ID + "_frostDoorItem").setTextureName(MOD_ID + ":door_frost").setCreativeTab(ACCreativeTabs.acTabBlock);
 		
 		
 		/**** START OF TOOLS + ARMOUR ****/
@@ -199,7 +202,7 @@ public class ACItems {
 				tekkiteChest, escariaChest, glacianChest, rigentemChest,
 				tekkiteLegs, escariaLegs, glacianLegs, rigentemLegs,
 				tekkiteBoots, escariaBoots, glacianBoots, rigentemBoots, penguinMeat, penguinMeatCooked, penguinFeather,
-				mystFruit, glacierFruit, cannonball};
+				mystFruit, glacierFruit, cannonball, frostDoor};
 
 		for (Item item : itemList) {
 			GameRegistry.registerItem(item, StringUtils.generateName(item));

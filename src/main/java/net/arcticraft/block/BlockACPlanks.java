@@ -21,9 +21,11 @@ public class BlockACPlanks extends Block
 	@SideOnly(Side.CLIENT)
 	protected IIcon[] textures = new IIcon[2];
 	
-	protected BlockACPlanks()
+	protected BlockACPlanks(Material material)
 	{
 		super(Material.wood);
+		this.setHardness(2.0F);
+		this.setResistance(5.0F);
 		this.setBlockName(MOD_ID + "_planks");
 		this.setCreativeTab(ACCreativeTabs.acTabBlock);
 	}
@@ -42,7 +44,6 @@ public class BlockACPlanks extends Block
 	@Override
 	public void registerBlockIcons(IIconRegister iconRegister)
 	{
-		// A side icon B top icon
 		for(int i = 0; i < this.textures.length; i++)
 		{
 			this.textures[i] = iconRegister.registerIcon(MOD_ID + ":planks_" + BlockACLog.logs[i]);

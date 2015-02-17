@@ -26,7 +26,7 @@ public class BlockACLeaves extends BlockLeaves
 	public static final String[][] leaftypes = new String[][] { {"leaf_frost", "leaf_glacier"}, {"leaf_frost_opaque", "leaf_glacier_opaque"}};
 	public static final String[] leaves = new String[] {"frost", "glacier"};
 
-	protected BlockACLeaves(){
+	protected BlockACLeaves(Material material){
 		this.setBlockName(MOD_ID + "_leaves");
 		this.setCreativeTab(ACCreativeTabs.acTabDecoration);
 	}

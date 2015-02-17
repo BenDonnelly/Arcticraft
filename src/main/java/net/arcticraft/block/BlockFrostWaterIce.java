@@ -21,7 +21,7 @@ import net.minecraftforge.event.ForgeEventFactory;
 
 public class BlockFrostWaterIce extends BlockIce
 {
-	public BlockFrostWaterIce()
+	public BlockFrostWaterIce(Material material)
 	{
 		this.setBlockName(MOD_ID + "_frostWaterIce");
 		this.setHardness(0.5F);

@@ -1,11 +1,11 @@
 package net.arcticraft.block;
 
+import static net.arcticraft.main.Arcticraft.MOD_ID;
+
 import java.util.List;
 
-import static net.arcticraft.main.Arcticraft.MOD_ID;
 import net.arcticraft.block.creativetabs.ACCreativeTabs;
 import net.arcticraft.main.Arcticraft;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -20,7 +20,9 @@ public class BlockACLog extends BlockLog
 {
 	public static final String[] logs = new String[] {"frost", "glacier"};
 
-	protected BlockACLog(){
+	protected BlockACLog(Material material){
+		this.setHardness(2.0F);
+		this.setResistance(5.0F);
 		this.setBlockName(MOD_ID + "_log");
 		this.setCreativeTab(ACCreativeTabs.acTabBlock);
 	}
