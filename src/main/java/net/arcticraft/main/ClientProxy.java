@@ -34,6 +34,7 @@ public class ClientProxy extends CommonProxy{
 		RenderingRegistry.registerEntityRenderingHandler(EntityBoar.class, new RenderBoar(new ModelBoar(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityPenguin.class, new RenderPenguin(new ModelPenguin(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityIceMage.class, new RenderIceMage(new ModelIceMage(), 0.6F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityCaveman.class, new RenderCaveman(new ModelCaveman(), 0.7F));	
 		RenderingRegistry.registerEntityRenderingHandler(EntityCannonball.class, new RenderCannonball(ACItems.cannonball));
 
 		TileEntitySpecialRenderer render = new TileEntityCampfireRender();
@@ -44,6 +45,11 @@ public class ClientProxy extends CommonProxy{
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ACBlocks.cannon), new ItemCannonRender());
 	
 		MinecraftForgeClient.registerItemRenderer(ACItems.cannonball, (IItemRenderer) new ItemCannonballRender());
+		
+		render = new TileEntityCavemanRender();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCaveman.class, new TileEntityCavemanRender());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ACBlocks.caveman), new ItemCavemanRender(render));
+		
 	}
 
 	@Override

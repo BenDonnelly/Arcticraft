@@ -2,6 +2,7 @@ package net.arcticraft.entities.passive;
 
 import net.arcticraft.block.ACBlocks;
 import net.arcticraft.item.ACItems;
+import net.arcticraft.main.Arcticraft;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIFollowParent;
@@ -20,7 +21,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityPenguin extends EntityAnimal {
+public class EntityPenguin extends EntityAnimal{
 
 	public EntityPenguin(World world){
 		super(world);
@@ -50,28 +51,37 @@ public class EntityPenguin extends EntityAnimal {
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.45D);
 	}
 
-	// TODO Penguin sounds
-	/*
-	 * @Override protected String getLivingSound() { return "ac:mobs.penguin_idle"; }
-	 * 
-	 * protected String getHurtSound() { return "ac:mobs.penguin_hurt"; }
-	 * 
-	 * protected String getDeathSound() { return "ac:mobs.penguin_death"; }
-	 */
+	@Override
+	public String getLivingSound()
+	{
+		return Arcticraft.MOD_ID + ":mob.penguin.living";
+	}
+
+	@Override
+	public String getHurtSound()
+	{
+		return Arcticraft.MOD_ID + ":mob.penguin.hurt";
+	}
+
+	@Override
+	public String getDeathSound()
+	{
+		return Arcticraft.MOD_ID + ":mob.penguin.death";
+	}
 
 	@Override
 	protected void dropFewItems(boolean recentlyHit, int lootingLevel)
 	{
-		int i = this.rand.nextInt(3 + lootingLevel);
+		int randNum = this.rand.nextInt(3 + lootingLevel);
 		int x;
-		for(x = 0; x < i; ++x)
+		for(x = 0; x < randNum; ++x)
 		{
 			this.dropItem(ACItems.penguinMeat, 1);
 		}
-		i = this.rand.nextInt(3 + lootingLevel);
-		for(x = 0; x < i; ++x)
+		randNum = this.rand.nextInt(3 + lootingLevel);
+		for(x = 0; x < randNum; ++x)
 		{
-			this.dropItem(ACItems.penguinFeather, 2);
+			this.dropItem(ACItems.penguinFeather, 1);
 		}
 	}
 
@@ -92,7 +102,7 @@ public class EntityPenguin extends EntityAnimal {
 			{
 				for(int z = (int) (this.posZ - r); z < (this.posZ + r); z++)
 				{
-					if(this.worldObj.getBlock(x, y, z) == ACBlocks.frostWaterIce) 
+					if(this.worldObj.getBlock(x, y, z) == ACBlocks.frostWaterIce)
 					{
 						System.out.println("Penguin has spawned. Location: " + this.posX + ", " + this.posY + ", " + this.posZ);
 						return true;
@@ -102,11 +112,10 @@ public class EntityPenguin extends EntityAnimal {
 		}
 
 		return false;
-		
-		/*int i = MathHelper.floor_double(this.posX);
-		int j = MathHelper.floor_double(this.boundingBox.minY);
-		int k = MathHelper.floor_double(this.posZ);
-		System.out.println("Penguin has spawned. Location: " + this.posX + ", " + this.posY + ", " + this.posZ);
-		return this.worldObj.getBlock(i, j - 1, k) == ACBlocks.frostWaterIce;*/	
+
+		/*
+		 * int i = MathHelper.floor_double(this.posX); int j = MathHelper.floor_double(this.boundingBox.minY); int k = MathHelper.floor_double(this.posZ); System.out.println("Penguin has spawned. Location: " + this.posX + ", " + this.posY + ", " +
+		 * this.posZ); return this.worldObj.getBlock(i, j - 1, k) == ACBlocks.frostWaterIce;
+		 */
 	}
 }

@@ -1,4 +1,56 @@
 {
-"block.fuse": {"category": "block","sounds": ["misc/fuse"]},
-"block.cannon": {"category": "block","sounds": ["misc/cannon"]}
+    "block.fuse": {
+        "category": "block",
+        "sounds": [
+            "misc/fuse"
+        ]
+    },
+    "block.cannon": {
+        "category": "block",
+        "sounds": [
+            "misc/cannon"
+        ]
+    },
+    "mob.caveman.living": {
+        "category": "neutral",
+        "sounds": [
+            "mobs/caveman/caveman_living"
+        ]
+    },
+    "mob.caveman.hurt": {
+        "category": "neutral",
+        "sounds": [
+            "mobs/caveman/caveman_hurt"
+        ]
+    },
+    "mob.caveman.death": {
+        "category": "neutral",
+        "sounds": [
+            "mobs/caveman/caveman_death"
+        ]
+    },
+    "mob.caveman.footstep": {
+        "category": "neutral",
+        "sounds": [
+            "mobs/caveman/caveman_footstep"
+        ]
+    },
+    "mob.penguin.living": {
+        "category": "neutral",
+        "sounds": [
+            "mobs/penguin/penguin_living"
+        ]
+    },
+    "mob.penguin.hurt": {
+        "category": "neutral",
+        "sounds": [
+            "mobs/penguin/penguin_hurt"
+        ]
+    },
+    "mob.penguin.death": {
+        "category": "neutral",
+        "sounds": [
+            "mobs/penguin/penguin_death"
+        ]
+    }
 }

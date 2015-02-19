@@ -1,10 +1,10 @@
-package net.arcticraft.enums;
+package net.arcticraft.item;
 
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.common.util.EnumHelper;
 
 
-public class EnumACToolMaterial{
+public class ACToolMaterial{
 
 	/*Sorted from best to worst*/
 	/**Params go as follows : name, harvest level(3 = DIAMOND, 2 = IRON, 1 = STONE, 0 = WOOD/GOLD), max uses, efficiency, damage, enchantability**/

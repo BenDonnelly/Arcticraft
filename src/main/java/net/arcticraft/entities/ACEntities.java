@@ -46,6 +46,7 @@ public class ACEntities
 		EntityRegistry.registerGlobalEntityID(EntityBoar.class, "Boar", EntityRegistry.findGlobalUniqueEntityId(), netherQuartzColour, netherQuartzColour);
 		EntityRegistry.registerGlobalEntityID(EntityPenguin.class, "Penguin", EntityRegistry.findGlobalUniqueEntityId(), blackColour, whiteColour);
 		EntityRegistry.registerGlobalEntityID(EntityIceMage.class, "IceMage", EntityRegistry.findGlobalUniqueEntityId(), kindaBlueColour, purpleBlueishColour);
+		EntityRegistry.registerGlobalEntityID(EntityCaveman.class, "Caveman", EntityRegistry.findGlobalUniqueEntityId(), lightBlueColour, blueishIcyColour);
 		EntityRegistry.registerModEntity(EntityCannonball.class, "Cannonball",EntityRegistry.findGlobalUniqueEntityId(), Arcticraft.arcticraftInstance, 128, 10, true);		
 		ACEntityRegistry.createEntity(EntitySled.class, "EntitySled", false, 0x00, 0x00, Arcticraft.arcticraftInstance);		
 	}

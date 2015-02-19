@@ -1,9 +1,9 @@
-package net.arcticraft.enums;
+package net.arcticraft.item;
 
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
 
-public class EnumACArmourMaterial{
+public class ACArmourMaterial{
 
 	
 	public static ArmorMaterial TekkiteArmour = EnumHelper.addArmorMaterial("Tekkite", 35, new int[] {3, 8, 6, 3}, 14);

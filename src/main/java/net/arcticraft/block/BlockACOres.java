@@ -37,6 +37,10 @@ public class BlockACOres extends Block{
 		{
 			return Item.getItemFromBlock(ACBlocks.glacianOre);
 		}
+		if(this == ACBlocks.eriumOre)
+		{
+			return ACItems.eriumGem;
+		}
 		if(this == ACBlocks.rigentemOre)
 		{
 			return Item.getItemFromBlock(ACBlocks.rigentemOre);
@@ -67,6 +71,7 @@ public class BlockACOres extends Block{
 		if(this == ACBlocks.escariaOre) this.setHarvestLevel("pickaxe", 2);
 		if(this == ACBlocks.glacianOre) this.setHarvestLevel("pickaxe", 1);
 		if(this == ACBlocks.frigusOre) this.setHarvestLevel("pickaxe", 0);
+		if(this == ACBlocks.eriumOre) this.setHarvestLevel("pickaxe", 0);
 		
 	}
 	

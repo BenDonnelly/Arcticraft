@@ -4,12 +4,14 @@ import static net.arcticraft.main.Arcticraft.MOD_ID;
 
 import java.util.Random;
 
+import net.arcticraft.block.creativetabs.ACCreativeTabs;
 import net.arcticraft.item.ItemLeafBlocks;
 import net.arcticraft.item.ItemLogBlocks;
 import net.arcticraft.item.ItemPlankBlocks;
 import net.arcticraft.item.ItemSlabBlocks;
 import net.arcticraft.tileentity.TileEntityCampfire;
 import net.arcticraft.tileentity.TileEntityCannon;
+import net.arcticraft.tileentity.TileEntityCaveman;
 import net.arcticraft.util.StringUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -24,6 +26,7 @@ public class ACBlocks{
 		initBlocks();
 		registerBlocks();
 	}
+
 
 	/* Core Dimension Blocks */
 	public static Block frostGrass, frostDirt;
@@ -45,17 +48,20 @@ public class ACBlocks{
 	public static Block frostStairs, glacierStairs;
 	public static Block frostDoor;
 	public static Block frostLadder;
+	public static Block tekkiteBlock, escariaBlock, glacianBlock, eriumBlock, rigentemBlock, frigusBlock;
 	
 	/* Ores - Ordered in rarity*/
 	public static Block tekkiteOre;
 	public static Block escariaOre;
 	public static Block glacianOre;
+	public static Block eriumOre;
 	public static Block rigentemOre;
 	public static Block frigusOre;
 
 	/* Tile Entity Blocks */
 	public static Block campfire;
 	public static Block cannon;
+	public static Block caveman;
 	
 	/* Miscellaneous */
 	public static Block mysticalSnow;
@@ -91,11 +97,12 @@ public class ACBlocks{
 		frostSnow = new BlockFrostSnow();
 		
 		/* Ores */
-		tekkiteOre = new BlockACOres().setBlockName(MOD_ID + "_tekkiteOre").setBlockTextureName(MOD_ID + ":ore_tekkite");
-	 	escariaOre = new BlockACOres().setBlockName(MOD_ID + "_escariaOre").setBlockTextureName(MOD_ID + ":ore_escaria");
-		glacianOre = new BlockACOres().setBlockName(MOD_ID + "_glacianOre").setBlockTextureName(MOD_ID + ":ore_glacian");
-		rigentemOre = new BlockACOres().setBlockName(MOD_ID + "_rigentemOre").setBlockTextureName(MOD_ID + ":ore_rigentem");
-		frigusOre = new BlockACOres().setBlockName(MOD_ID + "_frigusOre").setBlockTextureName(MOD_ID + ":ore_frigus");
+		tekkiteOre = new BlockACOres().setBlockName(MOD_ID + "_tekkiteOre").setBlockName(MOD_ID +"_tekkiteOre").setBlockTextureName(MOD_ID + ":ores/ore_tekkite");
+	 	escariaOre = new BlockACOres().setBlockName(MOD_ID + "_escariaOre").setBlockName(MOD_ID +"_escariaOre").setBlockTextureName(MOD_ID + ":ores/ore_escaria");
+		glacianOre = new BlockACOres().setBlockName(MOD_ID + "_glacianOre").setBlockName(MOD_ID +"_glacianOre").setBlockTextureName(MOD_ID + ":ores/ore_glacian");
+		eriumOre = new BlockACOres().setBlockName(MOD_ID + "_eriumOre").setBlockName(MOD_ID +"_eriumOre").setBlockTextureName(MOD_ID + ":ores/ore_erium");
+		rigentemOre = new BlockACOres().setBlockName(MOD_ID + "_rigentemOre").setBlockName(MOD_ID +"_rigentemOre").setBlockTextureName(MOD_ID + ":ores/ore_rigentem");
+		frigusOre = new BlockACOres().setBlockName(MOD_ID + "_frigusOre").setBlockName(MOD_ID +"_frigusOre").setBlockTextureName(MOD_ID + ":ores/ore_frigus");
 		
 		/* Decorative Blocks */
 		acSlab = new BlockACSlab(false);
@@ -105,16 +112,24 @@ public class ACBlocks{
 		frostLadder = new BlockFrostLadder(Material.circuits);
 		frostDoor = new BlockFrostDoor(Material.wood);
 		
-		/* Miscellaneous */
-		mysticalSnow = new BlockMysticalSnow(Material.snow);
+		tekkiteBlock = new BlockAC(Material.iron).setHardness(5.0F).setResistance(5.0F).setBlockName(MOD_ID + "_tekkiteBlock").setBlockTextureName(MOD_ID + ":ores/full_blocks/tekkite").setCreativeTab(ACCreativeTabs.acTabDecoration);
+		escariaBlock = new BlockAC(Material.iron).setHardness(5.0F).setResistance(5.0F).setBlockName(MOD_ID + "_escariaBlock").setBlockTextureName(MOD_ID + ":ores/full_blocks/escaria").setCreativeTab(ACCreativeTabs.acTabDecoration);
+		glacianBlock = new BlockAC(Material.iron).setHardness(5.0F).setResistance(5.0F).setBlockName(MOD_ID + "_glacianBlock").setBlockTextureName(MOD_ID + ":ores/full_blocks/glacian").setCreativeTab(ACCreativeTabs.acTabDecoration);
+		rigentemBlock = new BlockAC(Material.iron).setHardness(5.0F).setResistance(5.0F).setBlockName(MOD_ID + "_rigentemBlock").setBlockTextureName(MOD_ID + ":ores/full_blocks/rigentem").setCreativeTab(ACCreativeTabs.acTabDecoration);
+		
+		/* Tile Entity Blocks */
 		campfire = new BlockCampfire(Material.wood);
 		cannon = new BlockCannon(Material.iron);
+		caveman = new BlockCaveman(Material.glass);
+		
+		/* Miscellaneous */
+		mysticalSnow = new BlockMysticalSnow(Material.snow);
 	}
 
 	public static void registerBlocks()
 	{
 		Block[] blockList = {frostGrass, frostDirt, frostStone, frostCobble, frostWaterBlock, arcaneStone, frostWaterIce, frostSnow, tekkiteOre, escariaOre, glacianOre, rigentemOre, frigusOre
-				,mysticalSnow, campfire, cannon, frostLadder, frostDoor};
+				,mysticalSnow, campfire, cannon, frostLadder, frostDoor, eriumOre, tekkiteBlock, escariaBlock, glacianBlock, rigentemBlock, caveman};
 
 		for(Block block : blockList)
 		{
@@ -133,5 +148,7 @@ public class ACBlocks{
 	
 		GameRegistry.registerTileEntity(TileEntityCampfire.class, "tileEntityCampfire");
 		GameRegistry.registerTileEntity(TileEntityCannon.class, "tileEntityCannon");
+		GameRegistry.registerTileEntity(TileEntityCaveman.class, "tileEntityCaveman");
 	}
+	
 }
