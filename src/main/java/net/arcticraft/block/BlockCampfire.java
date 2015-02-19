@@ -18,7 +18,7 @@ public class BlockCampfire extends BlockContainer{
 	public BlockCampfire(Material material){
 		super(material);
 		this.setBlockName(Arcticraft.MOD_ID + "_" + "campfire");
-		this.setBlockTextureName(Arcticraft.MOD_ID + ":campfire_dummy");
+		this.setBlockTextureName(Arcticraft.MOD_ID + ":campfire_icon_dummy");
 		this.setHardness(1.5F);
 		this.setLightLevel(1.0F);
 		this.setStepSound(Block.soundTypeWood);

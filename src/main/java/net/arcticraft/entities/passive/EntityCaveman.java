@@ -95,6 +95,9 @@ public class EntityCaveman extends EntityMob{
 					return true;
 				}
 			}
+			else{
+				player.addChatMessage(new ChatComponentText("No reward for you! I'm going to kill you"));
+			}
 		}
 		if(collectedReward)
 		{
