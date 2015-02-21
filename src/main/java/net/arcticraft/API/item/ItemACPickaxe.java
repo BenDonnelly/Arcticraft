@@ -1,11 +1,11 @@
-package net.arcticraft.item;
+package net.arcticraft.API.item;
 
 import java.util.Set;
 
 import com.google.common.collect.Sets;
 
+import net.arcticraft.API.block.creativetabs.ACCreativeTabs;
 import net.arcticraft.block.ACBlocks;
-import net.arcticraft.block.creativetabs.ACCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemPickaxe;
@@ -17,7 +17,7 @@ public class ItemACPickaxe extends ItemPickaxe{
 			Blocks.netherrack, Blocks.lapis_ore, Blocks.lapis_block, Blocks.redstone_ore, Blocks.lit_redstone_ore, Blocks.rail, Blocks.detector_rail, Blocks.golden_rail, Blocks.activator_rail,
 			/*START OF AC BLOCKS*/ ACBlocks.arcaneStone, ACBlocks.escariaOre, ACBlocks.frigusOre, ACBlocks.frostCobble, ACBlocks.frostStone, ACBlocks.glacianOre, ACBlocks.rigentemOre, ACBlocks.tekkiteOre});
 
-	protected ItemACPickaxe(ToolMaterial toolMaterial){
+	public ItemACPickaxe(ToolMaterial toolMaterial){
 		super(toolMaterial);
 		this.setCreativeTab(ACCreativeTabs.acTabTools);
 	}

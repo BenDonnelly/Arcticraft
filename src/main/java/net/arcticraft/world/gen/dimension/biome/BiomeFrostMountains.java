@@ -26,7 +26,7 @@ public class BiomeFrostMountains extends ACBiomeGenBase
 		this.spawnableMonsterList.clear();
 		this.spawnableWaterCreatureList.clear();
 		this.spawnableCaveCreatureList.clear();
-		this.spawnableCreatureList.add(new SpawnListEntry(EntityPenguin.class, 8, 2, 6));
+		//this.spawnableCreatureList.add(new SpawnListEntry(EntityPenguin.class, 8, 2, 6));
 		
 		this.setHeight(new BiomeGenBase.Height(0.2F, 2.3F));
 		this.setTemperatureRainfall(0.1F, 0.9F);

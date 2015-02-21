@@ -23,6 +23,27 @@ public class BlockFrostDoor extends BlockDoor{
 	@SideOnly(Side.CLIENT)
 	private IIcon[] iconArray;
 
+    /**
+     * Returns which pass should this block be rendered on. 0 for solids and 1 for alpha
+     */
+    @SideOnly(Side.CLIENT)
+    @Override
+    public int getRenderBlockPass()
+    {
+        return 1;
+    }
+    
+    /**
+     * Returns true if the given side of this block type should be rendered, if the adjacent block is at the given
+     * coordinates.  Args: blockAccess, x, y, z, side
+     */
+    @SideOnly(Side.CLIENT)
+    @Override
+    public boolean shouldSideBeRendered(IBlockAccess p_149646_1_, int p_149646_2_, int p_149646_3_, int p_149646_4_, int p_149646_5_)
+    {
+        return super.shouldSideBeRendered(p_149646_1_, p_149646_2_, p_149646_3_, p_149646_4_, 1 - p_149646_5_);
+    }
+	
 	public BlockFrostDoor(Material material){
 		super(material);
 		this.setBlockName(Arcticraft.MOD_ID + "_frostDoor");
@@ -118,5 +139,4 @@ public class BlockFrostDoor extends BlockDoor{
 	{
 		return ACItems.frostDoor;
 	}
-
 }

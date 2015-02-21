@@ -2,7 +2,7 @@ package net.arcticraft.block;
 
 import java.util.Random;
 
-import net.arcticraft.block.creativetabs.ACCreativeTabs;
+import net.arcticraft.API.block.creativetabs.ACCreativeTabs;
 import net.arcticraft.item.ACItems;
 import net.arcticraft.main.Arcticraft;
 import net.arcticraft.tileentity.TileEntityCannon;

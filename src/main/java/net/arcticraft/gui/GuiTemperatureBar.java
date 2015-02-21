@@ -24,11 +24,11 @@ public class GuiTemperatureBar extends Gui{
 	}
 
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
-	public void onRenderExperienceBar(RenderGameOverlayEvent event)
+	public void onRender(RenderGameOverlayEvent event)
 	{
 		if(this.mc.thePlayer.dimension == 3)
 		{
-			if(event.isCancelable() || event.type != ElementType.EXPERIENCE)
+			if(event.isCancelable() || event.type != ElementType.ALL)
 			{
 				return;
 			}

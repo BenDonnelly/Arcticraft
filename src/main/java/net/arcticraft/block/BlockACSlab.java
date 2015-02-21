@@ -3,7 +3,7 @@ package net.arcticraft.block;
 import java.util.List;
 import java.util.Random;
 
-import net.arcticraft.block.creativetabs.ACCreativeTabs;
+import net.arcticraft.API.block.creativetabs.ACCreativeTabs;
 import net.arcticraft.main.Arcticraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;

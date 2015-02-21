@@ -1,16 +1,35 @@
 package net.arcticraft.main;
 
 import net.arcticraft.block.ACBlocks;
-import net.arcticraft.entities.*;
-import net.arcticraft.entities.passive.*;
-import net.arcticraft.entities.render.*;
-import net.arcticraft.entities.model.*;
-import net.arcticraft.tileentity.*;
-import net.arcticraft.tileentity.renderers.*;
-import net.arcticraft.item.ACItems;
-import net.arcticraft.item.render.*;
-import net.arcticraft.gui.GuiFreezedScreen;
+import net.arcticraft.entities.EntityCannonball;
+import net.arcticraft.entities.EntitySled;
+import net.arcticraft.entities.model.ModelBoar;
+import net.arcticraft.entities.model.ModelCaveman;
+import net.arcticraft.entities.model.ModelIceMage;
+import net.arcticraft.entities.model.ModelPenguin;
+import net.arcticraft.entities.passive.EntityBoar;
+import net.arcticraft.entities.passive.EntityCaveman;
+import net.arcticraft.entities.passive.EntityIceMage;
+import net.arcticraft.entities.passive.EntityPenguin;
+import net.arcticraft.entities.render.RenderBoar;
+import net.arcticraft.entities.render.RenderCannonball;
+import net.arcticraft.entities.render.RenderCaveman;
+import net.arcticraft.entities.render.RenderIceMage;
+import net.arcticraft.entities.render.RenderPenguin;
+import net.arcticraft.entities.render.RenderSled;
+import net.arcticraft.gui.GuiFrozenScreen;
 import net.arcticraft.gui.GuiTemperatureBar;
+import net.arcticraft.item.ACItems;
+import net.arcticraft.item.render.ItemCampfireRender;
+import net.arcticraft.item.render.ItemCannonRender;
+import net.arcticraft.item.render.ItemCannonballRender;
+import net.arcticraft.item.render.ItemCavemanRender;
+import net.arcticraft.tileentity.TileEntityCampfire;
+import net.arcticraft.tileentity.TileEntityCannon;
+import net.arcticraft.tileentity.TileEntityCaveman;
+import net.arcticraft.tileentity.renderers.TileEntityCampfireRender;
+import net.arcticraft.tileentity.renderers.TileEntityCannonRender;
+import net.arcticraft.tileentity.renderers.TileEntityCavemanRender;
 import net.arcticraft.world.gen.dimension.WorldProviderDim;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
@@ -28,7 +47,7 @@ public class ClientProxy extends CommonProxy{
 	public void registerRenderThings()
 	{
 		MinecraftForge.EVENT_BUS.register(new GuiTemperatureBar(Minecraft.getMinecraft()));
-		MinecraftForge.EVENT_BUS.register(new GuiFreezedScreen(Minecraft.getMinecraft()));
+		MinecraftForge.EVENT_BUS.register(new GuiFrozenScreen(Minecraft.getMinecraft()));
 
 		RenderingRegistry.registerEntityRenderingHandler(EntitySled.class, new RenderSled());
 		RenderingRegistry.registerEntityRenderingHandler(EntityBoar.class, new RenderBoar(new ModelBoar(), 0.5F));

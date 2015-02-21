@@ -1,34 +1,80 @@
 package net.arcticraft.block;
 
+import static net.arcticraft.main.Arcticraft.MOD_ID;
+
 import java.util.ArrayList;
 import java.util.Random;
 
-import static net.arcticraft.main.Arcticraft.MOD_ID;
-import net.arcticraft.block.creativetabs.ACCreativeTabs;
+import net.arcticraft.API.block.creativetabs.ACCreativeTabs;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockIce;
+import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.world.EnumSkyBlock;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 
-public class BlockFrostWaterIce extends BlockIce
+public class BlockFrostWaterIce extends BlockBreakable
 {
-	public BlockFrostWaterIce(Material material)
+	public BlockFrostWaterIce()
 	{
+		super("ice", Material.ice, false);
+		
 		this.setBlockName(MOD_ID + "_frostWaterIce");
 		this.setHardness(0.5F);
 		this.setStepSound(soundTypeGlass);
 		this.slipperiness = 1.0F;
+		this.setTickRandomly(true);
 		this.setCreativeTab(ACCreativeTabs.acTabBlock);
 	}
+	
+    /**
+     * Returns which pass should this block be rendered on. 0 for solids and 1 for alpha
+     */
+    @SideOnly(Side.CLIENT)
+    @Override
+    public int getRenderBlockPass()
+    {
+        return 1;
+    }
+    
+    /**
+     * Returns the mobility information of the block, 0 = free, 1 = can't push but can move over, 2 = total immobility
+     * and stop pistons
+     */
+    @Override
+    public int getMobilityFlag()
+    {
+        return 0;
+    }
+
+    /**
+     * Returns the quantity of items to drop on block destruction.
+     */
+    @Override
+    public int quantityDropped(Random p_149745_1_)
+    {
+        return 0;
+    }
+
+    /**
+     * Returns true if the given side of this block type should be rendered, if the adjacent block is at the given
+     * coordinates.  Args: blockAccess, x, y, z, side
+     */
+    @SideOnly(Side.CLIENT)
+    @Override
+    public boolean shouldSideBeRendered(IBlockAccess p_149646_1_, int p_149646_2_, int p_149646_3_, int p_149646_4_, int p_149646_5_)
+    {
+        return super.shouldSideBeRendered(p_149646_1_, p_149646_2_, p_149646_3_, p_149646_4_, 1 - p_149646_5_);
+    }
 	
 	@Override
     public void harvestBlock(World world, EntityPlayer entityPlayer, int x, int y, int z, int p_149636_6_)
@@ -66,25 +112,5 @@ public class BlockFrostWaterIce extends BlockIce
                 world.setBlock(x, y, z, ACBlocks.frostWaterBlock);
             }
         }
-    }
-
-
-    /**
-     * Ticks the block if it's been scheduled
-     */
-    @Override
-    public void updateTick(World world, int x, int y, int z, Random rand)
-    {
-        /*if (world.getSavedLightValue(EnumSkyBlock.Block, x, y, z) > 11 - this.getLightOpacity())
-        {
-            if (world.provider.isHellWorld)
-            {
-                world.setBlockToAir(x, y, z);
-                return;
-            }
-
-            this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
-            world.setBlock(x, y, z, ACBlocks.frostWaterBlock);
-        }*/
     }
 }

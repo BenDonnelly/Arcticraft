@@ -1,4 +1,4 @@
-package net.arcticraft.block.creativetabs;
+package net.arcticraft.API.block.creativetabs;
 
 import net.arcticraft.block.ACBlocks;
 import net.arcticraft.item.ACItems;
@@ -66,6 +66,16 @@ public class ACCreativeTabs
 		public Item getTabIconItem()
 		{
 			return ACItems.tekkiteHelmet; // TODO Replace this with a weapon
+		}
+	};
+	
+	public static final CreativeTabs acTabItem = new CreativeTabs("ac_tabItem")
+	{
+		@Override
+		@SideOnly(Side.CLIENT)
+		public Item getTabIconItem()
+		{
+			return ACItems.itemSled; // TODO Replace this with a weapon
 		}
 	};
 }

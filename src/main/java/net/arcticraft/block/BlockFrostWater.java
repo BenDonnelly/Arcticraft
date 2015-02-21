@@ -1,6 +1,6 @@
 package net.arcticraft.block;
 
-import net.arcticraft.block.creativetabs.ACCreativeTabs;
+import net.arcticraft.API.block.creativetabs.ACCreativeTabs;
 import net.arcticraft.main.Arcticraft;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;

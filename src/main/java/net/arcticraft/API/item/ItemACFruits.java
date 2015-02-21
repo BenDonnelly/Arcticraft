@@ -1,7 +1,8 @@
-package net.arcticraft.item;
+package net.arcticraft.API.item;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.arcticraft.item.ACItems;
 import net.arcticraft.main.Arcticraft;
 import net.arcticraft.world.gen.dimension.TeleporterDim;
 import net.minecraft.entity.player.EntityPlayer;

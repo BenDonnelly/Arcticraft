@@ -1,5 +1,6 @@
-package net.arcticraft.temperature;
+package net.arcticraft.API.temp;
 
+import net.arcticraft.temperature.TemperatureHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 

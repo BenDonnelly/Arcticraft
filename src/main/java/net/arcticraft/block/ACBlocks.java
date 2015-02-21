@@ -4,7 +4,8 @@ import static net.arcticraft.main.Arcticraft.MOD_ID;
 
 import java.util.Random;
 
-import net.arcticraft.block.creativetabs.ACCreativeTabs;
+import net.arcticraft.API.block.BlockBerryBush;
+import net.arcticraft.API.block.creativetabs.ACCreativeTabs;
 import net.arcticraft.item.ItemLeafBlocks;
 import net.arcticraft.item.ItemLogBlocks;
 import net.arcticraft.item.ItemPlankBlocks;
@@ -26,7 +27,6 @@ public class ACBlocks{
 		initBlocks();
 		registerBlocks();
 	}
-
 
 	/* Core Dimension Blocks */
 	public static Block frostGrass, frostDirt;
@@ -65,6 +65,11 @@ public class ACBlocks{
 	
 	/* Miscellaneous */
 	public static Block mysticalSnow;
+	public static Block frozenFarmland;
+	public static Block crystalGlass;
+	
+	/* Crops */
+	public static Block berryBush;
 	
 	public static void initBlocks()
 	{
@@ -93,7 +98,7 @@ public class ACBlocks{
 		acLogs = new BlockACLog(Material.wood);
 		acLeaves = new BlockACLeaves(Material.leaves);
 		acPlanks = new BlockACPlanks(Material.wood);
-		frostWaterIce = new BlockFrostWaterIce(Material.ice);
+		frostWaterIce = new BlockFrostWaterIce();
 		frostSnow = new BlockFrostSnow();
 		
 		/* Ores */
@@ -124,12 +129,17 @@ public class ACBlocks{
 		
 		/* Miscellaneous */
 		mysticalSnow = new BlockMysticalSnow(Material.snow);
+		frozenFarmland = new BlockFrozenFarmland().setBlockName("frozenFarmland").setBlockTextureName("ac:frozenFarmland");
+		crystalGlass = new BlockCrystalGlass().setBlockName("crystalGlass").setCreativeTab(ACCreativeTabs.acTabBlock);
+		
+		/* Crops */
+		berryBush = new BlockBerryBush().setBlockTextureName("ac:berry").setBlockName("berry");
 	}
 
 	public static void registerBlocks()
 	{
 		Block[] blockList = {frostGrass, frostDirt, frostStone, frostCobble, frostWaterBlock, arcaneStone, frostWaterIce, frostSnow, tekkiteOre, escariaOre, glacianOre, rigentemOre, frigusOre
-				,mysticalSnow, campfire, cannon, frostLadder, frostDoor, eriumOre, tekkiteBlock, escariaBlock, glacianBlock, rigentemBlock, caveman};
+				,mysticalSnow, campfire, cannon, frostLadder, frostDoor, eriumOre, tekkiteBlock, escariaBlock, glacianBlock, rigentemBlock, caveman, frozenFarmland, crystalGlass};
 
 		for(Block block : blockList)
 		{

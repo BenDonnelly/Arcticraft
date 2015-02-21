@@ -2,6 +2,7 @@ package net.arcticraft.temperature;
 
 import java.util.ArrayList;
 
+import net.arcticraft.API.temp.ITempComponent;
 import net.arcticraft.helpers.IExtendedPlayerProps;
 import net.arcticraft.temperature.handlers.LightvalueHandler;
 import net.minecraft.entity.SharedMonsterAttributes;

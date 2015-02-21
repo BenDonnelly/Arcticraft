@@ -1,8 +1,10 @@
 package net.arcticraft.block;
 
 import static net.arcticraft.main.Arcticraft.MOD_ID;
+
 import java.util.Random;
-import net.arcticraft.block.creativetabs.ACCreativeTabs;
+
+import net.arcticraft.API.block.creativetabs.ACCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -24,12 +26,11 @@ public class BlockFrostSnow extends Block
     {
         super(Material.snow);
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
-        this.setTickRandomly(true);
         this.setCreativeTab(ACCreativeTabs.acTabDecoration);
         this.setHardness(0.1F);
         this.setStepSound(soundTypeSnow);
         this.setBlockName(MOD_ID + "_frostSnow");
-        this.setLightOpacity(0);
+        this.setLightOpacity(3);
         this.setBlockTextureName("snow");
         this.func_150154_b(0);
     }
@@ -97,7 +98,7 @@ public class BlockFrostSnow extends Block
     public boolean canPlaceBlockAt(World p_149742_1_, int p_149742_2_, int p_149742_3_, int p_149742_4_)
     {
         Block block = p_149742_1_.getBlock(p_149742_2_, p_149742_3_ - 1, p_149742_4_);
-        return block != Blocks.air ? (block.isLeaves(p_149742_1_, p_149742_2_, p_149742_3_ - 1, p_149742_4_) ? true : (block == this && (p_149742_1_.getBlockMetadata(p_149742_2_, p_149742_3_ - 1, p_149742_4_) & 7) == 7 ? true : block.isOpaqueCube() && block.getMaterial().blocksMovement())) : false;
+        return block != Blocks.ice && block != Blocks.packed_ice ? (block.isLeaves(p_149742_1_, p_149742_2_, p_149742_3_ - 1, p_149742_4_) ? true : (block == this && (p_149742_1_.getBlockMetadata(p_149742_2_, p_149742_3_ - 1, p_149742_4_) & 7) == 7 ? true : block.isOpaqueCube() && block.getMaterial().blocksMovement())) : false;
     }
 
     /**
@@ -150,10 +151,7 @@ public class BlockFrostSnow extends Block
      */
     public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
     {
-        /*if (p_149674_1_.getSavedLightValue(EnumSkyBlock.Block, p_149674_2_, p_149674_3_, p_149674_4_) > 11)
-        {
-            p_149674_1_.setBlockToAir(p_149674_2_, p_149674_3_, p_149674_4_);
-        }*/
+    	
     }
 
     /**

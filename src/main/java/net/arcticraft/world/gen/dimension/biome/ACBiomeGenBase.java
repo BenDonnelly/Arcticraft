@@ -22,6 +22,7 @@ public class ACBiomeGenBase extends BiomeGenBase
 	public static final ACBiomeGenBase glacier;
 	public static final ACBiomeGenBase snowPlains;
 	public static final ACBiomeGenBase frostOcean;
+	public static final ACBiomeGenBase frozenOcean;
 	protected WorldGenACTrees genGlacierTrees;
 	protected WorldGenFrostTrees genFrostTrees;
 
@@ -35,7 +36,7 @@ public class ACBiomeGenBase extends BiomeGenBase
 		this.spawnableMonsterList.clear();
 		this.spawnableWaterCreatureList.clear();
 		this.spawnableCaveCreatureList.clear();
-		this.spawnableCreatureList.add(new SpawnListEntry(EntityPenguin.class, 8, 2, 6));
+		//this.spawnableCreatureList.add(new SpawnListEntry(EntityPenguin.class, 8, 2, 6));
 		this.genGlacierTrees = new WorldGenACTrees();
 		this.genFrostTrees = new WorldGenFrostTrees(true);
 	}
@@ -53,6 +54,7 @@ public class ACBiomeGenBase extends BiomeGenBase
 		glacier = (ACBiomeGenBase) (new BiomeGlacier(143)).setBiomeName("Glacier");
 		snowPlains = (ACBiomeGenBase) (new BiomeSnowPlains(144)).setBiomeName("Snow Plains");
 		frostOcean = (ACBiomeGenBase) (new BiomeFrostOcean(145)).setBiomeName("Arctic Ocean");
+		frozenOcean = (ACBiomeGenBase) (new BiomeIceHills(146)).setBiomeName("Frozen Ocean");
 	}
     
 	public static void registerWithBiomeDictionary()
@@ -62,6 +64,7 @@ public class ACBiomeGenBase extends BiomeGenBase
         BiomeDictionary.registerBiomeType(snowPlains, Type.COLD);
         BiomeDictionary.registerBiomeType(frostMountains, Type.COLD);
         BiomeDictionary.registerBiomeType(frostOcean, Type.COLD);
+        BiomeDictionary.registerBiomeType(frozenOcean, Type.COLD);
         BiomeDictionary.registerAllBiomes();
     }
 	

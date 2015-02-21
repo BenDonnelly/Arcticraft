@@ -1,6 +1,7 @@
 package net.arcticraft.main;
 
 import net.arcticraft.block.ACBlocks;
+import net.arcticraft.contentPacks.CPackMain;
 import net.arcticraft.crafting.ACCraftingRecipes;
 import net.arcticraft.entities.ACEntities;
 import net.arcticraft.helpers.CommandChangeTemperature;
@@ -49,6 +50,8 @@ public class Arcticraft{
 	public TeleporterDim tper = null;
 	public boolean initialized = false;
 	
+	protected static CPackMain cPackMain = new CPackMain();
+	
 	@SidedProxy(clientSide = "net.arcticraft.main.ClientProxy", serverSide = "net.arcticraft.main.CommonProxy")
 	public static CommonProxy proxy;
 
@@ -56,18 +59,21 @@ public class Arcticraft{
 	public static Arcticraft arcticraftInstance;
 
 	@EventHandler
-	public static void preLoad(FMLPreInitializationEvent PreEvent)
+	public static void preInit(FMLPreInitializationEvent PreEvent)
 	{
 		VectorUtils.init();
 		ACBlocks.loadBlocks();
 		ACItems.loadItems();
 		ACCraftingRecipes.loadRecipes();
+		
+		cPackMain.preInit();
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
 		FMLCommonHandler.instance().bus().register(new TickPlayerEvent());
+		FMLCommonHandler.instance().bus().register(cPackMain);
 		MinecraftForge.EVENT_BUS.register(new ForgeEvents());
 		
 		proxy.registerRenderThings();
@@ -77,6 +83,8 @@ public class Arcticraft{
     	GameRegistry.registerWorldGenerator(new WorldGenACTrees(), 0);
     	GameRegistry.registerWorldGenerator(new WorldGenIceberg(), 0);
     	GameRegistry.registerWorldGenerator(new WorldGenMageTower(), 0);
+    	
+    	cPackMain.init();
 	}
 	
 	@EventHandler

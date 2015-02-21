@@ -1,10 +1,20 @@
 package net.arcticraft.item;
 
 import static net.arcticraft.main.Arcticraft.MOD_ID;
-import net.arcticraft.block.creativetabs.ACCreativeTabs;
+import net.arcticraft.API.block.creativetabs.ACCreativeTabs;
+import net.arcticraft.API.item.ItemACArmour;
+import net.arcticraft.API.item.ItemACAxe;
+import net.arcticraft.API.item.ItemACFruits;
+import net.arcticraft.API.item.ItemACHoe;
+import net.arcticraft.API.item.ItemACPickaxe;
+import net.arcticraft.API.item.ItemACSeeds;
+import net.arcticraft.API.item.ItemACSpade;
+import net.arcticraft.API.item.ItemACSword;
+import net.arcticraft.block.ACBlocks;
 import net.arcticraft.main.Arcticraft;
 import net.arcticraft.util.StringUtils;
 import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemFood;
@@ -103,6 +113,9 @@ public class ACItems {
 	public static Item glacianBoots;
 	public static Item rigentemBoots;
 	
+	/* Crops */
+	public static Item berrySeed;
+	public static Item berry;
 	
 	public static void initItems()
 	{
@@ -124,7 +137,7 @@ public class ACItems {
 		boarMeatCooked = new ItemFood(8, true).setUnlocalizedName(MOD_ID + "_boarMeatCooked").setTextureName(MOD_ID + ":food/boar/boar_meat_cooked").setCreativeTab(ACCreativeTabs.acTabFood);
 		
 		/* Miscellaneous */
-		itemSled = new ItemSled().setUnlocalizedName(MOD_ID + "_sled").setTextureName(MOD_ID + ":sled_icon").setCreativeTab(ACCreativeTabs.acTabBlock);
+		itemSled = new ItemSled().setUnlocalizedName(MOD_ID + "_sled").setTextureName(MOD_ID + ":sled_icon").setCreativeTab(ACCreativeTabs.acTabItem);
 		mystFruit = new ItemACFruits().setUnlocalizedName(MOD_ID + "_mystFruit").setTextureName(MOD_ID + ":food/fruits/myst_fruit").setCreativeTab(ACCreativeTabs.acTabFood);
 		glacierFruit = new ItemACFruits().setUnlocalizedName(MOD_ID + "_glacierFruit").setTextureName(MOD_ID + ":food/fruits/glacier_fruit").setCreativeTab(ACCreativeTabs.acTabFood);
 		cannonball = new Item().setFull3D().setUnlocalizedName(MOD_ID + "_cannonball").setTextureName(MOD_ID + ":cannonball").setCreativeTab(ACCreativeTabs.acTabCombat);
@@ -196,7 +209,9 @@ public class ACItems {
 		glacianBoots = new ItemACArmour(ACArmourMaterial.GlacianArmour, Arcticraft.proxy.addArmor("Glacian"), 3).setUnlocalizedName("glacianBoots").setTextureName(MOD_ID + ":armour/glacian/boots_glacian");
 		rigentemBoots = new ItemACArmour(ACArmourMaterial.RigentemArmour, Arcticraft.proxy.addArmor("Rigentem"), 3).setUnlocalizedName("rigentemBoots").setTextureName(MOD_ID + ":armour/rigentem/boots_rigentem");
 		
-
+		/* Crops */
+		berrySeed = new ItemACSeeds(ACBlocks.berryBush, Blocks.farmland).setUnlocalizedName("berrySeed").setTextureName("ac:berrySeed").setCreativeTab(ACCreativeTabs.acTabItem);
+		berry = new ItemFood(6, false).setCreativeTab(ACCreativeTabs.acTabFood).setUnlocalizedName("berry").setTextureName("ac:whiteberry");
 	}
 
 	public static void registerItems() {

@@ -21,8 +21,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityPenguin extends EntityAnimal{
-
+public class EntityPenguin extends EntityAnimal {
 	public EntityPenguin(World world){
 		super(world);
 		double speed = this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getAttributeValue();
@@ -95,7 +94,7 @@ public class EntityPenguin extends EntityAnimal{
 	public boolean getCanSpawnHere()
 	{
 		int r = 8;
-		System.out.println("callerino");
+
 		for(int x = (int) (this.posX - r); x < (this.posX + r); x++)
 		{
 			for(int y = (int) (this.posY - r); y < (this.posY + (r / 2)); y++)
@@ -104,7 +103,6 @@ public class EntityPenguin extends EntityAnimal{
 				{
 					if(this.worldObj.getBlock(x, y, z) == ACBlocks.frostWaterIce)
 					{
-						System.out.println("Penguin has spawned. Location: " + this.posX + ", " + this.posY + ", " + this.posZ);
 						return true;
 					}
 				}

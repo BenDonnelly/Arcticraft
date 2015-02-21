@@ -1,10 +1,11 @@
 package net.arcticraft.block;
 
+import java.util.ArrayList;
 import java.util.Random;
 
-import net.arcticraft.block.creativetabs.ACCreativeTabs;
+import net.arcticraft.API.block.creativetabs.ACCreativeTabs;
+import net.arcticraft.API.item.ItemACPickaxe;
 import net.arcticraft.item.ACItems;
-import net.arcticraft.item.ItemACPickaxe;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,7 +14,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class BlockACOres extends Block{
-
+	public ArrayList<Block> oreList = new ArrayList<Block>();
+	
 	/* All ordered in rarity */
 
 	protected BlockACOres(){
@@ -44,7 +46,11 @@ public class BlockACOres extends Block{
 		if(this == ACBlocks.rigentemOre)
 		{
 			return Item.getItemFromBlock(ACBlocks.rigentemOre);
-		}
+		}		
+		if(oreList.contains(this))
+		{
+			return Item.getItemFromBlock(this);
+		}		
 		else
 			return ACItems.frigus;
 	}

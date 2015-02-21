@@ -1,6 +1,6 @@
 package net.arcticraft.temperature.handlers;
 
-import net.arcticraft.temperature.ITempComponent;
+import net.arcticraft.API.temp.ITempComponent;
 import net.arcticraft.temperature.TemperatureHandler;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;

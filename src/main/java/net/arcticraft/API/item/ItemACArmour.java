@@ -1,7 +1,8 @@
-package net.arcticraft.item;
+package net.arcticraft.API.item;
 
 import static net.arcticraft.main.Arcticraft.MOD_ID;
-import net.arcticraft.block.creativetabs.ACCreativeTabs;
+import net.arcticraft.API.block.creativetabs.ACCreativeTabs;
+import net.arcticraft.item.ACItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -16,7 +17,6 @@ public class ItemACArmour extends ItemArmor{
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 	{
-
 		if(stack.getItem() == ACItems.tekkiteHelmet || stack.getItem() == ACItems.tekkiteChest || stack.getItem() == ACItems.tekkiteBoots)
 		{
 			return MOD_ID + ":textures/items/armour/tekkite/tektite_1.png";
@@ -53,6 +53,5 @@ public class ItemACArmour extends ItemArmor{
 		{
 			return null;
 		}
-
 	}
 }

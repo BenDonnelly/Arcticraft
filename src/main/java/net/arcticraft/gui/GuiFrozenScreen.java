@@ -14,12 +14,12 @@ import org.lwjgl.opengl.GL11;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
-public class GuiFreezedScreen extends Gui {
+public class GuiFrozenScreen extends Gui {
 	private Minecraft mc;
 	private static final ResourceLocation texturepath = new ResourceLocation(
 			Arcticraft.MOD_ID, "textures/gui/freezing.png");
 
-	public GuiFreezedScreen(Minecraft mc) {
+	public GuiFrozenScreen(Minecraft mc) {
 		super();
 		this.mc = mc;
 	}
@@ -42,10 +42,10 @@ public class GuiFreezedScreen extends Gui {
     }
 	
 	@SubscribeEvent(priority = EventPriority.LOWEST)
-	public void onRenderExperienceBar(RenderGameOverlayEvent event) {
+	public void onRender(RenderGameOverlayEvent event) {
 		if(this.mc.thePlayer.dimension == 3)
 		{
-			if (event.isCancelable() || event.type != ElementType.EXPERIENCE) {
+			if (event.isCancelable() || event.type != ElementType.ALL) {
 				return;
 			}
 

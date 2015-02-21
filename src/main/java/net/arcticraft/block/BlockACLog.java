@@ -4,7 +4,7 @@ import static net.arcticraft.main.Arcticraft.MOD_ID;
 
 import java.util.List;
 
-import net.arcticraft.block.creativetabs.ACCreativeTabs;
+import net.arcticraft.API.block.creativetabs.ACCreativeTabs;
 import net.arcticraft.main.Arcticraft;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.material.Material;

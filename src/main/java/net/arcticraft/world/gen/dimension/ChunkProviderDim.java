@@ -6,11 +6,14 @@ import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.Ev
 import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.DUNGEON;
 import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.ICE;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import net.arcticraft.API.gen.IGenComponent;
+import net.arcticraft.API.temp.ITempComponent;
 import net.arcticraft.block.ACBlocks;
-import net.arcticraft.temperature.ITempComponent;
+import net.arcticraft.main.Arcticraft;
 import net.arcticraft.temperature.TemperatureHandler;
 import net.arcticraft.world.gen.MapGenFrostCaves;
 import net.arcticraft.world.gen.WorldGenACTrees;
@@ -81,6 +84,9 @@ public class ChunkProviderDim implements ITempComponent, IChunkProvider
     double[] field_147425_f;
     double[] field_147426_g;
     int[][] field_73219_j = new int[32][32];
+    
+    public ArrayList<IGenComponent> genList = new ArrayList<IGenComponent>();
+    
     private static final String __OBFID = "CL_00000396";
 
     {
@@ -183,7 +189,7 @@ public class ChunkProviderDim implements ITempComponent, IChunkProvider
                                 }
                                 else if (k2 * 8 + l2 < b0)
                                 {
-                                    p_147424_3_[j3 += short1] = ACBlocks.frostWaterIce;
+                                	p_147424_3_[j3 += short1] = ACBlocks.frostWaterBlock;
                                 }
                                 else
                                 {
@@ -547,6 +553,31 @@ public class ChunkProviderDim implements ITempComponent, IChunkProvider
 			if(this.worldObj.getBlock(x, y - 1, z) == ACBlocks.frostWaterIce && this.worldObj.getBlock(x, y + 1, z) == Blocks.air)
 			{
 				(new WorldGenIceberg()).generate(worldObj, rand, x, y, z);
+			}
+		}
+		
+		for(IGenComponent tmp : genList)
+		{
+			if(tmp != null)
+			{
+				int x = p_73153_2_ * 16 + rand.nextInt(16);
+				int y = tmp.maxHeight - 1;
+				int z = p_73153_3_ * 16 + rand.nextInt(16);
+
+				while(y > tmp.minHeight)
+				{
+					if(y == tmp.maxHeight)
+					{
+						break;
+					}
+					
+					y -= 1;
+				}
+				
+				if(tmp.bottomBlocks.contains(this.worldObj.getBlock(x, y + tmp.heightFromGround, z).getClass()) && this.worldObj.getBlock(x, y + tmp.heightFromGround, z) == Blocks.air)
+				{
+					tmp.generate(worldObj, rand, x, y, z);
+				}
 			}
 		}
 		

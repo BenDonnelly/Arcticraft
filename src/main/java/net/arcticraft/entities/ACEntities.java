@@ -1,9 +1,14 @@
 package net.arcticraft.entities;
 
-import cpw.mods.fml.common.registry.EntityRegistry;
-import net.arcticraft.entities.passive.*;
+import net.arcticraft.entities.passive.EntityBoar;
+import net.arcticraft.entities.passive.EntityCaveman;
+import net.arcticraft.entities.passive.EntityIceMage;
+import net.arcticraft.entities.passive.EntityPenguin;
 import net.arcticraft.main.Arcticraft;
-import net.minecraft.world.World;
+import net.arcticraft.world.gen.dimension.GenLayerBiomesDim;
+import net.arcticraft.world.gen.dimension.biome.ACBiomeGenBase;
+import net.minecraft.entity.EnumCreatureType;
+import cpw.mods.fml.common.registry.EntityRegistry;
 
 public class ACEntities
 {
@@ -43,11 +48,19 @@ public class ACEntities
 	
 	public static void registerEntities()
 	{
+		ACEntityRegistry.createEntity(EntityCannonball.class, "Cannonball", false, 0x00, 0x00, Arcticraft.arcticraftInstance);	
+		ACEntityRegistry.createEntity(EntitySled.class, "EntitySled", false, 0x00, 0x00, Arcticraft.arcticraftInstance);
 		EntityRegistry.registerGlobalEntityID(EntityBoar.class, "Boar", EntityRegistry.findGlobalUniqueEntityId(), netherQuartzColour, netherQuartzColour);
 		EntityRegistry.registerGlobalEntityID(EntityPenguin.class, "Penguin", EntityRegistry.findGlobalUniqueEntityId(), blackColour, whiteColour);
 		EntityRegistry.registerGlobalEntityID(EntityIceMage.class, "IceMage", EntityRegistry.findGlobalUniqueEntityId(), kindaBlueColour, purpleBlueishColour);
 		EntityRegistry.registerGlobalEntityID(EntityCaveman.class, "Caveman", EntityRegistry.findGlobalUniqueEntityId(), lightBlueColour, blueishIcyColour);
-		EntityRegistry.registerModEntity(EntityCannonball.class, "Cannonball",EntityRegistry.findGlobalUniqueEntityId(), Arcticraft.arcticraftInstance, 128, 10, true);		
-		ACEntityRegistry.createEntity(EntitySled.class, "EntitySled", false, 0x00, 0x00, Arcticraft.arcticraftInstance);		
+
+		for(ACBiomeGenBase tmp : GenLayerBiomesDim.allowedBiomes)
+		{
+			if(tmp != null)
+			{
+				EntityRegistry.addSpawn(EntityPenguin.class, 1, 1, 1, EnumCreatureType.ambient, tmp);
+			}
+		}
 	}
 }
