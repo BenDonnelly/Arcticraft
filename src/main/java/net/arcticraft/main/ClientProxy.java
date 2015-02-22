@@ -1,22 +1,11 @@
 package net.arcticraft.main;
 
 import net.arcticraft.block.ACBlocks;
-import net.arcticraft.entities.EntityCannonball;
-import net.arcticraft.entities.EntitySled;
-import net.arcticraft.entities.model.ModelBoar;
-import net.arcticraft.entities.model.ModelCaveman;
-import net.arcticraft.entities.model.ModelIceMage;
-import net.arcticraft.entities.model.ModelPenguin;
-import net.arcticraft.entities.passive.EntityBoar;
-import net.arcticraft.entities.passive.EntityCaveman;
-import net.arcticraft.entities.passive.EntityIceMage;
-import net.arcticraft.entities.passive.EntityPenguin;
-import net.arcticraft.entities.render.RenderBoar;
-import net.arcticraft.entities.render.RenderCannonball;
-import net.arcticraft.entities.render.RenderCaveman;
-import net.arcticraft.entities.render.RenderIceMage;
-import net.arcticraft.entities.render.RenderPenguin;
-import net.arcticraft.entities.render.RenderSled;
+import net.arcticraft.entities.*;
+import net.arcticraft.entities.model.*;
+import net.arcticraft.entities.passive.*;
+import net.arcticraft.entities.hostile.*;
+import net.arcticraft.entities.render.*;
 import net.arcticraft.gui.GuiFrozenScreen;
 import net.arcticraft.gui.GuiTemperatureBar;
 import net.arcticraft.item.ACItems;
@@ -32,6 +21,7 @@ import net.arcticraft.tileentity.renderers.TileEntityCannonRender;
 import net.arcticraft.tileentity.renderers.TileEntityCavemanRender;
 import net.arcticraft.world.gen.dimension.WorldProviderDim;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.ModelZombie;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.IItemRenderer;
@@ -53,7 +43,8 @@ public class ClientProxy extends CommonProxy{
 		RenderingRegistry.registerEntityRenderingHandler(EntityBoar.class, new RenderBoar(new ModelBoar(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityPenguin.class, new RenderPenguin(new ModelPenguin(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityIceMage.class, new RenderIceMage(new ModelIceMage(), 0.6F));
-		RenderingRegistry.registerEntityRenderingHandler(EntityCaveman.class, new RenderCaveman(new ModelCaveman(), 0.7F));	
+		RenderingRegistry.registerEntityRenderingHandler(EntityCaveman.class, new RenderCaveman(new ModelCaveman(), 0.6F));	
+		RenderingRegistry.registerEntityRenderingHandler(EntityFrostZombie.class, new RenderFrostZombie());
 		RenderingRegistry.registerEntityRenderingHandler(EntityCannonball.class, new RenderCannonball(ACItems.cannonball));
 
 		TileEntitySpecialRenderer render = new TileEntityCampfireRender();

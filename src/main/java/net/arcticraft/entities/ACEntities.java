@@ -1,5 +1,6 @@
 package net.arcticraft.entities;
 
+import net.arcticraft.entities.hostile.EntityFrostZombie;
 import net.arcticraft.entities.passive.EntityBoar;
 import net.arcticraft.entities.passive.EntityCaveman;
 import net.arcticraft.entities.passive.EntityIceMage;
@@ -54,6 +55,7 @@ public class ACEntities
 		EntityRegistry.registerGlobalEntityID(EntityPenguin.class, "Penguin", EntityRegistry.findGlobalUniqueEntityId(), blackColour, whiteColour);
 		EntityRegistry.registerGlobalEntityID(EntityIceMage.class, "IceMage", EntityRegistry.findGlobalUniqueEntityId(), kindaBlueColour, purpleBlueishColour);
 		EntityRegistry.registerGlobalEntityID(EntityCaveman.class, "Caveman", EntityRegistry.findGlobalUniqueEntityId(), lightBlueColour, blueishIcyColour);
+		EntityRegistry.registerGlobalEntityID(EntityFrostZombie.class, "FrostZombie", EntityRegistry.findGlobalUniqueEntityId(), zombieBackGround, zombieSpots);
 
 		for(ACBiomeGenBase tmp : GenLayerBiomesDim.allowedBiomes)
 		{

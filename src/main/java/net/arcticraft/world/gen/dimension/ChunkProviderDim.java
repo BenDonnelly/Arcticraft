@@ -18,6 +18,7 @@ import net.arcticraft.temperature.TemperatureHandler;
 import net.arcticraft.world.gen.MapGenFrostCaves;
 import net.arcticraft.world.gen.WorldGenACTrees;
 import net.arcticraft.world.gen.WorldGenIceberg;
+import net.arcticraft.world.gen.WorldGenMineable;
 import net.arcticraft.world.gen.dimension.biome.ACBiomeGenBase;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
@@ -554,6 +555,56 @@ public class ChunkProviderDim implements ITempComponent, IChunkProvider
 			{
 				(new WorldGenIceberg()).generate(worldObj, rand, x, y, z);
 			}
+		}
+		
+		for(int i = 0; i < 3; i++)
+		{
+			int x = k + rand.nextInt(16);
+			int y = rand.nextInt(256);
+			int z = l + rand.nextInt(16);
+			(new WorldGenMineable(ACBlocks.tekkiteOre, 5, 0)).generate(worldObj, rand, x, y, z);
+			//System.out.println("TEKKITE X:" + x + " Y:" + y + " Z:" + z );
+		}
+		for(int i = 0; i < 5; i++)
+		{
+			int x = k + rand.nextInt(16);
+			int y = rand.nextInt(256);
+			int z = l + rand.nextInt(16);
+			(new WorldGenMineable(ACBlocks.escariaOre, 6, 0)).generate(worldObj, rand, x, y, z);
+			//System.out.println("ESCARIA X:" + x + " Y:" + y + " Z:" + z );
+			
+		}
+		for(int i = 0; i < 7; i++)
+		{
+			int x = k + rand.nextInt(16);
+			int y = rand.nextInt(256);
+			int z = l + rand.nextInt(16);
+			(new WorldGenMineable(ACBlocks.glacianOre, 7, 0)).generate(worldObj, rand, x, y, z);
+			//System.out.println("GLACIAN X:" + x + " Y:" + y + " Z:" + z );
+		}
+		for(int i = 0; i < 10; i++)
+		{
+			int x = k + rand.nextInt(16);
+			int y = rand.nextInt(256);
+			int z = l + rand.nextInt(16);
+			(new WorldGenMineable(ACBlocks.rigentemOre, 12, 0)).generate(worldObj, rand, x, y, z);
+			//System.out.println("RIGENTEM X:" + x + " Y:" + y + " Z:" + z );
+		}
+		for(int i = 0; i < 7; i++)
+		{
+			int x = k + rand.nextInt(16);
+			int y = rand.nextInt(256);
+			int z = l + rand.nextInt(16);
+			(new WorldGenMineable(ACBlocks.eriumOre, 8, 0)).generate(worldObj, rand, x, y, z);
+			//System.out.println("ERIUM X:" + x + " Y:" + y + " Z:" + z );
+		}
+		for(int i = 0; i < 14; i++)
+		{
+			int x = k + rand.nextInt(16);
+			int y = rand.nextInt(256);
+			int z = l + rand.nextInt(16);
+			(new WorldGenMineable(ACBlocks.frigusOre, 8, 0)).generate(worldObj, rand, x, y, z);
+			//System.out.println("FRIGUS X:" + x + " Y:" + y + " Z:" + z );
 		}
 		
 		for(IGenComponent tmp : genList)
