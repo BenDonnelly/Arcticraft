@@ -3,6 +3,7 @@ package net.arcticraft.world.gen.dimension.biome;
 import java.util.Random;
 
 import net.arcticraft.block.ACBlocks;
+import net.arcticraft.entities.hostile.EntityFrostZombie;
 import net.arcticraft.entities.passive.EntityPenguin;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase.SpawnListEntry;
@@ -21,7 +22,8 @@ public class BiomeFrostForest extends ACBiomeGenBase {
 		this.spawnableMonsterList.clear();
 		this.spawnableWaterCreatureList.clear();
 		this.spawnableCaveCreatureList.clear();
-		//this.spawnableCreatureList.add(new SpawnListEntry(EntityPenguin.class, 8, 2, 6));
+		this.spawnableMonsterList.add(new SpawnListEntry(EntityFrostZombie.class, 6, 1, 4));
+		this.spawnableCreatureList.add(new SpawnListEntry(EntityPenguin.class, 3, 2, 6));
 		this.theBiomeDecorator.mushroomsPerChunk = 0;
 		this.theBiomeDecorator.bigMushroomsPerChunk = 0;
 		this.temperature = 0.1F;
