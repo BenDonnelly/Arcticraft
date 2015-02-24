@@ -670,7 +670,7 @@ public class ChunkProviderDim implements ITempComponent, IChunkProvider
 
                 if (this.worldObj.isBlockFreezable(k1 + k, i2 - 1, l1 + l))
                 {
-                    this.worldObj.setBlock(k1 + k, i2 - 1, l1 + l, Blocks.ice, 0, 2);
+                    this.worldObj.setBlock(k1 + k, i2 - 1, l1 + l, ACBlocks.frostWaterIce, 0, 2);
                 }
 
                 if (this.worldObj.func_147478_e(k1 + k, i2, l1 + l, true))

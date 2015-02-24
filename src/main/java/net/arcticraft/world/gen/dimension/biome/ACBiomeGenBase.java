@@ -22,7 +22,6 @@ public class ACBiomeGenBase extends BiomeGenBase
 	public static final ACBiomeGenBase glacier;
 	public static final ACBiomeGenBase snowPlains;
 	public static final ACBiomeGenBase frostOcean;
-	public static final ACBiomeGenBase frozenOcean;
 	protected WorldGenACTrees genGlacierTrees;
 	protected WorldGenFrostTrees genFrostTrees;
 
@@ -54,7 +53,6 @@ public class ACBiomeGenBase extends BiomeGenBase
 		glacier = (ACBiomeGenBase) (new BiomeGlacier(143)).setBiomeName("Glacier");
 		snowPlains = (ACBiomeGenBase) (new BiomeSnowPlains(144)).setBiomeName("Snow Plains");
 		frostOcean = (ACBiomeGenBase) (new BiomeFrostOcean(145)).setBiomeName("Arctic Ocean");
-		frozenOcean = (ACBiomeGenBase) (new BiomeIceHills(146)).setBiomeName("Frozen Ocean");
 	}
     
 	public static void registerWithBiomeDictionary()

@@ -51,7 +51,7 @@ public class ItemACFruits extends ItemFood{
 			if(player.dimension == 0)
 			{
 				TeleporterDim.teleportEntity(player, dimension);
-				player.addPotionEffect(new PotionEffect(Potion.confusion.id, 250, 50));
+				player.addPotionEffect(new PotionEffect(Potion.confusion.id, 120, 50));
 				player.addPotionEffect(new PotionEffect(Potion.blindness.id, 100, 0));
 			}
 		}

@@ -23,7 +23,7 @@ public class BiomeFrostForest extends ACBiomeGenBase {
 		this.spawnableWaterCreatureList.clear();
 		this.spawnableCaveCreatureList.clear();
 		this.spawnableMonsterList.add(new SpawnListEntry(EntityFrostZombie.class, 6, 1, 4));
-		this.spawnableCreatureList.add(new SpawnListEntry(EntityPenguin.class, 3, 2, 6));
+		//this.spawnableCreatureList.add(new SpawnListEntry(EntityPenguin.class, 3, 2, 6));
 		this.theBiomeDecorator.mushroomsPerChunk = 0;
 		this.theBiomeDecorator.bigMushroomsPerChunk = 0;
 		this.temperature = 0.1F;

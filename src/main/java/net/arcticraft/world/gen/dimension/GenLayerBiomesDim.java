@@ -7,7 +7,7 @@ import net.minecraft.world.gen.layer.IntCache;
 
 public class GenLayerBiomesDim extends GenLayer {
 
-	public static ACBiomeGenBase[] allowedBiomes = {ACBiomeGenBase.frostForest, ACBiomeGenBase.glacier, ACBiomeGenBase.snowPlains, ACBiomeGenBase.frostOcean, ACBiomeGenBase.frostMountains, ACBiomeGenBase.frozenOcean};
+	public static ACBiomeGenBase[] allowedBiomes = {ACBiomeGenBase.frostForest, ACBiomeGenBase.glacier, ACBiomeGenBase.snowPlains, ACBiomeGenBase.frostOcean, ACBiomeGenBase.frostMountains, };
 
 	public GenLayerBiomesDim(long seed, GenLayer genlayer) {
 		super(seed);

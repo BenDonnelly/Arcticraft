@@ -15,7 +15,7 @@ public class BiomeGlacier extends ACBiomeGenBase {
 		super(par1);
 		
 		this.theBiomeDecorator = new ACBiomeDecorator(this);
-		this.topBlock = Blocks.air;
+		this.topBlock = Blocks.snow;
 		this.fillerBlock = ACBlocks.frostWaterIce;
 		this.theBiomeDecorator.mushroomsPerChunk = 0;
 		this.theBiomeDecorator.bigMushroomsPerChunk = 0;
