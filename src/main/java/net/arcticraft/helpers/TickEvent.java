@@ -1,19 +1,23 @@
 package net.arcticraft.helpers;
 
+import net.arcticraft.gui.GuiACMainMenu;
 import net.arcticraft.main.Arcticraft;
 import net.arcticraft.temperature.TemperatureHandler;
 import net.arcticraft.temperature.handlers.LightvalueHandler;
 import net.arcticraft.temperature.handlers.LocationHandler;
 import net.arcticraft.temperature.handlers.MovementHandler;
 import net.arcticraft.world.gen.dimension.TeleporterDim;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.entity.player.EntityPlayerMP;
 
 import org.lwjgl.input.Keyboard;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
-public class TickPlayerEvent{
+public class TickEvent{
 	@SubscribeEvent
 	public void tickPlayer(PlayerTickEvent event)
 	{
@@ -55,4 +59,15 @@ public class TickPlayerEvent{
     		}
 		}
 	}
+	
+	@SubscribeEvent
+	public void tickClient(ClientTickEvent event){
+		
+		if(Minecraft.getMinecraft().currentScreen instanceof GuiMainMenu)
+		{
+			Minecraft.getMinecraft().displayGuiScreen(new GuiACMainMenu());
+		}
+			
+	}
+	
 }

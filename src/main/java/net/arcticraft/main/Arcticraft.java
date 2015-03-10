@@ -6,7 +6,7 @@ import net.arcticraft.crafting.ACCraftingRecipes;
 import net.arcticraft.entities.ACEntities;
 import net.arcticraft.helpers.CommandChangeTemperature;
 import net.arcticraft.helpers.ForgeEvents;
-import net.arcticraft.helpers.TickPlayerEvent;
+import net.arcticraft.helpers.TickEvent;
 import net.arcticraft.item.ACItems;
 import net.arcticraft.temperature.TemperatureHandler;
 import net.arcticraft.temperature.handlers.LightvalueHandler;
@@ -72,7 +72,7 @@ public class Arcticraft{
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		FMLCommonHandler.instance().bus().register(new TickPlayerEvent());
+		FMLCommonHandler.instance().bus().register(new TickEvent());
 		FMLCommonHandler.instance().bus().register(cPackMain);
 		MinecraftForge.EVENT_BUS.register(new ForgeEvents());
 		

@@ -48,6 +48,7 @@ public class ACItems {
 	public static Item glacierFruit;
 	public static Item cannonball;
 	public static Item frostDoor;
+	public static Item captainsLog;
 	
 	/* Pickaxes */
 	public static Item tekkitePickaxe;
@@ -72,6 +73,7 @@ public class ACItems {
 	public static Item rigentemSword;
 	public static Item frostStoneSword;
 	public static Item frostWoodSword;
+	public static Item captainSword;
 	
 	/* Spades */
 	public static Item tekkiteSpade;
@@ -135,9 +137,10 @@ public class ACItems {
 		penguinMeatCooked = new ItemFood(6, true).setUnlocalizedName(MOD_ID + "_penguinMeatCooked").setTextureName(MOD_ID + ":food/penguin/penguin_meat_cooked").setCreativeTab(ACCreativeTabs.acTabFood);
 		boarMeat = new ItemFood(3, false).setPotionEffect(Potion.hunger.id, 30, 0, 1.0F).setUnlocalizedName(MOD_ID + "_boarMeat").setTextureName(MOD_ID + ":food/boar/boar_meat").setCreativeTab(ACCreativeTabs.acTabFood);
 		boarMeatCooked = new ItemFood(8, true).setUnlocalizedName(MOD_ID + "_boarMeatCooked").setTextureName(MOD_ID + ":food/boar/boar_meat_cooked").setCreativeTab(ACCreativeTabs.acTabFood);
+		captainsLog = new ItemCaptainsLog().setUnlocalizedName(MOD_ID + "_captainsLog").setTextureName(MOD_ID + ":captains_log").setCreativeTab(ACCreativeTabs.acTabMisc);
 		
 		/* Miscellaneous */
-		itemSled = new ItemSled().setUnlocalizedName(MOD_ID + "_sled").setTextureName(MOD_ID + ":sled_icon").setCreativeTab(ACCreativeTabs.acTabItem);
+		itemSled = new ItemSled().setUnlocalizedName(MOD_ID + "_sled").setTextureName(MOD_ID + ":sled_icon").setCreativeTab(ACCreativeTabs.acTabMisc);
 		mystFruit = new ItemACFruits().setUnlocalizedName(MOD_ID + "_mystFruit").setTextureName(MOD_ID + ":food/fruits/myst_fruit").setCreativeTab(ACCreativeTabs.acTabFood);
 		glacierFruit = new ItemACFruits().setUnlocalizedName(MOD_ID + "_glacierFruit").setTextureName(MOD_ID + ":food/fruits/glacier_fruit").setCreativeTab(ACCreativeTabs.acTabFood);
 		cannonball = new Item().setFull3D().setUnlocalizedName(MOD_ID + "_cannonball").setTextureName(MOD_ID + ":cannonball").setCreativeTab(ACCreativeTabs.acTabCombat);
@@ -168,6 +171,7 @@ public class ACItems {
 		rigentemSword = new ItemACSword(ACToolMaterial.RigentemTool).setUnlocalizedName("rigentemSword").setTextureName(MOD_ID + ":tools/rigentem/sword_rigentem");
 		frostStoneSword = new ItemACSword(ToolMaterial.STONE).setUnlocalizedName("frostStoneSword").setTextureName(MOD_ID + ":tools/frost_stone/sword_frost_stone");
 		frostWoodSword = new ItemACSword(ToolMaterial.WOOD).setUnlocalizedName("frostWoodSword").setTextureName(MOD_ID + ":tools/frost_wood/sword_frost_wood");
+		captainSword = new ItemCaptainSword(ToolMaterial.EMERALD).setUnlocalizedName(MOD_ID + "_captainSword").setTextureName(MOD_ID + ":tools/misc/captain_sword").setCreativeTab(ACCreativeTabs.acTabCombat);
 		
 		/* Spades */
 		tekkiteSpade = new ItemACSpade(ACToolMaterial.TekkiteTool).setUnlocalizedName("tekkiteSpade").setTextureName(MOD_ID + ":tools/tekkite/spade_tekkite");
@@ -210,7 +214,7 @@ public class ACItems {
 		rigentemBoots = new ItemACArmour(ACArmourMaterial.RigentemArmour, Arcticraft.proxy.addArmor("Rigentem"), 3).setUnlocalizedName("rigentemBoots").setTextureName(MOD_ID + ":armour/rigentem/boots_rigentem");
 		
 		/* Crops */
-		berrySeed = new ItemACSeeds(ACBlocks.berryBush, Blocks.farmland).setUnlocalizedName("berrySeed").setTextureName("ac:berrySeed").setCreativeTab(ACCreativeTabs.acTabItem);
+		berrySeed = new ItemACSeeds(ACBlocks.berryBush, Blocks.farmland).setUnlocalizedName("berrySeed").setTextureName("ac:berrySeed").setCreativeTab(ACCreativeTabs.acTabMisc);
 		berry = new ItemFood(6, false).setCreativeTab(ACCreativeTabs.acTabFood).setUnlocalizedName("berry").setTextureName("ac:whiteberry");
 	}
 
@@ -225,7 +229,7 @@ public class ACItems {
 				tekkiteChest, escariaChest, glacianChest, rigentemChest,
 				tekkiteLegs, escariaLegs, glacianLegs, rigentemLegs,
 				tekkiteBoots, escariaBoots, glacianBoots, rigentemBoots, penguinMeat, penguinMeatCooked, penguinFeather,
-				mystFruit, glacierFruit, cannonball, frostDoor, woodenClub, boarMeat, boarMeatCooked, eriumGem};
+				mystFruit, glacierFruit, cannonball, frostDoor, woodenClub, boarMeat, boarMeatCooked, eriumGem, captainsLog, captainSword};
 
 		for (Item item : itemList) {
 			GameRegistry.registerItem(item, StringUtils.generateName(item));

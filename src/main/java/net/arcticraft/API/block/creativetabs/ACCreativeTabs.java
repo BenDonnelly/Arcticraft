@@ -45,7 +45,7 @@ public class ACCreativeTabs
 		@SideOnly(Side.CLIENT)
 		public Item getTabIconItem()
 		{
-			return ACItems.penguinMeatCooked; // TODO Replace this with food
+			return ACItems.penguinMeatCooked;
 		}
 	};
 	
@@ -65,17 +65,17 @@ public class ACCreativeTabs
 		@SideOnly(Side.CLIENT)
 		public Item getTabIconItem()
 		{
-			return ACItems.tekkiteHelmet; // TODO Replace this with a weapon
+			return ACItems.tekkiteHelmet;
 		}
 	};
 	
-	public static final CreativeTabs acTabItem = new CreativeTabs("ac_tabItem")
+	public static final CreativeTabs acTabMisc = new CreativeTabs("ac_tabMisc")
 	{
 		@Override
 		@SideOnly(Side.CLIENT)
 		public Item getTabIconItem()
 		{
-			return ACItems.itemSled; // TODO Replace this with a weapon
+			return ACItems.itemSled; 
 		}
 	};
 }
