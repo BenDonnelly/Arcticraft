@@ -29,7 +29,7 @@ public class WorldProviderDim extends WorldProvider {
 	@Override
 	/** Dimension Name **/
 	public String getDimensionName() {
-		return "The Arcanus";
+		return "The Arctic";
 	}
 
 	/** Get Provider for dimension **/

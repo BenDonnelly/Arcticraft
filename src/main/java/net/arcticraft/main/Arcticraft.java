@@ -4,6 +4,7 @@ import net.arcticraft.block.ACBlocks;
 import net.arcticraft.contentPacks.CPackMain;
 import net.arcticraft.crafting.ACCraftingRecipes;
 import net.arcticraft.entities.ACEntities;
+import net.arcticraft.gui.GuiHandler;
 import net.arcticraft.helpers.CommandChangeTemperature;
 import net.arcticraft.helpers.ForgeEvents;
 import net.arcticraft.helpers.TickEvent;
@@ -14,6 +15,7 @@ import net.arcticraft.temperature.handlers.LocationHandler;
 import net.arcticraft.temperature.handlers.MovementHandler;
 import net.arcticraft.util.VectorUtils;
 import net.arcticraft.world.gen.WorldGenACTrees;
+import net.arcticraft.world.gen.WorldGenCaveman;
 import net.arcticraft.world.gen.WorldGenIceberg;
 import net.arcticraft.world.gen.WorldGenMageTower;
 import net.arcticraft.world.gen.dimension.ChunkProviderDim;
@@ -32,6 +34,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.WorldTickEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = Arcticraft.MOD_ID, version = Arcticraft.VERSION, name = Arcticraft.NAME)
@@ -51,6 +54,7 @@ public class Arcticraft{
 	public boolean initialized = false;
 	
 	protected static CPackMain cPackMain = new CPackMain();
+	private GuiHandler guiHandler = new GuiHandler();
 	
 	@SidedProxy(clientSide = "net.arcticraft.main.ClientProxy", serverSide = "net.arcticraft.main.CommonProxy")
 	public static CommonProxy proxy;
@@ -75,7 +79,7 @@ public class Arcticraft{
 		FMLCommonHandler.instance().bus().register(new TickEvent());
 		FMLCommonHandler.instance().bus().register(cPackMain);
 		MinecraftForge.EVENT_BUS.register(new ForgeEvents());
-		
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, guiHandler);
 		proxy.registerRenderThings();
 		proxy.registerGeneral();
 		

@@ -11,14 +11,18 @@ import net.arcticraft.API.item.ItemACSeeds;
 import net.arcticraft.API.item.ItemACSpade;
 import net.arcticraft.API.item.ItemACSword;
 import net.arcticraft.block.ACBlocks;
+import net.arcticraft.helpers.ForgeEvents;
 import net.arcticraft.main.Arcticraft;
 import net.arcticraft.util.StringUtils;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
+import net.minecraftforge.fluids.FluidContainerRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ACItems {
@@ -42,6 +46,10 @@ public class ACItems {
 	public static Item boarMeat;
 	public static Item boarMeatCooked;
 	
+	/* Crops */
+	public static Item berrySeed;
+	public static Item berry;
+	
 	/* Miscellaneous */
 	public static Item itemSled;
 	public static Item mystFruit;
@@ -49,6 +57,9 @@ public class ACItems {
 	public static Item cannonball;
 	public static Item frostDoor;
 	public static Item captainsLog;
+	public static Item bucketEmpty;
+	public static Item bucketFrostWater;
+	public static Item arcticPouch;
 	
 	/* Pickaxes */
 	public static Item tekkitePickaxe;
@@ -115,9 +126,6 @@ public class ACItems {
 	public static Item glacianBoots;
 	public static Item rigentemBoots;
 	
-	/* Crops */
-	public static Item berrySeed;
-	public static Item berry;
 	
 	public static void initItems()
 	{
@@ -145,7 +153,9 @@ public class ACItems {
 		glacierFruit = new ItemACFruits().setUnlocalizedName(MOD_ID + "_glacierFruit").setTextureName(MOD_ID + ":food/fruits/glacier_fruit").setCreativeTab(ACCreativeTabs.acTabFood);
 		cannonball = new Item().setFull3D().setUnlocalizedName(MOD_ID + "_cannonball").setTextureName(MOD_ID + ":cannonball").setCreativeTab(ACCreativeTabs.acTabCombat);
 		frostDoor = new ItemFrostDoor(Material.wood).setUnlocalizedName(MOD_ID + "_frostDoorItem").setTextureName(MOD_ID + ":door_frost").setCreativeTab(ACCreativeTabs.acTabBlock);
-		
+		bucketEmpty = new ItemACBucket(Blocks.air).setUnlocalizedName(MOD_ID + "_bucketEmpty").setTextureName(MOD_ID + ":bucket_empty").setMaxStackSize(16).setCreativeTab(ACCreativeTabs.acTabMisc);
+		bucketFrostWater = new ItemACBucket(ACBlocks.frostWaterBlock).setUnlocalizedName(MOD_ID + "_bucketFrostWater").setTextureName(MOD_ID + ":bucket_frost_Water").setMaxStackSize(1).setContainerItem(bucketEmpty).setCreativeTab(ACCreativeTabs.acTabMisc);
+		arcticPouch = new ItemArcticPouch().setUnlocalizedName(MOD_ID + "_arcticPouch").setTextureName(MOD_ID + ":arctic_pouch").setMaxStackSize(1).setCreativeTab(ACCreativeTabs.acTabMisc);
 		
 		/**** START OF TOOLS + ARMOUR ****/
 		/* Pickxaes */
@@ -229,10 +239,12 @@ public class ACItems {
 				tekkiteChest, escariaChest, glacianChest, rigentemChest,
 				tekkiteLegs, escariaLegs, glacianLegs, rigentemLegs,
 				tekkiteBoots, escariaBoots, glacianBoots, rigentemBoots, penguinMeat, penguinMeatCooked, penguinFeather,
-				mystFruit, glacierFruit, cannonball, frostDoor, woodenClub, boarMeat, boarMeatCooked, eriumGem, captainsLog, captainSword};
+				mystFruit, glacierFruit, cannonball, frostDoor, woodenClub, boarMeat, boarMeatCooked, eriumGem, captainsLog, captainSword, bucketFrostWater, bucketEmpty, arcticPouch};
 
 		for (Item item : itemList) {
 			GameRegistry.registerItem(item, StringUtils.generateName(item));
 		}
+	
+		FluidContainerRegistry.registerFluidContainer(ACBlocks.frostWater, new ItemStack(bucketFrostWater), new ItemStack(bucketEmpty));
 	}
 }
