@@ -60,13 +60,12 @@ public class BlockCaveman extends BlockContainer{
 	}
 
 	
-	//TODO get block light level from around and if its high enough make the block despawn and spawn the caveman with a duration of about 10 seconds or something
-	/*@Override
+	@Override
 	public void updateTick(World world, int x, int y, int z, Random random)
 	{
 		int randNum = random.nextInt(3 + 1);
-		System.out.println("No light");
-		if(world.getSavedLightValue(EnumSkyBlock.Block, x, y, z) > 11 -  world.getLightBrightness(x, y, z))
+		System.out.println("caveman block update");
+		if(world.getSavedLightValue(EnumSkyBlock.Block, x, y, z) > 11 - this.getLightOpacity())
 		{
 			System.out.println("Number: " + randNum);
 			if(!world.isRemote && randNum == 1)
@@ -77,7 +76,7 @@ public class BlockCaveman extends BlockContainer{
 				world.spawnEntityInWorld(caveman);
 			}
 		}
-	}*/
+	}
 
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLivingBase, ItemStack itemstack)

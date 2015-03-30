@@ -35,6 +35,8 @@ public class ACItems {
 	public static Item arcaneStoneDust;
 	public static Item tekkiteGem;
 	public static Item escariaGem;
+	public static Item glacianIngot;
+	public static Item rigentemIngot;
 	public static Item frigus;
 	public static Item eriumGem;
 	
@@ -133,6 +135,8 @@ public class ACItems {
 		arcaneStoneDust = new Item().setUnlocalizedName(MOD_ID + "_arcaneStoneDust").setTextureName(MOD_ID + ":arcane_stone_dust").setCreativeTab(ACCreativeTabs.acTabMaterials);
 		tekkiteGem = new Item().setUnlocalizedName(MOD_ID + "_tekkiteGem").setTextureName(MOD_ID + ":gem_tekkite").setCreativeTab(ACCreativeTabs.acTabMaterials);
 		escariaGem = new Item().setUnlocalizedName(MOD_ID + "_escariaGem").setTextureName(MOD_ID + ":gem_escaria").setCreativeTab(ACCreativeTabs.acTabMaterials);
+		glacianIngot = new Item().setUnlocalizedName(MOD_ID + "_glacianIngot").setTextureName(MOD_ID + ":ingot_glacian").setCreativeTab(ACCreativeTabs.acTabMaterials);
+		rigentemIngot = new Item().setUnlocalizedName(MOD_ID + "_rigentemIngot").setTextureName(MOD_ID + ":ingot_rigentem").setCreativeTab(ACCreativeTabs.acTabMaterials);
 		frigus = new Item().setUnlocalizedName(MOD_ID + "_frigus").setTextureName(MOD_ID + ":frigus").setCreativeTab(ACCreativeTabs.acTabMaterials);
 		eriumGem = new Item().setUnlocalizedName(MOD_ID + "_eriumGem").setTextureName(MOD_ID + ":gem_erium").setCreativeTab(ACCreativeTabs.acTabMaterials);
 
@@ -229,7 +233,7 @@ public class ACItems {
 	}
 
 	public static void registerItems() {
-		Item[] itemList = { arcaneStoneDust, tekkiteGem, escariaGem, frigus,
+		Item[] itemList = { arcaneStoneDust, tekkiteGem, escariaGem, frigus, glacianIngot, rigentemIngot,
 				tekkitePickaxe, escariaPickaxe, rigentemPickaxe, glacianPickaxe, frostStonePickaxe, frostWoodPickaxe,
 				tekkiteAxe, escariaAxe, rigentemAxe, glacianAxe, frostStoneAxe, frostWoodAxe,
 				tekkiteSword, escariaSword, rigentemSword, glacianSword, frostStoneSword, frostWoodSword,

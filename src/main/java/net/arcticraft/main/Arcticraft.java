@@ -2,7 +2,7 @@ package net.arcticraft.main;
 
 import net.arcticraft.block.ACBlocks;
 import net.arcticraft.contentPacks.CPackMain;
-import net.arcticraft.crafting.ACCraftingRecipes;
+import net.arcticraft.crafting.ACRecipes;
 import net.arcticraft.entities.ACEntities;
 import net.arcticraft.gui.GuiHandler;
 import net.arcticraft.helpers.CommandChangeTemperature;
@@ -68,7 +68,7 @@ public class Arcticraft{
 		VectorUtils.init();
 		ACBlocks.loadBlocks();
 		ACItems.loadItems();
-		ACCraftingRecipes.loadRecipes();
+		ACRecipes.loadRecipes();
 		
 		cPackMain.preInit();
 	}

@@ -10,6 +10,7 @@ import net.arcticraft.item.ItemLeafBlocks;
 import net.arcticraft.item.ItemLogBlocks;
 import net.arcticraft.item.ItemPlankBlocks;
 import net.arcticraft.item.ItemSlabBlocks;
+import net.arcticraft.tileentity.TileEntityArcticFurnace;
 import net.arcticraft.tileentity.TileEntityCampfire;
 import net.arcticraft.tileentity.TileEntityCannon;
 import net.arcticraft.tileentity.TileEntityCaveman;
@@ -62,6 +63,10 @@ public class ACBlocks{
 	public static Block campfire;
 	public static Block cannon;
 	public static Block caveman;
+	
+	/* Machine Blocks */
+	public static Block arcticFurnaceIdle;
+	public static Block arcticFurnaceBurning;
 	
 	/* Miscellaneous */
 	public static Block mysticalSnow;
@@ -127,6 +132,11 @@ public class ACBlocks{
 		cannon = new BlockCannon(Material.iron);
 		caveman = new BlockCaveman(Material.glass);
 		
+		/* Machine Blocks */
+		arcticFurnaceIdle = new BlockACFurnace(false).setBlockName(MOD_ID + "arcticFurnaceIdle").setCreativeTab(ACCreativeTabs.acTabBlock);
+		arcticFurnaceBurning = new BlockACFurnace(true).setBlockName(MOD_ID + "arcticFurnaceBurning").setLightLevel(0.875F);
+		
+		
 		/* Miscellaneous */
 		mysticalSnow = new BlockMysticalSnow(Material.snow);
 		frozenFarmland = new BlockFrozenFarmland().setBlockName("frozenFarmland").setBlockTextureName("ac:frozenFarmland");
@@ -146,6 +156,9 @@ public class ACBlocks{
 			GameRegistry.registerBlock(block, StringUtils.generateName(block));
 		}
 		
+		GameRegistry.registerBlock(arcticFurnaceIdle, "arcticFurnaceIdle");
+		GameRegistry.registerBlock(arcticFurnaceBurning, "arcticFurnaceBurning");
+		
 		/*Multi blocks*/
 		GameRegistry.registerBlock(acLogs, ItemLogBlocks.class, acLogs.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(acLeaves, ItemLeafBlocks.class, acLeaves.getUnlocalizedName().substring(5));
@@ -159,6 +172,8 @@ public class ACBlocks{
 		GameRegistry.registerTileEntity(TileEntityCampfire.class, "tileEntityCampfire");
 		GameRegistry.registerTileEntity(TileEntityCannon.class, "tileEntityCannon");
 		GameRegistry.registerTileEntity(TileEntityCaveman.class, "tileEntityCaveman");
+		GameRegistry.registerTileEntity(TileEntityArcticFurnace.class, "tileEntityArcticFurnace");
+
 	}
 	
 }
