@@ -9,16 +9,9 @@ import net.arcticraft.entities.render.*;
 import net.arcticraft.gui.GuiFrozenScreen;
 import net.arcticraft.gui.GuiTemperatureBar;
 import net.arcticraft.item.ACItems;
-import net.arcticraft.item.render.ItemCampfireRender;
-import net.arcticraft.item.render.ItemCannonRender;
-import net.arcticraft.item.render.ItemCannonballRender;
-import net.arcticraft.item.render.ItemCavemanRender;
-import net.arcticraft.tileentity.TileEntityCampfire;
-import net.arcticraft.tileentity.TileEntityCannon;
-import net.arcticraft.tileentity.TileEntityCaveman;
-import net.arcticraft.tileentity.renderers.TileEntityCampfireRender;
-import net.arcticraft.tileentity.renderers.TileEntityCannonRender;
-import net.arcticraft.tileentity.renderers.TileEntityCavemanRender;
+import net.arcticraft.item.render.*;
+import net.arcticraft.tileentity.*;
+import net.arcticraft.tileentity.renderers.*;
 import net.arcticraft.world.gen.dimension.WorldProviderDim;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelZombie;
@@ -59,6 +52,9 @@ public class ClientProxy extends CommonProxy{
 		render = new TileEntityCavemanRender();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCaveman.class, new TileEntityCavemanRender());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ACBlocks.caveman), new ItemCavemanRender(render));
+		
+		render = new TileEntityIcicleRender();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityIcicle.class, new TileEntityIcicleRender());
 		
 	}
 

@@ -6,6 +6,7 @@ import java.util.Random;
 
 import net.arcticraft.API.block.BlockBerryBush;
 import net.arcticraft.API.block.creativetabs.ACCreativeTabs;
+import net.arcticraft.item.ItemIcicleBlocks;
 import net.arcticraft.item.ItemLeafBlocks;
 import net.arcticraft.item.ItemLogBlocks;
 import net.arcticraft.item.ItemPlankBlocks;
@@ -14,6 +15,7 @@ import net.arcticraft.tileentity.TileEntityArcticFurnace;
 import net.arcticraft.tileentity.TileEntityCampfire;
 import net.arcticraft.tileentity.TileEntityCannon;
 import net.arcticraft.tileentity.TileEntityCaveman;
+import net.arcticraft.tileentity.TileEntityIcicle;
 import net.arcticraft.util.StringUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -49,7 +51,7 @@ public class ACBlocks{
 	public static Block frostStairs, glacierStairs;
 	public static Block frostDoor;
 	public static Block frostLadder;
-	public static Block tekkiteBlock, escariaBlock, glacianBlock, eriumBlock, rigentemBlock, frigusBlock;
+	public static Block tekkiteBlock, escariaBlock, glacianBlock, eriumBlock, rigentemBlock;
 	
 	/* Ores - Ordered in rarity*/
 	public static Block tekkiteOre;
@@ -63,6 +65,7 @@ public class ACBlocks{
 	public static Block campfire;
 	public static Block cannon;
 	public static Block caveman;
+	public static Block icicle;
 	
 	/* Machine Blocks */
 	public static Block arcticFurnaceIdle;
@@ -131,6 +134,7 @@ public class ACBlocks{
 		campfire = new BlockCampfire(Material.wood);
 		cannon = new BlockCannon(Material.iron);
 		caveman = new BlockCaveman(Material.glass);
+		icicle = new BlockIcicle(Material.glass);
 		
 		/* Machine Blocks */
 		arcticFurnaceIdle = new BlockACFurnace(false).setBlockName(MOD_ID + "arcticFurnaceIdle").setCreativeTab(ACCreativeTabs.acTabBlock);
@@ -167,12 +171,13 @@ public class ACBlocks{
 		GameRegistry.registerBlock(acDoubleSlab, ItemSlabBlocks.class, acDoubleSlab.getUnlocalizedName().substring(5) + "_double", acSlab, acDoubleSlab, true);
 		GameRegistry.registerBlock(frostStairs, acPlanks.getUnlocalizedName().substring(5) + "_frost");
 		GameRegistry.registerBlock(glacierStairs, acPlanks.getUnlocalizedName().substring(5) + "_glacier");
-		
+		GameRegistry.registerBlock(icicle, ItemIcicleBlocks.class, icicle.getUnlocalizedName().substring(5));
 	
 		GameRegistry.registerTileEntity(TileEntityCampfire.class, "tileEntityCampfire");
 		GameRegistry.registerTileEntity(TileEntityCannon.class, "tileEntityCannon");
 		GameRegistry.registerTileEntity(TileEntityCaveman.class, "tileEntityCaveman");
 		GameRegistry.registerTileEntity(TileEntityArcticFurnace.class, "tileEntityArcticFurnace");
+		GameRegistry.registerTileEntity(TileEntityIcicle.class, "tileEntityIcicle");
 
 	}
 	
