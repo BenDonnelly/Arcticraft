@@ -6,8 +6,7 @@ import net.arcticraft.entities.model.*;
 import net.arcticraft.entities.passive.*;
 import net.arcticraft.entities.hostile.*;
 import net.arcticraft.entities.render.*;
-import net.arcticraft.gui.GuiFrozenScreen;
-import net.arcticraft.gui.GuiTemperatureBar;
+import net.arcticraft.gui.*;
 import net.arcticraft.item.ACItems;
 import net.arcticraft.item.render.*;
 import net.arcticraft.tileentity.*;
@@ -31,6 +30,7 @@ public class ClientProxy extends CommonProxy{
 	{
 		MinecraftForge.EVENT_BUS.register(new GuiTemperatureBar(Minecraft.getMinecraft()));
 		MinecraftForge.EVENT_BUS.register(new GuiFrozenScreen(Minecraft.getMinecraft()));
+		MinecraftForge.EVENT_BUS.register(new GuiBossBar(Minecraft.getMinecraft()));
 
 		RenderingRegistry.registerEntityRenderingHandler(EntitySled.class, new RenderSled());
 		RenderingRegistry.registerEntityRenderingHandler(EntityBoar.class, new RenderBoar(new ModelBoar(), 0.5F));
@@ -39,6 +39,11 @@ public class ClientProxy extends CommonProxy{
 		RenderingRegistry.registerEntityRenderingHandler(EntityCaveman.class, new RenderCaveman(new ModelCaveman(), 0.6F));	
 		RenderingRegistry.registerEntityRenderingHandler(EntityFrostZombie.class, new RenderFrostZombie());
 		RenderingRegistry.registerEntityRenderingHandler(EntityCannonball.class, new RenderCannonball(ACItems.cannonball));
+		RenderingRegistry.registerEntityRenderingHandler(EntityCaptain.class, new RenderCaptain());
+		RenderingRegistry.registerEntityRenderingHandler(EntityCaptainHook.class, new RenderCaptainHook());
+
+
+		MinecraftForgeClient.registerItemRenderer(ACItems.captainsHook, (IItemRenderer) new ItemCaptainsHookRender());
 
 		TileEntitySpecialRenderer render = new TileEntityCampfireRender();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCampfire.class, new TileEntityCampfireRender());

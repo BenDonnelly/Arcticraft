@@ -35,7 +35,9 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.WorldTickEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 @Mod(modid = Arcticraft.MOD_ID, version = Arcticraft.VERSION, name = Arcticraft.NAME)
 public class Arcticraft{
@@ -55,6 +57,7 @@ public class Arcticraft{
 	
 	protected static CPackMain cPackMain = new CPackMain();
 	private GuiHandler guiHandler = new GuiHandler();
+	public static SimpleNetworkWrapper network;
 	
 	@SidedProxy(clientSide = "net.arcticraft.main.ClientProxy", serverSide = "net.arcticraft.main.CommonProxy")
 	public static CommonProxy proxy;
@@ -65,11 +68,14 @@ public class Arcticraft{
 	@EventHandler
 	public static void preInit(FMLPreInitializationEvent PreEvent)
 	{
+		network = NetworkRegistry.INSTANCE.newSimpleChannel(MOD_ID);
+		
 		VectorUtils.init();
 		ACBlocks.loadBlocks();
 		ACItems.loadItems();
 		ACRecipes.loadRecipes();
 		
+		network.registerMessage(RopePositionPacketHandler.class, RopePositionPacket.class, 0, Side.SERVER);
 		cPackMain.preInit();
 	}
 

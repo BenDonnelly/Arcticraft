@@ -44,7 +44,7 @@ public class ItemArcticPouchInventory extends InventoryBasic{
 	@Override
 	public boolean isItemValidForSlot(int par1, ItemStack itemstack)
 	{
-		return !(itemstack.getItem() instanceof ItemArcticPouch);
+		return !(itemstack.getItem() == ACItems.arcticPouch);
 	}
 
 	@Override
