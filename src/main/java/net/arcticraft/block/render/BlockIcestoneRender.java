@@ -9,7 +9,8 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
-public class BlockIcestoneRender implements ISimpleBlockRenderingHandler{
+public class BlockIcestoneRender implements ISimpleBlockRenderingHandler
+{
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelId,
 			RenderBlocks renderer) {
