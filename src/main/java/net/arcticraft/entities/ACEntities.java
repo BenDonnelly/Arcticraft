@@ -7,6 +7,7 @@ import net.arcticraft.entities.hostile.EntityPirate;
 import net.arcticraft.entities.passive.EntityCaveman;
 import net.arcticraft.entities.passive.EntityIceMage;
 import net.arcticraft.entities.passive.EntityPenguin;
+import net.arcticraft.entities.passive.EntityPolarBear;
 import net.arcticraft.main.Arcticraft;
 import net.arcticraft.world.gen.dimension.GenLayerBiomesDim;
 import net.arcticraft.world.gen.dimension.biome.ACBiomeGenBase;
@@ -57,14 +58,15 @@ public class ACEntities
 		ALEntityRegistry.createEntity(EntityCannonball.class, "Cannonball", false, 0x00, 0x00, Arcticraft.arcticraftInstance);	
 		ALEntityRegistry.createEntity(EntitySled.class, "EntitySled", false, 0x00, 0x00, Arcticraft.arcticraftInstance);
 		ALEntityRegistry.createEntity(EntityCaptainHook.class, "CaptainHook", false, 0x00, 0x00, Arcticraft.arcticraftInstance);
-		EntityRegistry.registerGlobalEntityID(EntityBoar.class, "Boar", EntityRegistry.findGlobalUniqueEntityId(), netherQuartzColour, netherQuartzColour);
+		EntityRegistry.registerGlobalEntityID(EntityBoar.class, "Boar", EntityRegistry.findGlobalUniqueEntityId(), netherQuartzColour, brownishColour);
 		EntityRegistry.registerGlobalEntityID(EntityPenguin.class, "Penguin", EntityRegistry.findGlobalUniqueEntityId(), blackColour, whiteColour);
 		EntityRegistry.registerGlobalEntityID(EntityIceMage.class, "IceMage", EntityRegistry.findGlobalUniqueEntityId(), kindaBlueColour, purpleBlueishColour);
 		EntityRegistry.registerGlobalEntityID(EntityCaveman.class, "Caveman", EntityRegistry.findGlobalUniqueEntityId(), lightBlueColour, blueishIcyColour);
 		EntityRegistry.registerGlobalEntityID(EntityFrostZombie.class, "FrostZombie", EntityRegistry.findGlobalUniqueEntityId(), zombieBackGround, zombieSpots);
 		EntityRegistry.registerGlobalEntityID(EntityCaptain.class, "Captain", EntityRegistry.findGlobalUniqueEntityId(), redishPinkishColour, blackColour);
 		EntityRegistry.registerGlobalEntityID(EntityPirate.class, "Pirate", EntityRegistry.findGlobalUniqueEntityId(), blackColour, redishPinkishColour);
-		
+		EntityRegistry.registerGlobalEntityID(EntityPolarBear.class, "PolarBear", EntityRegistry.findGlobalUniqueEntityId(), whiteColour, whiteColour);
+
 		for(ACBiomeGenBase tmp : GenLayerBiomesDim.allowedBiomes)
 		{
 			if(tmp != null)

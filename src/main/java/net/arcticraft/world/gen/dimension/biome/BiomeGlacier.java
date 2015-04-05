@@ -4,6 +4,7 @@ import java.util.Random;
 
 import net.arcticraft.block.ACBlocks;
 import net.arcticraft.entities.passive.EntityPenguin;
+import net.arcticraft.entities.passive.EntityPolarBear;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -23,6 +24,7 @@ public class BiomeGlacier extends ACBiomeGenBase {
 		this.spawnableMonsterList.clear();
 		this.spawnableWaterCreatureList.clear();
 		this.spawnableCaveCreatureList.clear();
+		this.spawnableMonsterList.add(new SpawnListEntry(EntityPolarBear.class, 5, 1, 2));
 		//this.spawnableCreatureList.add(new SpawnListEntry(EntityPenguin.class, 8, 2, 6));
 		this.temperature = 0.1F;
 		

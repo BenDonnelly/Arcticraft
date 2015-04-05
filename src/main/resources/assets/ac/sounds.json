@@ -53,21 +53,21 @@
             "mobs/penguin/penguin_death"
         ]
     },
-	"records.frozen_feelings": {
+    "records.frozen_feelings": {
         "category": "record",
-		"stream": true,
+        "stream": true,
         "sounds": [
             "records/frozen_feelings"
         ]
     },
-	"records.welcome_to_the_cold": {
+    "records.welcome_to_the_cold": {
         "category": "record",
-		"stream": true,
+        "stream": true,
         "sounds": [
             "records/welcome_to_the_cold"
         ]
     },
-	"mob.boar.living": {
+    "mob.boar.living": {
         "category": "neutral",
         "sounds": [
             "mobs/boar/boar_living"
@@ -85,7 +85,7 @@
             "mobs/boar/boar_death"
         ]
     },
-	"mob.pirate.living": {
+    "mob.pirate.living": {
         "category": "hostile",
         "sounds": [
             "mobs/pirate/pirate_living"
@@ -101,6 +101,30 @@
         "category": "hostile",
         "sounds": [
             "mobs/pirate/pirate_death"
+        ]
+    },
+    "mob.polar_bear.death": {
+        "category": "hostile",
+        "sounds": [
+            "mobs/polar_bear/bear_death"
+        ]
+    },
+    "mob.polar_bear.living": {
+        "category": "hostile",
+        "sounds": [
+            "mobs/polar_bear/bear_living"
+        ]
+    },
+    "mob.polar_bear.hurt": {
+        "category": "hostile",
+        "sounds": [
+            "mobs/polar_bear/bear_hurt"
+        ]
+    },
+    "mob.polar_bear.angry": {
+        "category": "hostile",
+        "sounds": [
+            "mobs/polar_bear/bear_angry"
         ]
     }
 }
