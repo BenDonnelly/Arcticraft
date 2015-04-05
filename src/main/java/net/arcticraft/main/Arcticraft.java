@@ -9,6 +9,7 @@ import net.arcticraft.helpers.CommandChangeTemperature;
 import net.arcticraft.helpers.ForgeEvents;
 import net.arcticraft.helpers.TickEvent;
 import net.arcticraft.item.ACItems;
+import net.arcticraft.item.ACPotions;
 import net.arcticraft.temperature.TemperatureHandler;
 import net.arcticraft.temperature.handlers.LightvalueHandler;
 import net.arcticraft.temperature.handlers.LocationHandler;
@@ -23,6 +24,7 @@ import net.arcticraft.world.gen.dimension.TeleporterDim;
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.ICommandManager;
 import net.minecraft.command.ServerCommandManager;
+import net.minecraft.potion.Potion;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -54,7 +56,7 @@ public class Arcticraft{
 	public ChunkProviderDim chunkProvider = null;
 	public TeleporterDim tper = null;
 	public boolean initialized = false;
-	
+		
 	protected static CPackMain cPackMain = new CPackMain();
 	private GuiHandler guiHandler = new GuiHandler();
 	public static SimpleNetworkWrapper network;
@@ -75,6 +77,7 @@ public class Arcticraft{
 		ACBlocks.loadBlocks();
 		ACItems.loadItems();
 		ACRecipes.loadRecipes();
+		ACPotions.loadPotions();
 		
 		cPackMain.preInit();
 	}

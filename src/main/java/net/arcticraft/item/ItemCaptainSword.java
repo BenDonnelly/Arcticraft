@@ -16,7 +16,7 @@ public class ItemCaptainSword extends ItemSword{
 	public boolean hitEntity(ItemStack itemStack, EntityLivingBase entity, EntityLivingBase entity2)
 	{
 		itemStack.damageItem(1, entity2);
-		entity.addPotionEffect(new PotionEffect(Potion.poison.id, 100, 2));
+		entity.addPotionEffect(new PotionEffect(ACPotions.frostbitePotion.id, 100, 0));
 		return true;
 	}
 
