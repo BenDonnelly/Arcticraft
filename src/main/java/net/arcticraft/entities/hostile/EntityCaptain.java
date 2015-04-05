@@ -1,5 +1,10 @@
-package net.arcticraft.entities;
+package net.arcticraft.entities.hostile;
 
+import net.arcticraft.block.ACBlocks;
+import net.arcticraft.entities.ACIBossDisplayData;
+import net.arcticraft.entities.EntityCaptainHook;
+import net.arcticraft.entities.ai.EntityAICaptainAttack;
+import net.arcticraft.entities.ai.EntityAIHookAttack;
 import net.arcticraft.item.ACItems;
 import net.arcticraft.main.Arcticraft;
 import net.arcticraft.main.RopePositionPacket;
@@ -17,6 +22,7 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -128,7 +134,7 @@ public class EntityCaptain extends EntityMob implements ACIBossDisplayData, IRan
 	protected void dropFewItems(boolean beenHit, int lootingLevel)
 	{
 		this.dropItem(ACItems.captainSword, 1);
-		// this.dropItem(AC_Block.captainStatue.blockID, 1);
+		this.dropItem(Item.getItemFromBlock(ACBlocks.captainStatue), 1);
 		this.dropItem(ACItems.captainsLog, 1);
 	}
 

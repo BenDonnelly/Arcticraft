@@ -11,11 +11,7 @@ import net.arcticraft.item.ItemLeafBlocks;
 import net.arcticraft.item.ItemLogBlocks;
 import net.arcticraft.item.ItemPlankBlocks;
 import net.arcticraft.item.ItemSlabBlocks;
-import net.arcticraft.tileentity.TileEntityArcticFurnace;
-import net.arcticraft.tileentity.TileEntityCampfire;
-import net.arcticraft.tileentity.TileEntityCannon;
-import net.arcticraft.tileentity.TileEntityCaveman;
-import net.arcticraft.tileentity.TileEntityIcicle;
+import net.arcticraft.tileentity.*;
 import net.arcticraft.util.StringUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -71,6 +67,7 @@ public class ACBlocks{
 	public static Block cannon;
 	public static Block caveman;
 	public static Block icicle;
+	public static Block captainStatue;
 	
 	/* Machine Blocks */
 	public static Block arcticFurnaceIdle;
@@ -145,6 +142,7 @@ public class ACBlocks{
 		cannon = new BlockCannon(Material.iron);
 		caveman = new BlockCaveman(Material.glass);
 		icicle = new BlockIcicle(Material.glass);
+		captainStatue = new BlockCaptainStatue(Material.iron);
 		
 		/* Machine Blocks */
 		arcticFurnaceIdle = new BlockACFurnace(false).setBlockName(MOD_ID + "arcticFurnaceIdle").setCreativeTab(ACCreativeTabs.acTabBlock);
@@ -163,7 +161,7 @@ public class ACBlocks{
 	public static void registerBlocks()
 	{
 		Block[] blockList = {frostGrass, frostDirt, frostStone, frostCobble, frostWaterBlock, arcaneStone, frostWaterIce, frostSnow, tekkiteOre, escariaOre, glacianOre, rigentemOre, frigusOre
-				,mysticalSnow, campfire, cannon, frostLadder, frostDoor, eriumOre, tekkiteBlock, escariaBlock, glacianBlock, rigentemBlock, caveman, frozenFarmland, crystalGlass, icestoneWire, icestoneTorchOn, icestoneTorchOff};
+				,mysticalSnow, campfire, cannon, frostLadder, frostDoor, eriumOre, tekkiteBlock, escariaBlock, glacianBlock, rigentemBlock, caveman, frozenFarmland, crystalGlass, icestoneWire, icestoneTorchOn, icestoneTorchOff, captainStatue};
 
 		for(Block block : blockList)
 		{
@@ -188,7 +186,8 @@ public class ACBlocks{
 		GameRegistry.registerTileEntity(TileEntityCaveman.class, "tileEntityCaveman");
 		GameRegistry.registerTileEntity(TileEntityArcticFurnace.class, "tileEntityArcticFurnace");
 		GameRegistry.registerTileEntity(TileEntityIcicle.class, "tileEntityIcicle");
-
+		GameRegistry.registerTileEntity(TileEntityCaptainStatue.class, "tileEntityCaptainStatue");
+		
 	}
 	
 }

@@ -1,7 +1,9 @@
 package net.arcticraft.entities;
 
+import net.arcticraft.entities.hostile.EntityBoar;
+import net.arcticraft.entities.hostile.EntityCaptain;
 import net.arcticraft.entities.hostile.EntityFrostZombie;
-import net.arcticraft.entities.passive.EntityBoar;
+import net.arcticraft.entities.hostile.EntityPirate;
 import net.arcticraft.entities.passive.EntityCaveman;
 import net.arcticraft.entities.passive.EntityIceMage;
 import net.arcticraft.entities.passive.EntityPenguin;
@@ -9,7 +11,6 @@ import net.arcticraft.main.Arcticraft;
 import net.arcticraft.world.gen.dimension.GenLayerBiomesDim;
 import net.arcticraft.world.gen.dimension.biome.ACBiomeGenBase;
 import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.entity.passive.EntityWolf;
 
 import com.arcanumLudum.ALCore.entity.ALEntityRegistry;
 
@@ -62,7 +63,8 @@ public class ACEntities
 		EntityRegistry.registerGlobalEntityID(EntityCaveman.class, "Caveman", EntityRegistry.findGlobalUniqueEntityId(), lightBlueColour, blueishIcyColour);
 		EntityRegistry.registerGlobalEntityID(EntityFrostZombie.class, "FrostZombie", EntityRegistry.findGlobalUniqueEntityId(), zombieBackGround, zombieSpots);
 		EntityRegistry.registerGlobalEntityID(EntityCaptain.class, "Captain", EntityRegistry.findGlobalUniqueEntityId(), redishPinkishColour, blackColour);
-
+		EntityRegistry.registerGlobalEntityID(EntityPirate.class, "Pirate", EntityRegistry.findGlobalUniqueEntityId(), blackColour, redishPinkishColour);
+		
 		for(ACBiomeGenBase tmp : GenLayerBiomesDim.allowedBiomes)
 		{
 			if(tmp != null)

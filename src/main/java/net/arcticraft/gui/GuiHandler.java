@@ -32,7 +32,7 @@ public class GuiHandler implements IGuiHandler{
 
 		switch(id) {
 		case 0:
-			return new GuiArcticPouch(player, player.inventory, new ItemArcticPouchInventory(player.getHeldItem()));
+			return new GuiArcticPouch(player, player.inventory, new ItemArcticPouchInventory(player.getHeldItem()), player.getHeldItem().getItemDamage());
 		case 1:
 			 return new GuiArcticFurnace(player.inventory, (TileEntityArcticFurnace) tile_entity);
 		}

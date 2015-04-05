@@ -1,6 +1,6 @@
 package net.arcticraft.entities.ai;
 
-import net.arcticraft.entities.passive.EntityBoar;
+import net.arcticraft.entities.hostile.EntityBoar;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.DamageSource;
 import thehippomaster.AnimationAPI.AIAnimation;

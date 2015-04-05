@@ -1,5 +1,6 @@
 package net.arcticraft.entities;
 
+import net.arcticraft.entities.hostile.EntityCaptain;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -65,7 +66,7 @@ public class EntityCaptainHook extends EntityThrowable{
 	}
 
 	@Override
-	protected float func_70182_d()
+	public float func_70182_d()
 	{
 		return 0.8F;
 	}

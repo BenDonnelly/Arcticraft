@@ -17,19 +17,22 @@ import cpw.mods.fml.client.FMLClientHandler;
 public class GuiArcticPouch extends GuiContainer
 {
 
+	public static final String[] names = {"Blue" , "Brown" , "Cyan" , "Magenta" , "Orange" , "Pink" , "Purple" , "Red" , "Light Gray" , "Yellow" , "Black" , "Gray" , "Green" , "Lime" , "Leather", "Light Blue"};
 	public ItemArcticPouchInventory backpack;
+	private int damage;
 
-	public GuiArcticPouch(EntityPlayer player, InventoryPlayer playerInv, ItemArcticPouchInventory apInv)
+	public GuiArcticPouch(EntityPlayer player, InventoryPlayer playerInv, ItemArcticPouchInventory apInv, int itemstackDamage)
 	{
 		super(new ContainerArcticPouch(player, playerInv, apInv));
 		this.backpack = apInv;
+		this.damage = itemstackDamage;
 	}
 
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y)
 	{
-		this.fontRendererObj.drawString("Arctic Pouch", 8, 6, 4210752);
+		this.fontRendererObj.drawString(names[damage] + " Arctic Pouch", 8, 6, 4210752);
 		this.fontRendererObj.drawString(I18n.format("container.inventory"), 8, this.ySize - 96 + 2, 4210752);
 	}
 

@@ -66,5 +66,41 @@
         "sounds": [
             "records/welcome_to_the_cold"
         ]
+    },
+	"mob.boar.living": {
+        "category": "neutral",
+        "sounds": [
+            "mobs/boar/boar_living"
+        ]
+    },
+    "mob.boar.hurt": {
+        "category": "neutral",
+        "sounds": [
+            "mobs/boar/boar_hurt"
+        ]
+    },
+    "mob.boar.death": {
+        "category": "neutral",
+        "sounds": [
+            "mobs/boar/boar_death"
+        ]
+    },
+	"mob.pirate.living": {
+        "category": "hostile",
+        "sounds": [
+            "mobs/pirate/pirate_living"
+        ]
+    },
+    "mob.pirate.hurt": {
+        "category": "hostile",
+        "sounds": [
+            "mobs/pirate/pirate_hurt"
+        ]
+    },
+    "mob.pirate.death": {
+        "category": "hostile",
+        "sounds": [
+            "mobs/pirate/pirate_death"
+        ]
     }
 }

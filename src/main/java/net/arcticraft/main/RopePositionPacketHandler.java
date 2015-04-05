@@ -1,7 +1,7 @@
 package net.arcticraft.main;
 
-import net.arcticraft.entities.EntityCaptain;
 import net.arcticraft.entities.EntityCaptainHook;
+import net.arcticraft.entities.hostile.EntityCaptain;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.player.EntityPlayer;

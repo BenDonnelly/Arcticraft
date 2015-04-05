@@ -3,10 +3,12 @@ package net.arcticraft.world.gen.dimension.biome;
 import java.util.Random;
 
 import net.arcticraft.block.ACBlocks;
+import net.arcticraft.entities.hostile.EntityBoar;
 import net.arcticraft.entities.hostile.EntityFrostZombie;
 import net.arcticraft.world.gen.WorldGenCaveman;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase.SpawnListEntry;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 public class BiomeFrostForest extends ACBiomeGenBase{
@@ -23,7 +25,7 @@ public class BiomeFrostForest extends ACBiomeGenBase{
 		this.spawnableWaterCreatureList.clear();
 		this.spawnableCaveCreatureList.clear();
 		this.spawnableMonsterList.add(new SpawnListEntry(EntityFrostZombie.class, 1, 1, 3));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityWolf.class, 1, 1, 4));
+		this.spawnableMonsterList.add(new SpawnListEntry(EntityBoar.class, 2, 1, 3));
 		// this.spawnableCreatureList.add(new SpawnListEntry(EntityPenguin.class, 3, 2, 6));
 		this.theBiomeDecorator.mushroomsPerChunk = 0;
 		this.theBiomeDecorator.bigMushroomsPerChunk = 0;

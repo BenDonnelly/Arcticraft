@@ -1,6 +1,6 @@
 package net.arcticraft.entities.model;
 
-import net.arcticraft.entities.EntityCaptain;
+import net.arcticraft.entities.hostile.EntityCaptain;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;

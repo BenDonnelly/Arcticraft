@@ -3,15 +3,16 @@ package net.arcticraft.main;
 import net.arcticraft.block.ACBlocks;
 import net.arcticraft.block.render.BlockIcestoneRender;
 import net.arcticraft.entities.EntityCannonball;
-import net.arcticraft.entities.EntityCaptain;
 import net.arcticraft.entities.EntityCaptainHook;
 import net.arcticraft.entities.EntitySled;
+import net.arcticraft.entities.hostile.EntityBoar;
+import net.arcticraft.entities.hostile.EntityCaptain;
 import net.arcticraft.entities.hostile.EntityFrostZombie;
+import net.arcticraft.entities.hostile.EntityPirate;
 import net.arcticraft.entities.model.ModelBoar;
 import net.arcticraft.entities.model.ModelCaveman;
 import net.arcticraft.entities.model.ModelIceMage;
 import net.arcticraft.entities.model.ModelPenguin;
-import net.arcticraft.entities.passive.EntityBoar;
 import net.arcticraft.entities.passive.EntityCaveman;
 import net.arcticraft.entities.passive.EntityIceMage;
 import net.arcticraft.entities.passive.EntityPenguin;
@@ -23,6 +24,7 @@ import net.arcticraft.entities.render.RenderCaveman;
 import net.arcticraft.entities.render.RenderFrostZombie;
 import net.arcticraft.entities.render.RenderIceMage;
 import net.arcticraft.entities.render.RenderPenguin;
+import net.arcticraft.entities.render.RenderPirate;
 import net.arcticraft.entities.render.RenderSled;
 import net.arcticraft.gui.GuiBossBar;
 import net.arcticraft.gui.GuiFrozenScreen;
@@ -31,18 +33,23 @@ import net.arcticraft.item.ACItems;
 import net.arcticraft.item.render.ItemCampfireRender;
 import net.arcticraft.item.render.ItemCannonRender;
 import net.arcticraft.item.render.ItemCannonballRender;
+import net.arcticraft.item.render.ItemCaptainStatueRender;
 import net.arcticraft.item.render.ItemCaptainsHookRender;
 import net.arcticraft.item.render.ItemCavemanRender;
 import net.arcticraft.tileentity.TileEntityCampfire;
 import net.arcticraft.tileentity.TileEntityCannon;
+import net.arcticraft.tileentity.TileEntityCaptainStatue;
 import net.arcticraft.tileentity.TileEntityCaveman;
 import net.arcticraft.tileentity.TileEntityIcicle;
 import net.arcticraft.tileentity.renderers.TileEntityCampfireRender;
 import net.arcticraft.tileentity.renderers.TileEntityCannonRender;
+import net.arcticraft.tileentity.renderers.TileEntityCaptainStatueRender;
 import net.arcticraft.tileentity.renderers.TileEntityCavemanRender;
 import net.arcticraft.tileentity.renderers.TileEntityIcicleRender;
 import net.arcticraft.world.gen.dimension.WorldProviderDim;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.IItemRenderer;
@@ -70,6 +77,7 @@ public class ClientProxy extends CommonProxy{
 		RenderingRegistry.registerEntityRenderingHandler(EntityCannonball.class, new RenderCannonball(ACItems.cannonball));
 		RenderingRegistry.registerEntityRenderingHandler(EntityCaptain.class, new RenderCaptain());
 		RenderingRegistry.registerEntityRenderingHandler(EntityCaptainHook.class, new RenderCaptainHook());
+		RenderingRegistry.registerEntityRenderingHandler(EntityPirate.class, new RenderPirate(new ModelBiped(), 0.5F));
 		RenderingRegistry.registerBlockHandler(new BlockIcestoneRender()); // Or 'this' if your proxy happens to be the one that implements the block render interface.
 	     
 		MinecraftForgeClient.registerItemRenderer(ACItems.captainsHook, (IItemRenderer) new ItemCaptainsHookRender());
@@ -89,6 +97,10 @@ public class ClientProxy extends CommonProxy{
 		
 		render = new TileEntityIcicleRender();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityIcicle.class, new TileEntityIcicleRender());
+		
+		render = new TileEntityCaptainStatueRender();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCaptainStatue.class, new TileEntityCaptainStatueRender());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ACBlocks.captainStatue), new ItemCaptainStatueRender(render));
 		
 	}
 

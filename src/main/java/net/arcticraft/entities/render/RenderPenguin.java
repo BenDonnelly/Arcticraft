@@ -1,6 +1,6 @@
 package net.arcticraft.entities.render;
 
-import net.arcticraft.entities.passive.EntityBoar;
+import net.arcticraft.entities.hostile.EntityBoar;
 import net.arcticraft.main.Arcticraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;

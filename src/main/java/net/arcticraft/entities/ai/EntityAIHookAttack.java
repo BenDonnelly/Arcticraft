@@ -1,5 +1,6 @@
-package net.arcticraft.entities;
+package net.arcticraft.entities.ai;
 
+import net.arcticraft.entities.hostile.EntityCaptain;
 import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.ai.EntityAIArrowAttack;
 

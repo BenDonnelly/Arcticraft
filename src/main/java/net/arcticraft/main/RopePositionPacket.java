@@ -1,8 +1,8 @@
 package net.arcticraft.main;
 
 import io.netty.buffer.ByteBuf;
-import net.arcticraft.entities.EntityCaptain;
 import net.arcticraft.entities.EntityCaptainHook;
+import net.arcticraft.entities.hostile.EntityCaptain;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;

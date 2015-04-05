@@ -3,6 +3,7 @@ package net.arcticraft.entities.model;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.MathHelper;
 
 /**
  * newboar2.tcn - TechneToTabulaImporter Created using Tabula 4.1.1
@@ -135,6 +136,8 @@ public class ModelBoar extends ModelBase{
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
 	{
+		super.render(entity, f, f1, f2, f3, f4, f5);
+		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		this.tail.render(f5);
 		this.body1.render(f5);
 		this.head.render(f5);
@@ -153,5 +156,16 @@ public class ModelBoar extends ModelBase{
 		modelRenderer.rotateAngleX = x;
 		modelRenderer.rotateAngleY = y;
 		modelRenderer.rotateAngleZ = z;
+	}
+	@Override
+	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity par6Entity)
+	{
+	super.setRotationAngles(f, f1, f2, f3, f4, f5, par6Entity);
+	this.head.rotateAngleX = f5 / (180F / (float) Math.PI);
+	this.head.rotateAngleY = f5 / (180F / (float) Math.PI);
+    this.backlegL1.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
+    this.backlegR1.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
+    this.frontlegL.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
+    this.frontlegR.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
 	}
 }

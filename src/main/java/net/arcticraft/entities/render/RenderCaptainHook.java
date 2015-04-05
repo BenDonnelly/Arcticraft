@@ -1,7 +1,7 @@
 package net.arcticraft.entities.render;
 
-import net.arcticraft.entities.EntityCaptain;
 import net.arcticraft.entities.EntityCaptainHook;
+import net.arcticraft.entities.hostile.EntityCaptain;
 import net.arcticraft.entities.model.ModelCaptainsHook;
 import net.arcticraft.main.Arcticraft;
 import net.minecraft.client.renderer.Tessellator;
