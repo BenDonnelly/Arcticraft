@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 import net.arcticraft.API.temp.ITempComponent;
 import net.arcticraft.helpers.IExtendedPlayerProps;
+import net.arcticraft.main.Arcticraft;
 import net.arcticraft.temperature.handlers.LightvalueHandler;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 public class TemperatureHandler {
@@ -39,7 +41,7 @@ public class TemperatureHandler {
 		}
 		else
 		{
-			this.temperature = temperature;
+			this.temperature = temperature;		
 		}
 	}
 	
@@ -63,11 +65,13 @@ public class TemperatureHandler {
 		
 		for(ITempComponent tmp : components)
 		{
-			this.modifyTemperature(tmp.changeTemperature(player, world, this));	
+			this.setTemperature(this.getTemperature() + tmp.changeTemperature(player, world, this));	
 			tmp.handleTemperature(player, world, this);
 			
 			IExtendedPlayerProps props = IExtendedPlayerProps.get(player);			
+			NBTTagCompound compound = new NBTTagCompound();
 			props.changeTemp(this.temperature);
+			props.saveNBTData(compound);
 		}
 		
 		if(Math.round(this.getTemperature()) == 0)

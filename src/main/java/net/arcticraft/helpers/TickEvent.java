@@ -1,25 +1,30 @@
 package net.arcticraft.helpers;
 
+import java.util.Random;
+
 import net.arcticraft.gui.GuiACMainMenu;
+import net.arcticraft.item.ItemHotWaterBottle;
 import net.arcticraft.main.Arcticraft;
 import net.arcticraft.temperature.TemperatureHandler;
 import net.arcticraft.temperature.handlers.LightvalueHandler;
 import net.arcticraft.temperature.handlers.LocationHandler;
 import net.arcticraft.temperature.handlers.MovementHandler;
 import net.arcticraft.world.gen.dimension.TeleporterDim;
-import net.arcticraft.world.gen.dimension.WorldProviderDim;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.item.ItemStack;
 
 import org.lwjgl.input.Keyboard;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
-import cpw.mods.fml.common.gameevent.TickEvent.WorldTickEvent;
+import cpw.mods.fml.common.gameevent.TickEvent.RenderTickEvent;
 
 public class TickEvent{
+	int pTickCounter = 0;
+	
 	@SubscribeEvent
 	public void tickPlayer(PlayerTickEvent event)
 	{
@@ -59,17 +64,35 @@ public class TickEvent{
     		{
     			Arcticraft.arcticraftInstance.tempHandler.tick(event.player, event.player.worldObj);
     		}
+    		
+    		if(!event.player.capabilities.isCreativeMode)
+    		{
+    			InventoryPlayer inv = event.player.inventory;
+        		
+        		for(ItemStack tmp : inv.mainInventory)
+        		{
+        			if(tmp != null && tmp.getItem() instanceof ItemHotWaterBottle)
+        			{
+        				int r = new Random().nextInt(500 - 0) + 0;
+        				
+        				if(r == 10)
+        				{
+        					if(event.player.worldObj.getBlockLightValue((int)event.player.posX, (int)event.player.posY - 1, (int)event.player.posZ) < 0.4f)
+        					{
+        						tmp.setItemDamage(tmp.getItemDamage() + 2);
+        					}
+        				}
+        			}
+        		}
+    		}
 		}
 	}
 	
 	@SubscribeEvent
-	public void tickClient(ClientTickEvent event){
-		
+	public void tickRender(RenderTickEvent event){		
 		if(Minecraft.getMinecraft().currentScreen instanceof GuiMainMenu)
 		{
 			Minecraft.getMinecraft().displayGuiScreen(new GuiACMainMenu());
-		}
-			
+		}			
 	}
-	
 }

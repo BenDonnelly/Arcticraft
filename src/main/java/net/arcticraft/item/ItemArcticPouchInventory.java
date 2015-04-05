@@ -40,11 +40,16 @@ public class ItemArcticPouchInventory extends InventoryBasic{
 	{
 		return 64;
 	}
-
+	
 	@Override
 	public boolean isItemValidForSlot(int par1, ItemStack itemstack)
 	{
-		return !(itemstack.getItem() == ACItems.arcticPouch);
+		if(itemstack.getItem() instanceof ItemArcticPouch || itemstack.getItem() == ACItems.arcticPouch)
+		{
+			return false;
+		}
+		
+		return true;
 	}
 
 	@Override
@@ -58,7 +63,6 @@ public class ItemArcticPouchInventory extends InventoryBasic{
 
 	public void readFromNBT(NBTTagCompound tagcompound)
 	{
-
 		NBTTagList nbttaglist = tagcompound.getTagList("ApInventory", tagcompound.getId());
 
 		for(int i = 0; i < nbttaglist.tagCount(); ++i)

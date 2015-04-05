@@ -53,6 +53,11 @@ public class ACBlocks{
 	public static Block frostLadder;
 	public static Block tekkiteBlock, escariaBlock, glacianBlock, eriumBlock, rigentemBlock;
 	
+	/* Icestone */
+	public static BlockIcestone icestoneWire;
+	public static Block icestoneTorchOn;
+	public static Block icestoneTorchOff;
+	
 	/* Ores - Ordered in rarity*/
 	public static Block tekkiteOre;
 	public static Block escariaOre;
@@ -130,6 +135,11 @@ public class ACBlocks{
 		glacianBlock = new BlockAC(Material.iron).setHardness(5.0F).setResistance(5.0F).setBlockName(MOD_ID + "_glacianBlock").setBlockTextureName(MOD_ID + ":ores/full_blocks/glacian").setCreativeTab(ACCreativeTabs.acTabDecoration);
 		rigentemBlock = new BlockAC(Material.iron).setHardness(5.0F).setResistance(5.0F).setBlockName(MOD_ID + "_rigentemBlock").setBlockTextureName(MOD_ID + ":ores/full_blocks/rigentem").setCreativeTab(ACCreativeTabs.acTabDecoration);
 		
+		/* Icestone */
+		icestoneWire = (BlockIcestone) new BlockIcestone().disableStats().setHardness(0.0F).setStepSound(Block.soundTypeStone).setBlockName(MOD_ID + "_icestoneWire").setBlockTextureName(MOD_ID + ":icestone/icestone_wire");
+		icestoneTorchOn = (BlockIcestoneTorch) new BlockIcestoneTorch(true).setCreativeTab(ACCreativeTabs.acTabTechnical).setLightLevel(0.5F).setHardness(0.0F).setStepSound(Block.soundTypeStone).setBlockName(MOD_ID + "_icestoneTorchOn").setBlockTextureName(MOD_ID + ":icestone/icestone_torch_on");
+		icestoneTorchOff = (BlockIcestoneTorch) new BlockIcestoneTorch(true).setHardness(0.0F).setStepSound(Block.soundTypeStone).setBlockName(MOD_ID + "_icestoneTorchOff").setBlockTextureName(MOD_ID + ":icestone/icestone_torch_off");
+		
 		/* Tile Entity Blocks */
 		campfire = new BlockCampfire(Material.wood);
 		cannon = new BlockCannon(Material.iron);
@@ -153,7 +163,7 @@ public class ACBlocks{
 	public static void registerBlocks()
 	{
 		Block[] blockList = {frostGrass, frostDirt, frostStone, frostCobble, frostWaterBlock, arcaneStone, frostWaterIce, frostSnow, tekkiteOre, escariaOre, glacianOre, rigentemOre, frigusOre
-				,mysticalSnow, campfire, cannon, frostLadder, frostDoor, eriumOre, tekkiteBlock, escariaBlock, glacianBlock, rigentemBlock, caveman, frozenFarmland, crystalGlass};
+				,mysticalSnow, campfire, cannon, frostLadder, frostDoor, eriumOre, tekkiteBlock, escariaBlock, glacianBlock, rigentemBlock, caveman, frozenFarmland, crystalGlass, icestoneWire, icestoneTorchOn, icestoneTorchOff};
 
 		for(Block block : blockList)
 		{

@@ -69,13 +69,13 @@ public class Arcticraft{
 	public static void preInit(FMLPreInitializationEvent PreEvent)
 	{
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(MOD_ID);
+		network.registerMessage(RopePositionPacketHandler.class, RopePositionPacket.class, 0, Side.SERVER);
 		
 		VectorUtils.init();
 		ACBlocks.loadBlocks();
 		ACItems.loadItems();
 		ACRecipes.loadRecipes();
 		
-		network.registerMessage(RopePositionPacketHandler.class, RopePositionPacket.class, 0, Side.SERVER);
 		cPackMain.preInit();
 	}
 

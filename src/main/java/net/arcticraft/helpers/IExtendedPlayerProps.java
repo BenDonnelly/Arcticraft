@@ -54,7 +54,7 @@ public class IExtendedPlayerProps implements IExtendedEntityProperties{
 
 		compound.setTag(EXT_PROP_NAME, properties);
 		//System.out.println("Saving Temp to NBT: " + this.currentTemp + "/" + this.maxTemp);
-		System.out.println("Saving Temp to NBT: " + this.player.getDataWatcher().getWatchableObjectFloat(CURRENT_TEMP_WATCHER) + "/" + this.maxTemp);
+		//System.out.println("Saving Temp to NBT: " + this.player.getDataWatcher().getWatchableObjectFloat(CURRENT_TEMP_WATCHER) + "/" + this.maxTemp);
 	}
 
 	@Override
@@ -65,7 +65,7 @@ public class IExtendedPlayerProps implements IExtendedEntityProperties{
 		this.player.getDataWatcher().updateObject(CURRENT_TEMP_WATCHER, properties.getFloat("CurrentTemp"));
 		this.maxTemp = properties.getInteger("MaxTemp");
 		//System.out.println("Temp from NBT: " + this.currentTemp + "/" + this.maxTemp);
-		System.out.println("Temp from NBT: " + this.player.getDataWatcher().getWatchableObjectFloat(CURRENT_TEMP_WATCHER) + "/" + this.maxTemp);
+		//System.out.println("Temp from NBT: " + this.player.getDataWatcher().getWatchableObjectFloat(CURRENT_TEMP_WATCHER) + "/" + this.maxTemp);
 	}
 
 	@Override

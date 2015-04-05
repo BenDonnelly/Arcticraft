@@ -1,22 +1,17 @@
 package net.arcticraft.world.gen.dimension;
 
 import java.util.Iterator;
-import java.util.Random;
 
 import net.arcticraft.block.ACBlocks;
+import net.arcticraft.item.ACItems;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntityChest;
-import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.World;
@@ -90,115 +85,110 @@ public class TeleporterDim extends Teleporter
 		if(world.provider.dimensionId != DIMENSION_ID)
 			return;
 
-		int oldX = x;
-		int oldY = y;
-		int oldZ = z;
-		
-		y += 3;
-		x -= 3;
-		z -= 3;
-
-		String[][] data = new String[][] { {"XXXXXXXXX" , "XXXXXXXXX" , "XXXXXXXXX" , "TTTTTTXXX" , "XXXXXXXXX" , "XXXXXXXXX" , "XXXXXXXXX"} , {"XXXXXXXXX" , "XXXXXXXXX" , "TTTTTTXXX" , "TXXXXFXXX" , "TTTTTTXXX" , "XXXXXXXXX" , "XXXXXXXXX"} ,
-				{"XXXXXXXXX" , "TTTTTTXXX" , "TXXXXXXXX" , "TXXXXFXXX" , "TXXXXXXXX" , "TTTTTTXXX" , "XXXXXXXXX"} , {"TTTTTTXXX" , "TXXXXXXXX" , "TXXXXXXXX" , "TCXXXFXXX" , "TXXXXXXXX" , "TXXXXXXXX" , "TTTTTTXXX"} ,
-				{"GGGGGGGGG" , "GGGGGGGGG" , "GGGGGGGGG" , "GGGBGGGGG" , "GGGGGGGGG" , "GGGGGGGGG" , "GGGGGGGGG"} , {"RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR"} ,
-				{"RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR"} , {"RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR"} ,
-				{"RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR"}};
-
-		for(String[] row : data)
+		while(y > 0)
 		{
-			for(String col : row)
+			y--;
+			
+			if(world.getBlock(x, y + 1, z) == ACBlocks.frostGrass)
 			{
-				for(Character c : col.toCharArray())
+				int oldX = x;
+				int oldY = y;
+				int oldZ = z;
+				
+				y += 3;
+				x -= 3;
+				z -= 3;
+
+				String[][] data = new String[][] { {"XXXXXXXXX" , "XXXXXXXXX" , "XXXXXXXXX" , "TTTTTTXXX" , "XXXXXXXXX" , "XXXXXXXXX" , "XXXXXXXXX"} , {"XXXXXXXXX" , "XXXXXXXXX" , "TTTTTTXXX" , "TXXXXFXXX" , "TTTTTTXXX" , "XXXXXXXXX" , "XXXXXXXXX"} ,
+						{"XXXXXXXXX" , "TTTTTTXXX" , "TXXXXXXXX" , "TXXXXFXXX" , "TXXXXXXXX" , "TTTTTTXXX" , "XXXXXXXXX"} , {"TTTTTTXXX" , "TXXXXXXXX" , "TXXXXXXXX" , "TCXXXFXXX" , "TXXXXXXXX" , "TXXXXXXXX" , "TTTTTTXXX"} ,
+						{"GGGGGGGGG" , "GGGGGGGGG" , "GGGGGGGGG" , "GGGBGGGGG" , "GGGGGGGGG" , "GGGGGGGGG" , "GGGGGGGGG"} , {"RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR"} ,
+						{"RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR"} , {"RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR"} ,
+						{"RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR" , "RRRRRRRRR"}};
+
+				for(String[] row : data)
 				{
-					Block id = null;
-					Block id2 = null;
-					int damage = 0;
-
-					switch(c)
+					for(String col : row)
 					{
-					case 'X':
-						id = Blocks.air;
-						damage = 0;
-						break;
-					case 'T':
-						id = Blocks.wool;
-						damage = 13;
-						break;
-					case 'F':
-						id = Blocks.fence;
-						damage = 0;
-						break;
-					case 'G':
-						if(world.getBlock(x, y - 1, z) == ACBlocks.frostSnow || world.getBlock(x, y - 1, z) == ACBlocks.frostWaterBlock)
+						for(Character c : col.toCharArray())
 						{
-							id = ACBlocks.frostGrass;
-						}
-						else
-						{
-							id = world.getBlock(x, y - 1, z);
-						}
-						
-						id2 = ACBlocks.frostSnow;
-						damage = 0;
-						break;
-					case 'R':
-						id = Blocks.dirt;
-						damage = 0;
-						break;
-					case 'C':
-						id = Blocks.chest;
-						damage = 0;
-						break;
-					case 'B':
-						id = Blocks.bedrock;
-						damage = 0;
-						
-						portalX = x;
-						portalY = y;
-						portalZ = z;
-						
-						break;
-					}
+							Block id = null;
+							int damage = 0;
 
-					if(world.getBlock(x, y, z) != id)
-					{
-						if(id == Blocks.dirt && world.getBlock(x, y, z) != null && world.getBlock(x, y, z) != Blocks.snow /* && world.getBlockId(x, y, z) != MainRegistry.thickSnow.blockID */)
-						{
-							x++;
-							continue;
-						}
-
-						world.setBlock(x, y, z, id, damage, 2);
-						
-						if(id2 != null)
-						{
-							if(world.getBlock(x, y + 1, z) == Blocks.air)
+							switch(c)
 							{
-								int low = 0;
-			                	int high = 3;
-			                	int r = new Random().nextInt(high - low) + low;
-			                	
-								world.setBlock(x, y + 1, z, id2, r, 2);
+							case 'X':
+								id = Blocks.air;
+								damage = 0;
+								break;
+							case 'T':
+								id = Blocks.wool;
+								damage = 13;
+								break;
+							case 'F':
+								id = Blocks.fence;
+								damage = 0;
+								break;
+							case 'G':
+								if(world.getBlock(x, y - 1, z) == ACBlocks.frostSnow || world.getBlock(x, y - 1, z) == ACBlocks.frostWaterBlock)
+								{
+									id = ACBlocks.frostGrass;
+								}
+								else
+								{
+									id = world.getBlock(x, y - 1, z);
+								}
+								damage = 0;
+								break;
+							case 'R':
+								id = Blocks.dirt;
+								damage = 0;
+								break;
+							case 'C':
+								id = Blocks.chest;
+								damage = 0;
+								break;
+							case 'B':
+								id = Blocks.bedrock;
+								damage = 0;
+								
+								portalX = x;
+								portalY = y;
+								portalZ = z;
+								
+								break;
 							}
+
+							if(world.getBlock(x, y, z) != id)
+							{
+								if(id == Blocks.dirt && world.getBlock(x, y, z) != null && world.getBlock(x, y, z) != Blocks.snow /* && world.getBlockId(x, y, z) != MainRegistry.thickSnow.blockID */)
+								{
+									x++;
+									continue;
+								}
+
+								world.setBlock(x, y, z, id, damage, 2);
+
+								if(id == Blocks.chest)
+								{
+									TileEntityChest chest = (TileEntityChest) world.getTileEntity(x, y, z);
+									chest.setInventorySlotContents(0, new ItemStack(Items.boat, 1));
+									chest.setInventorySlotContents(0, new ItemStack(ACItems.glacierFruit, 1));
+								}
+							}
+
+							x++;
 						}
 
-						if(id == Blocks.chest)
-						{
-							TileEntityChest chest = (TileEntityChest) world.getTileEntity(x, y, z);
-							chest.setInventorySlotContents(0, new ItemStack(Items.boat, 1));
-							//chest.setInventorySlotContents(0, new ItemStack(ACItems.GlacierFruit, 1));
-						}
+						x -= 9;
+						z++;
 					}
 
-					x++;
+					y -= 1;
+					z -= 7;
 				}
-
-				x -= 9;
-				z++;
+				
+				break;
 			}
-
-			y -= 1;
-			z -= 7;
 		}
 	}
 }

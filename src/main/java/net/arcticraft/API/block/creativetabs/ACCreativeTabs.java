@@ -78,4 +78,14 @@ public class ACCreativeTabs
 			return ACItems.itemSled; 
 		}
 	};
+	
+	public static final CreativeTabs acTabTechnical = new CreativeTabs("ac_tabTechnical")
+	{
+		@Override
+		@SideOnly(Side.CLIENT)
+		public Item getTabIconItem()
+		{
+			return ACItems.arcaneStoneDust; 
+		}
+	};
 }

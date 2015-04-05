@@ -1,5 +1,8 @@
 package net.arcticraft.entities.passive;
 
+import java.util.Random;
+
+import cpw.mods.fml.common.registry.EntityRegistry;
 import net.arcticraft.block.ACBlocks;
 import net.arcticraft.item.ACItems;
 import net.arcticraft.main.Arcticraft;
@@ -95,15 +98,20 @@ public class EntityPenguin extends EntityAnimal {
 	{
 		int r = 8;
 
-		for(int x = (int) (this.posX - r); x < (this.posX + r); x++)
+		int rand = new Random().nextInt(25 - 0) + 0;
+		
+		if(rand == 12)
 		{
-			for(int y = (int) (this.posY - r); y < (this.posY + (r / 2)); y++)
+			for(int x = (int) (this.posX - r); x < (this.posX + r); x++)
 			{
-				for(int z = (int) (this.posZ - r); z < (this.posZ + r); z++)
+				for(int y = (int) (this.posY - r); y < (this.posY + (r / 2)); y++)
 				{
-					if(this.worldObj.getBlock(x, y, z) == ACBlocks.frostWaterIce)
+					for(int z = (int) (this.posZ - r); z < (this.posZ + r); z++)
 					{
-						return true;
+						if(this.worldObj.getBlock(x, y, z) == ACBlocks.frostWaterIce)
+						{
+							return true;
+						}
 					}
 				}
 			}

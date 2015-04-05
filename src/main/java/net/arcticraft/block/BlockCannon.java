@@ -1,7 +1,5 @@
 package net.arcticraft.block;
 
-import java.util.Random;
-
 import net.arcticraft.API.block.creativetabs.ACCreativeTabs;
 import net.arcticraft.item.ACItems;
 import net.arcticraft.main.Arcticraft;
@@ -11,9 +9,9 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -110,5 +108,12 @@ public class BlockCannon extends BlockContainer{
 	{
 		return new TileEntityCannon();
 	}
-
+	
+    /**
+     * Checks to see if its valid to put this block at the specified coordinates. Args: world, x, y, z
+     */
+    public boolean canPlaceBlockAt(World world, int x, int y, int z)
+    {
+        return world.getBlock(x, y, z).isReplaceable(world, x, y, z);
+    }
 }

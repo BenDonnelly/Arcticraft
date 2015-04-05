@@ -111,6 +111,10 @@ public class ContainerArcticPouch extends Container
 	@Override
 	public ItemStack slotClick(int slot, int buttonPressed, int flag, EntityPlayer player)
 	{
+		if (slot >= 0 && getSlot(slot) != null && getSlot(slot).getStack() == player.getHeldItem()) {
+			return null;
+		}
+		
 		this.needsUpdate = true;
 		return super.slotClick(slot, buttonPressed, flag, player);
 	}

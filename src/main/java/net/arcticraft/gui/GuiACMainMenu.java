@@ -121,6 +121,15 @@ public class GuiACMainMenu extends GuiScreen implements GuiYesNoCallback{
 		this.updateCounter = rand.nextFloat();
 	}
 
+    /**
+     * Fired when a key is typed. This is the equivalent of KeyListener.keyTyped(KeyEvent e).
+     */
+	@Override
+    protected void keyTyped(char p_73869_1_, int p_73869_2_)
+    {
+		
+    }
+	
 	// Called from the main game loop to update the screen.
 	@Override
 	public void updateScreen()

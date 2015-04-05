@@ -7,16 +7,15 @@ import net.arcticraft.API.item.ItemACAxe;
 import net.arcticraft.API.item.ItemACFruits;
 import net.arcticraft.API.item.ItemACHoe;
 import net.arcticraft.API.item.ItemACPickaxe;
+import net.arcticraft.API.item.ItemACRecord;
 import net.arcticraft.API.item.ItemACSeeds;
 import net.arcticraft.API.item.ItemACSpade;
 import net.arcticraft.API.item.ItemACSword;
 import net.arcticraft.block.ACBlocks;
-import net.arcticraft.helpers.ForgeEvents;
 import net.arcticraft.main.Arcticraft;
 import net.arcticraft.util.StringUtils;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemFood;
@@ -66,6 +65,12 @@ public class ACItems {
 	public static Item bucketEmpty;
 	public static Item bucketFrostWater;
 	public static Item arcticPouch;
+	public static Item hotWaterBottle;
+	public static Item recordFrozenFeelings;
+	public static Item recordWelcomeToTheCold;
+	
+	/* Icestone */
+	public static Item icestoneDust;
 	
 	/* Pickaxes */
 	public static Item tekkitePickaxe;
@@ -167,6 +172,12 @@ public class ACItems {
 		bucketEmpty = new ItemACBucket(Blocks.air).setUnlocalizedName(MOD_ID + "_bucketEmpty").setTextureName(MOD_ID + ":bucket_empty").setMaxStackSize(16).setCreativeTab(ACCreativeTabs.acTabMisc);
 		bucketFrostWater = new ItemACBucket(ACBlocks.frostWaterBlock).setUnlocalizedName(MOD_ID + "_bucketFrostWater").setTextureName(MOD_ID + ":bucket_frost_Water").setMaxStackSize(1).setContainerItem(bucketEmpty).setCreativeTab(ACCreativeTabs.acTabMisc);
 		arcticPouch = new ItemArcticPouch().setUnlocalizedName(MOD_ID + "_arcticPouch").setTextureName(MOD_ID + ":arctic_pouch").setMaxStackSize(1).setCreativeTab(ACCreativeTabs.acTabMisc);
+		hotWaterBottle = new ItemHotWaterBottle().setUnlocalizedName(MOD_ID + "_hotWaterBottle").setTextureName(MOD_ID + ":hot_water_bottle").setMaxStackSize(4).setCreativeTab(ACCreativeTabs.acTabMisc);
+		recordFrozenFeelings = new ItemACRecord("frozen_feelings", "ac").setUnlocalizedName("recordFrozenFeelings").setTextureName(MOD_ID + ":records/record_frozenFeelings").setMaxStackSize(1).setCreativeTab(ACCreativeTabs.acTabMisc);
+		recordWelcomeToTheCold = new ItemACRecord("welcome_to_the_cold", "ac").setUnlocalizedName("recordWelcomeToTheCold").setTextureName(MOD_ID + ":records/record_welcomeToTheCold").setMaxStackSize(1).setCreativeTab(ACCreativeTabs.acTabMisc);
+		
+		/* Icestone */
+		icestoneDust = new ItemIcestoneDust().setUnlocalizedName(MOD_ID + "_icestoneDust").setTextureName(MOD_ID + ":icestone/icestone_dust").setCreativeTab(ACCreativeTabs.acTabTechnical);
 		
 		/**** START OF TOOLS + ARMOUR ****/
 		/* Pickxaes */
@@ -249,7 +260,8 @@ public class ACItems {
 				tekkiteChest, escariaChest, glacianChest, rigentemChest,
 				tekkiteLegs, escariaLegs, glacianLegs, rigentemLegs,
 				tekkiteBoots, escariaBoots, glacianBoots, rigentemBoots, penguinMeat, penguinMeatCooked, penguinFeather,
-				mystFruit, glacierFruit, cannonball, frostDoor, woodenClub, boarMeat, boarMeatCooked, eriumGem, captainsLog, captainSword, bucketFrostWater, bucketEmpty, arcticPouch, captainsHook};
+				mystFruit, glacierFruit, cannonball, frostDoor, woodenClub, boarMeat, boarMeatCooked, eriumGem, captainsLog,
+				captainSword, bucketFrostWater, bucketEmpty, arcticPouch, captainsHook, hotWaterBottle, recordFrozenFeelings, recordWelcomeToTheCold, icestoneDust};
 
 		for (Item item : itemList) {
 			GameRegistry.registerItem(item, StringUtils.generateName(item));

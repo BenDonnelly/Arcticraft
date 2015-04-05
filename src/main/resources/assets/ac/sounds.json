@@ -52,5 +52,19 @@
         "sounds": [
             "mobs/penguin/penguin_death"
         ]
+    },
+	"records.frozen_feelings": {
+        "category": "record",
+		"stream": true,
+        "sounds": [
+            "records/frozen_feelings"
+        ]
+    },
+	"records.welcome_to_the_cold": {
+        "category": "record",
+		"stream": true,
+        "sounds": [
+            "records/welcome_to_the_cold"
+        ]
     }
 }

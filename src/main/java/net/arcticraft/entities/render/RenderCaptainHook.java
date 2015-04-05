@@ -30,7 +30,7 @@ public class RenderCaptainHook extends Render{
 	}
 
 	public void renderHook(EntityCaptainHook entity, double x, double y, double z, float yaw, float partialTicks)
-	{
+	{		
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) x, (float) y, (float) z);
 		GL11.glScalef(-0.35F, -0.35F, 0.35F);
@@ -50,6 +50,7 @@ public class RenderCaptainHook extends Render{
 		y = this.func_110828_a(entity.getThrower().lastTickPosY, entity.getThrower().posY, partialTicks);
 		z = this.func_110828_a(entity.getThrower().lastTickPosZ, entity.getThrower().posZ, partialTicks);
 		yaw = (float) this.func_110828_a(entity.getThrower().prevRotationYaw, entity.getThrower().rotationYaw, partialTicks);
+		
 		this.renderRope(entity.getThrower(), entity, x - RenderManager.renderPosX, y - RenderManager.renderPosY, z - RenderManager.renderPosZ, yaw, partialTicks);
 	}
 

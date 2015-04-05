@@ -1,8 +1,5 @@
 package net.arcticraft.entities;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-
 import net.arcticraft.item.ACItems;
 import net.arcticraft.main.Arcticraft;
 import net.arcticraft.main.RopePositionPacket;
@@ -25,9 +22,6 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
-
-import com.google.common.base.Strings;
 
 public class EntityCaptain extends EntityMob implements ACIBossDisplayData, IRangedAttackMob{
 
@@ -195,27 +189,16 @@ public class EntityCaptain extends EntityMob implements ACIBossDisplayData, IRan
 		float f1 = MathHelper.sqrt_double(dx * dx + dz * dz) * 0.4F;
 		hook.setThrowableHeading(dx, dy + (double) f1, dz, hook.func_70182_d(), 1.0F);
 		this.playSound("ac:mobs.captain_poof", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
-		this.worldObj.playSoundAtEntity(this, "ac:mobs.captain_rope", 0.7F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
-		this.worldObj.spawnEntityInWorld(hook);
-		int captainId = this.getEntityId();
-		int hookId = hook.getEntityId();
-/*		ByteArrayOutputStream bos = new ByteArrayOutputStream(8);
-		DataOutputStream outputStream = new DataOutputStream(bos);
-		try
-		{
-			outputStream.writeInt(captainId);
-			outputStream.writeInt(hookId);
-		}
-		catch(Exception ex)
-		{
-			ex.printStackTrace();
-		}*/
-		/*Packet250CustomPayload packet = new Packet250CustomPayload();
-		packet.channel = Strings.CHANNEL_ROPE_POSITION;
-		packet.data = bos.toByteArray();
-		packet.length = bos.size();(
-		((WorldServer) this.worldObj).getEntityTracker().sendPacketToAllPlayersTrackingEntity(hook, packet));*/
-		Arcticraft.arcticraftInstance.network.sendToServer(new RopePositionPacket(captainId,hookId));
+		this.worldObj.playSoundAtEntity(this, "ac:mobs.captain_rope", 0.7F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));	
+		
+		// TODO: Fix packet bug / server side world shit
+		if (!this.worldObj.isRemote)
+	    {
+			Minecraft.getMinecraft().theWorld.spawnEntityInWorld(hook);
+	    }
+
+		Arcticraft.arcticraftInstance.network.sendToServer(new RopePositionPacket(this.getEntityId(), hook.getEntityId()));
+		
 		this.resetHookCooldown();
 		this.isHookAirBorne = true;
 	}

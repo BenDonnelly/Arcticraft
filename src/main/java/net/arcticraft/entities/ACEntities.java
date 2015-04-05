@@ -9,6 +9,10 @@ import net.arcticraft.main.Arcticraft;
 import net.arcticraft.world.gen.dimension.GenLayerBiomesDim;
 import net.arcticraft.world.gen.dimension.biome.ACBiomeGenBase;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.entity.passive.EntityWolf;
+
+import com.arcanumLudum.ALCore.entity.ALEntityRegistry;
+
 import cpw.mods.fml.common.registry.EntityRegistry;
 
 public class ACEntities
@@ -49,9 +53,9 @@ public class ACEntities
 	
 	public static void registerEntities()
 	{
-		ACEntityRegistry.createEntity(EntityCannonball.class, "Cannonball", false, 0x00, 0x00, Arcticraft.arcticraftInstance);	
-		ACEntityRegistry.createEntity(EntitySled.class, "EntitySled", false, 0x00, 0x00, Arcticraft.arcticraftInstance);
-		ACEntityRegistry.createEntity(EntityCaptainHook.class, "CaptainHook", false, 0x00, 0x00, Arcticraft.arcticraftInstance);
+		ALEntityRegistry.createEntity(EntityCannonball.class, "Cannonball", false, 0x00, 0x00, Arcticraft.arcticraftInstance);	
+		ALEntityRegistry.createEntity(EntitySled.class, "EntitySled", false, 0x00, 0x00, Arcticraft.arcticraftInstance);
+		ALEntityRegistry.createEntity(EntityCaptainHook.class, "CaptainHook", false, 0x00, 0x00, Arcticraft.arcticraftInstance);
 		EntityRegistry.registerGlobalEntityID(EntityBoar.class, "Boar", EntityRegistry.findGlobalUniqueEntityId(), netherQuartzColour, netherQuartzColour);
 		EntityRegistry.registerGlobalEntityID(EntityPenguin.class, "Penguin", EntityRegistry.findGlobalUniqueEntityId(), blackColour, whiteColour);
 		EntityRegistry.registerGlobalEntityID(EntityIceMage.class, "IceMage", EntityRegistry.findGlobalUniqueEntityId(), kindaBlueColour, purpleBlueishColour);
