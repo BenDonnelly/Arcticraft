@@ -6,27 +6,29 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityIcicle extends TileEntity{
-
+public class TileEntityIcicle extends TileEntity
+{
 	public int type;
 	public int rotation;
 	public boolean upsideDown = false;
 
-	public TileEntityIcicle(){}
+	public TileEntityIcicle()
+	{}
 
-	public TileEntityIcicle(int type, int rotation){
+	public TileEntityIcicle(int type, int rotation)
+	{
 		this.type = type;
 		this.rotation = rotation;
 		
 		if(type == 3 || type == 4 || type == 5) upsideDown = true;
 	}
 
-	public TileEntityIcicle(int type, int rotation, boolean upsideDown){
+	public TileEntityIcicle(int type, int rotation, boolean upsideDown)
+	{
 		this.type = type;
 		this.rotation = rotation;
 		this.upsideDown = upsideDown;
 	}
-
 	
 	@Override
 	public Packet getDescriptionPacket()

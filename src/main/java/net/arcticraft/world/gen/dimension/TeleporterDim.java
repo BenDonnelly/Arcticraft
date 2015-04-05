@@ -1,6 +1,7 @@
 package net.arcticraft.world.gen.dimension;
 
 import java.util.Iterator;
+import java.util.Random;
 
 import net.arcticraft.block.ACBlocks;
 import net.arcticraft.item.ACItems;
@@ -22,13 +23,24 @@ public class TeleporterDim extends Teleporter
 	public static double portalX = 0.0D;
 	public static double portalY = 0.0D;
 	public static double portalZ = 0.0D;
+	public static int DIMENSION_ID = 3;
 	
 	public TeleporterDim(WorldServer p_i1963_1_) {
 		super(p_i1963_1_);
 	}
 
-	public static int DIMENSION_ID = 3;
-
+	@Override
+    public void placeInPortal(Entity p_77185_1_, double p_77185_2_, double p_77185_4_, double p_77185_6_, float p_77185_8_)
+    {
+		if(portalX == 0.0 && portalY == 0.0 && portalZ == 0.0)
+		{
+			generateStructureIfRequired(p_77185_1_);
+		}
+		
+		p_77185_1_.setLocationAndAngles(portalX, portalY, portalZ, p_77185_1_.rotationYaw, 0.0F);
+        p_77185_1_.motionX = p_77185_1_.motionY = p_77185_1_.motionZ = 0.0D;
+    }
+    
 	public static void teleportEntity(Entity entity, int dimensionId)
 	{
 		if(entity.worldObj.isRemote)
@@ -73,11 +85,8 @@ public class TeleporterDim extends Teleporter
 	private static void generateStructureIfRequired(Entity entity)
 	{
 		int x = MathHelper.floor_double(entity.posX), y = MathHelper.floor_double(entity.posY), z = MathHelper.floor_double(entity.posZ);
-
-		if(entity.worldObj.getBlock(x, y - 2, z) == Blocks.bedrock)
-			return;
-
-		generateStructure(entity.worldObj, MathHelper.floor_double(entity.posX), MathHelper.floor_double(entity.posY), MathHelper.floor_double(entity.posZ));
+		
+		generateStructure(entity.worldObj, MathHelper.floor_double(entity.posX), 256, MathHelper.floor_double(entity.posZ));
 	}
 
 	private static void generateStructure(World world, int x, int y, int z)
@@ -87,9 +96,7 @@ public class TeleporterDim extends Teleporter
 
 		while(y > 0)
 		{
-			y--;
-			
-			if(world.getBlock(x, y + 1, z) == ACBlocks.frostGrass)
+			if(world.getBlock(x, y - 1, z) != Blocks.air)
 			{
 				int oldX = x;
 				int oldY = y;
@@ -160,7 +167,7 @@ public class TeleporterDim extends Teleporter
 
 							if(world.getBlock(x, y, z) != id)
 							{
-								if(id == Blocks.dirt && world.getBlock(x, y, z) != null && world.getBlock(x, y, z) != Blocks.snow /* && world.getBlockId(x, y, z) != MainRegistry.thickSnow.blockID */)
+								if(id == Blocks.dirt && world.getBlock(x, y, z) != Blocks.air && world.getBlock(x, y, z) != Blocks.snow /* && world.getBlockId(x, y, z) != MainRegistry.thickSnow.blockID */)
 								{
 									x++;
 									continue;
@@ -188,6 +195,17 @@ public class TeleporterDim extends Teleporter
 				}
 				
 				break;
+			}
+			else
+			{
+				if(y == 0)
+				{
+					generateStructure(world, x + 1, 256, z + 1);
+					
+					break;
+				}
+				
+				y--;
 			}
 		}
 	}

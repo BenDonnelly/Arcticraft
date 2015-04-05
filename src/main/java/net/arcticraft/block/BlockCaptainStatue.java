@@ -1,17 +1,12 @@
 package net.arcticraft.block;
 
-import java.util.Random;
-
 import net.arcticraft.API.block.creativetabs.ACCreativeTabs;
 import net.arcticraft.main.Arcticraft;
-import net.arcticraft.tileentity.TileEntityCampfire;
 import net.arcticraft.tileentity.TileEntityCaptainStatue;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.PlayerCapabilities;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;

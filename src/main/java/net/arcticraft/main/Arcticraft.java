@@ -16,7 +16,6 @@ import net.arcticraft.temperature.handlers.LocationHandler;
 import net.arcticraft.temperature.handlers.MovementHandler;
 import net.arcticraft.util.VectorUtils;
 import net.arcticraft.world.gen.WorldGenACTrees;
-import net.arcticraft.world.gen.WorldGenCaveman;
 import net.arcticraft.world.gen.WorldGenIceberg;
 import net.arcticraft.world.gen.WorldGenMageTower;
 import net.arcticraft.world.gen.dimension.ChunkProviderDim;
@@ -24,8 +23,8 @@ import net.arcticraft.world.gen.dimension.TeleporterDim;
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.ICommandManager;
 import net.minecraft.command.ServerCommandManager;
-import net.minecraft.potion.Potion;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -56,10 +55,12 @@ public class Arcticraft{
 	public ChunkProviderDim chunkProvider = null;
 	public TeleporterDim tper = null;
 	public boolean initialized = false;
-		
+	
 	protected static CPackMain cPackMain = new CPackMain();
-	private GuiHandler guiHandler = new GuiHandler();
+	protected GuiHandler guiHandler = new GuiHandler();
 	public static SimpleNetworkWrapper network;
+	public static WeightedRandomChestContent[] acChestContent;
+    public static ACChestGenHooks acChestGenHooks;
 	
 	@SidedProxy(clientSide = "net.arcticraft.main.ClientProxy", serverSide = "net.arcticraft.main.CommonProxy")
 	public static CommonProxy proxy;
@@ -76,8 +77,8 @@ public class Arcticraft{
 		VectorUtils.init();
 		ACBlocks.loadBlocks();
 		ACItems.loadItems();
-		ACRecipes.loadRecipes();
 		ACPotions.loadPotions();
+		ACRecipes.loadRecipes();
 		
 		cPackMain.preInit();
 	}
@@ -97,6 +98,8 @@ public class Arcticraft{
     	GameRegistry.registerWorldGenerator(new WorldGenIceberg(), 0);
     	GameRegistry.registerWorldGenerator(new WorldGenMageTower(), 0);
     	
+    	acChestContent = new WeightedRandomChestContent[] {new WeightedRandomChestContent(ACItems.hotWaterBottle, 0, 0, 4, 40), new WeightedRandomChestContent(ACItems.eriumGem, 0, 0, 1, 20), new WeightedRandomChestContent(ACItems.escariaSword, 0, 0, 1, 1), new WeightedRandomChestContent(ACItems.arcticPouch, 0, 0, 3, 10)};
+    	acChestGenHooks = new ACChestGenHooks("acChestGen");
     	cPackMain.init();
 	}
 	

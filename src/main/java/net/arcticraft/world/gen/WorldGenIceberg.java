@@ -3,6 +3,7 @@ package net.arcticraft.world.gen;
 import java.util.Random;
 
 import net.arcticraft.block.ACBlocks;
+import net.arcticraft.main.ACChestGenHooks;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntityChest;
@@ -5633,7 +5634,7 @@ public class WorldGenIceberg implements IWorldGenerator {
 		world.setBlock(i + 26, j + 1, k + 16, ACBlocks.frostWaterIce);
 
 		if (world.getTileEntity(i + 13, j + 12, k + 17) != null) {
-			ChestGenHooks info = ChestGenHooks.getInfo("pyramidJungleChest");
+			ChestGenHooks info = ACChestGenHooks.getInfo("acChestBasic");
 			WeightedRandomChestContent.generateChestContents(rand,
 					info.getItems(rand), (TileEntityChest) 
 					world.getTileEntity(i + 13, j + 12, k + 17),

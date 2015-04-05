@@ -6,6 +6,7 @@ import net.arcticraft.entities.EntityCaptainHook;
 import net.arcticraft.entities.ai.EntityAICaptainAttack;
 import net.arcticraft.entities.ai.EntityAIHookAttack;
 import net.arcticraft.item.ACItems;
+import net.arcticraft.item.ACPotions;
 import net.arcticraft.main.Arcticraft;
 import net.arcticraft.main.RopePositionPacket;
 import net.minecraft.client.Minecraft;
@@ -109,7 +110,7 @@ public class EntityCaptain extends EntityMob implements ACIBossDisplayData, IRan
 		{
 			if(par1Entity instanceof EntityLivingBase)
 			{
-				((EntityLivingBase) par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, 120, 0));
+				((EntityLivingBase) par1Entity).addPotionEffect(new PotionEffect(ACPotions.frostbitePotion.id, 100, 0));
 			}
 			return true;
 		}

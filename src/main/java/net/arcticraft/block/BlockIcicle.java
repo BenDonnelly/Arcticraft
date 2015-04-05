@@ -118,5 +118,4 @@ public class BlockIcicle extends BlockContainer{
 	{
 		return new TileEntityIcicle(id, 0);
 	}
-
 }

@@ -13,13 +13,15 @@ import java.util.Random;
 import net.arcticraft.API.gen.IGenComponent;
 import net.arcticraft.API.temp.ITempComponent;
 import net.arcticraft.block.ACBlocks;
-import net.arcticraft.main.Arcticraft;
 import net.arcticraft.temperature.TemperatureHandler;
+import net.arcticraft.tileentity.TileEntityIcicle;
 import net.arcticraft.world.gen.MapGenFrostCaves;
 import net.arcticraft.world.gen.WorldGenACTrees;
 import net.arcticraft.world.gen.WorldGenIceberg;
 import net.arcticraft.world.gen.WorldGenMineable;
+import net.arcticraft.world.gen.WorldGenShip;
 import net.arcticraft.world.gen.dimension.biome.ACBiomeGenBase;
+import net.arcticraft.world.gen.dimension.biome.BiomeFrostOcean;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
@@ -507,39 +509,162 @@ public class ChunkProviderDim implements ITempComponent, IChunkProvider {
 					while (y > 0
 							&& this.worldObj.getBlock(x, y + 1, z) != ACBlocks.frostWaterIce
 							&& this.worldObj.getBlock(x, y + 1, z) != ACBlocks.frostStone
-							&& this.worldObj.getBlock(x, y + 1, z) != ACBlocks.frostDirt)
+							&& this.worldObj.getBlock(x, y + 1, z) != ACBlocks.frostDirt) {
 						y -= 1;
 
-					if (this.worldObj.getBlock(x, y + 1, z) == ACBlocks.frostWaterIce) {
-						if (this.worldObj.getBlock(x - 1, y, z) == Blocks.air
-								|| this.worldObj.getBlock(x + 1, y, z) == Blocks.air
-								|| this.worldObj.getBlock(x, y, z - 1) == Blocks.air
-								|| this.worldObj.getBlock(x, y, z + 1) == Blocks.air) {
-							this.worldObj.setBlock(x, y, z,
-									ACBlocks.frostWaterBlock);
-						}
-					} else if (this.worldObj.getBlock(x, y + 1, z) == ACBlocks.frostStone) {
-						if (this.worldObj.getBlock(x - 1, y, z) == Blocks.air
-								|| this.worldObj.getBlock(x + 1, y, z) == Blocks.air
-								|| this.worldObj.getBlock(x, y, z - 1) == Blocks.air
-								|| this.worldObj.getBlock(x, y, z + 1) == Blocks.air) {
-							this.worldObj.setBlock(x, y, z,
-									ACBlocks.frostWaterBlock);
-						}
-					} else if (this.worldObj.getBlock(x, y + 1, z) == ACBlocks.frostDirt) {
-						if (this.worldObj.getBlock(x - 1, y, z) == Blocks.air
-								|| this.worldObj.getBlock(x + 1, y, z) == Blocks.air
-								|| this.worldObj.getBlock(x, y, z - 1) == Blocks.air
-								|| this.worldObj.getBlock(x, y, z + 1) == Blocks.air) {
-							this.worldObj.setBlock(x, y, z,
-									ACBlocks.frostWaterBlock);
+						if (this.worldObj.getBlock(x, y + 1, z) == ACBlocks.frostWaterIce) {
+							if (this.worldObj.getBlock(x - 1, y, z) == Blocks.air
+									|| this.worldObj.getBlock(x + 1, y, z) == Blocks.air
+									|| this.worldObj.getBlock(x, y, z - 1) == Blocks.air
+									|| this.worldObj.getBlock(x, y, z + 1) == Blocks.air) {
+								this.worldObj.setBlock(x, y, z,
+										ACBlocks.frostWaterBlock);
+
+								break;
+							}
+						} else if (this.worldObj.getBlock(x, y + 1, z) == ACBlocks.frostStone) {
+							if (this.worldObj.getBlock(x - 1, y, z) == Blocks.air
+									|| this.worldObj.getBlock(x + 1, y, z) == Blocks.air
+									|| this.worldObj.getBlock(x, y, z - 1) == Blocks.air
+									|| this.worldObj.getBlock(x, y, z + 1) == Blocks.air) {
+								this.worldObj.setBlock(x, y, z,
+										ACBlocks.frostWaterBlock);
+
+								break;
+							}
+						} else if (this.worldObj.getBlock(x, y + 1, z) == ACBlocks.frostDirt) {
+							if (this.worldObj.getBlock(x - 1, y, z) == Blocks.air
+									|| this.worldObj.getBlock(x + 1, y, z) == Blocks.air
+									|| this.worldObj.getBlock(x, y, z - 1) == Blocks.air
+									|| this.worldObj.getBlock(x, y, z + 1) == Blocks.air) {
+								this.worldObj.setBlock(x, y, z,
+										ACBlocks.frostWaterBlock);
+
+								break;
+							}
 						}
 					}
 				}
 			}
 		}
 
-		/*for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 10; i++) {
+			int max = 10;
+			int min = 0;
+			int r = rand.nextInt(max - min) + min;
+
+			if (r == 5) {
+				int x = p_73153_2_ * 16 + rand.nextInt(16);
+				int y = 256;
+				int z = p_73153_3_ * 16 + rand.nextInt(16);
+
+				while (y > 0) {
+					if ((this.worldObj.getBlock(x, y + 3, z) == ACBlocks.arcaneStone || this.worldObj
+							.getBlock(x, y + 3, z) == ACBlocks.frostWaterIce)
+							&& this.worldObj.getBlock(x, y + 2, z) != ACBlocks.icicle
+							&& this.worldObj.getBlock(x, y + 1, z) != ACBlocks.icicle
+							&& this.worldObj.getBlock(x, y, z) != ACBlocks.icicle) {
+						if (this.worldObj.getBlock(x, y - 1, z) == Blocks.air
+								&& this.worldObj.getBlock(x, y, z) == Blocks.air) {
+							this.worldObj.setBlock(x, y, z, ACBlocks.icicle);
+
+							TileEntityIcicle t = (TileEntityIcicle) this.worldObj
+									.getTileEntity(x, y, z);
+							t.type = 3;
+							t.upsideDown = true;
+
+							break;
+						} else if (this.worldObj.getBlock(x, y - 1, z) == Blocks.air) {
+							this.worldObj.setBlock(x, y, z, ACBlocks.icicle);
+
+							TileEntityIcicle t = (TileEntityIcicle) this.worldObj
+									.getTileEntity(x, y, z);
+							t.type = 4;
+							t.upsideDown = true;
+
+							break;
+						} else if (this.worldObj.getBlock(x, y - 1, z) == Blocks.air) {
+							this.worldObj.setBlock(x, y, z, ACBlocks.icicle);
+
+							TileEntityIcicle t = (TileEntityIcicle) this.worldObj
+									.getTileEntity(x, y, z);
+							t.type = 5;
+							t.upsideDown = true;
+
+							break;
+						}
+					} else if (this.worldObj.getBlock(x, y - 1, z) == ACBlocks.arcaneStone
+							|| this.worldObj.getBlock(x, y - 1, z) == ACBlocks.frostWaterIce
+							|| this.worldObj.getBlock(x, y - 1, z) == ACBlocks.frostGrass
+							|| this.worldObj.getBlock(x, y - 1, z) == ACBlocks.frostDirt
+							|| (this.worldObj.getBlock(x, y, z) == ACBlocks.frostSnow && (this.worldObj
+									.getBlock(x, y - 1, z) == ACBlocks.arcaneStone
+									|| this.worldObj.getBlock(x, y - 1, z) == ACBlocks.frostWaterIce
+									|| this.worldObj.getBlock(x, y - 1, z) == ACBlocks.frostGrass || this.worldObj
+									.getBlock(x, y - 1, z) == ACBlocks.frostDirt))) {
+						if (this.worldObj.getBlock(x, y, z) == Blocks.air
+								&& this.worldObj.getBlock(x, y + 1, z) == Blocks.air
+								&& this.worldObj.getBlock(x, y + 2, z) == Blocks.air) {
+							if (this.worldObj.getBlock(x + 1, y, z) == Blocks.air
+									&& this.worldObj.getBlock(x, y, z) == Blocks.air
+									&& this.worldObj.getBlock(x - 1, y, z) == Blocks.air) {
+								if (this.worldObj.getBlock(x, y, z + 1) == Blocks.air
+										&& this.worldObj.getBlock(x, y, z) == Blocks.air
+										&& this.worldObj.getBlock(x, y, z - 1) == Blocks.air) {
+									this.worldObj.setBlock(x, y, z,
+											ACBlocks.icicle);
+
+									TileEntityIcicle t = (TileEntityIcicle) this.worldObj
+											.getTileEntity(x, y, z);
+									t.type = 0;
+
+									break;
+								}
+							}
+						} else if (this.worldObj.getBlock(x, y, z) == Blocks.air
+								&& this.worldObj.getBlock(x, y + 1, z) == Blocks.air) {
+							if (this.worldObj.getBlock(x + 1, y, z) == Blocks.air
+									&& this.worldObj.getBlock(x, y, z) == Blocks.air
+									&& this.worldObj.getBlock(x - 1, y, z) == Blocks.air) {
+								if (this.worldObj.getBlock(x, y, z + 1) == Blocks.air
+										&& this.worldObj.getBlock(x, y, z) == Blocks.air
+										&& this.worldObj.getBlock(x, y, z - 1) == Blocks.air) {
+									this.worldObj.setBlock(x, y, z,
+											ACBlocks.icicle);
+
+									TileEntityIcicle t = (TileEntityIcicle) this.worldObj
+											.getTileEntity(x, y, z);
+									t.type = 1;
+
+									break;
+								}
+							}
+						} else if (this.worldObj.getBlock(x, y, z) == Blocks.air) {
+							if (this.worldObj.getBlock(x + 1, y, z) == Blocks.air
+									&& this.worldObj.getBlock(x, y, z) == Blocks.air
+									&& this.worldObj.getBlock(x - 1, y, z) == Blocks.air) {
+								if (this.worldObj.getBlock(x, y, z + 1) == Blocks.air
+										&& this.worldObj.getBlock(x, y, z) == Blocks.air
+										&& this.worldObj.getBlock(x, y, z - 1) == Blocks.air) {
+									this.worldObj.setBlock(x, y, z,
+											ACBlocks.icicle);
+
+									TileEntityIcicle t = (TileEntityIcicle) this.worldObj
+											.getTileEntity(x, y, z);
+									t.type = 2;
+
+									break;
+								}
+							}
+						}
+					}
+
+					y -= 1;
+				}
+			}
+		}
+
+		for (int i = 0; i < 1; i++) {
 			int x = p_73153_2_ * 16 + rand.nextInt(16);
 			int y = 256;
 			int z = p_73153_3_ * 16 + rand.nextInt(16);
@@ -548,14 +673,14 @@ public class ChunkProviderDim implements ITempComponent, IChunkProvider {
 					&& this.worldObj.getBlock(x, y, z) != ACBlocks.frostGrass
 					&& this.worldObj.getBlock(x, y, z) != ACBlocks.frostWaterIce)
 				y -= 1;
-
+				
 			if (this.worldObj.getBlock(x, y, z) == ACBlocks.frostGrass
 					|| this.worldObj.getBlock(x, y, z) == ACBlocks.frostWaterIce) {
 				if (this.worldObj.getBlock(x, y - 1, z) != Blocks.air) {
 					generateArcanestone(this.worldObj, rand, x, y, z, 1.0F);
 				}
-			}
-		}*/
+		    }
+		}
 
 		for (int i = 0; i < 2; i++) {
 			int x = p_73153_2_ * 16 + rand.nextInt(16);
@@ -565,10 +690,12 @@ public class ChunkProviderDim implements ITempComponent, IChunkProvider {
 			while (y > 0
 					&& this.worldObj.getBlock(x, y - 1, z) != ACBlocks.frostWaterBlock)
 				y -= 1;
-
+			
 			if (this.worldObj.getBlock(x, y - 1, z) == ACBlocks.frostWaterBlock
 					&& this.worldObj.getBlock(x, y + 1, z) == Blocks.air) {
-				(new WorldGenIceberg()).generate(worldObj, rand, x, y, z);
+				(new WorldGenIceberg()).generate(worldObj, rand, x, y, z);				
+
+				break;
 			}
 		}
 
@@ -620,6 +747,25 @@ public class ChunkProviderDim implements ITempComponent, IChunkProvider {
 			(new WorldGenMineable(ACBlocks.frigusOre, 8, 0)).generate(worldObj,
 					rand, x, y, z);
 			// System.out.println("FRIGUS X:" + x + " Y:" + y + " Z:" + z );
+		}
+		
+		for (int i = 0; i < 2; i++) {
+			int x = p_73153_2_ + rand.nextInt(16);
+			int y = 256;
+			int z = p_73153_3_ + rand.nextInt(16);
+
+			while (y > 0 && this.worldObj.getBlock(x, y, z) != ACBlocks.frostWaterBlock)
+				y--;
+			
+			if (this.worldObj.getBlock(x, y, z) == ACBlocks.frostWaterBlock) {
+				int max = 1000;
+				int min = 0;
+				int r = rand.nextInt(max - min) + min;
+
+				if (r == 50) {		
+					(new WorldGenShip()).generate(worldObj, rand, x, y, z);
+				}
+			}
 		}
 
 		for (IGenComponent tmp : genList) {

@@ -11,7 +11,12 @@ import net.arcticraft.item.ItemLeafBlocks;
 import net.arcticraft.item.ItemLogBlocks;
 import net.arcticraft.item.ItemPlankBlocks;
 import net.arcticraft.item.ItemSlabBlocks;
-import net.arcticraft.tileentity.*;
+import net.arcticraft.tileentity.TileEntityArcticFurnace;
+import net.arcticraft.tileentity.TileEntityCampfire;
+import net.arcticraft.tileentity.TileEntityCannon;
+import net.arcticraft.tileentity.TileEntityCaptainStatue;
+import net.arcticraft.tileentity.TileEntityCaveman;
+import net.arcticraft.tileentity.TileEntityIcicle;
 import net.arcticraft.util.StringUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -186,8 +191,6 @@ public class ACBlocks{
 		GameRegistry.registerTileEntity(TileEntityCaveman.class, "tileEntityCaveman");
 		GameRegistry.registerTileEntity(TileEntityArcticFurnace.class, "tileEntityArcticFurnace");
 		GameRegistry.registerTileEntity(TileEntityIcicle.class, "tileEntityIcicle");
-		GameRegistry.registerTileEntity(TileEntityCaptainStatue.class, "tileEntityCaptainStatue");
-		
+		GameRegistry.registerTileEntity(TileEntityCaptainStatue.class, "tileEntityCaptainStatue");	
 	}
-	
 }

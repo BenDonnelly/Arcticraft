@@ -13,11 +13,9 @@ import net.arcticraft.entities.model.ModelBoar;
 import net.arcticraft.entities.model.ModelCaveman;
 import net.arcticraft.entities.model.ModelIceMage;
 import net.arcticraft.entities.model.ModelPenguin;
-import net.arcticraft.entities.model.ModelPolarBear;
 import net.arcticraft.entities.passive.EntityCaveman;
 import net.arcticraft.entities.passive.EntityIceMage;
 import net.arcticraft.entities.passive.EntityPenguin;
-import net.arcticraft.entities.passive.EntityPolarBear;
 import net.arcticraft.entities.render.RenderBoar;
 import net.arcticraft.entities.render.RenderCannonball;
 import net.arcticraft.entities.render.RenderCaptain;
@@ -27,7 +25,6 @@ import net.arcticraft.entities.render.RenderFrostZombie;
 import net.arcticraft.entities.render.RenderIceMage;
 import net.arcticraft.entities.render.RenderPenguin;
 import net.arcticraft.entities.render.RenderPirate;
-import net.arcticraft.entities.render.RenderPolarBear;
 import net.arcticraft.entities.render.RenderSled;
 import net.arcticraft.gui.GuiBossBar;
 import net.arcticraft.gui.GuiFrozenScreen;
@@ -80,8 +77,7 @@ public class ClientProxy extends CommonProxy{
 		RenderingRegistry.registerEntityRenderingHandler(EntityCaptain.class, new RenderCaptain());
 		RenderingRegistry.registerEntityRenderingHandler(EntityCaptainHook.class, new RenderCaptainHook());
 		RenderingRegistry.registerEntityRenderingHandler(EntityPirate.class, new RenderPirate(new ModelBiped(), 0.5F));
-		RenderingRegistry.registerEntityRenderingHandler(EntityPolarBear.class, new RenderPolarBear(new ModelPolarBear(), 1.4F));
-		RenderingRegistry.registerBlockHandler(new BlockIcestoneRender()); // Or 'this' if your proxy happens to be the one that implements the block render interface.
+ 		RenderingRegistry.registerBlockHandler(new BlockIcestoneRender()); // Or 'this' if your proxy happens to be the one that implements the block render interface.
 	     
 		MinecraftForgeClient.registerItemRenderer(ACItems.captainsHook, (IItemRenderer) new ItemCaptainsHookRender());
 
@@ -104,7 +100,6 @@ public class ClientProxy extends CommonProxy{
 		render = new TileEntityCaptainStatueRender();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCaptainStatue.class, new TileEntityCaptainStatueRender());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ACBlocks.captainStatue), new ItemCaptainStatueRender(render));
-		
 	}
 
 	@Override
