@@ -5,6 +5,11 @@ import net.arcticraft.entities.hostile.EntityCaptain;
 import net.arcticraft.entities.hostile.EntityFrostZombie;
 import net.arcticraft.entities.hostile.EntityPirate;
 import net.arcticraft.entities.passive.EntityCaveman;
+import net.arcticraft.entities.passive.EntityEskimo;
+import net.arcticraft.entities.passive.EntityEskimoChef;
+import net.arcticraft.entities.passive.EntityEskimoChief;
+import net.arcticraft.entities.passive.EntityEskimoHunter;
+import net.arcticraft.entities.passive.EntityEskimoTrader;
 import net.arcticraft.entities.passive.EntityIceMage;
 import net.arcticraft.entities.passive.EntityPenguin;
 import net.arcticraft.entities.passive.EntityPolarBear;
@@ -58,6 +63,7 @@ public class ACEntities
 		ALEntityRegistry.createEntity(EntityCannonball.class, "Cannonball", false, 0x00, 0x00, Arcticraft.arcticraftInstance);	
 		ALEntityRegistry.createEntity(EntitySled.class, "EntitySled", false, 0x00, 0x00, Arcticraft.arcticraftInstance);
 		ALEntityRegistry.createEntity(EntityCaptainHook.class, "CaptainHook", false, 0x00, 0x00, Arcticraft.arcticraftInstance);
+		
 		EntityRegistry.registerGlobalEntityID(EntityBoar.class, "Boar", EntityRegistry.findGlobalUniqueEntityId(), netherQuartzColour, brownishColour);
 		EntityRegistry.registerGlobalEntityID(EntityPenguin.class, "Penguin", EntityRegistry.findGlobalUniqueEntityId(), blackColour, whiteColour);
 		EntityRegistry.registerGlobalEntityID(EntityIceMage.class, "IceMage", EntityRegistry.findGlobalUniqueEntityId(), kindaBlueColour, purpleBlueishColour);
@@ -66,6 +72,13 @@ public class ACEntities
 		EntityRegistry.registerGlobalEntityID(EntityCaptain.class, "Captain", EntityRegistry.findGlobalUniqueEntityId(), redishPinkishColour, blackColour);
 		EntityRegistry.registerGlobalEntityID(EntityPirate.class, "Pirate", EntityRegistry.findGlobalUniqueEntityId(), blackColour, redishPinkishColour);
 		EntityRegistry.registerGlobalEntityID(EntityPolarBear.class, "PolarBear", EntityRegistry.findGlobalUniqueEntityId(), whiteColour, whiteColour);
+		
+		/* Eskimo's */
+		EntityRegistry.registerGlobalEntityID(EntityEskimoChief.class, "EntityEskimoChief", EntityRegistry.findGlobalUniqueEntityId(), 0x7BE6E8, 0x000000);
+		EntityRegistry.registerGlobalEntityID(EntityEskimoChef.class, "EntityEskimoChef", EntityRegistry.findGlobalUniqueEntityId(), 0x7BE6E8, 0x000000);
+		EntityRegistry.registerGlobalEntityID(EntityEskimoHunter.class, "EntityEskimoHunter", EntityRegistry.findGlobalUniqueEntityId(), 0x7BE6E8, 0x000000);
+		EntityRegistry.registerGlobalEntityID(EntityEskimoTrader.class, "EntityEskimoTrader", EntityRegistry.findGlobalUniqueEntityId(), 0x7BE6E8, 0x000000);
+		EntityRegistry.registerGlobalEntityID(EntityEskimo.class, "EntityEskimo", EntityRegistry.findGlobalUniqueEntityId(), 0x7BE6E8, 0x000000);
 
 		for(ACBiomeGenBase tmp : GenLayerBiomesDim.allowedBiomes)
 		{

@@ -74,11 +74,11 @@ public class TemperatureHandler {
 			props.saveNBTData(compound);
 		}
 		
-		if(Math.round(this.getTemperature()) == 0)
-		{
-			if(this.tickCounter >= 10)
+		if(this.getTemperature() == 0)
+		{			
+			if(this.tickCounter >= 80)
 			{
-				player.setHealth(player.getHealth() - 0.05F);
+				player.setHealth(player.getHealth() - 0.5F);
 				
 				this.tickCounter = 0;
 			}

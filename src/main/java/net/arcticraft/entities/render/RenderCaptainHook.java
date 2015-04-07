@@ -8,10 +8,13 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
+
+import com.arcanumLudum.ALCore.ALCore;
 
 public class RenderCaptainHook extends Render{
 
@@ -30,28 +33,37 @@ public class RenderCaptainHook extends Render{
 	}
 
 	public void renderHook(EntityCaptainHook entity, double x, double y, double z, float yaw, float partialTicks)
-	{		
-		GL11.glPushMatrix();
-		GL11.glTranslatef((float) x, (float) y, (float) z);
-		GL11.glScalef(-0.35F, -0.35F, 0.35F);
-		double dx = this.func_110828_a(entity.getThrower().lastTickPosX, entity.getThrower().posX, partialTicks) - this.func_110828_a(entity.lastTickPosX, entity.posX, partialTicks);
-		double dy = this.func_110828_a(entity.getThrower().lastTickPosY, entity.getThrower().posY, partialTicks) - this.func_110828_a(entity.lastTickPosY, entity.posY, partialTicks) + entity.getThrower().ySize;
-		double dz = this.func_110828_a(entity.getThrower().lastTickPosZ, entity.getThrower().posZ, partialTicks) - this.func_110828_a(entity.lastTickPosZ, entity.posZ, partialTicks);
-		double d3 = (double) MathHelper.sqrt_double(dx * dx + dz * dz);
-		float f2 = (float) (Math.atan2(dz, dx) * 180.0D / Math.PI);
-		float f3 = (float) (Math.atan2(dy, d3) * 180.0D / Math.PI) + 90.0F;
-		GL11.glRotatef(f2, 0.0F, 1.0F, 0.0F);
-		GL11.glRotatef(f3, 0.0F, 0.0F, 1.0F);
-		GL11.glTranslatef(0.0F, -1.5F, 0.0F);
-		this.bindEntityTexture(entity);
-		this.hook.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-		GL11.glPopMatrix();
-		x = this.func_110828_a(entity.getThrower().lastTickPosX, entity.getThrower().posX, partialTicks);
-		y = this.func_110828_a(entity.getThrower().lastTickPosY, entity.getThrower().posY, partialTicks);
-		z = this.func_110828_a(entity.getThrower().lastTickPosZ, entity.getThrower().posZ, partialTicks);
-		yaw = (float) this.func_110828_a(entity.getThrower().prevRotationYaw, entity.getThrower().rotationYaw, partialTicks);
+	{
+		try
+		{
+			entity = (EntityCaptainHook) ALCore.instance.world.getEntitiesWithinAABB(EntityCaptainHook.class, AxisAlignedBB.getBoundingBox(entity.posX - 1, entity.posY - 1, entity.posZ - 1, entity.posX + 1, entity.posY + 1, entity.posZ + 1)).get(0);		
+		}
+		catch(IndexOutOfBoundsException e) {}
 		
-		this.renderRope(entity.getThrower(), entity, x - RenderManager.renderPosX, y - RenderManager.renderPosY, z - RenderManager.renderPosZ, yaw, partialTicks);
+		if(entity.getThrower() != null)
+		{
+			GL11.glPushMatrix();
+			GL11.glTranslatef((float) x, (float) y, (float) z);
+			GL11.glScalef(-0.35F, -0.35F, 0.35F);
+			double dx = this.func_110828_a(entity.getThrower().lastTickPosX, entity.getThrower().posX, partialTicks) - this.func_110828_a(entity.lastTickPosX, entity.posX, partialTicks);
+			double dy = this.func_110828_a(entity.getThrower().lastTickPosY, entity.getThrower().posY, partialTicks) - this.func_110828_a(entity.lastTickPosY, entity.posY, partialTicks) + entity.getThrower().ySize;
+			double dz = this.func_110828_a(entity.getThrower().lastTickPosZ, entity.getThrower().posZ, partialTicks) - this.func_110828_a(entity.lastTickPosZ, entity.posZ, partialTicks);
+			double d3 = (double) MathHelper.sqrt_double(dx * dx + dz * dz);
+			float f2 = (float) (Math.atan2(dz, dx) * 180.0D / Math.PI);
+			float f3 = (float) (Math.atan2(dy, d3) * 180.0D / Math.PI) + 90.0F;
+			GL11.glRotatef(f2, 0.0F, 1.0F, 0.0F);
+			GL11.glRotatef(f3, 0.0F, 0.0F, 1.0F);
+			GL11.glTranslatef(0.0F, -1.5F, 0.0F);
+			this.bindEntityTexture(entity);
+			this.hook.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+			GL11.glPopMatrix();
+			x = this.func_110828_a(entity.getThrower().lastTickPosX, entity.getThrower().posX, partialTicks);
+			y = this.func_110828_a(entity.getThrower().lastTickPosY, entity.getThrower().posY, partialTicks);
+			z = this.func_110828_a(entity.getThrower().lastTickPosZ, entity.getThrower().posZ, partialTicks);
+			yaw = (float) this.func_110828_a(entity.getThrower().prevRotationYaw, entity.getThrower().rotationYaw, partialTicks);
+			
+			this.renderRope(entity.getThrower(), entity, x - RenderManager.renderPosX, y - RenderManager.renderPosY, z - RenderManager.renderPosZ, yaw, partialTicks);
+		}
 	}
 
 	private double func_110828_a(double par1, double par3, double par5)

@@ -2,7 +2,6 @@ package net.arcticraft.helpers;
 
 import java.util.Random;
 
-import net.arcticraft.gui.GuiACMainMenu;
 import net.arcticraft.item.ACPotions;
 import net.arcticraft.item.ItemHotWaterBottle;
 import net.arcticraft.main.Arcticraft;
@@ -11,8 +10,6 @@ import net.arcticraft.temperature.handlers.LightvalueHandler;
 import net.arcticraft.temperature.handlers.LocationHandler;
 import net.arcticraft.temperature.handlers.MovementHandler;
 import net.arcticraft.world.gen.dimension.TeleporterDim;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
@@ -22,7 +19,6 @@ import org.lwjgl.input.Keyboard;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
-import cpw.mods.fml.common.gameevent.TickEvent.RenderTickEvent;
 
 public class TickEvent{
 
@@ -89,34 +85,26 @@ public class TickEvent{
 					}
 				}
 			}
+			
 			if(event.player.isPotionActive(ACPotions.frostbitePotion))
 			{
 				potionTick++;
-				// System.out.println(potionTick);
+				
 				if(potionTick >= 40)
 				{
-					float temp = Arcticraft.arcticraftInstance.tempHandler.getTemperature() + -1.0F;
+					float temp = Arcticraft.arcticraftInstance.tempHandler.getTemperature() + -1.0f;
 					Arcticraft.arcticraftInstance.tempHandler.setTemperature(temp);
-
-					IExtendedPlayerProps props = IExtendedPlayerProps.get(event.player);
+					
+					IExtendedPlayerProps props = IExtendedPlayerProps.get(event.player);			
 					NBTTagCompound compound = new NBTTagCompound();
 					props.changeTemp(temp);
 					props.saveNBTData(compound);
-
+					
 					Arcticraft.arcticraftInstance.tempHandler.setTemperature(props.getCurrentTemp());
+					
 					potionTick = 0;
-					System.out.println(Arcticraft.arcticraftInstance.tempHandler.getTemperature());
 				}
 			}
-		}
-	}
-
-	@SubscribeEvent
-	public void tickRender(RenderTickEvent event)
-	{
-		if(Minecraft.getMinecraft().currentScreen instanceof GuiMainMenu)
-		{
-			Minecraft.getMinecraft().displayGuiScreen(new GuiACMainMenu());
 		}
 	}
 }

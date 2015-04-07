@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
+import net.arcticraft.gui.button.GuiMMButtons;
 import net.arcticraft.main.Arcticraft;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -19,9 +20,9 @@ import net.minecraft.client.gui.GuiConfirmOpenLink;
 import net.minecraft.client.gui.GuiLanguage;
 import net.minecraft.client.gui.GuiMultiplayer;
 import net.minecraft.client.gui.GuiOptions;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiSelectWorld;
 import net.minecraft.client.gui.GuiYesNoCallback;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.util.EnumChatFormatting;
@@ -34,6 +35,8 @@ import org.apache.commons.io.Charsets;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.Project;
 
+import com.arcanumLudum.ALCore.math.vec.Vector;
+import com.arcanumLudum.ALCore.menu.MenuMain;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 
@@ -44,7 +47,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 // import net.minecraft.client.gui.ThreadTitleScreen;
 @SideOnly(Side.CLIENT)
-public class GuiACMainMenu extends GuiScreen implements GuiYesNoCallback{
+public class GuiACMainMenu extends MenuMain implements GuiYesNoCallback{
 
 	// ** The RNG used by the Main Menu Screen. *//*
 	private static final Random rand = new Random();
@@ -80,7 +83,10 @@ public class GuiACMainMenu extends GuiScreen implements GuiYesNoCallback{
 	private ResourceLocation field_110351_G;
 	private GuiMMButtons fmlModButton = null;
 
-	public GuiACMainMenu(){
+	public GuiACMainMenu()
+	{
+		super(Minecraft.getMinecraft());
+		
 		BufferedReader bufferedreader = null;
 		try
 		{
@@ -118,7 +124,11 @@ public class GuiACMainMenu extends GuiScreen implements GuiYesNoCallback{
 				}
 			}
 		}
+        ScaledResolution res = new ScaledResolution(this.mc, this.mc.displayWidth, this.mc.displayHeight);	
+        
 		this.updateCounter = rand.nextFloat();
+        this.defaultMusic = this.fromResource(new ResourceLocation("ac:records.welcome_to_the_cold"));
+        this.setNavigationPos(new Vector(res.getScaledWidth(), 2));
 	}
 
     /**
@@ -127,14 +137,18 @@ public class GuiACMainMenu extends GuiScreen implements GuiYesNoCallback{
 	@Override
     protected void keyTyped(char p_73869_1_, int p_73869_2_)
     {
-		
+		super.keyTyped(p_73869_1_, p_73869_2_);
     }
 	
 	// Called from the main game loop to update the screen.
 	@Override
 	public void updateScreen()
 	{
-		super.updateScreen();
+		this.tryPlayDefaultMusic();
+		
+		ScaledResolution res = new ScaledResolution(this.mc, this.mc.displayWidth, this.mc.displayHeight);	
+        this.setNavigationPos(new Vector(res.getScaledWidth() - 135, 2));
+		
 		++this.panoramaTimer;
 		++this.updateCounter;
 	}
@@ -151,8 +165,7 @@ public class GuiACMainMenu extends GuiScreen implements GuiYesNoCallback{
 	// Adds the buttons (and other controls) to the screen in question.
 	@Override
 	public void initGui()
-	{
-		super.initGui();
+	{		
 		this.viewportTexture = new DynamicTexture(256, 256);
 		this.field_110351_G = this.mc.getTextureManager().getDynamicTextureLocation("background", this.viewportTexture);
 		Calendar calendar = Calendar.getInstance();
@@ -214,6 +227,8 @@ public class GuiACMainMenu extends GuiScreen implements GuiYesNoCallback{
 		this.field_92021_u = ((GuiButton) this.buttonList.get(0)).yPosition - 24;
 		this.field_92020_v = this.field_92022_t + j;
 		this.field_92019_w = this.field_92021_u + 24;
+		
+		super.initGui();
 	}
 
 	private void func_96137_a(StringTranslate par1StringTranslate, int par2, int par3)
@@ -257,6 +272,8 @@ public class GuiACMainMenu extends GuiScreen implements GuiYesNoCallback{
 	@Override
 	protected void actionPerformed(GuiButton par1GuiButton)
 	{
+		super.actionPerformed(par1GuiButton);
+	
 		if(par1GuiButton.id == 0)
 		{
 			this.mc.displayGuiScreen(new GuiSelectWorld(this));
@@ -551,6 +568,7 @@ public class GuiACMainMenu extends GuiScreen implements GuiYesNoCallback{
 			this.drawString(this.fontRendererObj, this.field_92025_p, this.field_92022_t, this.field_92021_u, 16777215);
 			this.drawString(this.fontRendererObj, field_96138_a, (this.width - this.field_92024_r) / 2, ((GuiButton) this.buttonList.get(0)).yPosition - 12, 16777215);
 		}
+		
 		super.drawScreen(par1, par2, par3);
 	}
 
@@ -558,6 +576,7 @@ public class GuiACMainMenu extends GuiScreen implements GuiYesNoCallback{
 	protected void mouseClicked(int par1, int par2, int par3)
 	{
 		super.mouseClicked(par1, par2, par3);
+		
 		if(this.field_92025_p.length() > 0 && par1 >= this.field_92022_t && par1 <= this.field_92020_v && par2 >= this.field_92021_u && par2 <= this.field_92019_w)
 		{
 			GuiConfirmOpenLink guiconfirmopenlink = new GuiConfirmOpenLink(this, this.field_104024_v, 13, true);

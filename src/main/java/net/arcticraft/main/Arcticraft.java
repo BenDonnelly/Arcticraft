@@ -4,6 +4,7 @@ import net.arcticraft.block.ACBlocks;
 import net.arcticraft.contentPacks.CPackMain;
 import net.arcticraft.crafting.ACRecipes;
 import net.arcticraft.entities.ACEntities;
+import net.arcticraft.gui.GuiACMainMenu;
 import net.arcticraft.gui.GuiHandler;
 import net.arcticraft.helpers.CommandChangeTemperature;
 import net.arcticraft.helpers.ForgeEvents;
@@ -24,13 +25,18 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.command.ICommandManager;
 import net.minecraft.command.ServerCommandManager;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.MinecraftForge;
+
+import com.arcanumLudum.ALCore.ALCore;
+
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -40,7 +46,7 @@ import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-@Mod(modid = Arcticraft.MOD_ID, version = Arcticraft.VERSION, name = Arcticraft.NAME)
+@Mod(modid = Arcticraft.MOD_ID, version = Arcticraft.VERSION, name = Arcticraft.NAME, dependencies = "after:alcore_api")
 public class Arcticraft{
 
 	public static final String MOD_ID = "ac";
@@ -73,6 +79,7 @@ public class Arcticraft{
 	{
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(MOD_ID);
 		network.registerMessage(RopePositionPacketHandler.class, RopePositionPacket.class, 0, Side.SERVER);
+		network.registerMessage(EskimoTradePacketHandler.class, EskimoTradePacket.class, 1, Side.SERVER);
 		
 		VectorUtils.init();
 		ACBlocks.loadBlocks();
@@ -81,6 +88,10 @@ public class Arcticraft{
 		ACRecipes.loadRecipes();
 		
 		cPackMain.preInit();
+		
+    	ALCore.instance.menuHandler.addMenu(1, "Arcticraft", new ResourceLocation("ac:textures/items/tools/misc/captain_sword.png"), new GuiACMainMenu());
+    	ALCore.instance.menuHandler.getMenuBox(1).addSoundToList("ac", "records.frozen_feelings");
+    	ALCore.instance.menuHandler.getMenuBox(1).addSoundToList("ac", "records.welcome_to_the_cold");
 	}
 
 	@EventHandler
@@ -98,9 +109,15 @@ public class Arcticraft{
     	GameRegistry.registerWorldGenerator(new WorldGenIceberg(), 0);
     	GameRegistry.registerWorldGenerator(new WorldGenMageTower(), 0);
     	
-    	acChestContent = new WeightedRandomChestContent[] {new WeightedRandomChestContent(ACItems.hotWaterBottle, 0, 0, 4, 40), new WeightedRandomChestContent(ACItems.eriumGem, 0, 0, 1, 20), new WeightedRandomChestContent(ACItems.escariaSword, 0, 0, 1, 1), new WeightedRandomChestContent(ACItems.arcticPouch, 0, 0, 3, 10)};
+    	acChestContent = new WeightedRandomChestContent[] {new WeightedRandomChestContent(ACItems.hotWaterBottle, 0, 0, 1, 40), new WeightedRandomChestContent(ACItems.eriumGem, 0, 0, 1, 20), new WeightedRandomChestContent(ACItems.escariaSword, 0, 0, 1, 1), new WeightedRandomChestContent(ACItems.arcticPouch, 0, 0, 3, 10)};
     	acChestGenHooks = new ACChestGenHooks("acChestGen");
     	cPackMain.init();
+	}
+	
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event)
+	{
+		
 	}
 	
 	@EventHandler
@@ -110,12 +127,6 @@ public class Arcticraft{
 		  ICommandManager command = server.getCommandManager();
 		  ServerCommandManager manager = (ServerCommandManager) command;
 		  manager.registerCommand(new CommandChangeTemperature());
-	}
-	
-	@SubscribeEvent
-	public void tickWorld(WorldTickEvent event)
-	{
-		
 	}
 	
 	public static void notifyOfGenertion(Object type, String x, String z)

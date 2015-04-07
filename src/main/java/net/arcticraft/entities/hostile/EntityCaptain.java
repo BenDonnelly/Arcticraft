@@ -1,5 +1,7 @@
 package net.arcticraft.entities.hostile;
 
+import com.arcanumLudum.ALCore.ALCore;
+
 import net.arcticraft.block.ACBlocks;
 import net.arcticraft.entities.ACIBossDisplayData;
 import net.arcticraft.entities.EntityCaptainHook;
@@ -185,6 +187,8 @@ public class EntityCaptain extends EntityMob implements ACIBossDisplayData, IRan
 	public void attackEntityWithRangedAttack(EntityLivingBase target, float f)
 	{
 		EntityCaptainHook hook = new EntityCaptainHook(this.worldObj, this);
+				
+		hook.setThrower(this);
 		double rotation = (this.rotationYaw + 70.0F) / (180.0F / Math.PI);
 		double hookLaunchX = Math.cos(rotation);
 		double hookLaunchY = 1.4D;
@@ -197,13 +201,10 @@ public class EntityCaptain extends EntityMob implements ACIBossDisplayData, IRan
 		hook.setThrowableHeading(dx, dy + (double) f1, dz, hook.func_70182_d(), 1.0F);
 		this.playSound("ac:mobs.captain_poof", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
 		this.worldObj.playSoundAtEntity(this, "ac:mobs.captain_rope", 0.7F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));	
-		
-		// TODO: Fix packet bug / server side world shit
-		if (!this.worldObj.isRemote)
-	    {
-			Minecraft.getMinecraft().theWorld.spawnEntityInWorld(hook);
-	    }
 
+		// TODO: Fix packet bug / server side world shit
+		ALCore.instance.world.spawnEntityInWorld(hook);
+		
 		Arcticraft.arcticraftInstance.network.sendToServer(new RopePositionPacket(this.getEntityId(), hook.getEntityId()));
 		
 		this.resetHookCooldown();

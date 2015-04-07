@@ -1,4 +1,4 @@
-package net.arcticraft.gui;
+package net.arcticraft.gui.button;
 
 import net.arcticraft.main.Arcticraft;
 import net.minecraft.client.Minecraft;

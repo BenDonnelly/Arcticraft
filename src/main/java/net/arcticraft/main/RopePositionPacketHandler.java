@@ -1,5 +1,7 @@
 package net.arcticraft.main;
 
+import com.arcanumLudum.ALCore.ALCore;
+
 import net.arcticraft.entities.EntityCaptainHook;
 import net.arcticraft.entities.hostile.EntityCaptain;
 import net.minecraft.client.Minecraft;
@@ -15,29 +17,29 @@ public class RopePositionPacketHandler implements IMessageHandler<RopePositionPa
 
 	private void handleRopePosition(RopePositionPacket packet, EntityPlayer plyr) {
 		World world;
+		
 		captainID = packet.captainId;
 		hookID = packet.hookId;
 		
-		if (plyr instanceof EntityPlayer) {
+		if (plyr instanceof EntityPlayer) 
+		{
 			world = plyr.worldObj;
-		} else {
+		} 
+		else 
+		{
 			return;
 		}
 
-		EntityCaptainHook hook = (EntityCaptainHook) world
-				.getEntityByID(hookID);
-		EntityCaptain captain = (EntityCaptain) world.getEntityByID(captainID);
-
-		hook.setThrower(captain);
-		captain.resetHookCooldown();
-		captain.setHookAirBorne(true);
-
+		EntityCaptainHook hook = (EntityCaptainHook) ALCore.instance.world.getEntityByID(hookID);
+		EntityCaptain captain = (EntityCaptain) ALCore.instance.world.getEntityByID(captainID);
+		
 		double rotation = (captain.rotationYaw + 70.0F) / (180.0F / Math.PI);
 		double hookLaunchX = Math.cos(rotation);
 		double hookLaunchY = 1.4D;
 		double hookLaunchZ = Math.sin(rotation);
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 10; i++) 
+		{
 			captain.worldObj.spawnParticle("smoke", captain.posX + hookLaunchX,
 					captain.posY + hookLaunchY, captain.posZ + hookLaunchZ,
 					(captain.getRNG().nextDouble() - 0.5D) / 5D, (captain
