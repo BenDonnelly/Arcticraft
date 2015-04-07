@@ -29,7 +29,7 @@ public class BiomeFrostMountains extends ACBiomeGenBase
 		this.spawnableCaveCreatureList.clear();
 		this.spawnableMonsterList.add(new SpawnListEntry(EntityPolarBear.class, 5, 1, 4));
 		
-		this.setHeight(new BiomeGenBase.Height(0.2F, 2.3F));
+		this.setHeight(new BiomeGenBase.Height(0.2F, 1.25F));
 		this.setTemperatureRainfall(0.1F, 0.9F);
 	}
 

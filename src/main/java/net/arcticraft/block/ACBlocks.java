@@ -82,6 +82,7 @@ public class ACBlocks{
 	public static Block mysticalSnow;
 	public static Block frozenFarmland;
 	public static Block crystalGlass;
+	public static Block lantern;
 	
 	/* Crops */
 	public static Block berryBush;
@@ -146,18 +147,18 @@ public class ACBlocks{
 		campfire = new BlockCampfire(Material.wood);
 		cannon = new BlockCannon(Material.iron);
 		caveman = new BlockCaveman(Material.glass);
-		icicle = new BlockIcicle(Material.glass);
+		icicle = new BlockIcicle(Material.glass).setStepSound(Block.soundTypeGlass);
 		captainStatue = new BlockCaptainStatue(Material.iron);
 		
 		/* Machine Blocks */
 		arcticFurnaceIdle = new BlockACFurnace(false).setBlockName(MOD_ID + "arcticFurnaceIdle").setCreativeTab(ACCreativeTabs.acTabBlock);
-		arcticFurnaceBurning = new BlockACFurnace(true).setBlockName(MOD_ID + "arcticFurnaceBurning").setLightLevel(0.875F);
-		
+		arcticFurnaceBurning = new BlockACFurnace(true).setBlockName(MOD_ID + "arcticFurnaceBurning").setLightLevel(0.875F);	
 		
 		/* Miscellaneous */
 		mysticalSnow = new BlockMysticalSnow(Material.snow);
 		frozenFarmland = new BlockFrozenFarmland().setBlockName("frozenFarmland").setBlockTextureName("ac:frozenFarmland");
 		crystalGlass = new BlockCrystalGlass().setBlockName("crystalGlass").setCreativeTab(ACCreativeTabs.acTabBlock);
+		lantern = new BlockLantern().setBlockName("lantern").setBlockTextureName("ac:lantern").setStepSound(Block.soundTypeWood);
 		
 		/* Crops */
 		berryBush = new BlockBerryBush().setBlockTextureName("ac:berry").setBlockName("berry");
@@ -165,8 +166,9 @@ public class ACBlocks{
 
 	public static void registerBlocks()
 	{
-		Block[] blockList = {frostGrass, frostDirt, frostStone, frostCobble, frostWaterBlock, arcaneStone, frostWaterIce, frostSnow, tekkiteOre, escariaOre, glacianOre, rigentemOre, frigusOre
-				,mysticalSnow, campfire, cannon, frostLadder, frostDoor, eriumOre, tekkiteBlock, escariaBlock, glacianBlock, rigentemBlock, caveman, frozenFarmland, crystalGlass, icestoneWire, icestoneTorchOn, icestoneTorchOff, captainStatue};
+		Block[] blockList = {frostGrass, frostDirt, frostStone, frostCobble, frostWaterBlock, arcaneStone, frostWaterIce, frostSnow, tekkiteOre, escariaOre, glacianOre, rigentemOre, frigusOre, 
+				mysticalSnow, campfire, cannon, frostLadder, frostDoor, eriumOre, tekkiteBlock, escariaBlock, glacianBlock, rigentemBlock, caveman, 
+				frozenFarmland, crystalGlass, icestoneWire, icestoneTorchOn, icestoneTorchOff, captainStatue, lantern};
 
 		for(Block block : blockList)
 		{

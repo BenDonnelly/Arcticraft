@@ -197,8 +197,10 @@ public class EntityCaptain extends EntityMob implements ACIBossDisplayData, IRan
 		hook.setThrowableHeading(dx, dy + (double) f1, dz, hook.func_70182_d(), 1.0F);
 		this.playSound("ac:mobs.captain_poof", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
 		this.worldObj.playSoundAtEntity(this, "ac:mobs.captain_rope", 0.7F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));	
+
+		// TODO: Fix packet bug / server side world shit
 		ALCore.instance.world.spawnEntityInWorld(hook);
-		
+
 		this.resetHookCooldown();
 		this.isHookAirBorne = true;
 	}

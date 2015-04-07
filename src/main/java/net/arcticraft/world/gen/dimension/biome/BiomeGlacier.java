@@ -29,7 +29,7 @@ public class BiomeGlacier extends ACBiomeGenBase {
 		this.temperature = 0.1F;
 		
 		this.setTemperatureRainfall(0.1F, 0.9F);
-		this.setHeight(new BiomeGenBase.Height(0.2F, 2.1F));
+		this.setHeight(new BiomeGenBase.Height(0.1F, 1.25F));
 	}
 	
 	public void decorate(World par1World, Random par2Random, int par3, int par4) {

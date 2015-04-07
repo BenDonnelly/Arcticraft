@@ -136,6 +136,8 @@ public class ACItems {
 	public static Item glacianBoots;
 	public static Item rigentemBoots;
 	
+	/* Miscellaneous Tools */
+	public static Item bomb;
 	
 	public static void initItems()
 	{
@@ -244,6 +246,9 @@ public class ACItems {
 		glacianBoots = new ItemACArmour(ACArmourMaterial.GlacianArmour, Arcticraft.proxy.addArmor("Glacian"), 3).setUnlocalizedName("glacianBoots").setTextureName(MOD_ID + ":armour/glacian/boots_glacian");
 		rigentemBoots = new ItemACArmour(ACArmourMaterial.RigentemArmour, Arcticraft.proxy.addArmor("Rigentem"), 3).setUnlocalizedName("rigentemBoots").setTextureName(MOD_ID + ":armour/rigentem/boots_rigentem");
 		
+		/* Miscellaneous Tools */
+		bomb = new ItemBomb().setUnlocalizedName("bomb").setTextureName("ac:bomb").setCreativeTab(ACCreativeTabs.acTabTools);
+		
 		/* Crops */
 		berrySeed = new ItemACSeeds(ACBlocks.berryBush, Blocks.farmland).setUnlocalizedName("berrySeed").setTextureName("ac:berrySeed").setCreativeTab(ACCreativeTabs.acTabMisc);
 		berry = new ItemFood(6, false).setCreativeTab(ACCreativeTabs.acTabFood).setUnlocalizedName("berry").setTextureName("ac:whiteberry");
@@ -261,7 +266,8 @@ public class ACItems {
 				tekkiteLegs, escariaLegs, glacianLegs, rigentemLegs,
 				tekkiteBoots, escariaBoots, glacianBoots, rigentemBoots, penguinMeat, penguinMeatCooked, penguinFeather,
 				mystFruit, glacierFruit, cannonball, frostDoor, woodenClub, boarMeat, boarMeatCooked, eriumGem, captainsLog,
-				captainSword, bucketFrostWater, bucketEmpty, arcticPouch, captainsHook, hotWaterBottle, recordFrozenFeelings, recordWelcomeToTheCold, icestoneDust};
+				captainSword, bucketFrostWater, bucketEmpty, arcticPouch, captainsHook, hotWaterBottle, recordFrozenFeelings, 
+				recordWelcomeToTheCold, icestoneDust, bomb};
 
 		for (Item item : itemList) {
 			GameRegistry.registerItem(item, StringUtils.generateName(item));

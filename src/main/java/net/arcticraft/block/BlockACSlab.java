@@ -87,5 +87,4 @@ public class BlockACSlab extends BlockSlab{
 	
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister p_149651_1_){}
-
 }

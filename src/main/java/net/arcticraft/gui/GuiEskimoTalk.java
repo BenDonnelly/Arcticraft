@@ -27,7 +27,7 @@ public class GuiEskimoTalk extends GuiScreen
     protected String oldInput = "";
 	
 	public GuiEskimoTalk(String defaultChatText) {
-		mobBot.init(ChatterBotType.JABBERWACKY, "");
+		mobBot.init(ChatterBotType.CLEVERBOT, "");
 		
 		this.input = defaultChatText;
 	}

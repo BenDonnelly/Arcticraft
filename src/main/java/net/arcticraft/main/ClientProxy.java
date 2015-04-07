@@ -2,6 +2,7 @@ package net.arcticraft.main;
 
 import net.arcticraft.block.ACBlocks;
 import net.arcticraft.block.render.BlockIcestoneRender;
+import net.arcticraft.entities.EntityBomb;
 import net.arcticraft.entities.EntityCannonball;
 import net.arcticraft.entities.EntityCaptainHook;
 import net.arcticraft.entities.EntitySled;
@@ -29,6 +30,7 @@ import net.arcticraft.entities.passive.EntityIceMage;
 import net.arcticraft.entities.passive.EntityPenguin;
 import net.arcticraft.entities.passive.EntityPolarBear;
 import net.arcticraft.entities.render.RenderBoar;
+import net.arcticraft.entities.render.RenderBomb;
 import net.arcticraft.entities.render.RenderCannonball;
 import net.arcticraft.entities.render.RenderCaptain;
 import net.arcticraft.entities.render.RenderCaptainHook;
@@ -101,6 +103,7 @@ public class ClientProxy extends CommonProxy{
 		RenderingRegistry.registerEntityRenderingHandler(EntityEskimoChef.class, new RenderEskimoChef(new ModelChefEskimo(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityEskimoChief.class, new RenderEskimoChief(new ModelChiefEskimo(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityEskimoTrader.class, new RenderEskimoTrader(new ModelTraderEskimo(), 0.5F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBomb.class, new RenderBomb(ACItems.bomb, 0));
 		RenderingRegistry.registerBlockHandler(new BlockIcestoneRender()); // Or 'this' if your proxy happens to be the one that implements the block render interface.
 	     
 		MinecraftForgeClient.registerItemRenderer(ACItems.captainsHook, (IItemRenderer) new ItemCaptainsHookRender());
