@@ -1,7 +1,5 @@
 package net.arcticraft.entities.hostile;
 
-import com.arcanumLudum.ALCore.ALCore;
-
 import net.arcticraft.block.ACBlocks;
 import net.arcticraft.entities.ACIBossDisplayData;
 import net.arcticraft.entities.EntityCaptainHook;
@@ -9,9 +7,6 @@ import net.arcticraft.entities.ai.EntityAICaptainAttack;
 import net.arcticraft.entities.ai.EntityAIHookAttack;
 import net.arcticraft.item.ACItems;
 import net.arcticraft.item.ACPotions;
-import net.arcticraft.main.Arcticraft;
-import net.arcticraft.main.RopePositionPacket;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IRangedAttackMob;
@@ -27,10 +22,11 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+
+import com.arcanumLudum.ALCore.ALCore;
 
 public class EntityCaptain extends EntityMob implements ACIBossDisplayData, IRangedAttackMob{
 
@@ -201,11 +197,7 @@ public class EntityCaptain extends EntityMob implements ACIBossDisplayData, IRan
 		hook.setThrowableHeading(dx, dy + (double) f1, dz, hook.func_70182_d(), 1.0F);
 		this.playSound("ac:mobs.captain_poof", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
 		this.worldObj.playSoundAtEntity(this, "ac:mobs.captain_rope", 0.7F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));	
-
-		// TODO: Fix packet bug / server side world shit
 		ALCore.instance.world.spawnEntityInWorld(hook);
-		
-		Arcticraft.arcticraftInstance.network.sendToServer(new RopePositionPacket(this.getEntityId(), hook.getEntityId()));
 		
 		this.resetHookCooldown();
 		this.isHookAirBorne = true;

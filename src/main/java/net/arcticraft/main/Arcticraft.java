@@ -78,7 +78,6 @@ public class Arcticraft{
 	public static void preInit(FMLPreInitializationEvent PreEvent)
 	{
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(MOD_ID);
-		network.registerMessage(RopePositionPacketHandler.class, RopePositionPacket.class, 0, Side.SERVER);
 		network.registerMessage(EskimoTradePacketHandler.class, EskimoTradePacket.class, 1, Side.SERVER);
 		
 		VectorUtils.init();
