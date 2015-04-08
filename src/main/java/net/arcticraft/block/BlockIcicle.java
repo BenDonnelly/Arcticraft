@@ -1,17 +1,13 @@
 package net.arcticraft.block;
 
-import static net.arcticraft.main.Arcticraft.MOD_ID;
-
 import java.util.List;
+import java.util.Random;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.arcticraft.API.block.creativetabs.ACCreativeTabs;
 import net.arcticraft.main.Arcticraft;
 import net.arcticraft.tileentity.TileEntityIcicle;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
@@ -21,19 +17,22 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockIcicle extends BlockContainer{
 
 	public static final String[] icicles = new String[] {"large", "regular", "small", "largeUD", "regularUD", "smallUD"};
+	public static final String[] iciclesTextures = new String[] {"icicle", "icicle", "icicle", "icicle_ud", "icicle_ud", "icicle_ud"};
 	@SideOnly(Side.CLIENT)
-	private IIcon icicle;
+	private IIcon[] texture;
 
 	protected BlockIcicle(Material material){
 		super(material);
 		this.setHardness(2.0F);
 		this.setResistance(5.0F);
 		this.setBlockName(Arcticraft.MOD_ID + "_icicle");
-		// this.setBlockTextureName(Arcticraft.MOD_ID + ":icicle");
+		this.setBlockTextureName(Arcticraft.MOD_ID + ":icicle");
 		this.setCreativeTab(ACCreativeTabs.acTabBlock);
 		this.setBlockBounds(0, 0, 0, 1, 1.5F, 1);
 	}
@@ -61,6 +60,16 @@ public class BlockIcicle extends BlockContainer{
 		}
 	}
 
+	public Item getItemDropped(int p_149650_1_, Random rand, int p_149650_3_)
+	{
+		return BlocksItems.Mineral;
+	}
+
+	public int damageDropped(int damage)
+	{
+		return damage;
+	}
+
 	@Override
 	public boolean shouldSideBeRendered(IBlockAccess iblockaccess, int x, int y, int z, int meta)
 	{
@@ -73,6 +82,7 @@ public class BlockIcicle extends BlockContainer{
 		return false;
 	}
 
+	@Override
 	public boolean isOpaqueCube()
 	{
 		return false;
@@ -91,25 +101,6 @@ public class BlockIcicle extends BlockContainer{
 		for(int i = 0; i < icicles.length; i++)
 		{
 			list.add(new ItemStack(item, 1, i));
-		}
-	}
-
-	@SideOnly(Side.CLIENT)
-	@Override
-	public void registerBlockIcons(IIconRegister iconRegister)
-	{
-		this.blockIcon = iconRegister.registerIcon(Arcticraft.MOD_ID + ":icicle_ud");
-		this.icicle = iconRegister.registerIcon(Arcticraft.MOD_ID + ":icicle");
-	}
-
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		if(meta == 3 || meta == 4 || meta == 5){
-			return this.blockIcon;
-		}
-		else{
-			return this.icicle;
 		}
 	}
 
