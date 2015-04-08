@@ -60,16 +60,6 @@ public class BlockIcicle extends BlockContainer{
 		}
 	}
 
-	public Item getItemDropped(int p_149650_1_, Random rand, int p_149650_3_)
-	{
-		return BlocksItems.Mineral;
-	}
-
-	public int damageDropped(int damage)
-	{
-		return damage;
-	}
-
 	@Override
 	public boolean shouldSideBeRendered(IBlockAccess iblockaccess, int x, int y, int z, int meta)
 	{

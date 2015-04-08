@@ -22,30 +22,30 @@ public class ItemHotWaterBottle extends Item
      * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
      */
 	@Override
-    public ItemStack onItemRightClick(ItemStack p_77659_1_, World p_77659_2_, EntityPlayer p_77659_3_)
+    public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player)
     {
-		if(!p_77659_2_.isRemote)
+		if(!world.isRemote)
 		{
-			if(p_77659_1_.getItem().getDamage(p_77659_1_) > 20)
+			if(itemstack.getItem().getDamage(itemstack) > 20)
 			{
 				//Arcticraft.arcticraftInstance.tempHandler.modifyTemperature(-10);
 				
-				float temp = Arcticraft.arcticraftInstance.tempHandler.getTemperature() + -p_77659_1_.getItem().getDamage(p_77659_1_);
+				float temp = Arcticraft.arcticraftInstance.tempHandler.getTemperature() + -itemstack.getItem().getDamage(itemstack);
 				Arcticraft.arcticraftInstance.tempHandler.setTemperature(temp);
 				
-				IExtendedPlayerProps props = IExtendedPlayerProps.get(p_77659_3_);			
+				IExtendedPlayerProps props = IExtendedPlayerProps.get(player);			
 				NBTTagCompound compound = new NBTTagCompound();
 				props.changeTemp(temp);
 				props.saveNBTData(compound);
 				
 				Arcticraft.arcticraftInstance.tempHandler.setTemperature(props.getCurrentTemp());
 			}
-			else if(p_77659_1_.getItem().getDamage(p_77659_1_) <= 20)
+			else if(itemstack.getItem().getDamage(itemstack) <= 20)
 			{
-				float temp = Arcticraft.arcticraftInstance.tempHandler.getTemperature() + (20 - p_77659_1_.getItem().getDamage(p_77659_1_));
+				float temp = Arcticraft.arcticraftInstance.tempHandler.getTemperature() + (20 - itemstack.getItem().getDamage(itemstack));
 				Arcticraft.arcticraftInstance.tempHandler.setTemperature(temp);
 				
-				IExtendedPlayerProps props = IExtendedPlayerProps.get(p_77659_3_);			
+				IExtendedPlayerProps props = IExtendedPlayerProps.get(player);			
 				NBTTagCompound compound = new NBTTagCompound();
 				props.changeTemp(temp);
 				props.saveNBTData(compound);
@@ -54,6 +54,6 @@ public class ItemHotWaterBottle extends Item
 			}
 		}
 		
-        return new ItemStack(p_77659_1_.getItem(), 0);
+        return new ItemStack(itemstack.getItem(), 0);
     }
 }

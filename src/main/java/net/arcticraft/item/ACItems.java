@@ -68,6 +68,8 @@ public class ACItems {
 	public static Item hotWaterBottle;
 	public static Item recordFrozenFeelings;
 	public static Item recordWelcomeToTheCold;
+	public static Item emptyCup;
+	public static Item teaDrinks;
 	
 	/* Icestone */
 	public static Item icestoneDust;
@@ -177,6 +179,8 @@ public class ACItems {
 		hotWaterBottle = new ItemHotWaterBottle().setUnlocalizedName(MOD_ID + "_hotWaterBottle").setTextureName(MOD_ID + ":hot_water_bottle").setMaxStackSize(4).setCreativeTab(ACCreativeTabs.acTabMisc);
 		recordFrozenFeelings = new ItemACRecord("frozen_feelings", "ac").setUnlocalizedName("recordFrozenFeelings").setTextureName(MOD_ID + ":records/record_frozenFeelings").setMaxStackSize(1).setCreativeTab(ACCreativeTabs.acTabMisc);
 		recordWelcomeToTheCold = new ItemACRecord("welcome_to_the_cold", "ac").setUnlocalizedName("recordWelcomeToTheCold").setTextureName(MOD_ID + ":records/record_welcomeToTheCold").setMaxStackSize(1).setCreativeTab(ACCreativeTabs.acTabMisc);
+		emptyCup = new Item().setMaxStackSize(16).setUnlocalizedName(MOD_ID + "_emptyCup").setTextureName(MOD_ID + ":cup_empty").setCreativeTab(ACCreativeTabs.acTabMaterials);
+		teaDrinks = new ItemTeaDrinks(4, false).setAlwaysEdible().setMaxStackSize(8).setUnlocalizedName(MOD_ID + "_teaDrinks").setCreativeTab(ACCreativeTabs.acTabFood);
 		
 		/* Icestone */
 		icestoneDust = new ItemIcestoneDust().setUnlocalizedName(MOD_ID + "_icestoneDust").setTextureName(MOD_ID + ":icestone/icestone_dust").setCreativeTab(ACCreativeTabs.acTabTechnical);
@@ -267,7 +271,7 @@ public class ACItems {
 				tekkiteBoots, escariaBoots, glacianBoots, rigentemBoots, penguinMeat, penguinMeatCooked, penguinFeather,
 				mystFruit, glacierFruit, cannonball, frostDoor, woodenClub, boarMeat, boarMeatCooked, eriumGem, captainsLog,
 				captainSword, bucketFrostWater, bucketEmpty, arcticPouch, captainsHook, hotWaterBottle, recordFrozenFeelings, 
-				recordWelcomeToTheCold, icestoneDust, bomb};
+				recordWelcomeToTheCold, icestoneDust, bomb, emptyCup, teaDrinks};
 
 		for (Item item : itemList) {
 			GameRegistry.registerItem(item, StringUtils.generateName(item));
