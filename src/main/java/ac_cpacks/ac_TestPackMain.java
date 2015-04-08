@@ -16,9 +16,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class ac_TestPackMain extends MainSuper {	
 	private IModule module;   	
 	private ModuleConfig config;
-	
-	private BlockBerryBush testBush = (BlockBerryBush) new BlockBerryBush().setCreativeTab(ACCreativeTabs.acTabDecoration).setBlockName("testBush").setBlockTextureName("ac:berryBush");
-    
+
 	@Module_(moduleID = "AC_TestPack", moduleAuthor = "adtdeveloping", moduleVersion = "0.1a", moduleEnabled = true)
 	
 	@Override
@@ -35,7 +33,7 @@ public class ac_TestPackMain extends MainSuper {
 	@Override
 	public void registerObjects() 
 	{
-		GameRegistry.registerBlock(testBush, "testBush");
+		
 	}
 	
 	@Override

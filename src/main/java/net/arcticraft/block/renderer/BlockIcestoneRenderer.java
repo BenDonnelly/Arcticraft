@@ -1,4 +1,4 @@
-package net.arcticraft.block.render;
+package net.arcticraft.block.renderer;
 
 import net.arcticraft.block.BlockIcestone;
 import net.minecraft.block.Block;
@@ -9,7 +9,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
-public class BlockIcestoneRender implements ISimpleBlockRenderingHandler
+public class BlockIcestoneRenderer implements ISimpleBlockRenderingHandler
 {
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelId,

@@ -85,7 +85,17 @@ public class ACCreativeTabs
 		@SideOnly(Side.CLIENT)
 		public Item getTabIconItem()
 		{
-			return ACItems.arcaneStoneDust; 
+			return Item.getItemFromBlock(ACBlocks.arcticFurnaceIdle); 
+		}
+	};
+	
+	public static final CreativeTabs acTabPlants = new CreativeTabs("ac_tabPlants")
+	{
+		@Override
+		@SideOnly(Side.CLIENT)
+		public Item getTabIconItem()
+		{
+			return Item.getItemFromBlock(ACBlocks.acLeaves); 
 		}
 	};
 }

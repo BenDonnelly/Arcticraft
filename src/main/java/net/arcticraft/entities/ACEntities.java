@@ -1,5 +1,6 @@
 package net.arcticraft.entities;
 
+import net.arcticraft.API.utils.ColourUtils;
 import net.arcticraft.entities.hostile.EntityBoar;
 import net.arcticraft.entities.hostile.EntityCaptain;
 import net.arcticraft.entities.hostile.EntityFrostZombie;
@@ -24,29 +25,6 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 
 public class ACEntities
 {
-	static int zombieBackGround = 0x00AFAF;
-	static int zombieSpots = 0x5FA88E;
-	static int whiteColour = 0xffffff;
-	static int blackColour = 0x000000;
-	static int grayColour = 0x424242;
-	static int lightGrayColour = 0xEEEEEE;
-	static int lightBlueColour = 0xAFF5FF;
-	static int blueishIcyColour = 0x3EA6CF;
-	static int kindaBlueColour = 0x337BC7;
-	static int purpleBlueishColour = 0x6419F0;
-	static int redishPinkishColour = 0xEB0E58;
-	static int greenishColour = 0x99FF66;
-	static int yellowishColour = 0xFFFF33;
-	static int brownishColour = 0x63560A;
-	static int purpleishColour = 0x6B13AD;
-	static int grayishIronishColour = 0x949191;
-	static int enderColour = 0xCA75EF;
-	static int goldishColour = 0xF7DB5E;
-	static int netherQuartzColour = 0xCACDDB;
-	static int lapisishColour = 0x536CE0;
-	static int redishColour = 0xDE2644;
-	static int muckyGreenColour = 0x354f30;
-	
 	public static void loadEntities()
 	{
 		initEntities();
@@ -65,14 +43,14 @@ public class ACEntities
 		ALEntityRegistry.createEntity(EntityCaptainHook.class, "CaptainHook", false, 0x00, 0x00, Arcticraft.arcticraftInstance);
 		ALEntityRegistry.createEntity(EntityBomb.class, "Bomb", false, 0x00, 0x00, Arcticraft.arcticraftInstance);
 		
-		EntityRegistry.registerGlobalEntityID(EntityBoar.class, "Boar", EntityRegistry.findGlobalUniqueEntityId(), netherQuartzColour, brownishColour);
-		EntityRegistry.registerGlobalEntityID(EntityPenguin.class, "Penguin", EntityRegistry.findGlobalUniqueEntityId(), blackColour, whiteColour);
-		EntityRegistry.registerGlobalEntityID(EntityIceMage.class, "IceMage", EntityRegistry.findGlobalUniqueEntityId(), kindaBlueColour, purpleBlueishColour);
-		EntityRegistry.registerGlobalEntityID(EntityCaveman.class, "Caveman", EntityRegistry.findGlobalUniqueEntityId(), lightBlueColour, blueishIcyColour);
-		EntityRegistry.registerGlobalEntityID(EntityFrostZombie.class, "FrostZombie", EntityRegistry.findGlobalUniqueEntityId(), zombieBackGround, zombieSpots);
-		EntityRegistry.registerGlobalEntityID(EntityCaptain.class, "Captain", EntityRegistry.findGlobalUniqueEntityId(), redishPinkishColour, blackColour);
-		EntityRegistry.registerGlobalEntityID(EntityPirate.class, "Pirate", EntityRegistry.findGlobalUniqueEntityId(), blackColour, redishPinkishColour);
-		EntityRegistry.registerGlobalEntityID(EntityPolarBear.class, "PolarBear", EntityRegistry.findGlobalUniqueEntityId(), whiteColour, whiteColour);
+		EntityRegistry.registerGlobalEntityID(EntityBoar.class, "Boar", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.netherQuartzColour, ColourUtils.brownishColour);
+		EntityRegistry.registerGlobalEntityID(EntityPenguin.class, "Penguin", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.blackColour, ColourUtils.whiteColour);
+		EntityRegistry.registerGlobalEntityID(EntityIceMage.class, "IceMage", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.kindaBlueColour, ColourUtils.purpleBlueishColour);
+		EntityRegistry.registerGlobalEntityID(EntityCaveman.class, "Caveman", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.lightBlueColour, ColourUtils.blueishIcyColour);
+		EntityRegistry.registerGlobalEntityID(EntityFrostZombie.class, "FrostZombie", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.zombieBackGround, ColourUtils.zombieSpots);
+		EntityRegistry.registerGlobalEntityID(EntityCaptain.class, "Captain", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.redishPinkishColour, ColourUtils.blackColour);
+		EntityRegistry.registerGlobalEntityID(EntityPirate.class, "Pirate", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.blackColour, ColourUtils.redishPinkishColour);
+		EntityRegistry.registerGlobalEntityID(EntityPolarBear.class, "PolarBear", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.whiteColour, ColourUtils.whiteColour);
 		
 		/* Eskimo's */
 		EntityRegistry.registerGlobalEntityID(EntityEskimoChief.class, "EntityEskimoChief", EntityRegistry.findGlobalUniqueEntityId(), 0x7BE6E8, 0x000000);

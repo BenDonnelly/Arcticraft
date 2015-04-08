@@ -1,7 +1,8 @@
 package net.arcticraft.main;
 
 import net.arcticraft.block.ACBlocks;
-import net.arcticraft.block.render.BlockIcestoneRender;
+import net.arcticraft.block.renderer.BlockBerryBushRenderer;
+import net.arcticraft.block.renderer.BlockIcestoneRenderer;
 import net.arcticraft.entities.EntityBomb;
 import net.arcticraft.entities.EntityCannonball;
 import net.arcticraft.entities.EntityCaptainHook;
@@ -78,8 +79,14 @@ import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
-public class ClientProxy extends CommonProxy{
-
+public class ClientProxy extends CommonProxy
+{
+	@Override
+	public boolean isServerSide() 
+	{
+	    return false;
+	}
+	
 	@Override
 	public void registerRenderThings()
 	{
@@ -104,8 +111,9 @@ public class ClientProxy extends CommonProxy{
 		RenderingRegistry.registerEntityRenderingHandler(EntityEskimoChief.class, new RenderEskimoChief(new ModelChiefEskimo(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityEskimoTrader.class, new RenderEskimoTrader(new ModelTraderEskimo(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityBomb.class, new RenderBomb(ACItems.bomb, 0));
-		RenderingRegistry.registerBlockHandler(new BlockIcestoneRender()); // Or 'this' if your proxy happens to be the one that implements the block render interface.
-	     
+		RenderingRegistry.registerBlockHandler(new BlockIcestoneRenderer()); // Or 'this' if your proxy happens to be the one that implements the block render interface.
+		RenderingRegistry.registerBlockHandler(new BlockBerryBushRenderer()); // Or 'this' if your proxy happens to be the one that implements the block render interface.
+	    
 		MinecraftForgeClient.registerItemRenderer(ACItems.captainsHook, (IItemRenderer) new ItemCaptainsHookRender());
 
 		TileEntitySpecialRenderer render = new TileEntityCampfireRender();
@@ -143,11 +151,6 @@ public class ClientProxy extends CommonProxy{
 	public int addArmor(String armour)
 	{
 		return RenderingRegistry.addNewArmourRendererPrefix(armour);
-	}
-	
-	@Override
-	public boolean isServerSide() {
-		return false;
 	}
 
 }

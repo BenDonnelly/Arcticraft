@@ -6,6 +6,7 @@ import java.util.Random;
 
 import net.arcticraft.API.block.BlockBerryBush;
 import net.arcticraft.API.block.creativetabs.ACCreativeTabs;
+import net.arcticraft.item.ItemBerryBushBlock;
 import net.arcticraft.item.ItemIcicleBlocks;
 import net.arcticraft.item.ItemLeafBlocks;
 import net.arcticraft.item.ItemLogBlocks;
@@ -23,6 +24,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+
+import com.arcanumLudum.ALCore.colour.ColourRGB;
+
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ACBlocks{
@@ -84,8 +88,8 @@ public class ACBlocks{
 	public static Block crystalGlass;
 	public static Block lantern;
 	
-	/* Crops */
-	public static Block berryBush;
+	/* Plants */
+	public static Block floranBerryBush;
 	
 	public static void initBlocks()
 	{
@@ -151,7 +155,7 @@ public class ACBlocks{
 		captainStatue = new BlockCaptainStatue(Material.iron);
 		
 		/* Machine Blocks */
-		arcticFurnaceIdle = new BlockACFurnace(false).setBlockName(MOD_ID + "arcticFurnaceIdle").setCreativeTab(ACCreativeTabs.acTabBlock);
+		arcticFurnaceIdle = new BlockACFurnace(false).setBlockName(MOD_ID + "arcticFurnaceIdle").setCreativeTab(ACCreativeTabs.acTabTechnical);
 		arcticFurnaceBurning = new BlockACFurnace(true).setBlockName(MOD_ID + "arcticFurnaceBurning").setLightLevel(0.875F);	
 		
 		/* Miscellaneous */
@@ -160,8 +164,8 @@ public class ACBlocks{
 		crystalGlass = new BlockCrystalGlass().setBlockName("crystalGlass").setCreativeTab(ACCreativeTabs.acTabBlock);
 		lantern = new BlockLantern().setBlockName("lantern").setBlockTextureName("ac:lantern").setStepSound(Block.soundTypeWood);
 		
-		/* Crops */
-		berryBush = new BlockBerryBush().setBlockTextureName("ac:berry").setBlockName("berry");
+		/* Plants */
+		floranBerryBush = new BlockBerryBush(new ColourRGB(252, 90, 141)).setCreativeTab(ACCreativeTabs.acTabPlants).setBlockTextureName("leaves").setBlockName("berryBush");
 	}
 
 	public static void registerBlocks()
@@ -187,7 +191,8 @@ public class ACBlocks{
 		GameRegistry.registerBlock(frostStairs, acPlanks.getUnlocalizedName().substring(5) + "_frost");
 		GameRegistry.registerBlock(glacierStairs, acPlanks.getUnlocalizedName().substring(5) + "_glacier");
 		GameRegistry.registerBlock(icicle, ItemIcicleBlocks.class, icicle.getUnlocalizedName().substring(5));
-	
+		//GameRegistry.registerBlock(floranBerryBush, ItemBerryBushBlock.class, floranBerryBush.getUnlocalizedName().substring(5));
+		
 		GameRegistry.registerTileEntity(TileEntityCampfire.class, "tileEntityCampfire");
 		GameRegistry.registerTileEntity(TileEntityCannon.class, "tileEntityCannon");
 		GameRegistry.registerTileEntity(TileEntityCaveman.class, "tileEntityCaveman");

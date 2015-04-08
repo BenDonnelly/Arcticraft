@@ -10,6 +10,11 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class CommonProxy
 {
+	public boolean isServerSide() 
+	{
+	    return true;
+	}
+	
 	public void registerRenderThings()
 	{
 		
@@ -28,9 +33,5 @@ public class CommonProxy
 	public int addArmor(String armor)
 	{
 		return 0;
-	}
-	
-	public boolean isServerSide() {
-		return true;
 	}
 }

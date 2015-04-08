@@ -673,13 +673,13 @@ public class ChunkProviderDim implements ITempComponent, IChunkProvider {
 					&& this.worldObj.getBlock(x, y, z) != ACBlocks.frostGrass
 					&& this.worldObj.getBlock(x, y, z) != ACBlocks.frostWaterIce)
 				y -= 1;
-				
+
 			if (this.worldObj.getBlock(x, y, z) == ACBlocks.frostGrass
 					|| this.worldObj.getBlock(x, y, z) == ACBlocks.frostWaterIce) {
 				if (this.worldObj.getBlock(x, y - 1, z) != Blocks.air) {
 					generateArcanestone(this.worldObj, rand, x, y, z, 1.0F);
 				}
-		    }
+			}
 		}
 
 		for (int i = 0; i < 2; i++) {
@@ -690,10 +690,10 @@ public class ChunkProviderDim implements ITempComponent, IChunkProvider {
 			while (y > 0
 					&& this.worldObj.getBlock(x, y - 1, z) != ACBlocks.frostWaterBlock)
 				y -= 1;
-			
+
 			if (this.worldObj.getBlock(x, y - 1, z) == ACBlocks.frostWaterBlock
 					&& this.worldObj.getBlock(x, y + 1, z) == Blocks.air) {
-				(new WorldGenIceberg()).generate(worldObj, rand, x, y, z);				
+				(new WorldGenIceberg()).generate(worldObj, rand, x, y, z);
 
 				break;
 			}
@@ -748,21 +748,22 @@ public class ChunkProviderDim implements ITempComponent, IChunkProvider {
 					rand, x, y, z);
 			// System.out.println("FRIGUS X:" + x + " Y:" + y + " Z:" + z );
 		}
-		
+
 		for (int i = 0; i < 2; i++) {
 			int x = p_73153_2_ + rand.nextInt(16);
 			int y = 256;
 			int z = p_73153_3_ + rand.nextInt(16);
 
-			while (y > 0 && this.worldObj.getBlock(x, y, z) != ACBlocks.frostWaterBlock)
+			while (y > 0
+					&& this.worldObj.getBlock(x, y, z) != ACBlocks.frostWaterBlock)
 				y--;
-			
+
 			if (this.worldObj.getBlock(x, y, z) == ACBlocks.frostWaterBlock) {
 				int max = 1000;
 				int min = 0;
 				int r = rand.nextInt(max - min) + min;
 
-				if (r == 50) {		
+				if (r == 50) {
 					(new WorldGenShip()).generate(worldObj, rand, x, y, z);
 				}
 			}

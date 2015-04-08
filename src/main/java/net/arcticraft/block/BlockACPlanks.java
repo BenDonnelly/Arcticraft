@@ -3,6 +3,7 @@ package net.arcticraft.block;
 import static net.arcticraft.main.Arcticraft.MOD_ID;
 
 import java.util.List;
+import java.util.Random;
 
 import net.arcticraft.API.block.creativetabs.ACCreativeTabs;
 import net.arcticraft.main.Arcticraft;
@@ -58,5 +59,11 @@ public class BlockACPlanks extends Block
     public IIcon getIcon(int side, int meta)
     {
         return this.textures[meta];
+    }
+    
+    @Override
+    public Item getItemDropped(int meta, Random rand, int fortune)
+    {
+    	return Item.getItemFromBlock(this);
     }
 }

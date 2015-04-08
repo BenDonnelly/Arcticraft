@@ -2,7 +2,6 @@ package net.arcticraft.helpers;
 
 import java.util.Random;
 
-import net.arcticraft.item.ACPotions;
 import net.arcticraft.item.ItemHotWaterBottle;
 import net.arcticraft.main.Arcticraft;
 import net.arcticraft.temperature.TemperatureHandler;
@@ -10,11 +9,9 @@ import net.arcticraft.temperature.handlers.LightvalueHandler;
 import net.arcticraft.temperature.handlers.LocationHandler;
 import net.arcticraft.temperature.handlers.MovementHandler;
 import net.arcticraft.world.gen.dimension.TeleporterDim;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 
 import org.lwjgl.input.Keyboard;
 
@@ -22,7 +19,10 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
-public class TickEvent {
+public class TickEvent{
+
+	int pTickCounter = 0;
+	int potionTick = 0;
 
 	@SubscribeEvent
 	public void tickPlayer(PlayerTickEvent event)
@@ -50,7 +50,8 @@ public class TickEvent {
 
 		if(event.player.dimension == 3)
 		{
-			if(Keyboard.isKeyDown(Keyboard.KEY_J)) {
+			if(Keyboard.isKeyDown(Keyboard.KEY_J)) 
+			{
 				System.out.println("On the server: " + FMLCommonHandler.instance().getEffectiveSide().isServer() + " | Current temp: " + TemperatureHandler.getTemperature(event.player));
 			}
 			

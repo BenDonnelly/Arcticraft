@@ -8,7 +8,8 @@ public class ItemPlankBlocks extends ItemBlock
 {
 	public static final String[] planks = new String[]{"frost", "glacier"};
 	
-	public ItemPlankBlocks(Block block){
+	public ItemPlankBlocks(Block block)
+	{
 		super(block);
 		this.setHasSubtypes(true);
 	}
@@ -26,8 +27,8 @@ public class ItemPlankBlocks extends ItemBlock
 	}
 
 	@Override
-	public int getMetadata(int meta){
+	public int getMetadata(int meta)
+	{
 		return meta;
-	}
-	
+	}	
 }

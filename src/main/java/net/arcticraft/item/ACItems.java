@@ -47,8 +47,7 @@ public class ACItems {
 	public static Item boarMeat;
 	public static Item boarMeatCooked;
 	
-	/* Crops */
-	public static Item berrySeed;
+	/* Plants */
 	public static Item berry;
 	
 	/* Captain Stuff */
@@ -68,8 +67,6 @@ public class ACItems {
 	public static Item hotWaterBottle;
 	public static Item recordFrozenFeelings;
 	public static Item recordWelcomeToTheCold;
-	public static Item emptyCup;
-	public static Item teaDrinks;
 	
 	/* Icestone */
 	public static Item icestoneDust;
@@ -140,6 +137,8 @@ public class ACItems {
 	
 	/* Miscellaneous Tools */
 	public static Item bomb;
+	public static Item emptyCup;
+	public static Item teaDrinks;
 	
 	public static void initItems()
 	{
@@ -253,8 +252,7 @@ public class ACItems {
 		/* Miscellaneous Tools */
 		bomb = new ItemBomb().setUnlocalizedName("bomb").setTextureName("ac:bomb").setCreativeTab(ACCreativeTabs.acTabTools);
 		
-		/* Crops */
-		berrySeed = new ItemACSeeds(ACBlocks.berryBush, Blocks.farmland).setUnlocalizedName("berrySeed").setTextureName("ac:berrySeed").setCreativeTab(ACCreativeTabs.acTabMisc);
+		/* Plants */
 		berry = new ItemFood(6, false).setCreativeTab(ACCreativeTabs.acTabFood).setUnlocalizedName("berry").setTextureName("ac:whiteberry");
 	}
 
@@ -271,7 +269,7 @@ public class ACItems {
 				tekkiteBoots, escariaBoots, glacianBoots, rigentemBoots, penguinMeat, penguinMeatCooked, penguinFeather,
 				mystFruit, glacierFruit, cannonball, frostDoor, woodenClub, boarMeat, boarMeatCooked, eriumGem, captainsLog,
 				captainSword, bucketFrostWater, bucketEmpty, arcticPouch, captainsHook, hotWaterBottle, recordFrozenFeelings, 
-				recordWelcomeToTheCold, icestoneDust, bomb, emptyCup, teaDrinks};
+				recordWelcomeToTheCold, icestoneDust, bomb};
 
 		for (Item item : itemList) {
 			GameRegistry.registerItem(item, StringUtils.generateName(item));

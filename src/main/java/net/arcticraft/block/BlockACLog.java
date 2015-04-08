@@ -20,7 +20,8 @@ public class BlockACLog extends BlockLog
 {
 	public static final String[] logs = new String[] {"frost", "glacier"};
 
-	protected BlockACLog(Material material){
+	protected BlockACLog(Material material)
+	{
 		this.setHardness(2.0F);
 		this.setResistance(5.0F);
 		this.setBlockName(MOD_ID + "_log");
@@ -44,11 +45,11 @@ public class BlockACLog extends BlockLog
 		// A side icon B top icon
 		this.field_150167_a = new IIcon[logs.length];
 		this.field_150166_b = new IIcon[logs.length];
+		
 		for(int i = 0; i < this.field_150167_a.length; i++)
 		{
 			this.field_150167_a[i] = iconRegister.registerIcon(Arcticraft.MOD_ID + ":" + "log_" + logs[i]);
 			this.field_150166_b[i] = iconRegister.registerIcon(Arcticraft.MOD_ID + ":" + "log_" + logs[i] + "_top");
 		}
-
 	}
 }
