@@ -60,6 +60,7 @@ public class GuiACMainMenu extends MenuMain implements GuiYesNoCallback{
 	private int panoramaTimer = 0;
 	// Decides whether to show the links or not
 	private boolean showLinks;
+	private boolean activateOptions;
 	// Texture allocated for the current viewport of the main menu's panorama
 	// background.
     private static final ResourceLocation splashTexts = new ResourceLocation("texts/splashes.txt");
@@ -192,7 +193,15 @@ public class GuiACMainMenu extends MenuMain implements GuiYesNoCallback{
 		}
 		buttonList = new ArrayList();
 		int i = this.height / 4 + 68;
-		if(!this.showLinks)
+		
+		if(this.showLinks)
+		{
+			this.buttonList.add(new GuiMMButtons(6, 30, i - 70 + 20 * 1, "AC's YouTube"));
+			this.buttonList.add(new GuiMMButtons(7, 30, i - 70 + 45 * 1, "AC's Topic"));
+			this.buttonList.add(new GuiMMButtons(8, 30, i - 70 + 70 * 1, "AC's Website"));
+			this.buttonList.add(new GuiMMButtons(9, 30, i - 70 + 95 * 1, "Main Menu"));
+		}
+		else
 		{
 			this.addSingleplayerMultiplayerButtons(i, 24);
 			fmlModButton = new GuiMMButtons(2, 30, i + 48 - 65, "Mods");
@@ -201,13 +210,7 @@ public class GuiACMainMenu extends MenuMain implements GuiYesNoCallback{
 			this.buttonList.add(new GuiMMButtons(4, 30, i + 45, 200, 20, "Options"));
 			this.buttonList.add(new GuiMMButtons(5, 30, i + 70, 200, 20, "Quit"));
 		}
-		else
-		{
-			this.buttonList.add(new GuiMMButtons(6, 30, i - 45 + 20 * 1, "AC's YouTube"));
-			this.buttonList.add(new GuiMMButtons(7, 30, i - 45 + 45 * 1, "AC's Topic"));
-			this.buttonList.add(new GuiMMButtons(8, 30, i - 45 + 70 * 1, "AC's Website"));
-			this.buttonList.add(new GuiMMButtons(9, 30, i - 45 + 95 * 1, "Main Menu"));
-		}
+		
 		this.buttonList.add(new GuiButtonLanguage(15, width - 28, 4));
 		this.field_92025_p = "";
 		String s = System.getProperty("os_architecture");
@@ -291,10 +294,12 @@ public class GuiACMainMenu extends MenuMain implements GuiYesNoCallback{
 			this.showLinks = true;
 			initGui();
 		}
+		
 		if(par1GuiButton.id == 4)
 		{
 			this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
 		}
+		
 		if(par1GuiButton.id == 5)
 		{
 			this.mc.shutdown();
@@ -307,7 +312,7 @@ public class GuiACMainMenu extends MenuMain implements GuiYesNoCallback{
 			}
 			catch(Exception e)
 			{
-				System.err.println("Failed to load arcticraftdev youtubes");
+				System.err.println("Failed to load the arcticraftdev youtube.");
 			}
 		}
 		if(par1GuiButton.id == 7)
@@ -318,13 +323,16 @@ public class GuiACMainMenu extends MenuMain implements GuiYesNoCallback{
 			}
 			catch(Exception e)
 			{
-				System.err.println("Failed to load arcticraft topic");
+				System.err.println("Failed to load the arcticraft topic.");
 			}
 		}
+		
 		if(par1GuiButton.id == 9)
 		{
-			this.mc.displayGuiScreen(new GuiACMainMenu());
+			this.showLinks = false;			
+			initGui();
 		}
+		
 		if(par1GuiButton.id == 8)
 		{
 			try

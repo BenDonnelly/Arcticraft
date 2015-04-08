@@ -84,9 +84,9 @@ public class Arcticraft{
 		
 		cPackMain.preInit();
 		
-    	ALCore.instance.menuHandler.addMenu(1, "Arcticraft", new ResourceLocation("ac:textures/items/tools/misc/captain_sword.png"), new GuiACMainMenu());
-    	ALCore.instance.menuHandler.getMenuBox(1).addSoundToList("ac", "records.frozen_feelings");
-    	ALCore.instance.menuHandler.getMenuBox(1).addSoundToList("ac", "records.welcome_to_the_cold");
+    	ALCore.instance.menuHandler.addMenu(0, "Arcticraft", new ResourceLocation("ac:textures/items/tools/misc/captain_sword.png"), new GuiACMainMenu());
+    	ALCore.instance.menuHandler.addSoundToList("ac", "records.frozen_feelings");
+    	ALCore.instance.menuHandler.addSoundToList("ac", "records.welcome_to_the_cold");
 	}
 
 	@EventHandler
