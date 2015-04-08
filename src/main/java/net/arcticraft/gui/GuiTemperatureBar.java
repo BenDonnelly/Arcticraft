@@ -2,6 +2,7 @@ package net.arcticraft.gui;
 
 import net.arcticraft.helpers.IExtendedPlayerProps;
 import net.arcticraft.main.Arcticraft;
+import net.arcticraft.temperature.TemperatureHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.util.ResourceLocation;
@@ -33,8 +34,6 @@ public class GuiTemperatureBar extends Gui{
 				return;
 			}
 
-			IExtendedPlayerProps props = IExtendedPlayerProps.get(this.mc.thePlayer);
-
 			int xPos = 4;
 			int yPos = 4;
 
@@ -45,7 +44,7 @@ public class GuiTemperatureBar extends Gui{
 				GL11.glDisable(GL11.GL_LIGHTING);
 				this.mc.getTextureManager().bindTexture(texturepath);
 				this.drawTexturedModalRect(xPos, yPos, 0, 6, 80, 6);
-				this.drawTexturedModalRect(xPos, yPos, 0, 0, (int)(props.getCurrentTemp() * 80 / props.getMaxTemp()), 6);
+				this.drawTexturedModalRect(xPos, yPos, 0, 0, (int)(TemperatureHandler.getTemperature(this.mc.thePlayer) * 80 / TemperatureHandler.getMaxTemperature(this.mc.thePlayer)), 6);
 			}
 			GL11.glPopMatrix();
 		}

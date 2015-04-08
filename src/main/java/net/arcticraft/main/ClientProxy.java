@@ -144,5 +144,10 @@ public class ClientProxy extends CommonProxy{
 	{
 		return RenderingRegistry.addNewArmourRendererPrefix(armour);
 	}
+	
+	@Override
+	public boolean isServerSide() {
+		return false;
+	}
 
 }

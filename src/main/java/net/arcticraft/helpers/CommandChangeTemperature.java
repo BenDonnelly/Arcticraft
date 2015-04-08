@@ -1,6 +1,7 @@
 package net.arcticraft.helpers;
 
 import net.arcticraft.main.Arcticraft;
+import net.arcticraft.temperature.TemperatureHandler;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,13 +27,11 @@ public class CommandChangeTemperature extends CommandBase{
 	public void processCommand(ICommandSender commandSender, String[] string)
 	{
 		EntityPlayer player = (EntityPlayer) commandSender;
-		IExtendedPlayerProps props = IExtendedPlayerProps.get(player);
 		
 		if(commandSender instanceof EntityPlayer && Arcticraft.DEV_MODE)
 		{
 			NBTTagCompound compound = new NBTTagCompound();
-			props.changeTemp(Integer.parseInt(string[0]));
-			props.saveNBTData(compound);
+			TemperatureHandler.setTemperature(player, Integer.parseInt(string[0]));
 		}
 	}
 

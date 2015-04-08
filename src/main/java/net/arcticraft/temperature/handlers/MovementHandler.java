@@ -9,7 +9,7 @@ import net.minecraft.world.World;
 public class MovementHandler implements ITempComponent
 {
     @Override
-	public float changeTemperature(EntityPlayer player, World world, TemperatureHandler handler) {
+	public float changeTemperature(EntityPlayer player, World world) {
     	if(player.isSprinting())
     	{
     		return 0.0130F;
@@ -19,8 +19,8 @@ public class MovementHandler implements ITempComponent
 	}
 
 	@Override
-	public void handleTemperature(EntityPlayer player, World world, TemperatureHandler handler) {
-		if(Math.round(handler.getTemperature()) <= 20F)
+	public void handleTemperature(EntityPlayer player, World world) {
+		if(Math.round(TemperatureHandler.getTemperature(player)) <= 20F)
 		{
 			player.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(.05F);
 		}

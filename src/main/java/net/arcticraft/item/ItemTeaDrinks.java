@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.arcticraft.helpers.IExtendedPlayerProps;
 import net.arcticraft.main.Arcticraft;
+import net.arcticraft.temperature.TemperatureHandler;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -76,52 +77,25 @@ public class ItemTeaDrinks extends ItemFood{
 	public ItemStack onEaten(ItemStack itemstack, World world, EntityPlayer player)
 	{
 		super.onEaten(itemstack, world, player);
-		float temp = Arcticraft.arcticraftInstance.tempHandler.getTemperature();
-		IExtendedPlayerProps props = IExtendedPlayerProps.get(player);
-		NBTTagCompound compound = new NBTTagCompound();
-		if(!world.isRemote)
-		{
+		
+		if(!world.isRemote) {
 			if(itemstack.getItemDamage() == 0)
 			{
 				player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 1200, 2));
-				temp = temp - 15.0F;
-				Arcticraft.arcticraftInstance.tempHandler.setTemperature(temp);
-				props.changeTemp(temp);
-				props.saveNBTData(compound);
-				Arcticraft.arcticraftInstance.tempHandler.setTemperature(props.getCurrentTemp());
-				System.out.println(Arcticraft.arcticraftInstance.tempHandler.getTemperature());
-
+				TemperatureHandler.modifyTemperature(player, -15.0F);
 			}
-
 			else if(itemstack.getItemDamage() == 1)
 			{
-				temp = temp + 30.0F;
-				Arcticraft.arcticraftInstance.tempHandler.setTemperature(temp);
-				props.changeTemp(temp);
-				props.saveNBTData(compound);
-				Arcticraft.arcticraftInstance.tempHandler.setTemperature(props.getCurrentTemp());
-				System.out.println(Arcticraft.arcticraftInstance.tempHandler.getTemperature());
-
+				TemperatureHandler.modifyTemperature(player, 30.0F);
 			}
 			else if(itemstack.getItemDamage() == 2)
 			{
 				player.addPotionEffect(new PotionEffect(Potion.jump.id, 1200, 2));
-				temp = temp - 15.0F;
-				Arcticraft.arcticraftInstance.tempHandler.setTemperature(temp);
-				props.changeTemp(temp);
-				props.saveNBTData(compound);
-				Arcticraft.arcticraftInstance.tempHandler.setTemperature(props.getCurrentTemp());
-				System.out.println(Arcticraft.arcticraftInstance.tempHandler.getTemperature());
-
+				TemperatureHandler.modifyTemperature(player, -15.0F);
 			}
 			else if(itemstack.getItemDamage() == 3)
 			{
-				temp = temp - 15.0F;
-				Arcticraft.arcticraftInstance.tempHandler.setTemperature(temp);
-				props.changeTemp(temp);
-				props.saveNBTData(compound);
-				Arcticraft.arcticraftInstance.tempHandler.setTemperature(props.getCurrentTemp());
-				System.out.println(Arcticraft.arcticraftInstance.tempHandler.getTemperature());
+				TemperatureHandler.modifyTemperature(player, -15.0F);
 			}
 		}
 

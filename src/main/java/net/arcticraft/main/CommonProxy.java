@@ -29,4 +29,8 @@ public class CommonProxy
 	{
 		return 0;
 	}
+	
+	public boolean isServerSide() {
+		return true;
+	}
 }

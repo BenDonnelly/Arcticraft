@@ -936,14 +936,12 @@ public class ChunkProviderDim implements ITempComponent, IChunkProvider {
 	}
 
 	@Override
-	public float changeTemperature(EntityPlayer player, World world,
-			TemperatureHandler handler) {
+	public float changeTemperature(EntityPlayer player, World world) {
 		return -0.0065F;
 	}
 
 	@Override
-	public void handleTemperature(EntityPlayer player, World world,
-			TemperatureHandler handler) {
+	public void handleTemperature(EntityPlayer player, World world) {
 
 	}
 }

@@ -53,11 +53,7 @@ public class Arcticraft{
 	public static final String VERSION = "0.1";
 	public static final String NAME = "Arcticraft";
 	public static final boolean DEV_MODE = true;
-
-	public TemperatureHandler tempHandler = null;
-	public LightvalueHandler lightvalueHandler = null;
-	public LocationHandler locationHandler = null;
-	public MovementHandler movementHandler = null;
+	
 	public ChunkProviderDim chunkProvider = null;
 	public TeleporterDim tper = null;
 	public boolean initialized = false;

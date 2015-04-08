@@ -8,7 +8,7 @@ import net.minecraft.world.World;
 public class LocationHandler implements ITempComponent
 {
     @Override
-	public float changeTemperature(EntityPlayer player, World world, TemperatureHandler handler) {
+	public float changeTemperature(EntityPlayer player, World world) {
     	if(player.isInWater())
     	{
     		return -0.065F;
@@ -22,7 +22,7 @@ public class LocationHandler implements ITempComponent
 	}
 
 	@Override
-	public void handleTemperature(EntityPlayer player, World world, TemperatureHandler handler) {
+	public void handleTemperature(EntityPlayer player, World world) {
 		
 	}
 }

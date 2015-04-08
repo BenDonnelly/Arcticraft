@@ -14,46 +14,27 @@ public class ItemHotWaterBottle extends Item
 {
 	public ItemHotWaterBottle(){
 		this.maxStackSize = 1;
-		
+
 		this.setMaxDamage(40);
 	}
-	
-    /**
-     * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
-     */
+
+	/**
+	 * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
+	 */
 	@Override
-    public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player)
-    {
-		if(!world.isRemote)
-		{
+	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player)
+	{
+		if(!world.isRemote) {
 			if(itemstack.getItem().getDamage(itemstack) > 20)
 			{
-				//Arcticraft.arcticraftInstance.tempHandler.modifyTemperature(-10);
-				
-				float temp = Arcticraft.arcticraftInstance.tempHandler.getTemperature() + -itemstack.getItem().getDamage(itemstack);
-				Arcticraft.arcticraftInstance.tempHandler.setTemperature(temp);
-				
-				IExtendedPlayerProps props = IExtendedPlayerProps.get(player);			
-				NBTTagCompound compound = new NBTTagCompound();
-				props.changeTemp(temp);
-				props.saveNBTData(compound);
-				
-				Arcticraft.arcticraftInstance.tempHandler.setTemperature(props.getCurrentTemp());
+				TemperatureHandler.modifyTemperature(player, -itemstack.getItem().getDamage(itemstack));
 			}
 			else if(itemstack.getItem().getDamage(itemstack) <= 20)
 			{
-				float temp = Arcticraft.arcticraftInstance.tempHandler.getTemperature() + (20 - itemstack.getItem().getDamage(itemstack));
-				Arcticraft.arcticraftInstance.tempHandler.setTemperature(temp);
-				
-				IExtendedPlayerProps props = IExtendedPlayerProps.get(player);			
-				NBTTagCompound compound = new NBTTagCompound();
-				props.changeTemp(temp);
-				props.saveNBTData(compound);
-				
-				Arcticraft.arcticraftInstance.tempHandler.setTemperature(props.getCurrentTemp());
+				TemperatureHandler.modifyTemperature(player, (20 - itemstack.getItem().getDamage(itemstack)));
 			}
 		}
-		
-        return new ItemStack(itemstack.getItem(), 0);
-    }
+
+		return new ItemStack(itemstack.getItem(), 0);
+	}
 }

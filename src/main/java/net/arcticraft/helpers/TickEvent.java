@@ -10,6 +10,7 @@ import net.arcticraft.temperature.handlers.LightvalueHandler;
 import net.arcticraft.temperature.handlers.LocationHandler;
 import net.arcticraft.temperature.handlers.MovementHandler;
 import net.arcticraft.world.gen.dimension.TeleporterDim;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
@@ -17,27 +18,21 @@ import net.minecraft.nbt.NBTTagCompound;
 
 import org.lwjgl.input.Keyboard;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
-public class TickEvent{
-
-	int pTickCounter = 0;
-	int potionTick = 0;
+public class TickEvent {
 
 	@SubscribeEvent
 	public void tickPlayer(PlayerTickEvent event)
 	{
 		if(!Arcticraft.arcticraftInstance.initialized)
 		{
-			Arcticraft.arcticraftInstance.tempHandler = new TemperatureHandler();
-			Arcticraft.arcticraftInstance.lightvalueHandler = new LightvalueHandler();
-			Arcticraft.arcticraftInstance.locationHandler = new LocationHandler();
-			Arcticraft.arcticraftInstance.movementHandler = new MovementHandler();
-			Arcticraft.arcticraftInstance.tempHandler.addComponent(Arcticraft.arcticraftInstance.chunkProvider);
-			Arcticraft.arcticraftInstance.tempHandler.addComponent(Arcticraft.arcticraftInstance.locationHandler);
-			Arcticraft.arcticraftInstance.tempHandler.addComponent(Arcticraft.arcticraftInstance.movementHandler);
-			Arcticraft.arcticraftInstance.tempHandler.addComponent(Arcticraft.arcticraftInstance.lightvalueHandler);
+			TemperatureHandler.addComponent(Arcticraft.arcticraftInstance.chunkProvider);
+			TemperatureHandler.addComponent(new LocationHandler());
+			TemperatureHandler.addComponent(new MovementHandler());
+			TemperatureHandler.addComponent(new LightvalueHandler());
 			// Arcticraft.arcticraftInstance.tempHandler.addComponent(Arcticraft.arcticraftInstance.itemTempHandler);
 			Arcticraft.arcticraftInstance.initialized = true;
 		}
@@ -55,6 +50,10 @@ public class TickEvent{
 
 		if(event.player.dimension == 3)
 		{
+			if(Keyboard.isKeyDown(Keyboard.KEY_J)) {
+				System.out.println("On the server: " + FMLCommonHandler.instance().getEffectiveSide().isServer() + " | Current temp: " + TemperatureHandler.getTemperature(event.player));
+			}
+			
 			if(event.player.isDead)
 			{
 				event.player.setPosition(Arcticraft.arcticraftInstance.tper.portalX + 0.5D, Arcticraft.arcticraftInstance.tper.portalY + 3D, Arcticraft.arcticraftInstance.tper.portalZ + 0.5D);
@@ -62,7 +61,7 @@ public class TickEvent{
 
 			if(!event.player.capabilities.isCreativeMode)
 			{
-				Arcticraft.arcticraftInstance.tempHandler.tick(event.player, event.player.worldObj);
+				TemperatureHandler.tick(event.player, event.player.worldObj);
 			}
 
 			if(!event.player.capabilities.isCreativeMode)
@@ -83,26 +82,6 @@ public class TickEvent{
 							}
 						}
 					}
-				}
-			}
-			
-			if(event.player.isPotionActive(ACPotions.frostbitePotion))
-			{
-				potionTick++;
-				
-				if(potionTick >= 40)
-				{
-					float temp = Arcticraft.arcticraftInstance.tempHandler.getTemperature() + -1.0f;
-					Arcticraft.arcticraftInstance.tempHandler.setTemperature(temp);
-					
-					IExtendedPlayerProps props = IExtendedPlayerProps.get(event.player);			
-					NBTTagCompound compound = new NBTTagCompound();
-					props.changeTemp(temp);
-					props.saveNBTData(compound);
-					
-					Arcticraft.arcticraftInstance.tempHandler.setTemperature(props.getCurrentTemp());
-					
-					potionTick = 0;
 				}
 			}
 		}

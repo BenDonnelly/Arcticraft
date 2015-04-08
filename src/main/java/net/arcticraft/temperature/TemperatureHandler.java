@@ -6,87 +6,71 @@ import net.arcticraft.API.temp.ITempComponent;
 import net.arcticraft.helpers.IExtendedPlayerProps;
 import net.arcticraft.main.Arcticraft;
 import net.arcticraft.temperature.handlers.LightvalueHandler;
+import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 public class TemperatureHandler {
-	private EntityPlayer player = null;
-	private float temperature = 100F;
-	
-	private int tickCounter = 0;
-	
-	private ArrayList<ITempComponent> components = new ArrayList<ITempComponent>();
-	
-	public TemperatureHandler()
-	{
-		
+
+	private static ArrayList<ITempComponent> components = new ArrayList<ITempComponent>();
+
+	public static void setTemperature(EntityPlayer player, float temperature) {
+		IExtendedPlayerProps.get(player).setCurrentTemp(temperature);
+	}
+
+	public static float getTemperature(EntityPlayer player) {
+		return IExtendedPlayerProps.get(player).getCurrentTemp();
+	}
+
+	public static float getMaxTemperature(EntityPlayer player) {
+		return IExtendedPlayerProps.get(player).getMaxTemp();
+	}
+
+	/**
+	 * Modifies the player's temperature by the amount specified: this can be positive, negative or 0 (no change)
+	 * @param player The player
+	 * @param temperature The amount that should modify the current temperature
+	 */
+	public static void modifyTemperature(EntityPlayer player, float temperature) {
+		setTemperature(player, getTemperature(player) + temperature);
+	}
+
+	private static void incrementTempTimer(EntityPlayer player) {
+		IExtendedPlayerProps.get(player).incrementTempTimer();
 	}
 	
-	public EntityPlayer getPlayer()
-	{
-		return this.player;
+	private static int getTempTimer(EntityPlayer player) {
+		return IExtendedPlayerProps.get(player).getTempTimer();
 	}
 	
-	public void setTemperature(float temperature)
-	{
-		if(temperature >= 100F)
-		{
-			this.temperature = 100F;
-		}
-		else if(temperature <= 0F)
-		{
-			this.temperature = 0F;
-		}
-		else
-		{
-			this.temperature = temperature;		
-		}
+	private static void resetTempTimer(EntityPlayer player) {
+		IExtendedPlayerProps.get(player).resetTempTimer();
 	}
-	
-	public float getTemperature()
-	{
-		IExtendedPlayerProps props = IExtendedPlayerProps.get(player);
-		
-		return props.getCurrentTemp();
-	}
-	
-	public void modifyTemperature(float temperature)
-	{
-		this.setTemperature(this.getTemperature() + temperature);
-	}
-	
-	public void tick(EntityPlayer player, World world)
-	{
-		this.tickCounter++;
-		this.player = player;		
-		this.temperature = 0;
-		
-		for(ITempComponent tmp : components)
-		{
-			this.setTemperature(this.getTemperature() + tmp.changeTemperature(player, world, this));	
-			tmp.handleTemperature(player, world, this);
-			
-			IExtendedPlayerProps props = IExtendedPlayerProps.get(player);			
-			NBTTagCompound compound = new NBTTagCompound();
-			props.changeTemp(this.temperature);
-			props.saveNBTData(compound);
-		}
-		
-		if(this.getTemperature() == 0)
-		{			
-			if(this.tickCounter >= 80)
-			{
-				player.setHealth(player.getHealth() - 0.5F);
-				
-				this.tickCounter = 0;
+
+	public static void tick(EntityPlayer player, World world) {
+		if(!world.isRemote) {
+			for (ITempComponent tmp : components) {
+				modifyTemperature(player, tmp.changeTemperature(player, world));
+				tmp.handleTemperature(player, world);
+			}
+
+			if (getTemperature(player) == 0) {
+				incrementTempTimer(player);
+
+				if (getTempTimer(player) >= 80) {
+					player.attackEntityFrom(DamageSource.starve, 1.0F);
+
+					resetTempTimer(player);
+				}
 			}
 		}
 	}
-	
-	public void addComponent(ITempComponent component)
-	{
+
+	public static void addComponent(ITempComponent component) {
 		components.add(component);
 	}
 }

@@ -4,94 +4,115 @@ import net.arcticraft.main.CommonProxy;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 
-public class IExtendedPlayerProps implements IExtendedEntityProperties{
-	/*DONT uncomment out the commented old code; its the code without datawatchers which i might need to revert if i find a bug in datawatchers or something, not done testing yet ~ ben*/
-	
-	public final static String EXT_PROP_NAME = "ExtendedPlayerProps";
-
-	private final EntityPlayer player;
-
-	// private int currentTemp, maxTemp;
-
-	private float maxTemp;
+public class IExtendedPlayerProps implements IExtendedEntityProperties {
+	public static final String EXT_PROP_NAME = "AC_ExtendedPlayerProps";
 	public static final int CURRENT_TEMP_WATCHER = 24;
-	
-	public IExtendedPlayerProps(EntityPlayer player){
-		this.player = player;
-		// starting temp for each player
-		// this.currentTemp = this.maxTemp = 100;
-		this.maxTemp = 100F;
-		this.player.getDataWatcher().addObject(CURRENT_TEMP_WATCHER, this.maxTemp);
+
+	private final float maxTemp = 100.0F;
+	private EntityPlayer player;
+	private int tempTimer;
+	private int frostBiteTimer;
+	//If you need more player timers, feel free to make an array of all timers with their (static final) IDs
+
+	/**
+	 * Used to register these extended properties for the player during
+	 * EntityConstructing event
+	 */
+	public static final void register(EntityPlayer player) {
+		player.registerExtendedProperties(IExtendedPlayerProps.EXT_PROP_NAME, new IExtendedPlayerProps());
 	}
 
 	/**
-	 * Used to register these extended properties for the player during EntityConstructing event
+	 * Do not use this method to do stuff regarding temperature modification. Use the TemperatureHandler.
+	 * @return ExtendedPlayer properties for player
 	 */
-	public static final void register(EntityPlayer player)
-	{
-		player.registerExtendedProperties(IExtendedPlayerProps.EXT_PROP_NAME, new IExtendedPlayerProps(player));
-	}
-
-	/**
-	 * Returns ExtendedPlayer properties for player
-	 */
-	public static final IExtendedPlayerProps get(EntityPlayer player)
-	{
+	public static final IExtendedPlayerProps get(EntityPlayer player) {
 		return (IExtendedPlayerProps) player.getExtendedProperties(EXT_PROP_NAME);
 	}
 
 	@Override
-	public void saveNBTData(NBTTagCompound compound)
-	{
+	public void saveNBTData(NBTTagCompound compound) {
 		NBTTagCompound properties = new NBTTagCompound();
-
-		properties.setFloat("CurrentTemp", this.player.getDataWatcher().getWatchableObjectFloat(CURRENT_TEMP_WATCHER));
-		//properties.setInteger("CurrentTemp", this.currentTemp);
-		properties.setFloat("MaxTemp", this.maxTemp);
-
+		properties.setFloat("CurrentTemp", this.getCurrentTemp());
+		properties.setInteger("TempTimer", this.tempTimer);
+		properties.setInteger("FrostBiteTimer", this.frostBiteTimer);
 		compound.setTag(EXT_PROP_NAME, properties);
-		//System.out.println("Saving Temp to NBT: " + this.currentTemp + "/" + this.maxTemp);
-		//System.out.println("Saving Temp to NBT: " + this.player.getDataWatcher().getWatchableObjectFloat(CURRENT_TEMP_WATCHER) + "/" + this.maxTemp);
 	}
 
 	@Override
-	public void loadNBTData(NBTTagCompound compound)
-	{
+	public void loadNBTData(NBTTagCompound compound) {
 		NBTTagCompound properties = (NBTTagCompound) compound.getTag(EXT_PROP_NAME);
-		//this.currentTemp = properties.getInteger("CurrentTemp");
-		this.player.getDataWatcher().updateObject(CURRENT_TEMP_WATCHER, properties.getFloat("CurrentTemp"));
-		this.maxTemp = properties.getInteger("MaxTemp");
-		//System.out.println("Temp from NBT: " + this.currentTemp + "/" + this.maxTemp);
-		//System.out.println("Temp from NBT: " + this.player.getDataWatcher().getWatchableObjectFloat(CURRENT_TEMP_WATCHER) + "/" + this.maxTemp);
+		this.setCurrentTemp(properties.getFloat("CurrentTemp"));
+		this.tempTimer = properties.getInteger("TempTimer");
+		this.frostBiteTimer = properties.getInteger("FrostBiteTimer");
 	}
 
 	@Override
-	public void init(Entity entity, World world) {}
-
-	public float getCurrentTemp()
-	{
-		float temp = this.player.getDataWatcher().getWatchableObjectFloat(CURRENT_TEMP_WATCHER);
-		
-		return temp;
-		//return currentTemp;
+	public void init(Entity entity, World world) {
+		this.player = (EntityPlayer) entity;
+		this.tempTimer = 0;
+		this.frostBiteTimer = 0;
+		this.player.getDataWatcher().addObject(CURRENT_TEMP_WATCHER, this.maxTemp);
 	}
 
-	public float getMaxTemp()
-	{
-		return maxTemp;
+	/**
+	 * Sets the current temperature to be clamped within 0 and maxTemp. DO NOT call this, use TemperatureHandler.setTemperature()
+	 * 
+	 * @param temp The new temperature value
+	 */
+	public void setCurrentTemp(float temp) {
+		this.player.getDataWatcher().updateObject(CURRENT_TEMP_WATCHER, MathHelper.clamp_float(temp, 0.0F, this.maxTemp));
 	}
 
-	public void printCurrentTemp()
-	{
-		//System.out.println(this.currentTemp + "/" + this.maxTemp);
-		System.out.println(this.player.getDataWatcher().getWatchableObjectFloat(CURRENT_TEMP_WATCHER) + "/" + this.maxTemp);
+	public float getCurrentTemp() {
+		return this.player.getDataWatcher().getWatchableObjectFloat(CURRENT_TEMP_WATCHER);
 	}
 
-	public void changeTemp(float newTemp)
-	{
-		this.player.getDataWatcher().updateObject(CURRENT_TEMP_WATCHER, (newTemp < this.maxTemp ? newTemp : this.maxTemp));
+	public float getMaxTemp() {
+		return this.maxTemp;
+	}
+
+	public int getTempTimer() {
+		return this.tempTimer;
+	}
+	
+	public int getFrostBiteTimer() {
+		return this.frostBiteTimer;
+	}
+	
+	/**
+	 * Increments the timer that counts down when to inflict damage on a player when he has frostbite
+	 * 
+	 * @param timer The new timer value
+	 */
+	public void incrementFrostBiteTimer() {
+		this.frostBiteTimer++;
+	}
+	
+	/**
+	 * Resets the frostbite timer back to 0
+	 */
+	public void resetFrostBiteTimer() {
+		this.frostBiteTimer = 0;
+	}
+
+	/**
+	 * Increments the timer that counts down when to inflict damage on a player when he is on 0 temperature
+	 * 
+	 * @param timer The new timer value
+	 */
+	public void incrementTempTimer() {
+		this.tempTimer++;
+	}
+	
+	/**
+	 * Resets the temperature timer back to 0
+	 */
+	public void resetTempTimer() {
+		this.tempTimer = 0;
 	}
 }

@@ -2,6 +2,7 @@ package net.arcticraft.gui;
 
 import net.arcticraft.helpers.IExtendedPlayerProps;
 import net.arcticraft.main.Arcticraft;
+import net.arcticraft.temperature.TemperatureHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.Tessellator;
@@ -49,9 +50,6 @@ public class GuiFrozenScreen extends Gui {
 				return;
 			}
 
-			IExtendedPlayerProps props = IExtendedPlayerProps
-					.get(this.mc.thePlayer);
-
 			int xPos = 0;
 	        int yPos = 0;
 
@@ -75,7 +73,7 @@ public class GuiFrozenScreen extends Gui {
 					break;
 				}*/
 				
-				float temp = props.getCurrentTemp();
+				float temp = TemperatureHandler.getTemperature(this.mc.thePlayer);
 				float alpha = (1.0F / temp);
 				//float alpha = ((1.0F * difficultyValue) / temp);
 				
