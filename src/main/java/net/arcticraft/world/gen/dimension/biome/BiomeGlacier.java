@@ -3,13 +3,11 @@ package net.arcticraft.world.gen.dimension.biome;
 import java.util.Random;
 
 import net.arcticraft.block.ACBlocks;
-import net.arcticraft.entities.passive.EntityPenguin;
+import net.arcticraft.entities.passive.EntityArcticGhost;
 import net.arcticraft.entities.passive.EntityPolarBear;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.biome.BiomeGenBase.SpawnListEntry;
-import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 public class BiomeGlacier extends ACBiomeGenBase {
 	public BiomeGlacier(int par1) {
@@ -25,6 +23,7 @@ public class BiomeGlacier extends ACBiomeGenBase {
 		this.spawnableWaterCreatureList.clear();
 		this.spawnableCaveCreatureList.clear();
 		this.spawnableMonsterList.add(new SpawnListEntry(EntityPolarBear.class, 5, 1, 2));
+		this.spawnableMonsterList.add(new SpawnListEntry(EntityArcticGhost.class, 2, 1, 1));
 		//this.spawnableCreatureList.add(new SpawnListEntry(EntityPenguin.class, 8, 2, 6));
 		this.temperature = 0.1F;
 		

@@ -39,11 +39,17 @@ public class BlockACSlab extends BlockSlab{
 		return ACBlocks.acPlanks.getIcon(side, meta & 7);
 	}
 
-	@Override
-	public Item getItemDropped(int meta, Random random, int fortune)
-	{
-		return Item.getItemFromBlock(ACBlocks.acSlab);
-	}
+    @Override
+    public Item getItemDropped(int meta, Random rand, int fortune)
+    {
+    	return Item.getItemFromBlock(this);
+    }
+    
+    @Override
+    public int damageDropped(int dmg)
+    {
+        return dmg;
+    }
 
 	@Override
 	public int quantityDropped(int meta, int fortune, Random random)

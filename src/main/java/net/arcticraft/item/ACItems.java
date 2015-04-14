@@ -156,9 +156,7 @@ public class ACItems {
 		penguinMeatCooked = new ItemFood(8, true).setUnlocalizedName(MOD_ID + "_penguinMeatCooked").setTextureName(MOD_ID + ":food/penguin/penguin_meat_cooked").setCreativeTab(ACCreativeTabs.acTabFood);
 		penguinFeather = new Item().setUnlocalizedName(MOD_ID + "_penguinFeather").setTextureName(MOD_ID + ":penguin_feather").setCreativeTab(ACCreativeTabs.acTabMaterials);
 		woodenClub = new ItemACSword(ToolMaterial.WOOD).setUnlocalizedName(MOD_ID + "_woodenClub").setTextureName(MOD_ID + ":club_wooden").setCreativeTab(ACCreativeTabs.acTabCombat);
-		penguinMeat = new ItemFood(2, false).setPotionEffect(Potion.hunger.id, 30, 0, 1.0F).setUnlocalizedName(MOD_ID + "_penguinMeat").setTextureName(MOD_ID + ":food/penguin/penguin_meat").setCreativeTab(ACCreativeTabs.acTabFood);
-		penguinMeatCooked = new ItemFood(6, true).setUnlocalizedName(MOD_ID + "_penguinMeatCooked").setTextureName(MOD_ID + ":food/penguin/penguin_meat_cooked").setCreativeTab(ACCreativeTabs.acTabFood);
-		boarMeat = new ItemFood(3, false).setPotionEffect(Potion.hunger.id, 30, 0, 1.0F).setUnlocalizedName(MOD_ID + "_boarMeat").setTextureName(MOD_ID + ":food/boar/boar_meat").setCreativeTab(ACCreativeTabs.acTabFood);
+		boarMeat = new ItemFood(3, true).setPotionEffect(Potion.hunger.id, 30, 0, 1.0F).setUnlocalizedName(MOD_ID + "_boarMeat").setTextureName(MOD_ID + ":food/boar/boar_meat").setCreativeTab(ACCreativeTabs.acTabFood);
 		boarMeatCooked = new ItemFood(8, true).setUnlocalizedName(MOD_ID + "_boarMeatCooked").setTextureName(MOD_ID + ":food/boar/boar_meat_cooked").setCreativeTab(ACCreativeTabs.acTabFood);
 		
 		/* Captain Stuff */

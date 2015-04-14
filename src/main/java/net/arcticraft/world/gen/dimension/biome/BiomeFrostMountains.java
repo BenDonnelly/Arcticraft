@@ -3,6 +3,7 @@ package net.arcticraft.world.gen.dimension.biome;
 import java.util.Random;
 
 import net.arcticraft.block.ACBlocks;
+import net.arcticraft.entities.passive.EntityArcticGhost;
 import net.arcticraft.entities.passive.EntityPenguin;
 import net.arcticraft.entities.passive.EntityPolarBear;
 import net.minecraft.world.World;
@@ -28,7 +29,8 @@ public class BiomeFrostMountains extends ACBiomeGenBase
 		this.spawnableWaterCreatureList.clear();
 		this.spawnableCaveCreatureList.clear();
 		this.spawnableMonsterList.add(new SpawnListEntry(EntityPolarBear.class, 5, 1, 4));
-		
+		this.spawnableMonsterList.add(new SpawnListEntry(EntityArcticGhost.class, 2, 1, 1));
+
 		this.setHeight(new BiomeGenBase.Height(0.2F, 1.25F));
 		this.setTemperatureRainfall(0.1F, 0.9F);
 	}

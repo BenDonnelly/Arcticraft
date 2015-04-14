@@ -31,6 +31,8 @@ public class BlockACPlanks extends Block
 		this.setCreativeTab(ACCreativeTabs.acTabBlock);
 	}
 	
+	
+	
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void getSubBlocks(Item item, CreativeTabs tab, List list)
@@ -66,4 +68,11 @@ public class BlockACPlanks extends Block
     {
     	return Item.getItemFromBlock(this);
     }
+    
+    @Override
+    public int damageDropped(int dmg)
+    {
+        return dmg;
+    }
+
 }

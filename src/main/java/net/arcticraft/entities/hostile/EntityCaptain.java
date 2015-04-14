@@ -30,7 +30,7 @@ import com.arcanumLudum.ALCore.ALCore;
 
 public class EntityCaptain extends EntityMob implements ACIBossDisplayData, IRangedAttackMob{
 
-	public final static String[] bossNames = {"Caladan", "Arthen", "Farem", "Thoran", "Icyrus", "Meznar", "Kefadan", "Lonleh", "Ladur", "Brens", "Petern", "Cevan", "Tob"};
+	public final static String[] bossNames = {"Caladan", "Arthen", "Farem", "Thoran", "Icyrus", "Meznar", "Kefadan", "Lonleh", "Ladur", "Brens", "Petern", "Cevan", "Tob", "Yacob"};
 	private final String bossName;
 	public final int hookAnimationTime = 20;
 	public final int maxHookCooldown = 120;
@@ -41,7 +41,6 @@ public class EntityCaptain extends EntityMob implements ACIBossDisplayData, IRan
 		super(world);
 		this.setHealth(this.getMaxHealth());
 		this.setSize(this.width, this.height + 0.4F);
-		this.setAIMoveSpeed(0.2F);
 		this.tasks.addTask(0, new EntityAISwimming(this));
 		this.tasks.addTask(1, new EntityAIHookAttack(this, 1.0D, 16.0F));
 		this.tasks.addTask(2, new EntityAICaptainAttack(this, EntityPlayer.class, 1.0D, false));

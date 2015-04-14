@@ -9,14 +9,20 @@ import net.arcticraft.temperature.handlers.LightvalueHandler;
 import net.arcticraft.temperature.handlers.LocationHandler;
 import net.arcticraft.temperature.handlers.MovementHandler;
 import net.arcticraft.world.gen.dimension.TeleporterDim;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.ISound;
+import net.minecraft.client.audio.PositionedSoundRecord;
+import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.input.Keyboard;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class TickEvent{
@@ -50,11 +56,11 @@ public class TickEvent{
 
 		if(event.player.dimension == 3)
 		{
-			if(Keyboard.isKeyDown(Keyboard.KEY_J)) 
+			if(Keyboard.isKeyDown(Keyboard.KEY_J))
 			{
 				System.out.println("On the server: " + FMLCommonHandler.instance().getEffectiveSide().isServer() + " | Current temp: " + TemperatureHandler.getTemperature(event.player));
 			}
-			
+
 			if(event.player.isDead)
 			{
 				event.player.setPosition(Arcticraft.arcticraftInstance.tper.portalX + 0.5D, Arcticraft.arcticraftInstance.tper.portalY + 3D, Arcticraft.arcticraftInstance.tper.portalZ + 0.5D);
@@ -84,6 +90,24 @@ public class TickEvent{
 						}
 					}
 				}
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void playMyMusic(ClientTickEvent event)
+	{
+		Random rand = new Random();
+		ISound soundCache = null;
+		SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
+		int i = rand.nextInt(1000);
+		if(soundCache == null || !handler.isSoundPlaying(soundCache))
+		{
+			if(i == 0)
+			{
+				System.out.println("playing sound");
+				soundCache = new PositionedSoundRecord(new ResourceLocation(Arcticraft.MOD_ID + ":records.frozen_feelings"), 1.0F, 1.0F, 1.0F, 1.0F, 1.0F);
+				handler.playSound(soundCache);
 			}
 		}
 	}

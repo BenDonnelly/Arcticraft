@@ -5,12 +5,14 @@ import net.arcticraft.entities.hostile.EntityBoar;
 import net.arcticraft.entities.hostile.EntityCaptain;
 import net.arcticraft.entities.hostile.EntityFrostZombie;
 import net.arcticraft.entities.hostile.EntityPirate;
+import net.arcticraft.entities.passive.EntityArcticGhost;
 import net.arcticraft.entities.passive.EntityCaveman;
 import net.arcticraft.entities.passive.EntityEskimo;
 import net.arcticraft.entities.passive.EntityEskimoChef;
 import net.arcticraft.entities.passive.EntityEskimoChief;
 import net.arcticraft.entities.passive.EntityEskimoHunter;
 import net.arcticraft.entities.passive.EntityEskimoTrader;
+import net.arcticraft.entities.passive.EntityHusky;
 import net.arcticraft.entities.passive.EntityIceMage;
 import net.arcticraft.entities.passive.EntityPenguin;
 import net.arcticraft.entities.passive.EntityPolarBear;
@@ -51,7 +53,9 @@ public class ACEntities
 		EntityRegistry.registerGlobalEntityID(EntityCaptain.class, "Captain", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.redishPinkishColour, ColourUtils.blackColour);
 		EntityRegistry.registerGlobalEntityID(EntityPirate.class, "Pirate", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.blackColour, ColourUtils.redishPinkishColour);
 		EntityRegistry.registerGlobalEntityID(EntityPolarBear.class, "PolarBear", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.whiteColour, ColourUtils.whiteColour);
-		
+		EntityRegistry.registerGlobalEntityID(EntityArcticGhost.class, "ArcticGhost", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.lightGrayColour, ColourUtils.grayColour);
+		EntityRegistry.registerGlobalEntityID(EntityHusky.class, "Husky", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.grayColour, ColourUtils.lightGrayColour);
+
 		/* Eskimo's */
 		EntityRegistry.registerGlobalEntityID(EntityEskimoChief.class, "EntityEskimoChief", EntityRegistry.findGlobalUniqueEntityId(), 0x7BE6E8, 0x000000);
 		EntityRegistry.registerGlobalEntityID(EntityEskimoChef.class, "EntityEskimoChef", EntityRegistry.findGlobalUniqueEntityId(), 0x7BE6E8, 0x000000);
