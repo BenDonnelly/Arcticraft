@@ -67,6 +67,7 @@ public class ACItems {
 	public static Item hotWaterBottle;
 	public static Item recordFrozenFeelings;
 	public static Item recordWelcomeToTheCold;
+	public static Item frostStick;
 	
 	/* Icestone */
 	public static Item icestoneDust;
@@ -135,7 +136,7 @@ public class ACItems {
 	public static Item glacianBoots;
 	public static Item rigentemBoots;
 	
-	/* Miscellaneous Tools */
+	/* Miscellaneous */
 	public static Item bomb;
 	public static Item emptyCup;
 	public static Item teaDrinks;
@@ -178,7 +179,7 @@ public class ACItems {
 		recordWelcomeToTheCold = new ItemACRecord("welcome_to_the_cold", "ac").setUnlocalizedName("recordWelcomeToTheCold").setTextureName(MOD_ID + ":records/record_welcomeToTheCold").setMaxStackSize(1).setCreativeTab(ACCreativeTabs.acTabMisc);
 		emptyCup = new Item().setMaxStackSize(16).setUnlocalizedName(MOD_ID + "_emptyCup").setTextureName(MOD_ID + ":cup_empty").setCreativeTab(ACCreativeTabs.acTabMaterials);
 		teaDrinks = new ItemTeaDrinks(4, false).setAlwaysEdible().setMaxStackSize(8).setUnlocalizedName(MOD_ID + "_teaDrinks").setCreativeTab(ACCreativeTabs.acTabFood);
-		
+		frostStick = new Item().setUnlocalizedName(MOD_ID + "_frostStick").setTextureName(MOD_ID + ":frost_stick").setCreativeTab(ACCreativeTabs.acTabMaterials);
 		/* Icestone */
 		icestoneDust = new ItemIcestoneDust().setUnlocalizedName(MOD_ID + "_icestoneDust").setTextureName(MOD_ID + ":icestone/icestone_dust");
 		
@@ -267,7 +268,7 @@ public class ACItems {
 				tekkiteBoots, escariaBoots, glacianBoots, rigentemBoots, penguinMeat, penguinMeatCooked, penguinFeather,
 				mystFruit, glacierFruit, cannonball, frostDoor, woodenClub, boarMeat, boarMeatCooked, eriumGem, captainsLog,
 				captainSword, bucketFrostWater, bucketEmpty, arcticPouch, captainsHook, hotWaterBottle, recordFrozenFeelings, 
-				recordWelcomeToTheCold, icestoneDust, bomb};
+				recordWelcomeToTheCold, icestoneDust, bomb, frostStick};
 
 		for (Item item : itemList) {
 			GameRegistry.registerItem(item, StringUtils.generateName(item));

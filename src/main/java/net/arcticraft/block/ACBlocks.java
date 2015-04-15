@@ -161,7 +161,7 @@ public class ACBlocks{
 		/* Miscellaneous */
 		mysticalSnow = new BlockMysticalSnow(Material.snow);
 		frozenFarmland = new BlockFrozenFarmland().setBlockName("frozenFarmland").setBlockTextureName("ac:frozenFarmland");
-		crystalGlass = new BlockCrystalGlass().setBlockName("crystalGlass").setCreativeTab(ACCreativeTabs.acTabBlock);
+		crystalGlass = new BlockCrystalGlass().setBlockName("crystalGlass").setCreativeTab(ACCreativeTabs.acTabDecoration);
 		lantern = new BlockLantern().setBlockName("lantern").setBlockTextureName("ac:lantern").setStepSound(Block.soundTypeWood);
 		
 		/* Plants */

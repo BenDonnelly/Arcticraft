@@ -29,8 +29,6 @@ tile.ac_tekkiteBlock.name=Tekkite Block
 tile.ac_escariaBlock.name=Escaria Block
 tile.ac_glacianBlock.name=Glacian Block
 tile.ac_rigentemBlock.name=Rigentem Block
-tile.ac_frigusBlock.name=Frigus Block
-tile.ac_eriumBlock.name=Erium Block
 
 tile.ac_mysticalSnow.name=Mystical Snow
 tile.ac_campfire.name=Campfire
@@ -41,11 +39,11 @@ tile.acarcticFurnaceIdle.name=Arctic Furnace
 
 tile.crystalGlass.name=Crystal Glass
 tile.lantern.name=Lantern
-tile.ac_forstLadders.name=Frost Ladder
+tile.ac_frostLadders.name=Frost Ladder
 
 item.ac_tekkiteGem.name=Tekkite Gem
 item.ac_escariaGem.name=Escaria Gem
-item.ac_frgius.name=Frigus
+item.ac_frigus.name=Frigus
 item.ac_glacianIngot.name=Glacian Ingot
 item.ac_rigentemIngot.name=Rigentem ingot
 item.ac_eriumGem.name=Erium Gem
@@ -68,7 +66,7 @@ item.ac_captainsLog.name=Captain's Log
 item.ac_bucketFrostWater.name=Frost Water Bucket
 item.ac_bucketEmpty.name=Bucket
 item.ac_hotWaterBottle.name=Hot Water Bottle
-
+item.ac_frostStick.name=Frost Stick
 
 item.recordFrozenFeelings.name=Music Disk
 item.recordWelcomeToTheCold.name=Music Disk
