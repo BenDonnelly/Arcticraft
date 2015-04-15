@@ -79,7 +79,7 @@ public class ACCreativeTabs
 		}
 	};
 	
-	public static final CreativeTabs acTabTechnical = new CreativeTabs("ac_tabTechnical")
+	/*public static final CreativeTabs acTabTechnical = new CreativeTabs("ac_tabTechnical")
 	{
 		@Override
 		@SideOnly(Side.CLIENT)
@@ -87,7 +87,7 @@ public class ACCreativeTabs
 		{
 			return Item.getItemFromBlock(ACBlocks.arcticFurnaceIdle); 
 		}
-	};
+	};*/
 	
 	public static final CreativeTabs acTabPlants = new CreativeTabs("ac_tabPlants")
 	{

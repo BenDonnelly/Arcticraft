@@ -27,7 +27,6 @@ public class BlockCaveman extends BlockContainer{
 		this.setResistance(1000.0F);
 		this.setTickRandomly(true);
 		this.setBlockBounds(-0.25F, 0.0F, -0.25F, 1.25F, 2.0F, 1.25F);
-		this.setCreativeTab(ACCreativeTabs.acTabBlock);
 	}
 
 	@Override

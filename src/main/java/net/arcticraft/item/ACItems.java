@@ -180,7 +180,7 @@ public class ACItems {
 		teaDrinks = new ItemTeaDrinks(4, false).setAlwaysEdible().setMaxStackSize(8).setUnlocalizedName(MOD_ID + "_teaDrinks").setCreativeTab(ACCreativeTabs.acTabFood);
 		
 		/* Icestone */
-		icestoneDust = new ItemIcestoneDust().setUnlocalizedName(MOD_ID + "_icestoneDust").setTextureName(MOD_ID + ":icestone/icestone_dust").setCreativeTab(ACCreativeTabs.acTabTechnical);
+		icestoneDust = new ItemIcestoneDust().setUnlocalizedName(MOD_ID + "_icestoneDust").setTextureName(MOD_ID + ":icestone/icestone_dust");
 		
 		/**** START OF TOOLS + ARMOUR ****/
 		/* Pickxaes */

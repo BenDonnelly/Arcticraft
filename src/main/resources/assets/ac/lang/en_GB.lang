@@ -13,8 +13,123 @@ tile.ac_leaves.frost.name=Frost Leaves
 tile.ac_leaves.glacier.name=Glacier Leaves
 tile.ac_planks.frost.name=Frost Wood Planks
 tile.ac_planks.glacier.name=Glacier Wood Planks
+tile.ac_acSlabs.frost.name=Frost Slab
+tile.ac_acSlabs.glacier.name=Glacier Slab
+tile.ac_frostStairs.name=Frost Stairs
+tile.ac_glacierStairs.name=Glacier Stairs
 
+tile.ac_tekkiteOre.name=Tekkite Ore
+tile.ac_escariaOre.name=Escaria Ore
+tile.ac_glacianOre.name=Glacian Ore
+tile.ac_rigentemOre.name=Rigentem Ore
+tile.ac_frigusOre.name=Frigus Ore
+tile.ac_eriumOre.name=Erium Ore
+
+tile.ac_tekkiteBlock.name=Tekkite Block
+tile.ac_escariaBlock.name=Escaria Block
+tile.ac_glacianBlock.name=Glacian Block
+tile.ac_rigentemBlock.name=Rigentem Block
+tile.ac_frigusBlock.name=Frigus Block
+tile.ac_eriumBlock.name=Erium Block
+
+tile.ac_mysticalSnow.name=Mystical Snow
+tile.ac_campfire.name=Campfire
+tile.ac_cannon.name=Cannon
+tile.ac_caveman.name=Caveman
+tile.ac_captain_staue.name=Captain Statue
+tile.acarcticFurnaceIdle.name=Arctic Furnace
+
+tile.crystalGlass.name=Crystal Glass
+tile.lantern.name=Lantern
+tile.ac_forstLadders.name=Frost Ladder
+
+item.ac_tekkiteGem.name=Tekkite Gem
+item.ac_escariaGem.name=Escaria Gem
+item.ac_frgius.name=Frigus
+item.ac_glacianIngot.name=Glacian Ingot
+item.ac_rigentemIngot.name=Rigentem ingot
+item.ac_eriumGem.name=Erium Gem
+
+item.ac_penguinFeather.name=Penguin Feather
 item.ac_arcaneStoneDust.name=Arcane Stone Dust
+item.ac_frostDoorItem.name=Frost Door
+item.ac_penguinMeat.name=Raw Penguin Meat
+item.ac_penguinMeatCooked=Cooked Penguin Meat
+item.ac_mystFruit.name=Mysterious Fruit
+item.ac_glacierFruit.name=Glacier Fruit
+item.ac_boarMeat.name=Raw Boar Meat
+item.ac_boarMeatCooked.name=Cooked Boar Meat
+item.bomb.name=Bomb
+item.ac_cannonball.name=Cannonball
+item.ac_woodenClub.name=Wooden Club
+item.ac_captainSword.name=Captain's Sword
+item.ac_sled.name=Sled
+item.ac_captainsLog.name=Captain's Log
+item.ac_bucketFrostWater.name=Frost Water Bucket
+item.ac_bucketEmpty.name=Bucket
+item.ac_hotWaterBottle.name=Hot Water Bottle
+
+
+item.recordFrozenFeelings.name=Music Disk
+item.recordWelcomeToTheCold.name=Music Disk
+item.record.welcome_to_the_cold.desc=Voog2 - Welcome To The Cold
+item.record.frozen_feelings.desc=Voog2 - Frozen Feelings
+
+item.tekkitePickaxe.name=Tekkite Pickaxe
+item.tekkiteAxe.name=Tekkite Axe
+item.tekkiteSpade.name=Tekkite Spade
+item.tekkiteSword.name=Tekkite Sword
+item.tekkiteHoe.name=Tekkite Hoe
+
+item.escariaPickaxe.name=Escaria Pickaxe
+item.escariaAxe.name=Escaria Axe
+item.escariaSpade.name=Escaria Spade
+item.escariaSword.name=Escaria Sword
+item.escariaHoe.name=Escaria Hoe
+
+item.rigentemPickaxe.name=Rigentem Pickaxe
+item.rigentemAxe.name=Rigentem Axe
+item.rigentemSpade.name=Rigentem Spade
+item.rigentemSword.name=Rigentem Sword
+item.rigentemHoe.name=Rigentem Hoe
+
+item.glacianPickaxe.name=Glacian Pickaxe
+item.glacianAxe.name=Glacian Axe
+item.glacianSpade.name=Glacian Spade
+item.glacianSword.name=Glacian Sword
+item.glacianHoe.name=Glacian Hoe
+
+item.frostStonePickaxe.name=Frost Stone Pickaxe
+item.frostStoneAxe.name=Frost Stone Axe
+item.frostStoneSpade.name=Frost Stone Spade
+item.frostStoneSword.name=Frost Stone Sword
+item.frostStoneHoe.name=Frost Stone Hoe
+
+item.frostWoodPickaxe.name=Frost Wood Pickaxe
+item.frostWoodAxe.name=Frost Wood Axe
+item.frostWoodSpade.name=Frost Wood Spade
+item.frostWoodSword.name=Frost Wood Sword
+item.frostWoodHoe.name=Frost Wood Hoe
+
+item.tekkiteHelmet.name=Tekkite Helmet
+item.tekkiteChest.name=Tekkite Chest
+item.tekkiteLegs.name=Tekkite Leggings
+item.tekkiteBoots.name=Tekkite Boots
+
+item.escariaHelmet.name=Escaria Helmet
+item.escariaChest.name=Escaria Chest
+item.escariaLegs.name=Escaria Leggings
+item.escariaBoots.name=Escaria Boots
+
+item.glacianHelmet.name=Glacian Helmet
+item.glacianChest.name=Glacian Chest
+item.glacianLegs.name=Glacian Leggings
+item.glacianBoots.name=Glacian Boots
+
+item.rigentemHelmet.name=Rigentem Helmet
+item.rigentemChest.name=Rigentem Chest
+item.rigentemLegs.name=Rigentem Leggings
+item.rigentemBoots.name=Rigentem Boots
 
 itemGroup.ac_tabBlock=Arcticraft Blocks
 itemGroup.ac_tabDecoration=Arcticraft Decoration
@@ -22,3 +137,6 @@ itemGroup.ac_tabMaterials=Arcticraft Materials
 itemGroup.ac_tabFood=Arcticraft Food
 itemGroup.ac_tabTools=Arcticraft Tools
 itemGroup.ac_tabCombat=Arcticraft Combat
+itemGroup.ac_tabMisc=Arcticraft Miscellaneous
+itemGroup.ac_tabTechnical=Arcticraft Technical
+itemGroup.ac_tabPlants=Arcticraft Plants

@@ -13,7 +13,6 @@ public class BlockACStairs extends BlockStairs{
 		this.setHardness(2.0F);
 		this.setResistance(5.0F);
 		this.setStepSound(Block.soundTypeWood);
-		this.setBlockName(Arcticraft.MOD_ID + "_acStairs");
 		this.setCreativeTab(ACCreativeTabs.acTabBlock);
 		this.useNeighborBrightness = true;
 	}

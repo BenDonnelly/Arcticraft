@@ -132,8 +132,8 @@ public class ACBlocks{
 		/* Decorative Blocks */
 		acSlab = new BlockACSlab(false);
 		acDoubleSlab = new BlockACSlab(true);
-		frostStairs = new BlockACStairs(ACBlocks.acPlanks, 0, Material.wood);
-		glacierStairs = new BlockACStairs(ACBlocks.acPlanks, 1, Material.wood);
+		frostStairs = new BlockACStairs(ACBlocks.acPlanks, 0, Material.wood).setBlockName(MOD_ID + "_frostStairs");
+		glacierStairs = new BlockACStairs(ACBlocks.acPlanks, 1, Material.wood).setBlockName(MOD_ID + "_glacierStairs");
 		frostLadder = new BlockFrostLadder(Material.circuits);
 		frostDoor = new BlockFrostDoor(Material.wood);
 		
@@ -144,7 +144,7 @@ public class ACBlocks{
 		
 		/* Icestone */
 		icestoneWire = (BlockIcestone) new BlockIcestone().disableStats().setHardness(0.0F).setStepSound(Block.soundTypeStone).setBlockName(MOD_ID + "_icestoneWire").setBlockTextureName(MOD_ID + ":icestone/icestone_wire");
-		icestoneTorchOn = (BlockIcestoneTorch) new BlockIcestoneTorch(true).setCreativeTab(ACCreativeTabs.acTabTechnical).setLightLevel(0.5F).setHardness(0.0F).setStepSound(Block.soundTypeStone).setBlockName(MOD_ID + "_icestoneTorchOn").setBlockTextureName(MOD_ID + ":icestone/icestone_torch_on");
+		icestoneTorchOn = (BlockIcestoneTorch) new BlockIcestoneTorch(true).setLightLevel(0.5F).setHardness(0.0F).setStepSound(Block.soundTypeStone).setBlockName(MOD_ID + "_icestoneTorchOn").setBlockTextureName(MOD_ID + ":icestone/icestone_torch_on");
 		icestoneTorchOff = (BlockIcestoneTorch) new BlockIcestoneTorch(true).setHardness(0.0F).setStepSound(Block.soundTypeStone).setBlockName(MOD_ID + "_icestoneTorchOff").setBlockTextureName(MOD_ID + ":icestone/icestone_torch_off");
 		
 		/* Tile Entity Blocks */
@@ -155,7 +155,7 @@ public class ACBlocks{
 		captainStatue = new BlockCaptainStatue(Material.iron);
 		
 		/* Machine Blocks */
-		arcticFurnaceIdle = new BlockACFurnace(false).setBlockName(MOD_ID + "arcticFurnaceIdle").setCreativeTab(ACCreativeTabs.acTabTechnical);
+		arcticFurnaceIdle = new BlockACFurnace(false).setBlockName(MOD_ID + "arcticFurnaceIdle").setCreativeTab(ACCreativeTabs.acTabBlock);
 		arcticFurnaceBurning = new BlockACFurnace(true).setBlockName(MOD_ID + "arcticFurnaceBurning").setLightLevel(0.875F);	
 		
 		/* Miscellaneous */

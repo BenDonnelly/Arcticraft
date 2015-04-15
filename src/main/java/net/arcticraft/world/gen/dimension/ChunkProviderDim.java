@@ -759,7 +759,7 @@ public class ChunkProviderDim implements ITempComponent, IChunkProvider {
 				y--;
 
 			if (this.worldObj.getBlock(x, y, z) == ACBlocks.frostWaterBlock) {
-				int max = 1000;
+				int max = 500;
 				int min = 0;
 				int r = rand.nextInt(max - min) + min;
 
