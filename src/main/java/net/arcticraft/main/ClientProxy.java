@@ -63,6 +63,7 @@ import net.arcticraft.item.render.ItemCannonballRender;
 import net.arcticraft.item.render.ItemCaptainStatueRender;
 import net.arcticraft.item.render.ItemCaptainsHookRender;
 import net.arcticraft.item.render.ItemCavemanRender;
+import net.arcticraft.item.render.ItemIceChunkRender;
 import net.arcticraft.tileentity.TileEntityCampfire;
 import net.arcticraft.tileentity.TileEntityCannon;
 import net.arcticraft.tileentity.TileEntityCaptainStatue;
@@ -132,7 +133,8 @@ public class ClientProxy extends CommonProxy
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ACBlocks.cannon), new ItemCannonRender());
 	
 		MinecraftForgeClient.registerItemRenderer(ACItems.cannonball, (IItemRenderer) new ItemCannonballRender());
-		
+		MinecraftForgeClient.registerItemRenderer(ACItems.iceChunk, (IItemRenderer) new ItemIceChunkRender());
+
 		render = new TileEntityCavemanRender();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCaveman.class, new TileEntityCavemanRender());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ACBlocks.caveman), new ItemCavemanRender(render));
