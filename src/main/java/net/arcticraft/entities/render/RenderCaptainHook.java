@@ -4,6 +4,7 @@ import net.arcticraft.entities.EntityCaptainHook;
 import net.arcticraft.entities.hostile.EntityCaptain;
 import net.arcticraft.entities.model.ModelCaptainsHook;
 import net.arcticraft.main.Arcticraft;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -34,12 +35,6 @@ public class RenderCaptainHook extends Render{
 
 	public void renderHook(EntityCaptainHook entity, double x, double y, double z, float yaw, float partialTicks)
 	{
-		try
-		{
-			entity = (EntityCaptainHook) ALCore.instance.world.getEntitiesWithinAABB(EntityCaptainHook.class, AxisAlignedBB.getBoundingBox(entity.posX - 1, entity.posY - 1, entity.posZ - 1, entity.posX + 1, entity.posY + 1, entity.posZ + 1)).get(0);		
-		}
-		catch(IndexOutOfBoundsException e) {}
-		
 		if(entity.getThrower() != null)
 		{
 			GL11.glPushMatrix();

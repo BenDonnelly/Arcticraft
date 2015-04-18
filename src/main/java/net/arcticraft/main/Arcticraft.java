@@ -11,10 +11,6 @@ import net.arcticraft.helpers.ForgeEvents;
 import net.arcticraft.helpers.TickEvent;
 import net.arcticraft.item.ACItems;
 import net.arcticraft.item.ACPotions;
-import net.arcticraft.temperature.TemperatureHandler;
-import net.arcticraft.temperature.handlers.LightvalueHandler;
-import net.arcticraft.temperature.handlers.LocationHandler;
-import net.arcticraft.temperature.handlers.MovementHandler;
 import net.arcticraft.util.VectorUtils;
 import net.arcticraft.world.gen.WorldGenACTrees;
 import net.arcticraft.world.gen.WorldGenIceberg;
@@ -39,8 +35,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.TickEvent.WorldTickEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -75,6 +69,7 @@ public class Arcticraft{
 	{
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(MOD_ID);
 		network.registerMessage(EskimoTradePacketHandler.class, EskimoTradePacket.class, 0, Side.SERVER);
+		network.registerMessage(RopePositionPacketHandler.class, RopePositionPacket.class, 1, Side.CLIENT);
 		
 		VectorUtils.init();
 		ACBlocks.loadBlocks();

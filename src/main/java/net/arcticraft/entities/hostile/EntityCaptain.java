@@ -7,6 +7,8 @@ import net.arcticraft.entities.ai.EntityAICaptainAttack;
 import net.arcticraft.entities.ai.EntityAIHookAttack;
 import net.arcticraft.item.ACItems;
 import net.arcticraft.item.ACPotions;
+import net.arcticraft.main.Arcticraft;
+import net.arcticraft.main.RopePositionPacket;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IRangedAttackMob;
@@ -25,8 +27,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-
-import com.arcanumLudum.ALCore.ALCore;
 
 public class EntityCaptain extends EntityMob implements ACIBossDisplayData, IRangedAttackMob{
 
@@ -182,8 +182,6 @@ public class EntityCaptain extends EntityMob implements ACIBossDisplayData, IRan
 	public void attackEntityWithRangedAttack(EntityLivingBase target, float f)
 	{
 		EntityCaptainHook hook = new EntityCaptainHook(this.worldObj, this);
-				
-		hook.setThrower(this);
 		double rotation = (this.rotationYaw + 70.0F) / (180.0F / Math.PI);
 		double hookLaunchX = Math.cos(rotation);
 		double hookLaunchY = 1.4D;
@@ -196,10 +194,15 @@ public class EntityCaptain extends EntityMob implements ACIBossDisplayData, IRan
 		hook.setThrowableHeading(dx, dy + (double) f1, dz, hook.func_70182_d(), 1.0F);
 		this.playSound("ac:mobs.captain_poof", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
 		this.worldObj.playSoundAtEntity(this, "ac:mobs.captain_rope", 0.7F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));	
-
-		// TODO: Fix packet bug / server side world shit
-		ALCore.instance.world.spawnEntityInWorld(hook);
-
+		this.worldObj.spawnEntityInWorld(hook);
+		
+		Arcticraft.arcticraftInstance.network.sendToDimension(new RopePositionPacket(this.getEntityId(), hook.getEntityId()), this.dimension);
+		
+		//Not working atm?
+		//for (int i = 0; i < 10; i++) {
+		//	this.worldObj.spawnParticle("crit", this.posX + hookLaunchX, this.posY + hookLaunchY, this.posZ + hookLaunchZ, 0D, 0D, 0D);
+		//}
+		
 		this.resetHookCooldown();
 		this.isHookAirBorne = true;
 	}
