@@ -8,6 +8,8 @@ build/
 eclipse/
 gradle/
 src/main/java/thehippomaster/
+src/main/java/arcanumLudum/
+src/main/java/google/
 .classpath
 .project
 build.gradle
