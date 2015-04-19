@@ -4,8 +4,8 @@ import net.arcticraft.block.ACBlocks;
 import net.arcticraft.item.ACItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ACRecipes{
@@ -18,6 +18,8 @@ public class ACRecipes{
 		frostWood();
 		food();
 		pouches();
+		iceShit();
+		vanillaSmeltingRecipes();
 	}
 
 	public static void smeltingRecipes()
@@ -28,8 +30,27 @@ public class ACRecipes{
 		ACFurnaceRecipes.smelting().addSmeltingBlock(ACBlocks.escariaOre, new ItemStack(ACItems.escariaGem, 1), 0.8F);
 		ACFurnaceRecipes.smelting().addSmeltingBlock(ACBlocks.rigentemOre, new ItemStack(ACItems.rigentemIngot, 1), 0.6F);
 		ACFurnaceRecipes.smelting().addSmeltingBlock(ACBlocks.glacianOre, new ItemStack(ACItems.glacianIngot, 1), 0.4F);
+		ACFurnaceRecipes.smelting().addSmeltingItem(ACItems.hotWaterBottle, new ItemStack(ACItems.hotWaterBottle, 1), 0.2F);
 	}
 
+	public static void vanillaSmeltingRecipes(){
+
+		GameRegistry.addSmelting(ACBlocks.frostCobble, new ItemStack(ACBlocks.frostStone, 1), 0.1F);
+		GameRegistry.addSmelting(ACBlocks.frigusOre, new ItemStack(ACItems.frigus, 1), 0.2F);
+		GameRegistry.addSmelting(ACBlocks.tekkiteOre, new ItemStack(ACItems.tekkiteGem, 1), 1.0F);
+		GameRegistry.addSmelting(ACBlocks.escariaOre, new ItemStack(ACItems.escariaGem, 1), 0.8F);
+		GameRegistry.addSmelting(ACBlocks.rigentemOre, new ItemStack(ACItems.rigentemIngot, 1), 0.6F);
+		GameRegistry.addSmelting(ACBlocks.glacianOre, new ItemStack(ACItems.glacianIngot, 1), 0.4F);
+		GameRegistry.addSmelting(ACItems.hotWaterBottle, new ItemStack(ACItems.hotWaterBottle, 1), 0.2F);
+	}
+	
+	public static void iceShit(){
+		GameRegistry.addRecipe(new ItemStack(ACBlocks.frostWaterIce, 1), new Object[] {"III", "III", "III", Character.valueOf('I'), ACItems.iceChunk});
+		GameRegistry.addShapelessRecipe(new ItemStack(ACItems.iceChunk, 9), new ItemStack(ACBlocks.frostWaterIce, 1));
+		GameRegistry.addRecipe(new ItemStack(ACItems.hotWaterBottle, 1, 80), new Object[]{"III", "ILI", "III", Character.valueOf('I'), ACBlocks.frostWaterIce, Character.valueOf('L'), Items.leather});
+	}	
+	
+	
 	public static void food()
 	{
 		ACItems.bucketFrostWater.setContainerItem(ACItems.bucketEmpty);
@@ -195,9 +216,9 @@ public class ACRecipes{
 	
 		GameRegistry.addRecipe(new ItemStack(ACBlocks.frostLadder, 3), new Object[] {"I I" , "III" , "I I" , Character.valueOf('I') , ACBlocks.frostWaterIce});
 		GameRegistry.addRecipe(new ItemStack(ACBlocks.frostLadder, 3), new Object[] {"I I" , "III" , "I I" , Character.valueOf('I') , Blocks.ice});
-
+		
 	}
-
+	
 	public static void pouches()
 	{
 		GameRegistry.addRecipe(new ItemStack(ACItems.arcticPouch, 1,  0), new Object[] {"S S", "LDL", "LLL", Character.valueOf('S'), Items.string, Character.valueOf('L'), Items.leather, Character.valueOf('D'), new ItemStack(Items.dye, 1, 4)});

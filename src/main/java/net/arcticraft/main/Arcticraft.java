@@ -6,6 +6,7 @@ import net.arcticraft.crafting.ACRecipes;
 import net.arcticraft.entities.ACEntities;
 import net.arcticraft.gui.GuiACMainMenu;
 import net.arcticraft.gui.GuiHandler;
+import net.arcticraft.helpers.ACFuelHandler;
 import net.arcticraft.helpers.CommandChangeTemperature;
 import net.arcticraft.helpers.ForgeEvents;
 import net.arcticraft.helpers.TickEvent;
@@ -76,6 +77,7 @@ public class Arcticraft{
 		ACItems.loadItems();
 		ACPotions.loadPotions();
 		ACRecipes.loadRecipes();
+		GameRegistry.registerFuelHandler(new ACFuelHandler());
 		
 		cPackMain.preInit();
 		
