@@ -8,6 +8,7 @@ build/
 eclipse/
 gradle/
 src/main/java/thehippomaster/
+src/main/java/com/
 .classpath
 .project
 build.gradle
