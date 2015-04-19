@@ -9,6 +9,7 @@ import net.arcticraft.item.ACItems;
 import net.arcticraft.item.ACPotions;
 import net.arcticraft.main.Arcticraft;
 import net.arcticraft.main.RopePositionPacket;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IRangedAttackMob;
@@ -192,16 +193,16 @@ public class EntityCaptain extends EntityMob implements ACIBossDisplayData, IRan
 		double dz = target.posZ - hook.posZ;
 		float f1 = MathHelper.sqrt_double(dx * dx + dz * dz) * 0.4F;
 		hook.setThrowableHeading(dx, dy + (double) f1, dz, hook.func_70182_d(), 1.0F);
-		this.playSound("ac:mobs.captain_poof", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
-		this.worldObj.playSoundAtEntity(this, "ac:mobs.captain_rope", 0.7F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));	
+		this.playSound(Arcticraft.MOD_ID + ":mob.captain.poof", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
+		this.worldObj.playSoundAtEntity(this, Arcticraft.MOD_ID + ":mob.captain.rope", 0.7F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));	
 		this.worldObj.spawnEntityInWorld(hook);
 		
 		Arcticraft.arcticraftInstance.network.sendToDimension(new RopePositionPacket(this.getEntityId(), hook.getEntityId()), this.dimension);
 		
-		//Not working atm?
-		//for (int i = 0; i < 10; i++) {
-		//	this.worldObj.spawnParticle("crit", this.posX + hookLaunchX, this.posY + hookLaunchY, this.posZ + hookLaunchZ, 0D, 0D, 0D);
-		//}
+	
+		for (int i = 0; i < 10; i++) {
+			Minecraft.getMinecraft().theWorld.spawnParticle("crit", this.posX + hookLaunchX, this.posY + hookLaunchY, this.posZ + hookLaunchZ, 0D, 0D, 0D);
+	}
 		
 		this.resetHookCooldown();
 		this.isHookAirBorne = true;

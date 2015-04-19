@@ -46,6 +46,7 @@ public class ACItems {
 	public static Item woodenClub;
 	public static Item boarMeat;
 	public static Item boarMeatCooked;
+	public static Item polarBearHide;
 	
 	/* Plants */
 	public static Item berry;
@@ -160,6 +161,7 @@ public class ACItems {
 		woodenClub = new ItemACSword(ToolMaterial.WOOD).setUnlocalizedName(MOD_ID + "_woodenClub").setTextureName(MOD_ID + ":club_wooden").setCreativeTab(ACCreativeTabs.acTabCombat);
 		boarMeat = new ItemFood(3, true).setPotionEffect(Potion.hunger.id, 30, 0, 1.0F).setUnlocalizedName(MOD_ID + "_boarMeat").setTextureName(MOD_ID + ":food/boar/boar_meat").setCreativeTab(ACCreativeTabs.acTabFood);
 		boarMeatCooked = new ItemFood(8, true).setUnlocalizedName(MOD_ID + "_boarMeatCooked").setTextureName(MOD_ID + ":food/boar/boar_meat_cooked").setCreativeTab(ACCreativeTabs.acTabFood);
+		polarBearHide = new Item().setUnlocalizedName(MOD_ID + "_polarBearHide").setTextureName(MOD_ID + ":polarbear_hide").setCreativeTab(ACCreativeTabs.acTabMaterials);
 		
 		/* Captain Stuff */
 		captainsLog = new ItemCaptainsLog().setUnlocalizedName(MOD_ID + "_captainsLog").setTextureName(MOD_ID + ":captains_log").setCreativeTab(ACCreativeTabs.acTabMisc);
@@ -270,7 +272,7 @@ public class ACItems {
 				tekkiteBoots, escariaBoots, glacianBoots, rigentemBoots, penguinMeat, penguinMeatCooked, penguinFeather,
 				mystFruit, glacierFruit, cannonball, frostDoor, woodenClub, boarMeat, boarMeatCooked, eriumGem, captainsLog,
 				captainSword, bucketFrostWater, bucketEmpty, arcticPouch, captainsHook, hotWaterBottle, recordFrozenFeelings, 
-				recordWelcomeToTheCold, icestoneDust, bomb, frostStick, iceChunk};
+				recordWelcomeToTheCold, icestoneDust, bomb, frostStick, iceChunk, polarBearHide};
 
 		for (Item item : itemList) {
 			GameRegistry.registerItem(item, StringUtils.generateName(item));

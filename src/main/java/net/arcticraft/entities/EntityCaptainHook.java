@@ -1,6 +1,7 @@
 package net.arcticraft.entities;
 
 import net.arcticraft.entities.hostile.EntityCaptain;
+import net.arcticraft.main.Arcticraft;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -54,8 +55,7 @@ public class EntityCaptainHook extends EntityThrowable{
 			entityHit.addPotionEffect(new PotionEffect(Potion.blindness.id, 40, 10));
 			entityHit.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 20, 10));
 		}
-		//Minecraft.getMinecraft().sndManager.stopEntitySound(this.getThrower());
-		this.playSound("ac:mobs.captain_ting", 0.5F, 1.0F / (this.worldObj.rand.nextFloat() * 0.4F + 0.8F));
+		this.playSound(Arcticraft.MOD_ID + ":mob.captain.ting", 0.5F, 1.0F / (this.worldObj.rand.nextFloat() * 0.4F + 0.8F));
 		this.setDead();
 	}
 

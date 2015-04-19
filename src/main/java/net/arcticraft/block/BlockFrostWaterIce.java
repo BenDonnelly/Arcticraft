@@ -90,7 +90,6 @@ public class BlockFrostWaterIce extends BlockBreakable{
 				hand.damageItem(1, player);
 				if(r == 3)
 				{
-					System.out.println(hand.getItemDamage());
 					world.spawnEntityInWorld(new EntityItem(world, x, y, z, new ItemStack(ACItems.iceChunk, r2)));
 				}
 			}

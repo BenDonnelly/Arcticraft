@@ -34,7 +34,7 @@ tile.ac_mysticalSnow.name=Mystical Snow
 tile.ac_campfire.name=Campfire
 tile.ac_cannon.name=Cannon
 tile.ac_caveman.name=Caveman
-tile.ac_captain_staue.name=Captain Statue
+tile.ac_captain_statue.name=Captain Statue
 tile.acarcticFurnaceIdle.name=Arctic Furnace
 
 tile.crystalGlass.name=Crystal Glass
@@ -68,6 +68,23 @@ item.ac_bucketEmpty.name=Bucket
 item.ac_hotWaterBottle.name=Hot Water Bottle
 item.ac_frostStick.name=Frost Stick
 item.ac_iceChunk.name=Ice Chunk
+item.ac_polarBearHide.name=Polar Bear Hide
+
+entity.polarBear.name=Polar Bear
+entity.Boar.name=Boar
+entity.Penguin.name=Penguin
+entity.IceMage.name=Ice Mage
+entity.Caveman.name=Caveman
+entity.FrostZombie.name=Frost Zombie
+entity.Captain.name=Captain
+entity.Pirate.name=Pirate
+entity.ArcticGhost.name=Arctic Ghost
+entity.Husky.name=Husky
+entity.EntityEskimoChief.name=Eskimo Chief
+entity.EntityEskimoChef.name=Eskimo Chef
+entity.EntityEskimoHunter.name=Eskimo Hunter
+entity.EntityEskimoTrader.name=Eskimo Trader
+entity.EntityEskimo.name=Eskimo
 
 item.recordFrozenFeelings.name=Music Disk
 item.recordWelcomeToTheCold.name=Music Disk

@@ -17,11 +17,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class EntityPolarBear extends EntityMob
-{
+public class EntityPolarBear extends EntityMob{
 
 	private static final UUID field_110189_bq = UUID.fromString("49455A49-7EC5-45BA-B886-3B90B23A1718");
-    private static final AttributeModifier field_110190_br = (new AttributeModifier(field_110189_bq, "Attacking speed boost", 0.45D, 0)).setSaved(false);
+	private static final AttributeModifier field_110190_br = (new AttributeModifier(field_110189_bq, "Attacking speed boost", 0.45D, 0)).setSaved(false);
 
 	/** Above zero if this PolarBear is Angry. */
 	private int angerLevel = 0;
@@ -30,8 +29,7 @@ public class EntityPolarBear extends EntityMob
 	private int randomSoundDelay = 0;
 	private Entity field_110191_bu;
 
-	public EntityPolarBear(World par1World)
-	{
+	public EntityPolarBear(World par1World){
 		super(par1World);
 		this.setSize(1.9F, 1.8F);
 	}
@@ -57,7 +55,7 @@ public class EntityPolarBear extends EntityMob
 	@Override
 	public void onUpdate()
 	{
-		if(this.field_110191_bu != this.entityToAttack && ! this.worldObj.isRemote)
+		if(this.field_110191_bu != this.entityToAttack && !this.worldObj.isRemote)
 		{
 			IAttributeInstance attributeinstance = this.getEntityAttribute(SharedMonsterAttributes.movementSpeed);
 			attributeinstance.removeModifier(field_110190_br);
@@ -93,9 +91,7 @@ public class EntityPolarBear extends EntityMob
 	}
 
 	/**
-	 * Finds the closest player within 16 blocks to attack, or null if this
-	 * Entity isn't interested in attacking (Animals, Spiders at day, peaceful
-	 * PigZombies).
+	 * Finds the closest player within 16 blocks to attack, or null if this Entity isn't interested in attacking (Animals, Spiders at day, peaceful PigZombies).
 	 */
 	@Override
 	protected Entity findPlayerToAttack()
@@ -164,20 +160,24 @@ public class EntityPolarBear extends EntityMob
 	@Override
 	protected void dropFewItems(boolean recentlyHit, int lootingLevel)
 	{
-		int randNum = this.rand.nextInt(2) + this.rand.nextInt(1 + lootingLevel);
+		int randNum = this.rand.nextInt(3) + this.rand.nextInt(1 + lootingLevel);
 		int i;
+
+		for(i = 0; i < randNum; ++i)
+		{
+			this.dropItem(ACItems.polarBearHide, 1);
+		}
 
 		for(i = 0; i < randNum; ++i)
 		{
 			this.dropItem(ACItems.penguinMeat, 1);
 		}
 
-		randNum = this.rand.nextInt(3) + this.rand.nextInt(1 + lootingLevel);
-
 		for(i = 0; i < randNum; ++i)
 		{
 			this.dropItem(Items.fish, 1);
 		}
+
 	}
 
 }

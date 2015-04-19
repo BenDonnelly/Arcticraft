@@ -126,5 +126,23 @@
         "sounds": [
             "mobs/polar_bear/bear_angry"
         ]
+    },
+	"mob.captain.rope": {
+        "category": "hostile",
+        "sounds": [
+            "mobs/captain/captain_rope"
+        ]
+    },
+    "mob.captain.poof": {
+        "category": "hostile",
+        "sounds": [
+            "mobs/captain/captain_poof"
+        ]
+    },
+	"mob.captain.ting": {
+        "category": "hostile",
+        "sounds": [
+            "mobs/captain/captain_ting"
+        ]
     }
 }

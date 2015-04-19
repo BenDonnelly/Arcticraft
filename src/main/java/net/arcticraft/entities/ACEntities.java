@@ -57,11 +57,11 @@ public class ACEntities
 		EntityRegistry.registerGlobalEntityID(EntityHusky.class, "Husky", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.grayColour, ColourUtils.lightGrayColour);
 
 		/* Eskimo's */
-		EntityRegistry.registerGlobalEntityID(EntityEskimoChief.class, "EntityEskimoChief", EntityRegistry.findGlobalUniqueEntityId(), 0x7BE6E8, 0x000000);
-		EntityRegistry.registerGlobalEntityID(EntityEskimoChef.class, "EntityEskimoChef", EntityRegistry.findGlobalUniqueEntityId(), 0x7BE6E8, 0x000000);
-		EntityRegistry.registerGlobalEntityID(EntityEskimoHunter.class, "EntityEskimoHunter", EntityRegistry.findGlobalUniqueEntityId(), 0x7BE6E8, 0x000000);
-		EntityRegistry.registerGlobalEntityID(EntityEskimoTrader.class, "EntityEskimoTrader", EntityRegistry.findGlobalUniqueEntityId(), 0x7BE6E8, 0x000000);
-		EntityRegistry.registerGlobalEntityID(EntityEskimo.class, "EntityEskimo", EntityRegistry.findGlobalUniqueEntityId(), 0x7BE6E8, 0x000000);
+		EntityRegistry.registerGlobalEntityID(EntityEskimoChief.class, "EntityEskimoChief", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.purpleBlueishColour, ColourUtils.grayColour);
+		EntityRegistry.registerGlobalEntityID(EntityEskimoChef.class, "EntityEskimoChef", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.yellowishColour, ColourUtils.grayColour);
+		EntityRegistry.registerGlobalEntityID(EntityEskimoHunter.class, "EntityEskimoHunter", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.redishPinkishColour, ColourUtils.grayColour);
+		EntityRegistry.registerGlobalEntityID(EntityEskimoTrader.class, "EntityEskimoTrader", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.greenishColour, ColourUtils.grayColour);
+		EntityRegistry.registerGlobalEntityID(EntityEskimo.class, "EntityEskimo", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.blueishIcyColour, ColourUtils.grayColour);
 
 		for(ACBiomeGenBase tmp : GenLayerBiomesDim.allowedBiomes)
 		{
