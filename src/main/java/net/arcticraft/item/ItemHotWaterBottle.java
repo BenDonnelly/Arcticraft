@@ -15,7 +15,7 @@ public class ItemHotWaterBottle extends Item
 	public ItemHotWaterBottle(){
 		this.maxStackSize = 1;
 
-		this.setMaxDamage(40);
+		this.setMaxDamage(100);
 	}
 
 	/**

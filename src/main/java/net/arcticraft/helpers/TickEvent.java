@@ -39,7 +39,6 @@ public class TickEvent{
 			TemperatureHandler.addComponent(new LocationHandler());
 			TemperatureHandler.addComponent(new MovementHandler());
 			TemperatureHandler.addComponent(new LightvalueHandler());
-			// Arcticraft.arcticraftInstance.tempHandler.addComponent(Arcticraft.arcticraftInstance.itemTempHandler);
 			Arcticraft.arcticraftInstance.initialized = true;
 		}
 
@@ -94,21 +93,4 @@ public class TickEvent{
 		}
 	}
 
-	@SubscribeEvent
-	public void playMyMusic(ClientTickEvent event)
-	{
-		Random rand = new Random();
-		ISound soundCache = null;
-		SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
-		int i = rand.nextInt(1000);
-		if(soundCache == null || !handler.isSoundPlaying(soundCache))
-		{
-			if(i == 0)
-			{
-				System.out.println("playing sound");
-				soundCache = new PositionedSoundRecord(new ResourceLocation(Arcticraft.MOD_ID + ":records.frozen_feelings"), 1.0F, 1.0F, 1.0F, 1.0F, 1.0F);
-				handler.playSound(soundCache);
-			}
-		}
-	}
 }

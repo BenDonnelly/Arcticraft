@@ -67,6 +67,7 @@ item.ac_bucketFrostWater.name=Frost Water Bucket
 item.ac_bucketEmpty.name=Bucket
 item.ac_hotWaterBottle.name=Hot Water Bottle
 item.ac_frostStick.name=Frost Stick
+item.ac_iceChunk.name=Ice Chunk
 
 item.recordFrozenFeelings.name=Music Disk
 item.recordWelcomeToTheCold.name=Music Disk

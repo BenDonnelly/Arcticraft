@@ -41,4 +41,9 @@ public class ModelIceChunk extends ModelBase{
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, ent);
 	}
 
+	public void renderAll()
+	{
+		float f5 = 0.0625F;
+		Shape1.render(f5);
+	}
 }
