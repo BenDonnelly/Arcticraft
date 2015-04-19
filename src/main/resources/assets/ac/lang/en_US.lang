@@ -139,3 +139,5 @@ itemGroup.ac_tabCombat=Arcticraft Combat
 itemGroup.ac_tabMisc=Arcticraft Miscellaneous
 itemGroup.ac_tabTechnical=Arcticraft Technical
 itemGroup.ac_tabPlants=Arcticraft Plants
+
+death.attack.freeze=%1$s froze to death

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import net.arcticraft.API.temp.ITempComponent;
 import net.arcticraft.helpers.IExtendedPlayerProps;
+import net.arcticraft.main.Arcticraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
@@ -56,7 +57,7 @@ public class TemperatureHandler {
 				incrementTempTimer(player);
 
 				if (getTempTimer(player) >= 40) {
-					player.attackEntityFrom(DamageSource.starve, 1.0F);
+					player.attackEntityFrom(Arcticraft.freeze, 1.0F);
 
 					resetTempTimer(player);
 				}

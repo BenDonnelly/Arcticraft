@@ -22,6 +22,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.command.ICommandManager;
 import net.minecraft.command.ServerCommandManager;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.MinecraftForge;
@@ -58,6 +59,8 @@ public class Arcticraft{
 	public static SimpleNetworkWrapper network;
 	public static WeightedRandomChestContent[] acChestContent;
     public static ACChestGenHooks acChestGenHooks;
+    
+    public static DamageSource freeze = (new DamageSource("freeze")).setDamageBypassesArmor().setDamageIsAbsolute();
 	
 	@SidedProxy(clientSide = "net.arcticraft.main.ClientProxy", serverSide = "net.arcticraft.main.CommonProxy")
 	public static CommonProxy proxy;
