@@ -29,7 +29,7 @@ public class EntityBoar extends EntityMob implements IAnimatedEntity{
 	public EntityBoar(World world){
 		super(world);
 		this.tasks.addTask(0, new EntityAISwimming(this));
-		// this.tasks.addTask(2, new EntityAIHeadbutt(this));
+		this.tasks.addTask(2, new EntityAIHeadbutt(this));
 		this.tasks.addTask(3, new EntityAIAttackOnCollide(this, 1.0D, true));
 		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 		this.tasks.addTask(4, new EntityAIWander(this, 1.0D));
@@ -55,9 +55,9 @@ public class EntityBoar extends EntityMob implements IAnimatedEntity{
 
 	@Override
 	public boolean attackEntityAsMob(Entity entity)
-	{ 
-		// if(this.getAnimID() == 0) AnimationAPI.sendAnimPacket(this, 1);
-		return entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) 2.0D);
+	{
+		if(this.getAnimID() == 0) AnimationAPI.sendAnimPacket(this, 1);
+		return true;
 	}
 
 	@Override

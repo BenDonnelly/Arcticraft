@@ -32,8 +32,12 @@ public class EntityAIHeadbutt extends AIAnimation{
 		}
 		if(entityBoar.getAnimTick() == 10 && attackTarget != null)
 		{
-			attackTarget.attackEntityFrom(DamageSource.causeMobDamage(entityBoar), 2);
+			attackTarget.attackEntityFrom(DamageSource.causeMobDamage(entityBoar), 5);//headbutt increases damage to 2.5hearts instead of 1
+			attackTarget.motionX *= 1;
+			attackTarget.motionY *= 1.5F;
+			attackTarget.motionZ *= 1;
 		}
+		
 	}
 
 	public int getAnimID()
