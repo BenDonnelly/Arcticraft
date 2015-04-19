@@ -55,7 +55,7 @@ public class TemperatureHandler {
 			if (getTemperature(player) == 0) {
 				incrementTempTimer(player);
 
-				if (getTempTimer(player) >= 80) {
+				if (getTempTimer(player) >= 40) {
 					player.attackEntityFrom(DamageSource.starve, 1.0F);
 
 					resetTempTimer(player);
