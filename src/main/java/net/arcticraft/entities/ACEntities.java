@@ -14,6 +14,7 @@ import net.arcticraft.entities.passive.EntityEskimoHunter;
 import net.arcticraft.entities.passive.EntityEskimoTrader;
 import net.arcticraft.entities.passive.EntityHusky;
 import net.arcticraft.entities.passive.EntityIceMage;
+import net.arcticraft.entities.passive.EntityMammoth;
 import net.arcticraft.entities.passive.EntityPenguin;
 import net.arcticraft.entities.passive.EntityPolarBear;
 import net.arcticraft.main.Arcticraft;
@@ -55,6 +56,7 @@ public class ACEntities
 		EntityRegistry.registerGlobalEntityID(EntityPolarBear.class, "PolarBear", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.whiteColour, ColourUtils.whiteColour);
 		EntityRegistry.registerGlobalEntityID(EntityArcticGhost.class, "ArcticGhost", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.lightGrayColour, ColourUtils.grayColour);
 		EntityRegistry.registerGlobalEntityID(EntityHusky.class, "Husky", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.grayColour, ColourUtils.lightGrayColour);
+		EntityRegistry.registerGlobalEntityID(EntityMammoth.class, "Mammoth", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.lightBrownColour, ColourUtils.muckyBrownColour);
 
 		/* Eskimo's */
 		EntityRegistry.registerGlobalEntityID(EntityEskimoChief.class, "EntityEskimoChief", EntityRegistry.findGlobalUniqueEntityId(), ColourUtils.purpleBlueishColour, ColourUtils.grayColour);

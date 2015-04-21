@@ -24,4 +24,7 @@ public class ColourUtils
 	public static int lapisishColour = 0x536CE0;
 	public static int redishColour = 0xDE2644;
 	public static int muckyGreenColour = 0x354f30;
+	public static int lightBrownColour = 0xAD5C33;
+	public static int muckyBrownColour = 0x4C1A00;
 }
+

@@ -20,6 +20,7 @@ import net.arcticraft.entities.model.ModelEskimo;
 import net.arcticraft.entities.model.ModelHunterEskimo;
 import net.arcticraft.entities.model.ModelHusky;
 import net.arcticraft.entities.model.ModelIceMage;
+import net.arcticraft.entities.model.ModelMammoth;
 import net.arcticraft.entities.model.ModelPenguin;
 import net.arcticraft.entities.model.ModelPolarBear;
 import net.arcticraft.entities.model.ModelTraderEskimo;
@@ -32,6 +33,7 @@ import net.arcticraft.entities.passive.EntityEskimoHunter;
 import net.arcticraft.entities.passive.EntityEskimoTrader;
 import net.arcticraft.entities.passive.EntityHusky;
 import net.arcticraft.entities.passive.EntityIceMage;
+import net.arcticraft.entities.passive.EntityMammoth;
 import net.arcticraft.entities.passive.EntityPenguin;
 import net.arcticraft.entities.passive.EntityPolarBear;
 import net.arcticraft.entities.render.RenderArcticGhost;
@@ -49,6 +51,7 @@ import net.arcticraft.entities.render.RenderEskimoTrader;
 import net.arcticraft.entities.render.RenderFrostZombie;
 import net.arcticraft.entities.render.RenderHusky;
 import net.arcticraft.entities.render.RenderIceMage;
+import net.arcticraft.entities.render.RenderMammoth;
 import net.arcticraft.entities.render.RenderPenguin;
 import net.arcticraft.entities.render.RenderPirate;
 import net.arcticraft.entities.render.RenderPolarBear;
@@ -86,14 +89,14 @@ import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
-public class ClientProxy extends CommonProxy
-{
+public class ClientProxy extends CommonProxy{
+
 	@Override
-	public boolean isServerSide() 
+	public boolean isServerSide()
 	{
-	    return false;
+		return false;
 	}
-	
+
 	@Override
 	public void registerRenderThings()
 	{
@@ -105,7 +108,7 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityBoar.class, new RenderBoar(new ModelBoar(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityPenguin.class, new RenderPenguin(new ModelPenguin(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityIceMage.class, new RenderIceMage(new ModelIceMage(), 0.6F));
-		RenderingRegistry.registerEntityRenderingHandler(EntityCaveman.class, new RenderCaveman(new ModelCaveman(), 0.6F));	
+		RenderingRegistry.registerEntityRenderingHandler(EntityCaveman.class, new RenderCaveman(new ModelCaveman(), 0.6F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityFrostZombie.class, new RenderFrostZombie());
 		RenderingRegistry.registerEntityRenderingHandler(EntityCannonball.class, new RenderCannonball(ACItems.cannonball));
 		RenderingRegistry.registerEntityRenderingHandler(EntityCaptain.class, new RenderCaptain());
@@ -120,28 +123,29 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityArcticGhost.class, new RenderArcticGhost(new ModelArcticGhost(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityHusky.class, new RenderHusky(new ModelHusky(), new ModelHusky(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityBomb.class, new RenderBomb(ACItems.bomb, 0));
+		RenderingRegistry.registerEntityRenderingHandler(EntityMammoth.class, new RenderMammoth(new ModelMammoth(), 2.5F));
 		RenderingRegistry.registerBlockHandler(new BlockIcestoneRenderer()); // Or 'this' if your proxy happens to be the one that implements the block render interface.
 		RenderingRegistry.registerBlockHandler(new BlockBerryBushRenderer()); // Or 'this' if your proxy happens to be the one that implements the block render interface.
-	    
+
 		MinecraftForgeClient.registerItemRenderer(ACItems.captainsHook, (IItemRenderer) new ItemCaptainsHookRender());
 
 		TileEntitySpecialRenderer render = new TileEntityCampfireRender();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCampfire.class, new TileEntityCampfireRender());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ACBlocks.campfire), new ItemCampfireRender(render));
-		
+
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCannon.class, new TileEntityCannonRender());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ACBlocks.cannon), new ItemCannonRender());
-	
+
 		MinecraftForgeClient.registerItemRenderer(ACItems.cannonball, (IItemRenderer) new ItemCannonballRender());
 		MinecraftForgeClient.registerItemRenderer(ACItems.iceChunk, (IItemRenderer) new ItemIceChunkRender());
 
 		render = new TileEntityCavemanRender();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCaveman.class, new TileEntityCavemanRender());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ACBlocks.caveman), new ItemCavemanRender(render));
-		
+
 		render = new TileEntityIcicleRender();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityIcicle.class, new TileEntityIcicleRender());
-		
+
 		render = new TileEntityCaptainStatueRender();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCaptainStatue.class, new TileEntityCaptainStatueRender());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ACBlocks.captainStatue), new ItemCaptainStatueRender(render));

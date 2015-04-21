@@ -28,6 +28,7 @@ public class EntityBoar extends EntityMob implements IAnimatedEntity{
 
 	public EntityBoar(World world){
 		super(world);
+        this.setSize(0.9F, 0.9F);
 		this.tasks.addTask(0, new EntityAISwimming(this));
 		this.tasks.addTask(2, new EntityAIHeadbutt(this));
 		this.tasks.addTask(3, new EntityAIAttackOnCollide(this, 1.0D, true));

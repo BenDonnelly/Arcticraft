@@ -144,5 +144,11 @@
         "sounds": [
             "mobs/captain/captain_ting"
         ]
+    },
+	 "mob.mammoth.trumpet": {
+        "category": "hostile",
+        "sounds": [
+            "mobs/mammoth/mammoth_trumpeting"
+        ]
     }
 }

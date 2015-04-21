@@ -199,10 +199,4 @@ public class EntityCaveman extends EntityMob{
 		return Arcticraft.MOD_ID + ":mob.caveman.death";
 	}
 
-	@Override
-	protected void func_145780_a(int p_145780_1_, int p_145780_2_, int p_145780_3_, Block p_145780_4_)
-	{
-		this.playSound(Arcticraft.MOD_ID + ":mob.caveman.footstep", 0.15F, 0.6F);
-	}
-
 }

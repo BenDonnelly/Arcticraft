@@ -85,6 +85,7 @@ entity.EntityEskimoChef.name=Eskimo Chef
 entity.EntityEskimoHunter.name=Eskimo Hunter
 entity.EntityEskimoTrader.name=Eskimo Trader
 entity.EntityEskimo.name=Eskimo
+entity.Mammoth.name=Mammoth
 
 
 item.recordFrozenFeelings.name=Music Disk
