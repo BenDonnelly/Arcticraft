@@ -23,12 +23,12 @@ public class BiomeGlacier extends ACBiomeGenBase {
 		this.spawnableWaterCreatureList.clear();
 		this.spawnableCaveCreatureList.clear();
 		this.spawnableMonsterList.add(new SpawnListEntry(EntityPolarBear.class, 5, 1, 2));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityArcticGhost.class, 2, 1, 1));
+		this.spawnableMonsterList.add(new SpawnListEntry(EntityArcticGhost.class, 1, 1, 1));
 		//this.spawnableCreatureList.add(new SpawnListEntry(EntityPenguin.class, 8, 2, 6));
 		this.temperature = 0.1F;
 		
 		this.setTemperatureRainfall(0.1F, 0.9F);
-		this.setHeight(new BiomeGenBase.Height(0.1F, 1.25F));
+		this.setHeight(new BiomeGenBase.Height(0.2F, 2.1F));
 	}
 	
 	public void decorate(World par1World, Random par2Random, int par3, int par4) {

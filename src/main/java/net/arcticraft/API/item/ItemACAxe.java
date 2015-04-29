@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack;
 public class ItemACAxe extends ItemAxe{
 
     private static final Set blocksEffectiveAgainst = Sets.newHashSet(new Block[] {Blocks.planks, Blocks.bookshelf, Blocks.log, Blocks.log2, Blocks.chest, Blocks.pumpkin, Blocks.lit_pumpkin,
-    		/*START OF AC BLOCKS*/ ACBlocks.acLogs, ACBlocks.acPlanks, ACBlocks.acSlab, ACBlocks.acDoubleSlab, ACBlocks.frostStairs, ACBlocks.glacierStairs, ACBlocks.frostDoor});
+    		/*START OF AC BLOCKS*/ ACBlocks.acLogs, ACBlocks.acPlanks, ACBlocks.acSlab, ACBlocks.acDoubleSlab, ACBlocks.frostStairs, ACBlocks.glacierStairs, ACBlocks.frostDoor, ACBlocks.frostFence});
 
 	public ItemACAxe(ToolMaterial toolMaterial){
 		super(toolMaterial);

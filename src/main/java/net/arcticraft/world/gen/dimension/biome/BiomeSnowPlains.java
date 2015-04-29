@@ -2,15 +2,12 @@ package net.arcticraft.world.gen.dimension.biome;
 
 import java.util.Random;
 
-import net.arcticraft.block.ACBlocks;
 import net.arcticraft.entities.hostile.EntityBoar;
-import net.arcticraft.entities.passive.EntityPenguin;
+import net.arcticraft.entities.passive.EntityHusky;
+import net.arcticraft.entities.passive.EntityMammoth;
 import net.arcticraft.entities.passive.EntityPolarBear;
-import net.minecraft.entity.passive.EntityWolf;
-import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.biome.BiomeGenBase.SpawnListEntry;
 
 public class BiomeSnowPlains extends ACBiomeGenBase {
 	public BiomeSnowPlains(int par1) {
@@ -20,8 +17,10 @@ public class BiomeSnowPlains extends ACBiomeGenBase {
 		this.theBiomeDecorator.treesPerChunk = -999;
 		this.theBiomeDecorator.mushroomsPerChunk = 0;
 		this.theBiomeDecorator.bigMushroomsPerChunk = 0;
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityPolarBear.class, 2, 1, 2));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityBoar.class, 2, 1, 3));
+		this.spawnableMonsterList.add(new SpawnListEntry(EntityMammoth.class, 1, 1,1 ));
+		this.spawnableCreatureList.add(new SpawnListEntry(EntityHusky.class, 1, 1, 4));
+		this.spawnableMonsterList.add(new SpawnListEntry(EntityPolarBear.class, 1, 1, 2));
+		this.spawnableMonsterList.add(new SpawnListEntry(EntityBoar.class, 1, 1, 3));
 		this.temperature = 0.1F;
 		
 		this.setColor(16777215);

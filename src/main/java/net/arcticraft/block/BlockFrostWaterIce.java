@@ -32,7 +32,7 @@ public class BlockFrostWaterIce extends BlockBreakable{
 		this.setBlockName(MOD_ID + "_frostWaterIce");
 		this.setHardness(0.5F);
 		this.setStepSound(soundTypeGlass);
-		this.slipperiness = 1.0F;
+        this.slipperiness = 0.98F;
 		this.setTickRandomly(true);
 		this.setCreativeTab(ACCreativeTabs.acTabBlock);
 	}

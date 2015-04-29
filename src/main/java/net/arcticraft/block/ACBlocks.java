@@ -6,12 +6,12 @@ import java.util.Random;
 
 import net.arcticraft.API.block.BlockBerryBush;
 import net.arcticraft.API.block.creativetabs.ACCreativeTabs;
-import net.arcticraft.item.ItemBerryBushBlock;
 import net.arcticraft.item.ItemIcicleBlocks;
 import net.arcticraft.item.ItemLeafBlocks;
 import net.arcticraft.item.ItemLogBlocks;
 import net.arcticraft.item.ItemPlankBlocks;
 import net.arcticraft.item.ItemSlabBlocks;
+import net.arcticraft.main.Arcticraft;
 import net.arcticraft.tileentity.TileEntityArcticFurnace;
 import net.arcticraft.tileentity.TileEntityCampfire;
 import net.arcticraft.tileentity.TileEntityCannon;
@@ -20,6 +20,7 @@ import net.arcticraft.tileentity.TileEntityCaveman;
 import net.arcticraft.tileentity.TileEntityIcicle;
 import net.arcticraft.util.StringUtils;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraftforge.fluids.Fluid;
@@ -50,12 +51,14 @@ public class ACBlocks{
 	public static Block acLogs, acLeaves, acPlanks;
 	public static Block frostSapling, glacierSapling;
 	public static Block frostWaterIce;
+	public static Block unbreakableIce;
 
 	/* Decorative Blocks */
 	public static Block  acSlab, acDoubleSlab;
 	public static Block frostStairs, glacierStairs;
 	public static Block frostDoor;
 	public static Block frostLadder;
+	public static Block frostFence;
 	public static Block tekkiteBlock, escariaBlock, glacianBlock, eriumBlock, rigentemBlock;
 	
 	/* Icestone */
@@ -120,6 +123,7 @@ public class ACBlocks{
 		acPlanks = new BlockACPlanks(Material.wood);
 		frostWaterIce = new BlockFrostWaterIce();
 		frostSnow = new BlockFrostSnow();
+		unbreakableIce = new BlockUnbreakableIce();
 		
 		/* Ores */
 		tekkiteOre = new BlockACOres().setBlockName(MOD_ID + "_tekkiteOre").setBlockName(MOD_ID +"_tekkiteOre").setBlockTextureName(MOD_ID + ":ores/ore_tekkite");
@@ -136,6 +140,7 @@ public class ACBlocks{
 		glacierStairs = new BlockACStairs(ACBlocks.acPlanks, 1, Material.wood).setBlockName(MOD_ID + "_glacierStairs");
 		frostLadder = new BlockFrostLadder(Material.circuits);
 		frostDoor = new BlockFrostDoor(Material.wood);
+		frostFence = new BlockFence(Arcticraft.MOD_ID + ":planks_frost", Material.wood).setHardness(2.0F).setResistance(5.0F).setCreativeTab(ACCreativeTabs.acTabDecoration).setBlockName(Arcticraft.MOD_ID + "_frostFence").setStepSound(Block.soundTypeWood);
 		
 		tekkiteBlock = new BlockAC(Material.iron).setHardness(5.0F).setResistance(5.0F).setBlockName(MOD_ID + "_tekkiteBlock").setBlockTextureName(MOD_ID + ":ores/full_blocks/tekkite").setCreativeTab(ACCreativeTabs.acTabDecoration);
 		escariaBlock = new BlockAC(Material.iron).setHardness(5.0F).setResistance(5.0F).setBlockName(MOD_ID + "_escariaBlock").setBlockTextureName(MOD_ID + ":ores/full_blocks/escaria").setCreativeTab(ACCreativeTabs.acTabDecoration);
@@ -172,7 +177,7 @@ public class ACBlocks{
 	{
 		Block[] blockList = {frostGrass, frostDirt, frostStone, frostCobble, frostWaterBlock, arcaneStone, frostWaterIce, frostSnow, tekkiteOre, escariaOre, glacianOre, rigentemOre, frigusOre, 
 				mysticalSnow, campfire, cannon, frostLadder, frostDoor, eriumOre, tekkiteBlock, escariaBlock, glacianBlock, rigentemBlock, caveman, 
-				frozenFarmland, crystalGlass, icestoneWire, icestoneTorchOn, icestoneTorchOff, captainStatue, lantern};
+				frozenFarmland, crystalGlass, icestoneWire, icestoneTorchOn, icestoneTorchOff, captainStatue, lantern, unbreakableIce, frostFence};
 
 		for(Block block : blockList)
 		{

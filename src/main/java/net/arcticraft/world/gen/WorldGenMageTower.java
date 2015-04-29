@@ -14,11 +14,11 @@ import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.DungeonHooks;
-import cpw.mods.fml.common.IWorldGenerator;
 
-public class WorldGenMageTower implements IWorldGenerator {
+public class WorldGenMageTower extends WorldGenerator{
 
 	private static final int SIZE_X = 16;
 	private static final int SIZE_Z = 16;
@@ -28,34 +28,6 @@ public class WorldGenMageTower implements IWorldGenerator {
 
 	public WorldGenMageTower(){}
 
-	/*public boolean checkSpawn(World world, Random rand, int x, int y, int z)
-	{
-		if(rand.nextInt(1000) > 200)
-		{
-			return false;
-		}
-		int validPlatformBlocks = 0;
-		int validVolumeBlocks = 0;
-		for(int xx = x; xx < x + SIZE_X; ++xx)
-		{
-			for(int zz = z; zz < z + SIZE_Z; ++zz)
-			{
-				if(world.getBlock(xx, y - 1, zz) != Blocks.air && Blocks.blocksList[world.getBlock(xx, y - 1, zz)] != null && !Blocks.blocksList[world.getBlock(xx, y - 1, zz)].isBlockReplaceable(world, xx, y - 1, zz))
-				{
-					validPlatformBlocks++;
-				}
-
-				for(int yy = y; yy < y + SIZE_Y; ++yy)
-				{
-					Block block = world.getBlock(xx, yy, zz);
-					if(block == Blocks.air || block == Blocks.log || (Blocks.blocksList[block] != null && (Blocks.blocksList[block].isBlockReplaceable(world, xx, yy, zz) || Blocks.blocksList[block].isLeaves(world, xx, yy, zz) || Blocks.blocksList[block] instanceof BlockFlower || Blocks.blocksList[block] instanceof BlockSnow)))
-					{
-						validVolumeBlocks++;
-					}
-				}
-			}
-		}*/
-	
 	public boolean checkSpawn(World world, Random rand, int x, int y, int z)
 	{
 		if(rand.nextInt(1000) > 200)
@@ -83,47 +55,23 @@ public class WorldGenMageTower implements IWorldGenerator {
 				}
 			}
 		}
-	
+
 		double validPlatformBlocksPercentage = (1.0d * validPlatformBlocks / PLATFORM_AREA) * 100;
 		double validVolumeBlocksPercentage = (1.0d * validVolumeBlocks / VOLUME) * 100;
 		// FMLLog.info("PlatformBlocks: %f ; VolumeBlocks: %f", validPlatformBlocksPercentage,validVolumeBlocksPercentage);
 		return(validPlatformBlocksPercentage > 80 && validVolumeBlocksPercentage > 95d);
 	}
 
-	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
-		int x = chunkX * 16 + random.nextInt(16);
-		int y = 256;
-		int z = chunkZ * 16 + random.nextInt(16);
-		
-		if(world.provider.dimensionId == 0 && (world.getBiomeGenForCoords(x, z) == BiomeGenBase.iceMountains || world.getBiomeGenForCoords(x, z) == BiomeGenBase.icePlains))
-		{
-			for (int i = 0; i < 1; i++)
-			{
-				int max = 1000;
-				int min = 0;
-				int r = new Random().nextInt(max - min) + min;
-				
-				if(r == 5)
-				{
-					while(y > 0 && world.getBlock(x, y - 1, z) != Blocks.grass) y--;
-
-					if(world.getBlock(x, y - 1, z) != Blocks.grass)
-					{
-						return;
-					}
-
-					this.generate(world, random, x, y, z);
-				}
-			}
-		}
-	}
-	
 	public boolean generate(World world, Random rand, int i, int j, int k)
 	{
-		Arcticraft.notifyOfGenertion("Mage Tower", Integer.toString(i), Integer.toString(k));
+		if(!checkSpawn(world, rand, i, j, k))
+		{
+			return false;
+		}
+
 		clearArea(world, i, j + 3, k);
 		buildPlatform(world, i, j, k);
+		Arcticraft.notifyOfGenertion("Mage Tower", Integer.toString(i), Integer.toString(k));
 
 		world.setBlock(i + 1, j + 0, k + 6, Blocks.nether_brick, 0, 2);
 		world.setBlock(i + 1, j + 0, k + 7, Blocks.planks, 2, 2);
@@ -1631,7 +1579,7 @@ public class WorldGenMageTower implements IWorldGenerator {
 		{
 			for(int zz = z; zz < z + SIZE_Z; ++zz)
 			{
-				for(int yy = y - 1; yy > 0 && (world.getBlock(xx, yy, zz) == Blocks.air ||world.getBlock(xx, yy, zz).isReplaceable(world, xx, yy, zz)); --yy)
+				for(int yy = y - 1; yy > 0 && (world.getBlock(xx, yy, zz) == Blocks.air || world.getBlock(xx, yy, zz).isReplaceable(world, xx, yy, zz)); --yy)
 				{
 					world.setBlock(xx, yy, zz, Blocks.grass);
 				}
@@ -2724,14 +2672,10 @@ public class WorldGenMageTower implements IWorldGenerator {
 		TileEntityMobSpawner sp2 = (TileEntityMobSpawner) world.getTileEntity(i + 12, j + 7, k + 4);
 		TileEntityMobSpawner sp3 = (TileEntityMobSpawner) world.getTileEntity(i + 12, j + 7, k + 11);
 
-	/*	if(sp0 != null && sp1 != null && sp2 != null && sp3 != null)
-		{
-			sp0.getSpawnerLogic().setMobID(this.pickMobSpawner(rand));
-			sp1.getSpawnerLogic().setMobID(this.pickMobSpawner(rand));
-			sp2.getSpawnerLogic().setMobID(this.pickMobSpawner(rand));
-			sp3.getSpawnerLogic().setMobID(this.pickMobSpawner(rand));
-		}
-*/
+		/*
+		 * if(sp0 != null && sp1 != null && sp2 != null && sp3 != null) { sp0.getSpawnerLogic().setMobID(this.pickMobSpawner(rand)); sp1.getSpawnerLogic().setMobID(this.pickMobSpawner(rand)); sp2.getSpawnerLogic().setMobID(this.pickMobSpawner(rand));
+		 * sp3.getSpawnerLogic().setMobID(this.pickMobSpawner(rand)); }
+		 */
 		EntityIceMage entityicemage = new EntityIceMage(world);
 		entityicemage.setPosition(i + 9, j + 12, k + 4.5);
 		world.spawnEntityInWorld(entityicemage);

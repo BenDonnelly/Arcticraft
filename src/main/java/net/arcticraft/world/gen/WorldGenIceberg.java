@@ -9,11 +9,10 @@ import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
-import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.ChestGenHooks;
-import cpw.mods.fml.common.IWorldGenerator;
 
-public class WorldGenIceberg implements IWorldGenerator {
+public class WorldGenIceberg extends WorldGenerator {
 	protected Block[] GetValidSpawnBlocks() {
 		return new Block[] { ACBlocks.frostWaterBlock };
 	}
@@ -5644,9 +5643,4 @@ public class WorldGenIceberg implements IWorldGenerator {
 		return true;
 	}
 
-	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world,
-			IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
-		// TODO Auto-generated method stub
-	}
 }

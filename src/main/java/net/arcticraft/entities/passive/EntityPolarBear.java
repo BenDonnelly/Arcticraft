@@ -70,7 +70,7 @@ public class EntityPolarBear extends EntityMob{
 
 		if(this.randomSoundDelay > 0 && --this.randomSoundDelay == 0)
 		{
-			this.playSound(Arcticraft.MOD_ID + ":mobs.polar_bear.angry", this.getSoundVolume() * 2.0F, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F) * 1.8F);
+			//this.playSound(Arcticraft.MOD_ID + ":mob.polar_bear.angry", this.getSoundVolume() * 2.0F, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F) * 1.8F);
 		}
 
 		super.onUpdate();
@@ -142,19 +142,19 @@ public class EntityPolarBear extends EntityMob{
 	@Override
 	protected String getLivingSound()
 	{
-		return Arcticraft.MOD_ID + ":mobs.polar_bear.living";
+		return Arcticraft.MOD_ID + ":mob.polar_bear.living";
 	}
 
 	@Override
 	protected String getHurtSound()
 	{
-		return Arcticraft.MOD_ID + ":mobs.polar_bear.hurt";
+		return Arcticraft.MOD_ID + ":mob.polar_bear.hurt";
 	}
 
 	@Override
 	protected String getDeathSound()
 	{
-		return Arcticraft.MOD_ID + ":mobs.polar_bear.death";
+		return Arcticraft.MOD_ID + ":mob.polar_bear.death";
 	}
 
 	@Override

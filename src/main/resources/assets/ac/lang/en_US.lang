@@ -6,6 +6,8 @@ tile.ac_frostWater.name=Frost Water
 tile.ac_arcaneStone.name=Arcane Stone
 tile.ac_frostWaterIce.name=Frost Ice
 tile.ac_frostSnow.name=Snow
+tile.ac_unbreakableIce.name=Unbreakable Ice
+tile.ac_frostFence.name=Frost Fence
 
 tile.ac_log.frost.name=Frost Wood
 tile.ac_log.glacier.name=Glacier Wood
@@ -70,7 +72,7 @@ item.ac_frostStick.name=Frost Stick
 item.ac_iceChunk.name=Ice Chunk
 item.ac_polarBearHide.name=Polar Bear Hide
 
-entity.polarBear.name=Polar Bear
+entity.PolarBear.name=Polar Bear
 entity.Boar.name=Boar
 entity.Penguin.name=Penguin
 entity.IceMage.name=Ice Mage

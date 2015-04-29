@@ -5,6 +5,8 @@ import java.util.Random;
 import net.arcticraft.block.ACBlocks;
 import net.arcticraft.entities.hostile.EntityBoar;
 import net.arcticraft.entities.hostile.EntityFrostZombie;
+import net.arcticraft.entities.passive.EntityHusky;
+import net.arcticraft.main.Arcticraft;
 import net.arcticraft.world.gen.WorldGenCaveman;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.world.World;
@@ -24,6 +26,7 @@ public class BiomeFrostForest extends ACBiomeGenBase{
 		this.spawnableMonsterList.clear();
 		this.spawnableWaterCreatureList.clear();
 		this.spawnableCaveCreatureList.clear();
+		this.spawnableCreatureList.add(new SpawnListEntry(EntityHusky.class, 3, 2, 4));
 		this.spawnableMonsterList.add(new SpawnListEntry(EntityFrostZombie.class, 1, 1, 3));
 		this.spawnableMonsterList.add(new SpawnListEntry(EntityBoar.class, 2, 1, 3));
 		// this.spawnableCreatureList.add(new SpawnListEntry(EntityPenguin.class, 3, 2, 6));
@@ -44,7 +47,7 @@ public class BiomeFrostForest extends ACBiomeGenBase{
 	public void decorate(World world, Random rand, int x, int z)
 	{
 		super.decorate(world, rand, x, z);
-		if(rand.nextInt(600) == 1)
+		if(rand.nextInt(450) == 1)
 		{
 			int k = x + rand.nextInt(16) + 8;
 			int l = z + rand.nextInt(16) + 8;

@@ -33,7 +33,7 @@ public class BlockIcicle extends BlockContainer{
 		this.setResistance(5.0F);
 		this.setBlockName(Arcticraft.MOD_ID + "_icicle");
 		this.setBlockTextureName(Arcticraft.MOD_ID + ":icicle");
-		this.setCreativeTab(ACCreativeTabs.acTabBlock);
+		//this.setCreativeTab(ACCreativeTabs.acTabBlock);
 		this.setBlockBounds(0, 0, 0, 1, 1.5F, 1);
 	}
 

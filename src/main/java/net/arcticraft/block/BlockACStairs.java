@@ -13,7 +13,7 @@ public class BlockACStairs extends BlockStairs{
 		this.setHardness(2.0F);
 		this.setResistance(5.0F);
 		this.setStepSound(Block.soundTypeWood);
-		this.setCreativeTab(ACCreativeTabs.acTabBlock);
+		this.setCreativeTab(ACCreativeTabs.acTabDecoration);
 		this.useNeighborBrightness = true;
 	}
 

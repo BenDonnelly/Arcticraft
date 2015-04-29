@@ -13,7 +13,9 @@ import net.arcticraft.helpers.TickEvent;
 import net.arcticraft.item.ACItems;
 import net.arcticraft.item.ACPotions;
 import net.arcticraft.util.VectorUtils;
+import net.arcticraft.world.gen.ACWorldGenerator;
 import net.arcticraft.world.gen.WorldGenACTrees;
+import net.arcticraft.world.gen.WorldGenEskimoVillage;
 import net.arcticraft.world.gen.WorldGenIceberg;
 import net.arcticraft.world.gen.WorldGenMageTower;
 import net.arcticraft.world.gen.dimension.ChunkProviderDim;
@@ -100,10 +102,9 @@ public class Arcticraft{
 		proxy.registerGeneral();
 		
 		ACEntities.loadEntities();
+		GameRegistry.registerWorldGenerator(new ACWorldGenerator(), 0);
     	GameRegistry.registerWorldGenerator(new WorldGenACTrees(), 0);
-    	GameRegistry.registerWorldGenerator(new WorldGenIceberg(), 0);
-    	GameRegistry.registerWorldGenerator(new WorldGenMageTower(), 0);
-    	
+
     	acChestContent = new WeightedRandomChestContent[] {new WeightedRandomChestContent(ACItems.hotWaterBottle, 0, 0, 1, 40), new WeightedRandomChestContent(ACItems.eriumGem, 0, 0, 1, 20), new WeightedRandomChestContent(ACItems.escariaSword, 0, 0, 1, 1), new WeightedRandomChestContent(ACItems.arcticPouch, 0, 0, 3, 10)};
     	acChestGenHooks = new ACChestGenHooks("acChestGen");
     	cPackMain.init();

@@ -23,7 +23,7 @@ public class WorldProviderDim extends WorldProvider {
 	@Override
 	public float getStarBrightness(float par1)
 	{
-		return 1.f;
+		return 2.0f;
 	}
 	
 	@Override

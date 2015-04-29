@@ -28,7 +28,7 @@ public class BlockACSlab extends BlockSlab{
 		this.setResistance(5.0F);
 		this.setStepSound(Block.soundTypeWood);
 		this.setBlockName(Arcticraft.MOD_ID + "_acSlabs");
-		this.setCreativeTab(ACCreativeTabs.acTabBlock);
+		this.setCreativeTab(ACCreativeTabs.acTabDecoration);
 		this.useNeighborBrightness = true;
 	}
 
