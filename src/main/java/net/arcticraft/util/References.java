@@ -2,7 +2,7 @@ package net.arcticraft.util;
 
 public class References {
 
-	// Names
+	// General
 	public static final String MOD_ID = "ac";
 	public static final String NAME = "Arcticraft";
 	
@@ -15,4 +15,12 @@ public class References {
 	public static final int DIM_ID = 3;
 	public static final String DIM_NAME = "The Arctic";
 	public static final String DIM_SUFFIX = "_arctic";
+	public static final String DIM_ENTER = "Entering the Arctic";
+	public static final String DIM_LEAVE = "Leaving the Arctic";
+	
+	// Blocks
+	public static final String FROST_STONE = "frost_stone";
+	
+	// Creative tabs
+	public static final String TAB_BLOCKS = MOD_ID + "_tabBlock";
 }

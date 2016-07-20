@@ -1,7 +1,9 @@
 package net.arcticraft;
 
+import net.arcticraft.init.ACBlocks;
 import net.arcticraft.proxy.CommonProxy;
 import net.arcticraft.util.References;
+import net.arcticraft.world.gen.feature.WorldGenMageTower;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -21,12 +23,12 @@ public class Arcticraft {
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		
+		ACBlocks.register();
 	}
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		
+		WorldGenMageTower.register();
 	}
 	
 	@EventHandler

@@ -15,6 +15,7 @@ public class ChunkProviderArctic implements IChunkGenerator {
 	private World world;
 	private boolean mapFeatures;
 	private Random rand;
+	//TODO instantiate world generators (e.g. ores) here
 
 	public ChunkProviderArctic(World worldIn, boolean features, long seed)
     {
@@ -31,27 +32,24 @@ public class ChunkProviderArctic implements IChunkGenerator {
 
 	@Override
 	public void populate(int x, int z) {
-		// TODO Auto-generated method stub
+		// TODO generators
 		
 	}
 
 	@Override
 	public boolean generateStructures(Chunk chunkIn, int x, int z) {
-		// TODO Auto-generated method stub
+		// Unused?
 		return false;
 	}
 
 	@Override
-	public List<SpawnListEntry> getPossibleCreatures(
-			EnumCreatureType creatureType, BlockPos pos) {
+	public List<SpawnListEntry> getPossibleCreatures(EnumCreatureType creatureType, BlockPos pos) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public BlockPos getStrongholdGen(World worldIn, String structureName,
-			BlockPos position) {
-		// TODO Auto-generated method stub
+	public BlockPos getStrongholdGen(World worldIn, String structureName, BlockPos position) {
 		return null;
 	}
 

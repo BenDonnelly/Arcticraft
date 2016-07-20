@@ -13,6 +13,8 @@ public class WorldProviderArctic extends WorldProvider {
 	
 	private static final DimensionType ARCTIC = DimensionType.register(References.DIM_NAME, References.DIM_SUFFIX, References.DIM_ID, WorldProviderArctic.class, false);
 	
+	private static final Vec3d FOG_COLOR = new Vec3d(0.1D, 0.9D, 1.0D);
+	
 	@Override
 	public DimensionType getDimensionType() {
 		return ARCTIC;
@@ -20,12 +22,12 @@ public class WorldProviderArctic extends WorldProvider {
 	
 	@Override
 	public String getDepartMessage() {
-        return "Leaving the Arctic";
+        return References.DIM_LEAVE;
     }
 	
 	@Override
 	public String getWelcomeMessage() {
-		return "Entering the Arctic";
+		return References.DIM_ENTER;
 	}
 	
 	@Override
@@ -34,11 +36,14 @@ public class WorldProviderArctic extends WorldProvider {
 	}
 	
 	@Override
-	@SideOnly(Side.CLIENT)
-    public Vec3d getFogColor(float p_76562_1_, float p_76562_2_)
-    {
-        return new Vec3d(0.1D, 0.9D, 1.0D);
+    public Vec3d getFogColor(float p_76562_1_, float p_76562_2_) {
+        return FOG_COLOR;
     }
+	
+	@Override
+	public float getStarBrightness(float par1) {
+		return 2.0F;
+	}
 	
 	@Override
 	public IChunkGenerator createChunkGenerator() {
