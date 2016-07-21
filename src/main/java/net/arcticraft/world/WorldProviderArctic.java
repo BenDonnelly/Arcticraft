@@ -1,17 +1,17 @@
 package net.arcticraft.world;
 
+import net.arcticraft.init.ACBiomes;
 import net.arcticraft.util.References;
 import net.arcticraft.world.gen.ChunkProviderArctic;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
+import net.minecraft.world.biome.BiomeProviderSingle;
 import net.minecraft.world.chunk.IChunkGenerator;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class WorldProviderArctic extends WorldProvider {
 	
-	private static final DimensionType ARCTIC = DimensionType.register(References.DIM_NAME, References.DIM_SUFFIX, References.DIM_ID, WorldProviderArctic.class, false);
+	public static final DimensionType ARCTIC = DimensionType.register(References.DIM_NAME, References.DIM_SUFFIX, References.DIM_ID, WorldProviderArctic.class, false);
 	
 	private static final Vec3d FOG_COLOR = new Vec3d(0.1D, 0.9D, 1.0D);
 	
@@ -43,6 +43,11 @@ public class WorldProviderArctic extends WorldProvider {
 	@Override
 	public float getStarBrightness(float par1) {
 		return 2.0F;
+	}
+	
+	@Override
+	protected void createBiomeProvider() {
+		this.biomeProvider = new BiomeProviderSingle(ACBiomes.SNOW_PLAINS); //TODO this should be multiple?
 	}
 	
 	@Override

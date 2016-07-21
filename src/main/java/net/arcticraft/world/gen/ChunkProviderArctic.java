@@ -6,16 +6,22 @@ import java.util.Random;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biome.SpawnListEntry;
 import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkGenerator;
 
 public class ChunkProviderArctic implements IChunkGenerator {
 
+	private final int SIZE = 16; //Duh
+	
 	private World world;
 	private boolean mapFeatures;
 	private Random rand;
-	//TODO instantiate world generators (e.g. ores) here
+	
+	private Biome[] biomes;
+	//TODO instantiate noise and world generators (e.g. ores) here
 
 	public ChunkProviderArctic(World worldIn, boolean features, long seed)
     {
@@ -27,7 +33,19 @@ public class ChunkProviderArctic implements IChunkGenerator {
 	@Override
 	public Chunk provideChunk(int x, int z) {
 		this.rand.setSeed((long)x * 341873128712L + (long)z * 132897987541L);
-		return null;
+		this.biomes = this.world.getBiomeProvider().loadBlockGeneratorData(this.biomes, x * SIZE, z * SIZE, SIZE, SIZE);
+		
+		ChunkPrimer chunkprimer = new ChunkPrimer();
+		Chunk chunk = new Chunk(this.world, chunkprimer, x, z);
+		byte[] biomeIDs = chunk.getBiomeArray();
+
+        for (int i = 0; i < biomeIDs.length; ++i)
+        {
+        	biomeIDs[i] = (byte)Biome.getIdForBiome(this.biomes[i]);
+        }
+
+        chunk.generateSkylightMap();
+        return chunk;
 	}
 
 	@Override
@@ -44,8 +62,7 @@ public class ChunkProviderArctic implements IChunkGenerator {
 
 	@Override
 	public List<SpawnListEntry> getPossibleCreatures(EnumCreatureType creatureType, BlockPos pos) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.world.getBiomeGenForCoords(pos).getSpawnableList(creatureType);
 	}
 
 	@Override

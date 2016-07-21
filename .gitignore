@@ -13,7 +13,7 @@ src/main/java/com/
 .project
 build.gradle
 gradlew
-
+run/
 
 
 *.bat

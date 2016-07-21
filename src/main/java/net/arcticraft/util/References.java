@@ -18,6 +18,10 @@ public class References {
 	public static final String DIM_ENTER = "Entering the Arctic";
 	public static final String DIM_LEAVE = "Leaving the Arctic";
 	
+	// Biomes
+	public static final String SNOW_PLAINS_ID = "snow_plains";
+	public static final String SNOW_PLAINS_NAME = "Snow Plains";
+	
 	// Blocks
 	public static final String FROST_STONE = "frost_stone";
 	
